@@ -18,34 +18,68 @@ The 12 factors: real rates (TIP), 10Y nominal yield, dollar (UUP), Fed stance
 (T-bill), fear (VIX), risk appetite (S&P), BTC competition, GLD flow proxy,
 gold momentum, yield curve, duration bid (TLT), central-bank buying regime.
 
-## Honest backtest (2019–2026, walk-forward, refit yearly)
+### Signal pipeline (v2)
 
-| | Accuracy | AUC | CAGR | Sharpe | MaxDD |
-|---|---|---|---|---|---|
-| Model stances | 72% hit rate when confident | 0.51 | — | — | — |
-| Signal strategy (trade only p≥0.60 / p≤0.40) | — | — | 2.3% | 0.33 | −13.8% |
-| Buy-and-hold gold | — | — | 15.8% | 1.04 | −23.2% |
+The live signal stacks four layers on top of the base 12-factor model:
 
-Read this carefully: the model **does not beat buy-and-hold in a bull market**.
-What it does: 72% hit rate on high-conviction stances, and it sidestepped
-losses in 2021 and 2022. Use it as a **regime filter / risk overlay** (size up
-when P(up) is high, stand aside when low) — not as a money printer. It cuts
-drawdowns; it does not manufacture return in a one-way market.
+```
+base 12-factor P(up)  ──►  ensemble ML (50% logistic + 35% boosted trees
+  │                         + sentiment nudge, clipped to [0.05, 0.95])
+  │                    ──►  raw LONG/SHORT/FLAT at 0.80/0.20
+  │                         (GOLD_LONG_T / GOLD_SHORT_T env overrides)
+  │                    ──►  trend filter (MA50/MA200, ATR14 from factors.py)
+  ▼
+AI sentiment (public_apis_ai.py: free macro headlines) blended with
+YouTube analyst memory (youtube_memory.py) → ±10% max nudge on the ensemble
+  ▼
+microstructure (vwap.py, profile.py, footprint.py, gex.py) + order-flow
+audit (audit.py) → VWAP z-score, POC/VAH/VAL, audit verdict
+  ▼
+decision critic (critic.py): 5 adversarial checks (probability floor 80%,
+macro/momentum contradiction, trend disconnect, VWAP overextension, model
+divergence) + MCDA score ≥ 0.70 → final_audited_signal (or FLAT if blocked)
+```
+
+`daemon.py` runs the pipeline on a loop; `heatmap.py` renders factor heatmaps.
+Thresholds and the critic's probability floor are deliberately strict — the
+pipeline prefers standing aside to forcing a trade.
 
 ## Dashboard
 
-A live GUI for the whole model — every factor, the signal, the bot status,
-and the backtest:
+A live GUI for the whole model — base factors, ensemble, sentiment, critic,
+microstructure, the bot status, and the backtest:
 
 ```bash
 python3 -m gold_oracle.signal   # refresh the signal first
 python3 dashboard/serve.py      # -> http://localhost:8081
 ```
 
-Shows: P(up) with stance badge, all 12 factor z-scores/weights/contributions,
-the composite → logistic math, signal history chart, walk-forward backtest
+Shows: ensemble P(up) hero with the audited stance, all 12 factor cards
+(live z-scores, weights, contributions), the composite → logistic math,
+ensemble blend breakdown, AI-sentiment and critic verdict panels, VWAP /
+volume-profile microstructure, signal history chart, walk-forward backtest
 vs buy-and-hold, and a "bot right now" panel mirroring the EA's logic
 (stale >36h ⇒ flat by design).
+
+## Honest backtest (2019–2026, walk-forward, refit yearly)
+
+Base 12-factor model, stance thresholds 0.53/0.47 (env-overridable defaults):
+
+| | Accuracy | AUC | CAGR | Sharpe | MaxDD |
+|---|---|---|---|---|---|\n| Model stances (positioned 72% of the time) | 61% hit rate when positioned | 0.50 | — | — | — |
+| Signal strategy | — | — | 11.9% | 0.95 | −16.7% |
+| Buy-and-hold gold | — | — | 15.8% | 1.04 | −23.2% |
+
+Read this carefully: the model **still does not beat buy-and-hold in a bull market**,
+but with the wider stance bands it stays invested through most of the rally instead of
+sitting out — 11.9% CAGR at 0.95 Sharpe with a shallower max drawdown (−16.7% vs −23.2%).
+Use it as a **regime filter / risk overlay** (size up when P(up) is high, stand aside
+when low) — not as a money printer. It cuts drawdowns; it does not manufacture
+return in a one-way market.
+
+Note: the walk-forward above covers the base 12-factor model only. The ensemble ML,
+AI sentiment, microstructure and critic layers are newer than the test window's
+methodology and have no walk-forward history — treat their contribution as unproven.
 
 ## Setup
 

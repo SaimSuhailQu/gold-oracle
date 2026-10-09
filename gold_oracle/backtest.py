@@ -4,7 +4,8 @@ Protocol (no lookahead):
   - features/targets built only from data available at each date
   - expanding training window, model refit every REFIT_DAYS
   - predict P(up over next HORIZON days) out-of-sample
-  - strategy: long gold if p >= 0.60, short if p <= 0.40, else flat
+  - strategy: long gold if p >= LONG_T, short if p <= SHORT_T, else flat
+    (defaults 0.53/0.47, override with GOLD_LONG_T / GOLD_SHORT_T env vars)
   - benchmark: buy-and-hold gold
 
 Metrics: accuracy, AUC, Brier score, strategy CAGR / Sharpe / max drawdown.
@@ -12,6 +13,7 @@ Metrics: accuracy, AUC, Brier score, strategy CAGR / Sharpe / max drawdown.
 from __future__ import annotations
 
 import numpy as np
+import os
 import pandas as pd
 
 from .factors import FEATURES, HORIZON, build_features
@@ -19,8 +21,8 @@ from .model import GoldProbabilityModel
 
 REFIT_DAYS = 252
 MIN_TRAIN = 4 * 252
-LONG_T = 0.60
-SHORT_T = 0.40
+LONG_T = float(os.environ.get("GOLD_LONG_T", "0.53"))
+SHORT_T = float(os.environ.get("GOLD_SHORT_T", "0.47"))
 
 
 def _auc(y: np.ndarray, p: np.ndarray) -> float:
@@ -64,56 +66,24 @@ def walk_forward(f: pd.DataFrame, verbose: bool = True) -> pd.DataFrame:
     return out
 
 
-def summarize(out: pd.DataFrame, model: GoldProbabilityModel) -> dict:
-    """Machine-readable version of _report for the GUI."""
+def _report(out: pd.DataFrame, model: GoldProbabilityModel) -> None:
     y, p = out["y"].to_numpy(), out["p_up"].to_numpy()
-    acc = float(((p >= 0.5).astype(int) == y).mean())
+    acc = ((p >= 0.5).astype(int) == y).mean()
     brier = float(np.mean((p - y) ** 2))
-    hi_conf = (p >= 0.60) | (p <= 0.40)
-    if hi_conf.sum():
-        hi_hit = float((((p[hi_conf] >= 0.5).astype(int) == y[hi_conf]).mean()))
-    else:
-        hi_hit = None
-    summ = {
-        "n": len(out),
-        "from": str(out.index[0].date()),
-        "to": str(out.index[-1].date()),
-        "accuracy": round(acc, 3),
-        "auc": round(_auc(y, p), 3),
-        "brier": round(brier, 4),
-        "hi_conf_hit_rate": round(hi_hit, 3) if hi_hit is not None else None,
-        "hi_conf_n": int(hi_conf.sum()),
-        "weights": {k: round(v, 3) for k, v in
-                     sorted(model.weights_.items(), key=lambda kv: -kv[1])},
-    }
-    for label, col in [("strategy", "strat_ret"), ("buy_hold", "bh_ret")]:
+    print(f"n={len(out)}  acc={acc:.3f}  AUC={_auc(y, p):.3f}  Brier={brier:.4f}")
+    print("weights:")
+    for k, v in sorted(model.weights_.items(), key=lambda kv: -kv[1]):
+        print(f"  {k:10s} {v:.3f}")
+    for label, col in [("strategy", "strat_ret"), ("buy-hold", "bh_ret")]:
         r = out[col]
+        # overlapping horizons: resample to non-overlapping for stats
         r_n = r.iloc[::HORIZON]
         years = len(r_n) * HORIZON / 252
         cagr = (1 + r_n).prod() ** (1 / max(years, 1e-9)) - 1
-        per = 252 / HORIZON
+        per = 252 / HORIZON  # periods per year
         sharpe = r_n.mean() / (r_n.std() + 1e-12) * np.sqrt(per)
         dd = float(((1 + r_n).cumprod() / (1 + r_n).cumprod().cummax() - 1).min())
-        summ[label] = {"cagr": round(float(cagr), 4),
-                       "sharpe": round(float(sharpe), 2),
-                       "maxdd": round(dd, 4)}
-    # downsampled equity curves for the chart
-    for label, col in [("strategy", "strat_ret"), ("buy_hold", "bh_ret")]:
-        eq = (1 + out[col].iloc[::HORIZON]).cumprod()
-        idx = np.linspace(0, len(eq) - 1, min(120, len(eq))).astype(int)
-        summ[label]["equity_curve"] = [
-            [str(eq.index[i].date()), round(float(eq.iloc[i]), 3)] for i in idx]
-    return summ
-
-
-def _report(out: pd.DataFrame, model: GoldProbabilityModel) -> None:
-    s = summarize(out, model)
-    print(f"n={s['n']}  acc={s['accuracy']:.3f}  AUC={s['auc']:.3f}  Brier={s['brier']:.4f}")
-    print("weights:")
-    for k, v in s["weights"].items():
-        print(f"  {k:10s} {v:.3f}")
-    print(f"strategy CAGR={s['strategy']['cagr']:7.2%}  Sharpe={s['strategy']['sharpe']:5.2f}  MaxDD={s['strategy']['maxdd']:7.2%}")
-    print(f"buy-hold CAGR={s['buy_hold']['cagr']:7.2%}  Sharpe={s['buy_hold']['sharpe']:5.2f}  MaxDD={s['buy_hold']['maxdd']:7.2%}")
+        print(f"{label:9s} CAGR={cagr:7.2%}  Sharpe={sharpe:5.2f}  MaxDD={dd:7.2%}")
 
 
 def run() -> None:
@@ -123,6 +93,45 @@ def run() -> None:
     f = build_features(df)
     print(f"feature rows: {len(f)} from {f.index[0].date()} to {f.index[-1].date()}")
     walk_forward(f)
+
+
+def summarize(out: pd.DataFrame, model: GoldProbabilityModel) -> dict:
+    """Compact JSON-serializable summary for the dashboard (data/backtest_summary.json)."""
+    y, p = out["y"].to_numpy(), out["p_up"].to_numpy()
+    n = len(out)
+    acc = float(((p >= 0.5).astype(int) == y).mean())
+    auc = float(_auc(y, p))
+    brier = float(np.mean((p - y) ** 2))
+    hi_conf = (p >= LONG_T) | (p <= SHORT_T)
+    if hi_conf.sum():
+        hi_hit = float((((p[hi_conf] >= 0.5).astype(int) == y[hi_conf]).mean()))
+    else:
+        hi_hit = None
+    out_s = out.iloc[::HORIZON]
+    years = len(out_s) * HORIZON / 252
+    per = 252 / HORIZON
+
+    def stats(col):
+        r = out_s[col].to_numpy()
+        cagr = float((1 + r).prod() ** (1 / max(years, 1e-9)) - 1)
+        sharpe = float(r.mean() / (r.std() + 1e-12) * np.sqrt(per))
+        eq = (1 + r).cumprod()
+        dd = float(((eq / np.maximum.accumulate(eq)) - 1).min())
+        curve = [[d.strftime("%Y-%m-%d"), round(float(v), 4)]
+                 for d, v in zip(out_s.index[:: max(1, len(out_s) // 90)],
+                                 eq[:: max(1, len(out_s) // 90)])]
+        return {"cagr": round(cagr, 4), "sharpe": round(sharpe, 2),
+                "maxdd": round(dd, 4), "equity_curve": curve}
+
+    return {
+        "n": n, "from": str(out.index[0].date()), "to": str(out.index[-1].date()),
+        "long_t": LONG_T, "short_t": SHORT_T,
+        "accuracy": round(acc, 4), "auc": round(auc, 4), "brier": round(brier, 4),
+        "hi_conf_hit_rate": round(hi_hit, 4) if hi_hit is not None else None,
+        "hi_conf_n": int(hi_conf.sum()),
+        "weights": {k: round(float(v), 4) for k, v in model.weights_.items()},
+        "strategy": stats("strat_ret"), "buy_hold": stats("bh_ret"),
+    }
 
 
 if __name__ == "__main__":
