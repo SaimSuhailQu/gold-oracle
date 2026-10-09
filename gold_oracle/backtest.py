@@ -12,6 +12,7 @@ Metrics: accuracy, AUC, Brier score, strategy CAGR / Sharpe / max drawdown.
 from __future__ import annotations
 
 import numpy as np
+import os
 import pandas as pd
 
 from .factors import FEATURES, HORIZON, build_features
@@ -19,8 +20,8 @@ from .model import GoldProbabilityModel
 
 REFIT_DAYS = 252
 MIN_TRAIN = 4 * 252
-LONG_T = 0.60
-SHORT_T = 0.40
+LONG_T = float(os.environ.get("GOLD_LONG_T", "0.53"))
+SHORT_T = float(os.environ.get("GOLD_SHORT_T", "0.47"))
 
 
 def _auc(y: np.ndarray, p: np.ndarray) -> float:

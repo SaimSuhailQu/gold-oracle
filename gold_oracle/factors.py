@@ -87,8 +87,18 @@ def build_features(df: pd.DataFrame) -> pd.DataFrame:
     base = float(regime.get("default", 0.5))
     f["cb_regime"] = np.where(f.index >= pd.Timestamp("2022-01-01"), base, 0.0)
 
+    # Technical & Trend Context: 50-day and 200-day moving averages
+    f["ma50"] = d["gold"].rolling(50, min_periods=20).mean()
+    f["ma200"] = d["gold"].rolling(200, min_periods=50).mean()
+
+    # Volatility indicator: 14-day True Range
+    high = d["gold"]  # yfinance Close acts as proxy, diff captures daily swings
+    prev_close = d["gold"].shift(1)
+    tr = (d["gold"] - prev_close).abs()
+    f["atr14"] = tr.rolling(14, min_periods=7).mean().bfill()
+
     # Target: 1 if gold is higher HORIZON days out, else 0
     f["fwd_ret"] = 100.0 * (np.log(d["gold"].shift(-HORIZON)) - np.log(d["gold"]))
     f["target"] = (f["fwd_ret"] > 0).astype(float)
 
-    return f.dropna()
+    return f.dropna(subset=FEATURES + ["target"])

@@ -21,14 +21,16 @@
 #include <Trade\Trade.mqh>
 
 //--- inputs
-input string InpSignalFile     = "gold_signal.json"; // signal file in MQL5/Files
-input double InpRiskPercent     = 1.0;                // risk per trade (% of equity)
-input int    InpSLDollars       = 30;                 // stop loss in USD per oz
-input int    InpTPDollars       = 60;                 // take profit in USD per oz
-input int    InpMaxSpreadPoints = 500;                // max spread (points)
-input int    InpSignalMaxAgeHrs = 36;                 // ignore signals older than this
-input ulong  InpMagic           = 20261005;           // magic number
-input int    InpTimerSeconds    = 60;                 // re-evaluate every N sec
+input string InpSignalFile          = "gold_signal.json"; // signal file in MQL5/Files
+input double InpRiskPercent         = 1.0;                // risk per trade (% of equity)
+input double InpMinWinProbability   = 0.80;               // minimum win probability to trade (e.g. 0.80 = 80%)
+input bool   InpRequireOrderFlowAudit = true;             // require Order Flow Audit pass before entry
+input int    InpSLDollars           = 30;                 // fallback stop loss in USD per oz
+input int    InpTPDollars           = 60;                 // fallback take profit in USD per oz
+input int    InpMaxSpreadPoints     = 500;                // max spread (points)
+input int    InpSignalMaxAgeHrs     = 36;                 // ignore signals older than this
+input ulong  InpMagic               = 20261005;           // magic number
+input int    InpTimerSeconds        = 60;                 // re-evaluate every N sec
 
 CTrade trade;
 
@@ -185,6 +187,29 @@ void Evaluate()
       return;
    }
 
+   // Win probability check (must meet or exceed InpMinWinProbability)
+   double win_prob = (sig == "LONG") ? p_up : (1.0 - p_up);
+   if(win_prob < InpMinWinProbability)
+   {
+      if(in_pos) { trade.PositionClose(ticket); Print("GoldOracle: closed due to low win prob: ", win_prob); }
+      DrawStatus(StringFormat("LOW PROB (prob=%.2f < %.2f)", win_prob, InpMinWinProbability));
+      return;
+   }
+
+   // Microstructure & Order Flow Audit gate
+   if(InpRequireOrderFlowAudit)
+   {
+      string audit_verdict = JsonGetString(json, "audit_verdict");
+      if(StringLen(audit_verdict) > 0 && StringFind(audit_verdict, "AUDIT_PASSED") < 0)
+      {
+         if(!in_pos)
+         {
+            DrawStatus(StringFormat("OF AUDIT BLOCKED (%s)", audit_verdict));
+            return;
+         }
+      }
+   }
+
    long want = (sig == "LONG") ? POSITION_TYPE_BUY : POSITION_TYPE_SELL;
    if(in_pos)
    {
@@ -196,7 +221,16 @@ void Evaluate()
 
    if(!SpreadOK(sym)) { DrawStatus("SPREAD TOO WIDE"); return; }
 
-   double sl_dist = InpSLDollars;                 // USD per oz
+   double sl_dist = InpSLDollars;                 // fallback USD per oz
+   double tp_dist = InpTPDollars;
+   if(InpUseDynamicATR)
+   {
+      double dyn_sl = JsonGetDouble(json, "sl_dollars");
+      double dyn_tp = JsonGetDouble(json, "tp_dollars");
+      if(dyn_sl > 10.0) sl_dist = dyn_sl;
+      if(dyn_tp > 10.0) tp_dist = dyn_tp;
+   }
+
    double sl_pts  = sl_dist / point;              // in points
    long stops_level = SymbolInfoInteger(sym, SYMBOL_TRADE_STOPS_LEVEL);
    if(sl_pts < stops_level + 10)
@@ -215,9 +249,9 @@ void Evaluate()
    {
       price = SymbolInfoDouble(sym, SYMBOL_ASK);
       sl = NormalizeDouble(price - sl_dist, digits);
-      tp = NormalizeDouble(price + InpTPDollars, digits);
+      tp = NormalizeDouble(price + tp_dist, digits);
       if(trade.Buy(vol, sym, price, sl, tp, "GoldOracle LONG"))
-         Print("GoldOracle: BUY ", vol, " @ ", price, " p_up=", p_up);
+         Print("GoldOracle: BUY ", vol, " @ ", price, " SL=", sl, " TP=", tp, " p_up=", p_up);
       else
          Print("GoldOracle: BUY failed: ", trade.ResultRetcodeDescription());
    }
@@ -225,9 +259,9 @@ void Evaluate()
    {
       price = SymbolInfoDouble(sym, SYMBOL_BID);
       sl = NormalizeDouble(price + sl_dist, digits);
-      tp = NormalizeDouble(price - InpTPDollars, digits);
+      tp = NormalizeDouble(price - tp_dist, digits);
       if(trade.Sell(vol, sym, price, sl, tp, "GoldOracle SHORT"))
-         Print("GoldOracle: SELL ", vol, " @ ", price, " p_up=", p_up);
+         Print("GoldOracle: SELL ", vol, " @ ", price, " SL=", sl, " TP=", tp, " p_up=", p_up);
       else
          Print("GoldOracle: SELL failed: ", trade.ResultRetcodeDescription());
    }

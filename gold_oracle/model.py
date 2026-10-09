@@ -35,16 +35,36 @@ def _logistic_fit(X: np.ndarray, y: np.ndarray, l2: float = 1.0, iters: int = 10
     return beta
 
 
+def _ridge_logistic_fit(X: np.ndarray, y: np.ndarray, l2: float = 100.0, iters: int = 100) -> np.ndarray:
+    """Multivariate Newton-Raphson logistic regression with unpenalized intercept."""
+    n, p = X.shape
+    beta = np.zeros(p)
+    pen = l2 * np.eye(p)
+    pen[0, 0] = 0.0  # do not penalize intercept
+    for _ in range(iters):
+        pr = _sigmoid(X @ beta)
+        w = pr * (1 - pr) + 1e-6
+        grad = X.T @ (y - pr) - pen @ beta
+        hess = -(X.T * w) @ X - pen
+        step = np.linalg.solve(hess, grad)
+        beta -= step
+        if np.max(np.abs(step)) < 1e-6:
+            break
+    return beta
+
+
 class GoldProbabilityModel:
     def __init__(self) -> None:
         self.weights_: dict[str, float] = {}
         self.cal_a_: float = 0.0  # intercept
         self.cal_b_: float = 1.0  # slope on composite
+        self.multi_beta_: np.ndarray | None = None
 
     def fit(self, X: pd.DataFrame, y: pd.Series) -> "GoldProbabilityModel":
         X = X[FEATURES].astype(float)
         yv = y.astype(float).to_numpy()
-        # Univariate IC per factor -> non-negative normalized weights
+
+        # 1. Univariate IC per factor -> non-negative normalized weights
         w: dict[str, float] = {}
         for col in FEATURES:
             xv = X[col].to_numpy()
@@ -52,7 +72,12 @@ class GoldProbabilityModel:
             if mask.sum() < 50:
                 w[col] = 0.0
                 continue
-            c = np.corrcoef(xv[mask], yv[mask])[0, 1]
+            x_m, y_m = xv[mask], yv[mask]
+            std_x, std_y = np.std(x_m), np.std(y_m)
+            if std_x < 1e-9 or std_y < 1e-9:
+                w[col] = 0.0
+                continue
+            c = np.corrcoef(x_m, y_m)[0, 1]
             w[col] = float(max(0.0, c)) if np.isfinite(c) else 0.0
         total = sum(w.values()) or 1.0
         self.weights_ = {k: v / total for k, v in w.items()}
@@ -61,6 +86,12 @@ class GoldProbabilityModel:
         Xc = np.column_stack([np.ones(len(comp)), comp])
         beta = _logistic_fit(Xc, yv)
         self.cal_a_, self.cal_b_ = float(beta[0]), float(beta[1])
+
+        # 2. Multivariate Ridge Logistic Regression
+        X_mat = np.nan_to_num(X.to_numpy(), nan=0.0)
+        Xc_multi = np.column_stack([np.ones(len(X_mat)), X_mat])
+        self.multi_beta_ = _ridge_logistic_fit(Xc_multi, yv, l2=100.0)
+
         return self
 
     def _composite(self, X: pd.DataFrame) -> np.ndarray:
@@ -68,7 +99,14 @@ class GoldProbabilityModel:
 
     def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         comp = self._composite(X[FEATURES].astype(float))
-        return _sigmoid(self.cal_a_ + self.cal_b_ * comp)
+        p_uni = _sigmoid(self.cal_a_ + self.cal_b_ * comp)
+        if self.multi_beta_ is not None:
+            X_mat = np.nan_to_num(X[FEATURES].astype(float).to_numpy(), nan=0.0)
+            Xc_multi = np.column_stack([np.ones(len(X_mat)), X_mat])
+            p_multi = _sigmoid(Xc_multi @ self.multi_beta_)
+            # Ensemble blend: combines structural univariate discipline with multivariate orthogonality
+            return 0.5 * p_uni + 0.5 * p_multi
+        return p_uni
 
     def contributions(self, row: pd.Series) -> dict[str, float]:
         """Per-factor contribution to today's composite (for explainability)."""
