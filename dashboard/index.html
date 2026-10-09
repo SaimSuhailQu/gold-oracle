@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Oracle — 12-Factor Gold Model</title>
+<style>
+  :root{
+    --bg:#0a0a0b; --surface:#121215; --surface2:#17171a;
+    --border:rgba(255,255,255,.08); --text:#f5f5f4;
+    --muted:#8e8e93; --dim:#6e6e72;
+    --green:#10b981; --red:#f87171; --amber:#f59e0b; --blue:#0a84ff; --gold:#e8b64c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--bg); color:var(--text);
+       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,Arial,sans-serif;
+       padding:20px; max-width:1280px; margin:0 auto}
+  header{display:flex; align-items:center; gap:14px; margin-bottom:18px; flex-wrap:wrap}
+  header h1{font-size:22px; font-weight:800; letter-spacing:-.02em}
+  header h1 span{color:var(--muted); font-weight:400; font-size:13px; display:block}
+  .pill{border:1px solid var(--border); border-radius:999px; padding:6px 14px; font-size:13px; background:var(--surface)}
+  .pill b{font-size:15px}
+  .up{color:var(--green)} .down{color:var(--red)} .warn{color:var(--amber)} .gold{color:var(--gold)}
+  .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px}
+  .dot.live{background:var(--green); box-shadow:0 0 8px var(--green); animation:pulse 2s infinite}
+  .dot.stale{background:var(--amber); box-shadow:0 0 8px var(--amber)}
+  @keyframes pulse{50%{opacity:.5}}
+  .hero{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:14px}
+  @media(max-width:900px){.hero{grid-template-columns:1fr}}
+  .panel{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px; margin-bottom:14px}
+  .panel h2{font-size:13px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:12px}
+  .big{font-size:44px; font-weight:800; letter-spacing:-.03em}
+  .badge{font-size:13px; font-weight:800; padding:6px 16px; border-radius:10px; display:inline-block; letter-spacing:.06em}
+  .b-LONG{background:rgba(16,185,129,.15); color:var(--green)}
+  .b-SHORT{background:rgba(248,113,113,.15); color:var(--red)}
+  .b-FLAT{background:rgba(142,142,147,.15); color:var(--muted)}
+  .kv{display:flex; justify-content:space-between; padding:7px 0; font-size:13px;
+      border-bottom:1px solid rgba(255,255,255,.04)}
+  .kv:last-child{border-bottom:none}
+  .kv span:first-child{color:var(--muted)}
+  /* factors */
+  .factors{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
+  @media(max-width:1100px){.factors{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:800px){.factors{grid-template-columns:repeat(2,1fr)}}
+  .f{background:var(--surface2); border:1px solid var(--border); border-radius:12px; padding:12px}
+  .f h4{font-size:13px; margin-bottom:2px}
+  .f .proxy{font-size:11px; color:var(--dim); margin-bottom:8px; min-height:28px}
+  .bar{height:8px; background:rgba(255,255,255,.06); border-radius:4px; position:relative; margin:8px 0 4px}
+  .bar .zero{position:absolute; left:50%; top:-2px; bottom:-2px; width:1px; background:rgba(255,255,255,.25)}
+  .bar .fill{position:absolute; top:0; bottom:0; border-radius:4px}
+  .f .nums{display:flex; justify-content:space-between; font-size:11px; color:var(--muted)}
+  .f .nums b{font-size:12px}
+  /* bot */
+  .botgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:900px){.botgrid{grid-template-columns:1fr}}
+  .check{font-size:13px; padding:6px 0; color:var(--muted)}
+  .check b{color:var(--text)}
+  canvas{width:100%; display:block}
+  #hist{height:200px} #bteq{height:200px}
+  table{width:100%; border-collapse:collapse; font-size:13px}
+  th{text-align:left; color:var(--dim); font-size:11px; text-transform:uppercase;
+     letter-spacing:.06em; padding:6px 8px; border-bottom:1px solid var(--border)}
+  td{padding:8px; border-bottom:1px solid rgba(255,255,255,.04)}
+  .methods{font-size:13px; color:var(--muted); line-height:1.7}
+  .methods div{margin-bottom:10px}
+  .methods b{color:var(--text)}
+  footer{color:var(--dim); font-size:11px; margin:16px 0; text-align:center}
+  .empty{color:var(--dim); font-size:13px; padding:12px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>Gold Oracle <span>12-factor P(gold up in 20d) · XAUUSD bot</span></h1>
+  <div class="pill"><span class="dot live" id="h-dot"></span><span id="h-status">connecting…</span></div>
+  <div class="pill">Gold <b class="gold" id="h-gold">—</b></div>
+  <div class="pill">Signal age <b id="h-age">—</b></div>
+</header>
+
+<div class="hero">
+  <div class="panel" style="margin:0">
+    <h2>P(gold higher in 20 trading days)</h2>
+    <div class="big" id="p-up">—</div>
+    <div style="margin-top:8px"><span class="badge b-FLAT" id="stance">—</span>
+    <span style="color:var(--muted); font-size:13px; margin-left:8px" id="conf"></span></div>
+    <div style="font-size:12px; color:var(--dim); margin-top:10px" id="sig-ts"></div>
+  </div>
+  <div class="panel" style="margin:0">
+    <h2>The bot right now</h2>
+    <div style="font-size:15px; margin-bottom:6px"><span class="badge b-FLAT" id="ea-action">—</span></div>
+    <div style="font-size:13px; color:var(--muted)" id="ea-why"></div>
+    <div style="margin-top:10px" id="ea-inputs"></div>
+  </div>
+  <div class="panel" style="margin:0">
+    <h2>Model math</h2>
+    <div id="math" style="font-size:13px; color:var(--muted); line-height:1.8"></div>
+  </div>
+</div>
+
+<div class="panel"><h2>All 12 factors — live z-scores &amp; contributions</h2>
+<div class="factors" id="factors"></div></div>
+
+<div class="panel"><h2>Signal history</h2><canvas id="hist"></canvas>
+<div class="empty" id="hist-empty" style="display:none">No history yet — run <b>python3 -m gold_oracle.signal</b> a few times.</div></div>
+
+<div class="panel"><h2>Walk-forward backtest <span style="text-transform:none; letter-spacing:0" id="bt-range"></span></h2>
+<div id="bt"></div>
+<canvas id="bteq" style="margin-top:12px"></canvas></div>
+
+<div class="panel"><h2>How it works — and its limits</h2><div class="methods">
+<div><b>Factors.</b> 12 macro drivers, each z-scored on a 252-day rolling window and oriented bullish-positive, so the model reacts to <i>unusual</i> moves, not levels. Weights come from each factor's univariate correlation with forward gold returns (floored at zero), then a logistic calibration maps the composite to a probability. Every weight is inspectable — no black boxes.</div>
+<div><b>Signal.</b> LONG at P≥0.60, SHORT at P≤0.40, otherwise FLAT. Refit on all history each run; the JSON the EA reads carries per-factor contributions, z-scores, weights and calibration.</div>
+<div><b>The bot.</b> The MT5 Expert Advisor reads the signal file every 60s, trades XAUUSD with 1% risk, $30 SL / $60 TP, and <b>does nothing on a stale (&gt;36h) or missing signal — by design</b>. The EA file is carefully written but uncompiled: compile in MetaEditor (F7) and forward-test on demo before any live use.</div>
+<div><b style="color:var(--amber)">Honest limits.</b> Walk-forward 2019–2026: the signal strategy made 2.3%/yr at 0.33 Sharpe vs 15.8%/1.04 buy-and-hold — this is a defensive regime filter, not a money printer. It shines by sidestepping drawdowns (2021, 2022), not by manufacturing return in a one-way bull market. Central-bank demand is a manual quarterly input. Fed expectations are proxied via yields, not futures.</div>
+</div></div>
+
+<footer>Educational model · not financial advice · refreshes every 60s</footer>
+
+<script>
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ORDER = ["real_rates","nom_yield","dollar","fed_stance","fear","risk_app","btc_comp","etf_flow","momentum","curve","duration","cb_regime"];
+
+async function tick(){
+  try{
+    const d = await (await fetch("/api/state",{cache:"no-store"})).json();
+    render(d);
+    document.getElementById("h-status").textContent = "live";
+  }catch(e){ document.getElementById("h-status").textContent = "offline"; }
+}
+
+function render(d){
+  const s = d.signal||{}, meta = d.factor_meta||{}, ea = d.ea||{};
+  // header
+  document.getElementById("p-up").textContent = s.p_up!=null ? (s.p_up*100).toFixed(1)+"%" : "—";
+  document.getElementById("p-up").className = "big "+(s.p_up>=0.6?"up":s.p_up<=0.4?"down":"warn");
+  const st = document.getElementById("stance");
+  st.textContent = s.signal||"—"; st.className = "badge b-"+(s.signal||"FLAT");
+  document.getElementById("conf").textContent = s.confidence!=null?`conviction ${(s.confidence*100).toFixed(0)}%`:"";
+  document.getElementById("h-gold").textContent = s.gold_price!=null?"$"+Number(s.gold_price).toLocaleString():"—";
+  const age = ea.age_hrs;
+  document.getElementById("h-age").textContent = age!=null?(age<1?Math.round(age*60)+"m":age.toFixed(1)+"h"):"—";
+  const dot = document.getElementById("h-dot");
+  dot.className = "dot "+(ea.stale?"stale":"live");
+  document.getElementById("sig-ts").textContent = s.timestamp?("computed "+new Date(s.timestamp).toLocaleString()):"no signal yet — run python3 -m gold_oracle.signal";
+
+  // bot panel
+  const eaA = document.getElementById("ea-action");
+  eaA.textContent = ea.action==="LONG"?"WOULD GO LONG":ea.action==="SHORT"?"WOULD GO SHORT":"STAYS FLAT";
+  eaA.className = "badge b-"+(ea.stale?"FLAT":ea.action);
+  document.getElementById("ea-why").textContent = ea.why||"";
+  const inp = ea.inputs||{};
+  document.getElementById("ea-inputs").innerHTML =
+    `<div class="kv"><span>Risk per trade</span><b>${inp.risk_pct}% of equity</b></div>
+     <div class="kv"><span>Stop / Take profit</span><b>$${inp.sl_dollars} / $${inp.tp_dollars} per oz</b></div>
+     <div class="kv"><span>Max spread</span><b>${inp.max_spread_points} points</b></div>
+     <div class="kv"><span>Signal max age</span><b>${inp.signal_max_age_hrs}h (stale = flat)</b></div>
+     <div class="kv"><span>Symbol</span><b>${inp.symbol} · one position at a time</b></div>`;
+
+  // math panel
+  document.getElementById("math").innerHTML = s.composite!=null ?
+    `composite = Σ w<sub>i</sub>·z<sub>i</sub> = <b style="color:var(--text)">${s.composite>=0?"+":""}${s.composite}</b><br>`+
+    `P(up) = σ(${s.calibration?.a??"?"} + ${s.calibration?.b??"?"}·composite) = <b style="color:var(--text)">${(s.p_up*100).toFixed(1)}%</b><br>`+
+    `<span style="font-size:12px">σ = logistic · weights = univariate IC, floored at 0, normalized</span>`
+    : '<div class="empty">no signal yet</div>';
+
+  // factors
+  const z = s.factor_zscores||{}, w = s.model_weights||{}, c = s.factors||{};
+  document.getElementById("factors").innerHTML = ORDER.map(k=>{
+    const m = meta[k]||{title:k,desc:""}, zv = z[k]??0, ct = c[k]??0, wt = w[k]??0;
+    const pct = Math.min(50, Math.abs(zv)/3*50), left = zv>=0?50:50-pct, wd = zv>=0?pct:Math.min(50,pct);
+    const col = ct>=0?"var(--green)":"var(--red)";
+    return `<div class="f"><h4>${esc(m.title)}</h4><div class="proxy">${esc(m.desc)}</div>
+      <div class="bar"><div class="zero"></div>
+      <div class="fill" style="left:${zv>=0?50:50-Math.min(50,Math.abs(zv)/3*50)}%;width:${Math.min(50,Math.abs(zv)/3*50)}%;background:${col}"></div></div>
+      <div class="nums"><span>z <b style="color:${col}">${zv>=0?"+":""}${zv.toFixed(2)}</b></span>
+      <span>w ${(wt*100).toFixed(1)}%</span><span>→ <b style="color:${col}">${ct>=0?"+":""}${ct.toFixed(3)}</b></span></div></div>`;
+  }).join("");
+
+  // history chart
+  drawHist(d.history||[]);
+  // backtest
+  renderBT(d.backtest||{});
+}
+
+function drawHist(h){
+  const cv = document.getElementById("hist"), ctx = cv.getContext("2d");
+  const W = cv.width = cv.offsetWidth*2, H = cv.height = 400;
+  ctx.clearRect(0,0,W,H);
+  if(h.length<2){ document.getElementById("hist-empty").style.display="block"; return; }
+  document.getElementById("hist-empty").style.display="none";
+  const ps = h.map(x=>x.p_up), mn=Math.min(...ps,0.4), mx=Math.max(...ps,0.6), rg=mx-mn||1;
+  const X = i=> i/(h.length-1)*W, Y = v=> H-20-((v-mn)/rg)*(H-40);
+  // trade zones
+  ctx.fillStyle="rgba(16,185,129,.07)"; ctx.fillRect(0,0,W,Y(0.6));
+  ctx.fillStyle="rgba(248,113,113,.07)"; ctx.fillRect(0,Y(0.4),W,H-Y(0.4));
+  ctx.strokeStyle="rgba(255,255,255,.15)"; ctx.setLineDash([8,8]);
+  [0.6,0.4].forEach(t=>{ctx.beginPath();ctx.moveTo(0,Y(t));ctx.lineTo(W,Y(t));ctx.stroke();});
+  ctx.setLineDash([]);
+  ctx.beginPath(); h.forEach((x,i)=> i?ctx.lineTo(X(i),Y(x.p_up)):ctx.moveTo(X(0),Y(x.p_up)));
+  ctx.strokeStyle="#e8b64c"; ctx.lineWidth=3; ctx.stroke();
+  ctx.fillStyle="#8e8e93"; ctx.font="20px sans-serif";
+  ctx.fillText("P(up) — green zone = LONG, red zone = SHORT", 12, 24);
+}
+
+function renderBT(b){
+  const el = document.getElementById("bt");
+  if(!b.n){ el.innerHTML='<div class="empty">backtest not run yet — it takes a few minutes, run the exporter.</div>'; return; }
+  document.getElementById("bt-range").textContent = `· ${b.from} → ${b.to} · n=${b.n}`;
+  const row=(l,v)=>`<tr><td>${l}</td><td>${v}</td></tr>`;
+  el.innerHTML = `<table><tr><th>Metric</th><th>Signal strategy</th><th>Buy &amp; hold</th></tr>`+
+    row("CAGR", `<b class="${b.strategy.cagr>=0?"up":"down"}">${(b.strategy.cagr*100).toFixed(1)}%</b>`,
+      `<b class="${b.buy_hold.cagr>=0?"up":"down"}">${(b.buy_hold.cagr*100).toFixed(1)}%</b>`)+
+    row("Sharpe", b.strategy.sharpe, b.buy_hold.sharpe)+
+    row("Max drawdown", `<span class="down">${(b.strategy.maxdd*100).toFixed(1)}%</span>`,
+      `<span class="down">${(b.buy_hold.maxdd*100).toFixed(1)}%</span>`)+
+    row("Signal accuracy", (b.accuracy*100).toFixed(1)+"%", "—")+
+    row("AUC", b.auc, "—")+
+    row("High-conviction hit rate", b.hi_conf_hit_rate!=null?((b.hi_conf_hit_rate*100).toFixed(0)+`% <small style="color:var(--dim)">(n=${b.hi_conf_n})</small>`):"—", "—")+
+    `</table>
+    <div style="margin-top:10px;font-size:12px;color:var(--dim)">Top weights: ${Object.entries(b.weights||{}).slice(0,5).map(([k,v])=>`${esc(k)} ${(v*100).toFixed(0)}%`).join(" · ")}</div>`;
+  // equity curves
+  const cv = document.getElementById("bteq"), ctx = cv.getContext("2d");
+  const W = cv.width = cv.offsetWidth*2, H = cv.height = 400;
+  ctx.clearRect(0,0,W,H);
+  [["strategy","#10b981"],["buy_hold","#8e8e93"]].forEach(([k,col])=>{
+    const curve = (b[k]||{}).equity_curve||[];
+    if(curve.length<2) return;
+    const vs = curve.map(p=>p[1]), mn=Math.min(...vs), mx=Math.max(...vs), rg=mx-mn||1;
+    const X=i=>i/(curve.length-1)*W, Y=v=>H-20-((v-mn)/rg)*(H-40);
+    ctx.beginPath(); curve.forEach((p,i)=> i?ctx.lineTo(X(i),Y(p[1])):ctx.moveTo(X(0),Y(p[1])));
+    ctx.strokeStyle=col; ctx.lineWidth=3; ctx.stroke();
+  });
+  ctx.fillStyle="#8e8e93"; ctx.font="20px sans-serif";
+  ctx.fillText("Growth of $1 — ", 12, 24);
+  ctx.fillStyle="#10b981"; ctx.fillText("strategy", 200, 24);
+  ctx.fillStyle="#8e8e93"; ctx.fillText("  buy & hold", 300, 24);
+}
+
+tick();
+setInterval(tick, 60000);
+</script>
+</body>
+</html>

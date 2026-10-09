@@ -32,6 +32,21 @@ losses in 2021 and 2022. Use it as a **regime filter / risk overlay** (size up
 when P(up) is high, stand aside when low) — not as a money printer. It cuts
 drawdowns; it does not manufacture return in a one-way market.
 
+## Dashboard
+
+A live GUI for the whole model — every factor, the signal, the bot status,
+and the backtest:
+
+```bash
+python3 -m gold_oracle.signal   # refresh the signal first
+python3 dashboard/serve.py      # -> http://localhost:8081
+```
+
+Shows: P(up) with stance badge, all 12 factor z-scores/weights/contributions,
+the composite → logistic math, signal history chart, walk-forward backtest
+vs buy-and-hold, and a "bot right now" panel mirroring the EA's logic
+(stale >36h ⇒ flat by design).
+
 ## Setup
 
 ### 1. Python brain (any machine; ideally the one running MT5)
