@@ -29,8 +29,11 @@ base 12-factor P(up)  ──►  ensemble ML (50% logistic + 35% boosted trees
   │                         (GOLD_LONG_T / GOLD_SHORT_T env overrides)
   │                    ──►  trend filter (MA50/MA200, ATR14 from factors.py)
   ▼
-AI sentiment (public_apis_ai.py: free macro headlines) blended with
-YouTube analyst memory (youtube_memory.py) → ±10% max nudge on the ensemble
+Narrative layer (three free sources, weights renormalize over whichever have data):
+- `public_apis_ai.py`: macro headlines (Google News RSS) → lexicon sentiment
+- `youtube_memory.py`: curated gold/macro YouTube channels (see below)
+- `papers.py`: arXiv gold-forecasting papers → literature consensus
+Blended narrative nudges the ensemble at most ±10%.
   ▼
 microstructure (vwap.py, profile.py, footprint.py, gex.py) + order-flow
 audit (audit.py) → VWAP z-score, POC/VAH/VAL, audit verdict
@@ -43,6 +46,36 @@ divergence) + MCDA score ≥ 0.70 → final_audited_signal (or FLAT if blocked)
 `daemon.py` runs the pipeline on a loop; `heatmap.py` renders factor heatmaps.
 Thresholds and the critic's probability floor are deliberately strict — the
 pipeline prefers standing aside to forcing a trade.
+
+### Watch-and-learn: YouTube channels + research papers
+
+The bot studies two outside sources and folds them into the narrative layer:
+
+**YouTube** (`gold_oracle/youtube_memory.py`, keyless):
+- Watches curated gold/macro channels via their official RSS feeds —
+  default list in `data/watch_channels.json` (Bloomberg Television, Real Vision
+  Finance, Peter Schiff, Milk Road Macro). Edit the file to add handles; they
+  resolve to channel IDs automatically.
+- Scores each video's gold stance (title + description + captions when
+  available) with a transparent lexicon; recent videos weigh more.
+- **Learning loop:** every video stores the gold price at watch time. Once a
+  video is 20 days old, the engine grades it — did gold move with the video's
+  stance? — building a per-channel hit rate. Channels with a proven-bad record
+  get down-weighted automatically.
+- Note: YouTube 404s the feed endpoint for some datacenter IPs. It works on
+  normal residential connections; `yt-dlp` (if installed) is used as fallback.
+  The dashboard shows the feed status honestly.
+
+**Research papers** (`gold_oracle/papers.py`, keyless via arXiv API):
+- Pulls gold price forecasting papers, dedupes by arXiv ID.
+- Scores directional findings from abstracts (usually neutral — most papers
+  are methodological, and the engine is honest about that).
+- More usefully: extracts which predictors the literature keeps citing, mapped
+  to our 12 factors (e.g. dollar, momentum, real yields) — literature backing
+  (or a warning) for the model's factor set. Shown in the dashboard.
+
+The daemon refreshes both on its loop; `signal.py` only ever reads the local
+memory files (no network), so signal generation stays fast and offline-safe.
 
 ## Dashboard
 

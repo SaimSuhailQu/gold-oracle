@@ -190,12 +190,26 @@ async function load(){
     kv("<b>Blended P(up)</b>", "<b>"+pct(p)+"</b>")+
     "<div class='dim' style='font-size:.8rem;margin-top:6px'>blended = 0.50·logistic + 0.35·trees + clip(sentiment·0.10), clipped to [5%, 95%]</div>";
 
-  // sentiment
-  const ai = s.ai_sentiment||{}, yt = s.youtube_memory||{};
-  $("sentpanel").innerHTML = "<b>AI sentiment</b>"+
-    kv("Headline sentiment", ai.sentiment_score!=null?`<span class="${col(ai.sentiment_score)}">${sgn(ai.sentiment_score)}</span>`:"–")+
-    kv("Bullish / bearish hits", (ai.bullish_count??"–")+" / "+(ai.bearish_count??"–"))+
-    kv("YouTube memory", yt.channels_tracked? `<span class="${col(yt.collective_sentiment||0)}">${sgn(yt.collective_sentiment||0)}</span> (${yt.channels_tracked} channels)`:"<span class='dim'>no channels tracked — contributes nothing</span>");
+  // sentiment: headlines + youtube learning + research papers
+  const ai = s.ai_sentiment||{}, yt = s.youtube_memory||{}, pr = s.research_papers||{};
+  const nb = ai.narrative_blend||{};
+  let sp = "<b>Narrative layer</b>"+
+    kv("Headline sentiment", ai.sentiment_score!=null?`<span class="${col(ai.sentiment_score)}">${sgn(ai.sentiment_score)}</span>`:"–");
+  if(yt.total_memory_nodes>0){
+    sp += kv("YouTube learning", `<span class="${col(yt.collective_sentiment||0)}">${sgn(yt.collective_sentiment||0)}</span> <span class='dim'>(${yt.total_memory_nodes} videos)</span>`);
+    (yt.channels||[]).forEach(c=>{
+      sp += `<div class="dim" style="font-size:.78rem;padding:2px 0">· ${c.label} — `+
+        (c.hit_rate!=null?`calls graded: <b class="${c.hit_rate>=0.5?'green':'red'}">${pct(c.hit_rate)}</b> (${c.graded})`:"not enough history to grade yet")+"</div>";
+    });
+  } else sp += kv("YouTube learning", "<span class='dim'>no videos watched yet — run the daemon</span>");
+  if(pr.n_papers>0){
+    sp += kv("Paper consensus", `<span class="${col(pr.consensus||0)}">${sgn(pr.consensus||0)}</span> <span class='dim'>(${pr.n_papers} papers)</span>`);
+    const tf = Object.entries(pr.factor_reinforcement||{}).map(([k,v])=>k+"×"+v).join(", ");
+    if(tf) sp += `<div class="dim" style="font-size:.78rem;padding:2px 0">literature keeps citing: ${tf}</div>`;
+  } else sp += kv("Research papers", "<span class='dim'>none fetched yet — run the daemon</span>");
+  if(nb.blended!=null) sp += kv("<b>Blended narrative</b>", "<b>"+sgn(nb.blended)+"</b> <span class='dim'>(news "+(nb.news??"–")+" · yt "+(nb.youtube??"–")+" · papers "+(nb.papers??"–")+")</span>");
+  sp += "<div class='dim' style='font-size:.8rem;margin-top:6px'>narrative moves the ensemble at most ±10%; weights renormalize over sources that actually have data.</div>";
+  $("sentpanel").innerHTML = sp;
 
   // base model math + factors
   $("mathline").textContent = "composite "+sgn(s.composite||0)+"  →  P = σ("+(s.calibration?.a??0)+" + "+(s.calibration?.b??0)+" × composite) = "+pct(e.p_linear_logistic??p)+" (base)";

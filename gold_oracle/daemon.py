@@ -34,12 +34,21 @@ def run_continuous_daemon(poll_interval_seconds: int = 120):
         print(f"\n[{now_str}] Iteration #{iteration}: Fetching news & re-evaluating model...")
 
         try:
-            # Check and process tracked YouTube channels
+            # Check and process tracked YouTube channels (watch + learn)
             from gold_oracle.youtube_memory import YouTubeMemoryEngine
             yt_eng = YouTubeMemoryEngine()
             yt_res = yt_eng.process_all_channels()
             if yt_res.get("new_videos_processed", 0) > 0:
                 print(f"  [YouTube Memory] Learned {yt_res['new_videos_processed']} new video(s). Collective Sentiment: {yt_res['collective_sentiment']}")
+            if yt_res.get("newly_graded", 0) > 0:
+                print(f"  [YouTube Memory] Graded {yt_res['newly_graded']} old video(s) against actual gold moves.")
+
+            # Refresh research-paper intelligence (arXiv gold-forecasting literature)
+            from gold_oracle.papers import PapersEngine
+            papers_eng = PapersEngine()
+            papers_res = papers_eng.refresh()
+            if papers_res.get("new_papers", 0) > 0:
+                print(f"  [Papers] Learned {papers_res['new_papers']} new paper(s). Consensus: {papers_res['consensus']}")
 
             # Generate new signal and multi-criteria critique
             sig = generate(use_cache=True)

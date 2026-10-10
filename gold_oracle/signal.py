@@ -44,19 +44,38 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
     from .ensemble_ml import EnsembleGoldAI
     from .youtube_memory import YouTubeMemoryEngine
 
-    # 1. Fetch free public macro headlines and analyze sentiment via Public APIs connector
+    # 1. Narrative layer: three free sources -> one blended score.
+    # Weights renormalize over whichever sources actually have data, so an
+    # empty YouTube memory or paper store never drags the blend to neutral.
     ai_connector = PublicApisAIConnector()
     headlines = ai_connector.fetch_free_macro_news()
     sentiment_data = ai_connector.analyze_financial_sentiment(headlines)
-    sentiment_score = sentiment_data.get("sentiment_score", 0.0)
+    news_s = sentiment_data.get("sentiment_score", 0.0)
 
-    # 1b. YouTube Video Memory Integration
+    # 1b. YouTube channel intelligence (curated gold/macro channels, learned)
     yt_memory_eng = YouTubeMemoryEngine()
     yt_context = yt_memory_eng.get_memory_context()
-    yt_sentiment = yt_context.get("collective_sentiment", 0.0)
-    # Blend news sentiment with learned YouTube analyst memory if channels exist
-    if yt_context.get("channels_tracked", 0) > 0:
-        sentiment_score = 0.60 * sentiment_score + 0.40 * yt_sentiment
+    yt_s = yt_context.get("collective_sentiment", 0.0)
+
+    # 1c. Research-paper intelligence (arXiv gold-forecasting literature)
+    from .papers import PapersEngine
+    papers_eng = PapersEngine()
+    papers_context = papers_eng.get_papers_context()
+    papers_s = papers_context.get("consensus", 0.0)
+
+    parts = [(0.50, news_s)]
+    if yt_context.get("total_memory_nodes", 0) > 0:
+        parts.append((0.30, yt_s))
+    if papers_context.get("n_papers", 0) > 0:
+        parts.append((0.20, papers_s))
+    tw = sum(w for w, _ in parts)
+    sentiment_score = sum(w * s for w, s in parts) / tw if tw else 0.0
+    sentiment_data["narrative_blend"] = {
+        "news": round(news_s, 3),
+        "youtube": round(yt_s, 3) if yt_context.get("total_memory_nodes", 0) > 0 else None,
+        "papers": round(papers_s, 3) if papers_context.get("n_papers", 0) > 0 else None,
+        "blended": round(sentiment_score, 3),
+    }
 
     row = f.iloc[[-1]]
     p_up = float(model.predict_proba(row[FEATURES])[0])
@@ -170,6 +189,7 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
         "ensemble_ml": ensemble_res,
         "ai_sentiment": sentiment_data,
         "youtube_memory": yt_context,
+        "research_papers": papers_context,
         "ma50": round(ma50_val, 2),
         "ma200": round(ma200_val, 2),
         "atr14": round(atr_val, 2),

@@ -1,0 +1,48 @@
+{
+ "papers": {
+  "2601.12706v2": {
+   "arxiv_id": "2601.12706v2",
+   "title": "Trend-Adjusted Time Series Models with an Application to Gold Price Forecasting",
+   "abstract": "Time series data play a critical role in various fields, including finance, healthcare, marketing, and engineering. A wide range of techniques (from classical statistical models to neural network-based approaches such as Long Short-Term Memory (LSTM)) have been employed to address time series forecasting challenges. In this paper, we reframe time series forecasting as a two-part task: (1) predicting the trend (directional movement) of the time series at the next time step, and (2) forecasting the quantitative value at the next time step. The trend can be predicted using a binary classifier, while quantitative values can be forecasted using models such as LSTM and Bidirectional Long Short-Term Memory (Bi-LSTM). Building on this reframing, we propose the Trend-Adjusted Time Series (TATS) model, which adjusts the forecasted values based on the predicted trend provided by the binary classifier. We validate the proposed approach through both theoretical analysis and empirical evaluation. The TATS model is applied to a volatile financial time series (the daily gold price) with the objective of forecasting the next days price. Experimental results demonstrate that TATS consistently outperforms standard LSTM and Bi-LSTM models by achieving significantly lower forecasting error. In addition, our results indicate that commonly used metrics such as MSE and MAE are insufficient for fully assessing time series model performance. Therefore, we also incorporate trend detection accuracy, which measures how effectively a model captures trends in a time series.",
+   "published": "2026-01-19",
+   "sentiment": 0.0,
+   "bull_hits": 0,
+   "bear_hits": 0,
+   "factors_mentioned": [
+    "momentum"
+   ],
+   "added_at": "2026-10-10T06:02:36.414008+00:00"
+  },
+  "2511.08571v1": {
+   "arxiv_id": "2511.08571v1",
+   "title": "Forecast-to-Fill: Benchmark-Neutral Alpha and Billion-Dollar Capacity in Gold Futures (2015-2025)",
+   "abstract": "We test whether simple, interpretable state variables-trend and momentum-can generate durable out-of-sample alpha in one of the world's most liquid assets, gold. Using a rolling 10-year training and 6-month testing walk-forward from 2015 to 2025 (2,793 trading days), we convert a smoothed trend-momentum regime signal into volatility-targeted, friction-aware positions through fractional, impact-adjusted Kelly sizing and ATR-based exits. Out of sample, the strategy delivers a Sharpe ratio of 2.88 and a maximum drawdown of 0.52 percent, net of 0.7 basis-point linear cost and a square-root impact term (gamma = 0.02). A regression on spot-gold returns yields a 43 percent annualized return (CAGR approximately 43 percent) and a 37 percent alpha (Sharpe = 2.88, IR = 2.09) at a 15 percent volatility target with beta approximately 0.03, confirming benchmark-neutral performance. Bootstrap confidence intervals ([2.49, 3.27]) and SPA tests (p = 0.000) confirm statistical significance and robustness to latency, reversal, and cost stress. We conclude that forecast-to-fill engineering-linking transparent signals to executable trades with explicit risk, cost, and impact control-can transform modest predictability into allocator-grade, billion-dollar-scalable alpha.",
+   "published": "2025-11-11",
+   "sentiment": 0.0,
+   "bull_hits": 0,
+   "bear_hits": 0,
+   "factors_mentioned": [
+    "dollar",
+    "fear",
+    "momentum",
+    "nom_yield"
+   ],
+   "added_at": "2026-10-10T06:02:36.414008+00:00"
+  },
+  "2512.22606v1": {
+   "arxiv_id": "2512.22606v1",
+   "title": "Gold Price Prediction Using Long Short-Term Memory and Multi-Layer Perceptron with Gray Wolf Optimizer",
+   "abstract": "The global gold market, by its fundamentals, has long been home to many financial institutions, banks, governments, funds, and micro-investors. Due to the inherent complexity and relationship between important economic and political components, accurate forecasting of financial markets has always been challenging. Therefore, providing a model that can accurately predict the future of the markets is very important and will be of great benefit to their developers. In this paper, an artificial intelligence-based algorithm for daily and monthly gold forecasting is presented. Two Long short-term memory (LSTM) networks are responsible for daily and monthly forecasting, the results of which are integrated into a Multilayer perceptrons (MLP) network and provide the final forecast of the next day prices. The algorithm forecasts the highest, lowest, and closing prices on the daily and monthly time frame. Based on these forecasts, a trading strategy for live market trading was developed, according to which the proposed model had a return of 171% in three months. Also, the number of internal neurons in each network is optimized by the Gray Wolf optimization (GWO) algorithm based on the least RMSE error. The dataset was collected between 2010 and 2021 and includes data on macroeconomic, energy markets, stocks, and currency status of developed countries. Our proposed LSTM-MLP model predicted the daily closing price of gold with the Mean absolute error (MAE) of $ 0.21 and the next month's price with $ 22.23.",
+   "published": "2025-12-27",
+   "sentiment": 0.0,
+   "bull_hits": 0,
+   "bear_hits": 0,
+   "factors_mentioned": [
+    "dollar"
+   ],
+   "added_at": "2026-10-10T06:02:36.414008+00:00"
+  }
+ },
+ "consensus": 0.0,
+ "last_updated": "2026-10-10T06:02:36.414008+00:00"
+}
