@@ -66,6 +66,9 @@
   <div><div class="dim" style="font-size:.8rem">MY STANCE RIGHT NOW</div>
        <div style="margin:8px 0"><span class="badge FLAT" id="stance">–</span></div>
        <div class="dim" style="font-size:.8rem" id="rawline"></div></div>
+  <div><div class="dim" style="font-size:.8rem">GOLD RIGHT NOW <span id="livedot" class="dim">(snapshot)</span></div>
+       <div class="pup" id="livepx" style="font-size:2rem">–</div>
+       <div class="dim" style="font-size:.75rem" id="livets"></div></div>
   <div style="flex:1;min-width:200px" id="herokv"></div>
 </div></div>
 
@@ -351,7 +354,28 @@ function drawEquity(id, cs, cb){
   x.fillStyle="#9aa3af";x.font="11px system-ui";
   x.fillText(mx.toFixed(2)+"x",24,16);x.fillText(mn.toFixed(2)+"x",24,H-6);
 }
-load();
+
+// live gold tick every 60s (PAXG proxy via CORS-friendly mirror; falls back to snapshot)
+let liveOk = false;
+async function livetick(){
+  const setLive=(px,ago)=>{
+    $("livepx").textContent="$"+Number(px).toLocaleString(undefined,{maximumFractionDigits:2});
+    $("livets").textContent=ago;
+    $("livedot").innerHTML=liveOk?' <span class="green">● LIVE</span>':" (snapshot)";
+    $("livedot").className=liveOk?"":"dim";
+  };
+  try{
+    const r=await fetch("https://api.allorigins.win/raw?url="+encodeURIComponent("https://api.kraken.com/0/public/Ticker?pair=PAXGUSD"),{cache:"no-store"});
+    const j=await r.json();
+    const px=parseFloat(j.result.PAXGUSD.c[0]);
+    if(px>0){liveOk=true;setLive(px,"PAXG/USD · just now · ticks every 60s");return;}
+    throw 0;
+  }catch(e){liveOk=false;}
+  const snap=(window.__STATE__&&window.__STATE__.signal&&window.__STATE__.signal.gold_price)||null;
+  if(snap) setLive(snap,"last bot snapshot · live feed unreachable");
+}
+setInterval(livetick,60000);
+load().then(livetick);
 </script>
 </body>
 </html>
