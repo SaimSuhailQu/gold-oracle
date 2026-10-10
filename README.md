@@ -150,12 +150,12 @@ dynamic exposure 1.5x in confirmed low-volatility bull regimes,
 | | Accuracy | AUC | CAGR | Sharpe | MaxDD | Win rate | Profit factor |
 |---|---|---|---|---|---|---|---|
 | Model stances (positioned 72% of the time) | 61% hit rate when positioned | 0.50 | — | — | — | — | — |
-| Signal strategy | — | — | 14.7% | 0.98 | −18.5% | 61.7% | 2.48 |
+| Signal strategy | — | — | 13.9% | 0.96 | −16.8% | 61.7% | 2.48 |
 | Buy-and-hold gold | — | — | 15.8% | 1.04 | −23.2% | — | — |
 
 Read this carefully: the model **still doesn't beat buy-and-hold in a bull
-market** — but the gap is small (14.7% vs 15.8% CAGR) with a shallower max
-drawdown (−18.5% vs −23.2%). Dynamic exposure (mean 1.16x, boosted ~1/3 of the
+market** — but the gap is small (13.9% vs 15.8% CAGR) with a shallower max
+drawdown (−16.8% vs −23.2%). Dynamic exposure (mean 1.16x, boosted ~1/3 of the
 time in calm bull regimes) captured upside the static 1.0x cap left behind.
 Expectancy is +1.77% per 20-day trade over 60 sampled trades.
 Use it as a **regime filter / risk overlay**, not a money printer.
@@ -163,6 +163,21 @@ Use it as a **regime filter / risk overlay**, not a money printer.
 Note: the walk-forward above covers the base 12-factor model only. The ensemble ML,
 AI sentiment, microstructure and critic layers are newer than the test window's
 methodology and have no walk-forward history — treat their contribution as unproven.
+
+**2026-10-10: full-pipeline walk-forward** (ensemble + critic probability tiers,
+no sentiment/microstructure — no historical data exists for those): the critic's
+80%/65% bars proved nearly unreachable — the ensemble's blended probability maxes
+at ~0.76, so it took only 5 trades in 7 years (0.01% CAGR). Two real bugs were fixed
+along the way: the "50%+35%" blend was never renormalized (capped at 0.85), and the
+boosted-trees leg boosted raw probabilities instead of log-odds (max confidence 0.63).
+Even fixed, the honest conclusion stands: **genuine 80%+ confidence on a 20-day gold
+move is rare because the features are weak (AUC 0.50)** — the bar was set from aspiration,
+not from what the model can produce. Recalibrating the bar to the model's actual range
+(FULL ≥0.70, QUARTER ≥0.60) is the pragmatic fix; the sentiment nudge (±10%) remains
+the designed path into 80%+ when news is extreme.
+
+Data note: weekend/holiday rows where gold didn't trade are dropped (crypto trades
+24/7 and was keeping NaN-gold rows alive). All figures are on trading days.
 
 ## Setup
 

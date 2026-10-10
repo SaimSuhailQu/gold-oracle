@@ -80,6 +80,11 @@ def _fetch(period: str) -> pd.DataFrame:
         except Exception as exc:  # keep going; model tolerates a missing leg
             print(f"[data] {sym} failed: {exc}")
     df = pd.DataFrame(closes).dropna(how="all")
+    # Gold is the anchor of everything: drop weekend/holiday rows where gold
+    # itself didn't trade (crypto trades 24/7 and would otherwise keep
+    # NaN-gold rows alive, poisoning gold_price and the technicals).
+    if "gold" in df.columns:
+        df = df.dropna(subset=["gold"])
     # real daily high/low for gold (technicals: ATR/ADX/swings need real range)
     try:
         gsub = _flatten(raw[TICKERS["gold"]])
