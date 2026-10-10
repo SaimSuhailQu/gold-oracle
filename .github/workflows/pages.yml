@@ -1,0 +1,37 @@
+name: Live dashboard
+
+# Rebuilds the static dashboard snapshot every 6 hours and publishes it to
+# GitHub Pages (gh-pages branch). Manual runs: Actions tab -> Live dashboard.
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate fresh signal
+        run: python -m gold_oracle.signal
+
+      - name: Build static site
+        run: python scripts/build_static_dashboard.py
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
