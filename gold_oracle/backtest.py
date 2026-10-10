@@ -49,6 +49,66 @@ def _auc(y: np.ndarray, p: np.ndarray) -> float:
     return (ranks[y == 1].sum() - n1 * (n1 + 1) / 2) / (n1 * n0)
 
 
+def walk_forward_full(f: pd.DataFrame, verbose: bool = True,
+                      gold: pd.Series | None = None) -> pd.DataFrame:
+    """Full-pipeline walk-forward: base logistic + boosted-trees ensemble
+    + critic probability tiers + dynamic exposure + realistic costs.
+
+    This is the honest version of the live bot's decision stack. Two pieces
+    are live-only and set to neutral here (documented, not hidden):
+    - sentiment nudge: no historical headlines exist, so the ±10% nudge is 0
+    - microstructure/technicals: no historical 1m bars, so no contribution
+    - MCDA / news-blackout / session critic checks: live-only, not replicated
+    Only the critic's probability tiers (FULL ≥80%, QUARTER ≥65%) gate positions.
+    """
+    from .ensemble_ml import EnsembleGoldAI
+    f = f.dropna().copy()
+    X_all, y_all = f[FEATURES], f["target"]
+    idx = f.index
+    preds: list[float] = []
+    pred_idx = []
+    model = GoldProbabilityModel()
+    ens = EnsembleGoldAI()
+
+    t = MIN_TRAIN
+    while t < len(f) - HORIZON:
+        model.fit(X_all.iloc[:t], y_all.iloc[:t])
+        ens.fit(X_all.iloc[:t], y_all.iloc[:t])
+        end = min(t + REFIT_DAYS, len(f) - HORIZON)
+        Xw = X_all.iloc[t:end]
+        p_lin = model.predict_proba(Xw)
+        p_boo = ens.boosted.predict_proba(Xw.values)
+        # live blend is (0.50*linear + 0.35*boosted)/0.85 + sentiment_nudge(±0.10);
+        # sentiment is 0 historically (no old headlines)
+        p_blend = np.clip((0.50 * p_lin + 0.35 * p_boo) / 0.85, 0.05, 0.95)
+        preds.extend(p_blend.tolist())
+        pred_idx.extend(idx[t:end])
+        t = end
+
+    out = pd.DataFrame(index=pd.DatetimeIndex(pred_idx))
+    out["p_up"] = preds
+    out["y"] = y_all.loc[out.index].to_numpy()
+    out["fwd_ret"] = f.loc[out.index, "fwd_ret"].to_numpy()
+    # critic probability tiers (live thresholds): FULL 1.0x ≥80%, QUARTER 0.25x ≥65%
+    p = out["p_up"].to_numpy()
+    p_dir = np.maximum(p, 1.0 - p)
+    direction = np.where(p >= 0.5, 1.0, -1.0)
+    size_mult = np.where(p_dir >= 0.80, 1.0, np.where(p_dir >= 0.65, 0.25, 0.0))
+    out["pos"] = direction * size_mult
+    if gold is not None:
+        out["exposure"] = regime_exposure(gold).reindex(out.index).fillna(1.0).values
+    else:
+        out["exposure"] = 1.0
+    turnover = out["pos"].diff().abs().fillna(0.0)
+    out["cost"] = turnover * COST_BPS / 10000.0 * out["exposure"]
+    out["strat_ret"] = out["pos"] * out["fwd_ret"] / 100.0 * out["exposure"] - out["cost"]
+    out["bh_ret"] = out["fwd_ret"] / 100.0
+    if verbose:
+        print("=== FULL PIPELINE (ensemble + critic tiers) ===")
+        _report(out, model)
+    return out
+
+
 def walk_forward(f: pd.DataFrame, verbose: bool = True,
                  gold: pd.Series | None = None) -> pd.DataFrame:
     f = f.dropna().copy()

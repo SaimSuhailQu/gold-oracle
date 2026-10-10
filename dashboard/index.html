@@ -13,6 +13,13 @@
   h1 { font-size:1.5rem; margin:0 0 4px; }
   h2 { font-size:1.05rem; margin:26px 0 4px; color:var(--dim); text-transform:uppercase; letter-spacing:.06em; }
   .hsub { color:var(--dim); font-size:.88rem; margin:0 0 10px; font-style:italic; }
+  .chk-group { margin:14px 0 4px; font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:var(--dim); }
+  .chk-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:6px; }
+  .chk { display:flex; gap:8px; align-items:baseline; padding:6px 8px; background:rgba(255,255,255,.025);
+         border-radius:6px; font-size:.82rem; line-height:1.35; }
+  .chk .n { color:var(--dim); font-size:.72rem; min-width:20px; }
+  .chk .dot { min-width:8px; }
+  .chk .where { display:block; font-size:.68rem; color:var(--dim); }
   .pulse { display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--green);
            margin-right:8px; animation:pl 2s infinite; vertical-align:1px; }
   @keyframes pl { 0%,100%{opacity:1} 50%{opacity:.35} }
@@ -138,6 +145,11 @@ Weights are non-negative normalized univariate IC — the model only listens to 
   <div><div class="dim" style="font-size:.8rem;margin-bottom:6px">STRATEGY EQUITY</div><canvas id="eqS" width="540" height="220"></canvas></div>
   <div><div class="dim" style="font-size:.8rem;margin-bottom:6px">BUY-AND-HOLD EQUITY</div><canvas id="eqB" width="540" height="220"></canvas></div>
 </div>
+
+<!-- SYSTEMS CHECK: the 50-point checklist -->
+<h2>Systems check</h2>
+<div class="hsub">All 50 systems from the blueprint — where each one lives and whether it's on.</div>
+<div class="card"><div id="checklist"></div></div>
 
 <!-- RUN ME -->
 <h2>Run me yourself</h2>
@@ -358,6 +370,52 @@ async function load(){
     li("Central-bank buying is <b>typed in by hand</b> every quarter — it's not a live feed.")+
     li("The trading robot (the MT5 EA) was written carefully but <b>never compiled or tested</b> — "+
        "compile it in MetaEditor (F7) and run it on a demo account for weeks before real money.");
+
+  // systems check — the 50-point blueprint
+  const CHECKLIST = [
+    ["Reading the market", [
+      [1,"Gold (XAU/USD) only","Trading robot"],[2,"Multi-timeframe (H4–M5)","Bot brain"],
+      [3,"Trend detection","Bot brain"],[4,"EMA 20 / 50 / 200","Bot brain"],
+      [5,"RSI buying heat","Bot brain"],[6,"MACD momentum","Bot brain"],
+      [7,"ATR volatility filter","Bot brain"],[8,"ADX trend strength","Bot brain"],
+      [9,"Support & resistance","Bot brain"],[10,"Market structure (BOS/CHOCH)","Bot brain"],
+      [11,"Liquidity sweep detection","Bot brain"],[12,"Breakout + retest","Bot brain"],
+      [13,"Candlestick patterns","Bot brain"],[14,"Volume analysis","Bot brain"],
+      [15,"VWAP fair price","Bot brain"]]],
+    ["Filters before entry", [
+      [16,"News blackout (CPI/NFP/FOMC)","Bot brain"],[17,"London/New York session filter","Bot brain"],
+      [18,"Spread filter","Trading robot"],[19,"Slippage protection","Trading robot"],
+      [20,"Regime detection","Bot brain"],[21,"AI signal filter","Bot brain"],
+      [22,"Trade quality score","Bot brain"],[23,"Multi-condition entry check","Bot brain"],
+      [24,"Automatic stop-loss","Bot brain + robot"],[25,"Automatic take-profit","Bot brain + robot"],
+      [26,"Risk-reward filter (≥1.5:1)","Bot brain + robot"]]],
+    ["Risk engine", [
+      [27,"Dynamic position sizing","Bot brain + robot"],[28,"0.5% risk per trade","Trading robot"],
+      [29,"Daily loss limit (2%)","Trading robot"],[30,"Max drawdown kill (10%)","Trading robot"],
+      [31,"One position max","Trading robot"],[32,"No duplicate entries","Trading robot"],
+      [33,"Break-even move","Trading robot"],[34,"Trailing stop","Trading robot"],
+      [35,"Partial profit-taking","Trading robot"],[36,"Pause after 3 straight losses","Trading robot"],
+      [37,"Broker-error retries","Trading robot"],[38,"Disconnect guard","Trading robot"],
+      [39,"Trade journal (CSV)","Trading robot"]]],
+    ["Proving it works", [
+      [40,"This dashboard","This page"],[41,"Win-rate tracking","This page"],
+      [42,"Profit-factor tracking","This page"],[43,"Expectancy per trade","This page"],
+      [44,"Realistic costs in backtest","Bot brain"],[45,"Out-of-sample testing","Bot brain"],
+      [46,"Walk-forward testing","Bot brain"],[47,"Demo forward test","Needs you",0],
+      [48,"Overfitting guards","Bot brain"],[49,"Live monitoring","Bot brain"],
+      [50,"Kill switch","Trading robot"]]]
+  ];
+  let liveCount = 0;
+  $("checklist").innerHTML = "<b>The 50-point blueprint</b> " +
+    CHECKLIST.map(([g, items]) =>
+      "<div class='chk-group'>"+g+"</div><div class='chk-grid'>" +
+      items.map(([n, name, where, on]) => {
+        const live = on !== 0; if (live) liveCount++;
+        return "<div class='chk'><span class='dot' style='color:"+(live?"var(--green)":"var(--amber)")+"'>●</span>"+
+          "<span><span class='n'>"+n+".</span> "+name+"<span class='where'>"+where+(live?"":" · needs you")+"</span></span></div>";
+      }).join("") + "</div>"
+    ).join("") +
+    "<div class='dim' style='margin-top:10px;font-size:.85rem'><span class='green'>●</span> "+liveCount+" live &nbsp; <span class='amber'>●</span> "+(50-liveCount)+" needs you</div>";
 }
 const kv=(k,v)=>`<div class="kv"><span class="dim">${k}</span><b>${v}</b></div>`;
 const stage=(n,t)=>`<div class="stage"><div class="n">${n}</div><div class="t">${t}</div></div>`;

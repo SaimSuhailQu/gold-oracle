@@ -51,36 +51,46 @@ class DecisionStump:
 
 
 class BoostedStumpClassifier:
-    """Ensemble of gradient boosted stumps for non-linear pattern recognition."""
-    def __init__(self, n_estimators: int = 25, learning_rate: float = 0.1):
+    """Gradient-boosted stumps for binary classification, done right:
+    boosts in log-odds space (residuals = y - sigmoid(F)), picks the best
+    feature each round, and returns calibrated sigmoid probabilities.
+    (The old version boosted raw probabilities with cycled features and
+    could never move far from 0.5 — fixed 2026-10-10.)"""
+    def __init__(self, n_estimators: int = 100, learning_rate: float = 0.1):
         self.n_estimators = n_estimators
         self.lr = learning_rate
         self.stumps: List[DecisionStump] = []
-        self.base_pred: float = 0.0
+        self.init_logodds: float = 0.0
+
+    @staticmethod
+    def _sigmoid(x: np.ndarray) -> np.ndarray:
+        return 1.0 / (1.0 + np.exp(-np.clip(x, -30, 30)))
 
     def fit(self, X: np.ndarray, y: np.ndarray):
-        self.base_pred = float(np.mean(y))
-        current_preds = np.full(len(y), self.base_pred)
-
+        p0 = float(np.clip(np.mean(y), 0.01, 0.99))
+        self.init_logodds = float(np.log(p0 / (1 - p0)))
+        F = np.full(len(y), self.init_logodds)
         n_features = X.shape[1]
         self.stumps = []
-
-        for i in range(self.n_estimators):
-            residuals = y - current_preds
-            # Cycle through features
-            feat_idx = i % n_features
-            stump = DecisionStump()
-            stump.fit(X, residuals, feat_idx)
-            current_preds += self.lr * stump.predict(X)
-            self.stumps.append(stump)
+        for _ in range(self.n_estimators):
+            residuals = y - self._sigmoid(F)
+            best_stump, best_loss = None, float("inf")
+            for j in range(n_features):
+                stump = DecisionStump()
+                stump.fit(X, residuals, j)
+                pred = stump.predict(X)
+                loss = float(np.sum((residuals - pred) ** 2))
+                if loss < best_loss:
+                    best_loss, best_stump = loss, stump
+            F += self.lr * best_stump.predict(X)
+            self.stumps.append(best_stump)
         return self
 
     def predict_proba(self, X: np.ndarray) -> np.ndarray:
-        preds = np.full(X.shape[0], self.base_pred)
+        F = np.full(X.shape[0], self.init_logodds)
         for stump in self.stumps:
-            preds += self.lr * stump.predict(X)
-        # Clip to valid probability bounds [0.01, 0.99]
-        return np.clip(preds, 0.01, 0.99)
+            F += self.lr * stump.predict(X)
+        return np.clip(self._sigmoid(F), 0.01, 0.99)
 
 
 class EnsembleGoldAI:
@@ -88,7 +98,7 @@ class EnsembleGoldAI:
     Ensemble Model: Blends Logistic Factor Calibration + Boosted Gradient Stumps + AI NLP Sentiment.
     """
     def __init__(self):
-        self.boosted = BoostedStumpClassifier(n_estimators=30, learning_rate=0.08)
+        self.boosted = BoostedStumpClassifier(n_estimators=100, learning_rate=0.1)
         self.weights_: Dict[str, float] = {}
 
     def fit(self, X_df: pd.DataFrame, y_series: pd.Series):
@@ -116,8 +126,11 @@ class EnsembleGoldAI:
         # NLP sentiment impact (+10% max boost or -10% drag)
         sentiment_adjustment = np.clip(nlp_sentiment * 0.10, -0.10, 0.10)
 
-        # Weighted blend (50% Linear Logistic, 35% Non-linear Boosted Trees, 15% Free AI Sentiment)
-        blended_p = (0.50 * baseline_prob) + (0.35 * ml_prob) + sentiment_adjustment
+        # Weighted blend: 50% linear-logistic, 35% boosted trees, renormalized
+        # to a true average (the raw 0.50/0.35 weights sum to 0.85, which made
+        # the critic's 80% bar nearly unreachable — fixed 2026-10-10).
+        # Sentiment is an additive nudge on top, ±10% max.
+        blended_p = (0.50 * baseline_prob + 0.35 * ml_prob) / 0.85 + sentiment_adjustment
         blended_p = float(np.clip(blended_p, 0.05, 0.95))
 
         return {
