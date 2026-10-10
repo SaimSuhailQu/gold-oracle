@@ -58,6 +58,13 @@ def run_continuous_daemon(poll_interval_seconds: int = 120):
             with open(SIGNAL_PATH, "w") as fh:
                 json.dump(sig, fh, indent=2)
 
+            # Shadow-log every layer's recommendation (no execution impact)
+            from gold_oracle.shadow import log_daily, grade
+            log_daily(sig)
+            graded = grade()
+            if graded:
+                print(f"  [Shadow] Graded {graded} mature shadow entries.")
+
             # Display evaluation summary
             p_up = sig.get("p_up", 0.0)
             p_down = sig.get("p_down", 0.0)

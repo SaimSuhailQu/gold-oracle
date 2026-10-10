@@ -77,12 +77,22 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
         "blended": round(sentiment_score, 3),
     }
 
+    # 1d. Calibrate: rolling 30-day z-score so only genuine narrative
+    # anomalies nudge the ensemble — a plain bullish day scores ~+0.5z
+    # and barely moves it; |z|>3 is required to max the ±10% nudge.
+    from .narrative import append_history, zscore_current
+    append_history({"blended": round(sentiment_score, 4), "news": round(news_s, 4),
+                    "youtube": round(yt_s, 4), "papers": round(papers_s, 4)})
+    zinfo = zscore_current(sentiment_score)
+    sentiment_data["narrative_zscore"] = zinfo
+    nlp_for_ensemble = (zinfo["z"] / 3.0) if zinfo["z"] is not None else 0.0
+
     row = f.iloc[[-1]]
     p_up = float(model.predict_proba(row[FEATURES])[0])
 
     # 2. Fit non-linear ensemble ML model
     ensemble_ai = EnsembleGoldAI().fit(X, y)
-    ensemble_res = ensemble_ai.predict_proba_ensemble(row[FEATURES], baseline_prob=p_up, nlp_sentiment=sentiment_score)
+    ensemble_res = ensemble_ai.predict_proba_ensemble(row[FEATURES], baseline_prob=p_up, nlp_sentiment=nlp_for_ensemble)
     p_up_final = ensemble_res["p_ensemble_up"]
 
     raw_signal = "LONG" if p_up_final >= LONG_T else ("SHORT" if p_up_final <= SHORT_T else "FLAT")
@@ -104,36 +114,71 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
     else:
         signal = raw_signal
 
+    # 4. Regime-aware exposure: scale up in confirmed low-vol bull regimes
+    from .backtest import regime_exposure
+    try:
+        exposure_mult = round(float(regime_exposure(df["gold"]).iloc[-1]), 2)
+    except Exception:
+        exposure_mult = 1.0
+
     contrib = model.contributions(f[FEATURES].iloc[-1])
 
     # Base-model transparency: live z-scores, composite, calibration
     zscores = {c: round(float(f[c].iloc[-1]), 4) for c in FEATURES}
     composite = round(float(sum(contrib.values())), 4)
 
-    # Run Microstructure, Profile & Order Flow Audit
+    # Run Microstructure, Profile & Order Flow Audit.
+    # Real 1-minute data first (Dukascopy XAU/USD ticks, else Kraken PAXG);
+    # the old synthesized daily proxy is only a fallback.
     from .vwap import VWAPEngine
     from .profile import ProfileEngine
     from .audit import OrderFlowAuditEngine
 
-    # Compute VWAP & Dispersion Bands on gold prices
-    gold_series = df[["gold"]].rename(columns={"gold": "close"})
-    gold_series["high"] = gold_series["close"] * 1.002
-    gold_series["low"] = gold_series["close"] * 0.998
-    gold_series["volume"] = 1000.0
-    gold_series["datetime"] = df.index if pd.api.types.is_datetime64_any_dtype(df.index) else pd.to_datetime(df.index)
-    
-    vwap_res = VWAPEngine(anchor="D").compute(gold_series).iloc[-1]
-    prof_res = ProfileEngine(tick_size=0.5).compute_volume_profile(gold_series)
+    real_micro = None
+    try:
+        from .intraday import get_1m_bars, microstructure_from_bars
+        _bars, _provider = get_1m_bars(days=3)
+        if _bars is not None and len(_bars) >= 120:
+            real_micro = microstructure_from_bars(_bars)
+            real_micro["provider"] = _provider
+    except Exception as e:
+        print(f"[signal] intraday feed unavailable ({type(e).__name__}); using synthesized microstructure")
+
+    if real_micro is not None:
+        micro_source = "real_1m:" + real_micro["provider"]
+        vwap_v = real_micro["vwap"]
+        vwap_z = real_micro["vwap_zscore"]
+        poc_v, vah_v, val_v = real_micro["poc"], real_micro["vah"], real_micro["val"]
+        _s = real_micro["sess_std"]
+        vwap_upper_2, vwap_lower_2 = vwap_v + 2 * _s, vwap_v - 2 * _s
+        prof_res = {"poc": poc_v, "vah": vah_v, "val": val_v}
+    else:
+        micro_source = "synthesized_daily_proxy"
+        # Compute VWAP & Dispersion Bands on gold prices (synthetic H/L/V!)
+        gold_series = df[["gold"]].rename(columns={"gold": "close"})
+        gold_series["high"] = gold_series["close"] * 1.002
+        gold_series["low"] = gold_series["close"] * 0.998
+        gold_series["volume"] = 1000.0
+        gold_series["datetime"] = df.index if pd.api.types.is_datetime64_any_dtype(df.index) else pd.to_datetime(df.index)
+
+        vwap_res = VWAPEngine(anchor="D").compute(gold_series).iloc[-1]
+        prof_res = ProfileEngine(tick_size=0.5).compute_volume_profile(gold_series)
+        vwap_v = float(vwap_res["vwap"])
+        vwap_z = float(vwap_res["vwap_zscore"])
+        poc_v = float(prof_res.get("poc", gold_last))
+        vah_v = float(prof_res.get("vah", gold_last))
+        val_v = float(prof_res.get("val", gold_last))
+        vwap_upper_2, vwap_lower_2 = float(vwap_res["vwap_upper_2"]), float(vwap_res["vwap_lower_2"])
     
     # Run Order Flow Audit
     audit_eng = OrderFlowAuditEngine()
     audit_res = audit_eng.audit_setup(
         current_price=gold_last,
         vwap_data={
-            "vwap": float(vwap_res["vwap"]),
-            "upper_2": float(vwap_res["vwap_upper_2"]),
-            "lower_2": float(vwap_res["vwap_lower_2"]),
-            "zscore": float(vwap_res["vwap_zscore"])
+            "vwap": vwap_v,
+            "upper_2": vwap_upper_2,
+            "lower_2": vwap_lower_2,
+            "zscore": vwap_z
         },
         profile_data=prof_res,
         gex_data={
@@ -155,11 +200,11 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
         ensemble_ml=ensemble_res,
         ai_sentiment=sentiment_data,
         microstructure={
-            "vwap": float(vwap_res["vwap"]),
-            "vwap_zscore": float(vwap_res["vwap_zscore"]),
-            "poc": float(prof_res.get("poc", gold_last)),
-            "vah": float(prof_res.get("vah", gold_last)),
-            "val": float(prof_res.get("val", gold_last))
+            "vwap": vwap_v,
+            "vwap_zscore": vwap_z,
+            "poc": poc_v,
+            "vah": vah_v,
+            "val": val_v
         },
         gold_price=gold_last,
         ma50=ma50_val,
@@ -178,6 +223,8 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
         "p_down": round(1 - p_up_final, 4),
         "signal": final_signal,
         "raw_signal": raw_signal,
+        "size_tier": critic_report.get("size_tier", "FLAT"),
+        "size_mult": critic_report.get("size_mult", 0.0),
         "long_t": LONG_T,
         "short_t": SHORT_T,
         "confidence": round(abs(p_up_final - 0.5) * 2, 4),
@@ -195,14 +242,16 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
         "atr14": round(atr_val, 2),
         "sl_dollars": round(max(20.0, 2.0 * atr_val), 2),
         "tp_dollars": round(max(40.0, 3.5 * atr_val), 2),
+        "exposure_mult": exposure_mult,
         "factors": {k: round(v, 4) for k, v in contrib.items()},
         "model_weights": {k: round(v, 4) for k, v in model.weights_.items()},
         "microstructure": {
-            "vwap": round(float(vwap_res["vwap"]), 2),
-            "vwap_zscore": round(float(vwap_res["vwap_zscore"]), 2),
-            "poc": round(prof_res.get("poc", gold_last), 2),
-            "vah": round(prof_res.get("vah", gold_last), 2),
-            "val": round(prof_res.get("val", gold_last), 2),
+            "data_source": micro_source,
+            "vwap": round(vwap_v, 2),
+            "vwap_zscore": round(vwap_z, 2),
+            "poc": round(poc_v, 2),
+            "vah": round(vah_v, 2),
+            "val": round(val_v, 2),
             "audit_verdict": audit_res["audit_verdict"],
             "audit_confidence": audit_res["confidence_score"]
         }
@@ -228,8 +277,10 @@ def main() -> None:
     with open(SIGNAL_PATH, "w") as fh:
         json.dump(sig, fh, indent=2)
     append_history(sig)
+    from .shadow import log_daily
+    log_daily(sig)
     print(json.dumps(sig, indent=2))
-    print(f"[signal] wrote {SIGNAL_PATH} + history")
+    print(f"[signal] wrote {SIGNAL_PATH} + history + shadow")
 
 
 if __name__ == "__main__":

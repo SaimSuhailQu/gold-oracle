@@ -11,7 +11,8 @@ Evaluates trading setups across independent orthogonal criteria:
 Adversarial Self-Criticism (The 'Devil's Advocate' Engine):
 - Actively seeks reasons why the trade could fail
 - Tests for trap risk, fakeouts, volatility compression, and macro regime contradictions
-- Enforces strict >= 80% (0.80) win probability threshold before giving trade clearance.
+- Enforces tiered clearance: >= 80% win probability + MCDA >= 0.70 -> FULL size;
+  >= 65% + MCDA >= 0.50 -> QUARTER-size exploratory; else FLAT.
 """
 
 from typing import Dict, List, Any, Optional
@@ -19,8 +20,25 @@ import numpy as np
 
 
 class DecisionCriticEngine:
-    def __init__(self, min_prob_threshold: float = 0.80):
-        self.min_prob_threshold = min_prob_threshold
+    """Tiered sizing critic.
+
+    - FULL (1.0x):  directional P >= full_prob (0.80) and MCDA >= full_mcda (0.70),
+      no fatal flaws — full-sized position.
+    - QUARTER (0.25x): directional P >= q_prob (0.65) and MCDA >= q_mcda (0.50),
+      no fatal flaws — exploratory position that gathers out-of-sample data
+      without heavy risk.
+    - FLAT (0.0x): anything else, or any fatal flaw.
+    Thresholds overridable via constructor (env GOLD_FULL_P / GOLD_Q_P).
+    """
+
+    def __init__(self, min_prob_threshold: float = 0.80,
+                 full_mcda: float = 0.70,
+                 q_prob: float = 0.65, q_mcda: float = 0.50):
+        import os
+        self.min_prob_threshold = float(os.environ.get("GOLD_FULL_P", min_prob_threshold))
+        self.full_mcda = full_mcda
+        self.q_prob = float(os.environ.get("GOLD_Q_P", q_prob))
+        self.q_mcda = q_mcda
 
     def evaluate_multi_criteria_with_criticism(
         self,
@@ -133,18 +151,35 @@ class DecisionCriticEngine:
         if abs(p_linear - p_boosted) > 0.25:
             criticisms.append(f"CRITIC WARNING: Model divergence detected (Linear Logistic={p_linear:.2f} vs Boosted ML={p_boosted:.2f}). Market regime may be transitioning.")
 
-        # 3. Final Self-Audited Clearance
-        is_cleared = (len(fatal_flaws) == 0) and (prob_directional >= self.min_prob_threshold) and (mcda_score >= 0.70)
-        final_signal = raw_direction if is_cleared else "FLAT"
-
-        audit_summary = "TRADE APPROVED (All Criteria & Adversarial Checks Passed)" if is_cleared else "TRADE REJECTED / STAND ASIDE (Adversarial Critic Blocked Entry)"
+        # 3. Tiered clearance: FULL / QUARTER / FLAT
+        fatal = len(fatal_flaws) > 0
+        if not fatal and prob_directional >= self.min_prob_threshold and mcda_score >= self.full_mcda:
+            size_tier, size_mult = "FULL", 1.0
+            final_signal = raw_direction
+            audit_summary = "TRADE APPROVED — FULL SIZE (all criteria & adversarial checks passed)"
+        elif not fatal and prob_directional >= self.q_prob and mcda_score >= self.q_mcda:
+            size_tier, size_mult = "QUARTER", 0.25
+            final_signal = raw_direction
+            audit_summary = ("TRADE APPROVED — QUARTER SIZE (exploratory: gathers out-of-sample "
+                             "data at 0.25x risk)")
+        else:
+            size_tier, size_mult = "FLAT", 0.0
+            final_signal = "FLAT"
+            if fatal:
+                audit_summary = "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
+            else:
+                audit_summary = ("TRADE REJECTED / STAND ASIDE (below quarter-tier bars: "
+                                 f"P={prob_directional:.0%} < {self.q_prob:.0%} or MCDA={mcda_score:.2f} < {self.q_mcda})")
 
         return {
-            "is_cleared_to_trade": is_cleared,
+            "is_cleared_to_trade": size_mult > 0,
+            "size_tier": size_tier,
+            "size_mult": size_mult,
             "final_audited_signal": final_signal,
             "evaluated_direction": raw_direction,
             "directional_probability": round(prob_directional, 4),
             "min_required_probability": self.min_prob_threshold,
+            "quarter_probability": self.q_prob,
             "mcda_score": round(mcda_score, 3),
             "mcda_criteria_scores": scores,
             "fatal_flaws": fatal_flaws,
