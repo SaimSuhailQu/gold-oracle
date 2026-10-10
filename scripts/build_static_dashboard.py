@@ -13,7 +13,7 @@ A scheduled GitHub Action rebuilds it every 6 hours.
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE, "dashboard"))
@@ -22,6 +22,7 @@ import serve  # noqa: E402  (reuses the /api/state builders — no drift)
 
 def main() -> None:
     sig = serve.read_json("signals/gold_signal.json", {})
+    built = datetime.now(timezone.utc)
     state = {
         "signal": sig,
         "history": serve.read_history(),
@@ -30,7 +31,8 @@ def main() -> None:
         "factor_meta": {k: {"title": v[0], "desc": v[1]}
                         for k, v in serve.FACTOR_META.items()},
         "static": True,
-        "built_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "built_utc": built.strftime("%Y-%m-%d %H:%M UTC"),
+        "next_update_utc": (built + timedelta(hours=6)).strftime("%Y-%m-%d %H:%M UTC"),
     }
     with open(os.path.join(BASE, "dashboard", "index.html"), encoding="utf-8") as fh:
         html = fh.read()
@@ -40,7 +42,7 @@ def main() -> None:
         f'<script>window.__STATE__={payload};</script>\n'
         f'<div id="staticbanner" style="background:#1a1a2e;color:#aab;padding:6px '
         f'12px;font-size:.8rem;text-align:center">Static snapshot · built '
-        f'{state["built_utc"]} · refreshes every 6 hours · '
+        f'{state["built_utc"]} · I update every 6 hours (next ~{state["next_update_utc"]}) · '
         f'<a href="https://github.com/SaimSuhailQu/gold-oracle" style="color:#7aa2ff">source</a></div>\n'
     )
     html = html.replace("<script>", inject + "<script>", 1)
