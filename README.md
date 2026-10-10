@@ -144,18 +144,20 @@ vs buy-and-hold, and a "bot right now" panel mirroring the EA's logic
 ## Honest backtest (2019–2026, walk-forward, refit yearly)
 
 Base 12-factor model, stance thresholds 0.53/0.47 (env-overridable defaults),
-dynamic exposure 1.5x in confirmed low-volatility bull regimes:
+dynamic exposure 1.5x in confirmed low-volatility bull regimes,
+**realistic costs: ~8bps spread per one-way position change** (`GOLD_COST_BPS`):
 
-| | Accuracy | AUC | CAGR | Sharpe | MaxDD |
-|---|---|---|---|---|---|
-| Model stances (positioned 72% of the time) | 61% hit rate when positioned | 0.50 | — | — | — |
-| Signal strategy | — | — | 14.9% | 0.99 | −18.4% |
-| Buy-and-hold gold | — | — | 15.8% | 1.04 | −23.2% |
+| | Accuracy | AUC | CAGR | Sharpe | MaxDD | Win rate | Profit factor |
+|---|---|---|---|---|---|---|---|
+| Model stances (positioned 72% of the time) | 61% hit rate when positioned | 0.50 | — | — | — | — | — |
+| Signal strategy | — | — | 14.7% | 0.98 | −18.5% | 61.7% | 2.48 |
+| Buy-and-hold gold | — | — | 15.8% | 1.04 | −23.2% | — | — |
 
 Read this carefully: the model **still doesn't beat buy-and-hold in a bull
-market** — but the gap is now small (14.9% vs 15.8% CAGR) with a shallower max
-drawdown (−18.4% vs −23.2%). Dynamic exposure (mean 1.16x, boosted ~1/3 of the
+market** — but the gap is small (14.7% vs 15.8% CAGR) with a shallower max
+drawdown (−18.5% vs −23.2%). Dynamic exposure (mean 1.16x, boosted ~1/3 of the
 time in calm bull regimes) captured upside the static 1.0x cap left behind.
+Expectancy is +1.77% per 20-day trade over 60 sampled trades.
 Use it as a **regime filter / risk overlay**, not a money printer.
 
 Note: the walk-forward above covers the base 12-factor model only. The ensemble ML,
@@ -208,9 +210,42 @@ filter, broker stops-level respected.
 ## Risk rules (non-negotiable)
 
 - Demo first. Weeks, not hours.
-- 1% risk per trade max. The model is a filter, not an oracle.
+- 0.5% risk per trade (EA default `InpRiskPercent`).
+- EA risk engine (all on by default, tune via inputs):
+  - **Daily loss limit** (`InpMaxDailyLossPct=2.0`): no new entries for the rest of the day.
+  - **Max drawdown kill** (`InpMaxDrawdownPct=10.0`): drawdown from peak equity halts everything.
+  - **Loss pause** (`InpMaxConsecutiveLosses=3`, `InpPauseHours=24`): auto-pause after 3 straight losses.
+  - **Break-even** (+$20/oz → SL to entry +$2), **trailing stop** (from +$30, $10 steps), **partial TP** (50% at +$40/oz).
+  - **Broker-error retries** (3×), **disconnect guard**, **CSV trade journal** (`MQL5/Files/goldoracle_journal.csv`), master `InpKillSwitch`.
+- Python critic adds: news blackout (±30 min around NFP/CPI/FOMC), London/NY session filter, ≥1.5:1 risk-reward filter, technical-alignment confirmation.
 - A stale or missing signal file = the EA does nothing (by design).
 - Re-run the backtest yourself after any change: `python -m gold_oracle.backtest`.
+
+## 50-point trading checklist coverage
+
+The full checklist (technical stack 1–26, risk engine 28–39, validation 40–50) is implemented across the Python brain and the MQL5 EA:
+
+| # | Item | Where |
+|---|------|-------|
+| 1 | XAU/USD only | EA symbol hardcoded |
+| 2 | Multi-timeframe (H4/H1/M15/M5) | `technicals.py` → `mtf_trends`, `mtf_score` |
+| 3–8 | Trend, EMA 20/50/200, RSI, MACD, ATR, ADX | `technicals.py` (daily) |
+| 9–13 | S/R, BOS/CHOCH, sweeps, breakout+retest, candle patterns | `technicals.py` (M15/H1) |
+| 14–15 | Volume, VWAP | `intraday.py` |
+| 16 | News filter (CPI/NFP/FOMC) | `economic_calendar.py` blackout → critic fatal flaw |
+| 17 | London/NY session filter | `technicals.py` session → critic fatal flaw |
+| 18–19 | Spread filter, slippage protection | EA inputs |
+| 20 | Regime detection | `regime_exposure()` |
+| 21–23 | AI filter, quality score, multi-condition confirmation | ensemble + critic (now incl. Critic 9: tech alignment) |
+| 24–26 | Auto SL/TP, R:R filter | signal ATR-based; critic + EA require ≥1.5:1 |
+| 27–28 | Dynamic sizing, 0.5% risk/trade | critic tier × exposure; `InpRiskPercent` |
+| 29–30, 36, 50 | Daily loss limit, drawdown kill, loss pause, kill switch | EA risk engine |
+| 31–32 | Max open trades, no duplicates | EA one-position logic |
+| 33–35 | Break-even, trailing, partials | EA `ManagePosition()` |
+| 37–38 | Execution retries, disconnect guard | EA |
+| 39–43 | Journal, dashboard, win-rate, profit factor, expectancy | EA CSV journal; dashboard; backtest `stats()` |
+| 44–46, 48 | Realistic costs, out-of-sample, walk-forward, ridge+refit | `backtest.py` (`GOLD_COST_BPS`) |
+| 47, 49 | Demo forward test, live monitoring | yours to run (EA is demo-ready); `notify.py` + dashboard |
 
 ## Limitations
 

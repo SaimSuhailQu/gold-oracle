@@ -104,6 +104,9 @@ Weights are non-negative normalized univariate IC — the model only listens to 
   <div class="card" id="trend"></div>
 </div>
 
+<h2>My technicals — multi-timeframe · indicators · structure</h2>
+<div class="card" id="techpanel"></div>
+
 <!-- MY DECISIONS -->
 <h2>My decisions</h2>
 <canvas id="hist" width="1100" height="220"></canvas>
@@ -270,6 +273,32 @@ async function load(){
     kv("Signal SL / TP", "$"+s.sl_dollars+" / $"+s.tp_dollars+" <span class='dim'>(2×/3.5× ATR)</span>")+
     "<div class='dim' style='font-size:.8rem;margin-top:6px'>EA uses its own fixed $30/$60 inputs; these are the signal's ATR-based suggestions. EA scales lots by tier × exposure (toggleable).</div>";
 
+  // technicals panel
+  const t = s.technicals||{};
+  const mtf = t.mtf_trends||{};
+  const mtfTxt = Object.keys(mtf).length
+    ? Object.keys(mtf).map(k=>k+":"+(mtf[k]>0?'<span class="green">▲</span>':'<span class="red">▼</span>')).join(" ")
+    : "<span class='dim'>insufficient intraday data</span>";
+  const sess = (t.session||{});
+  const nblk = s.news_blackout||{};
+  const ms = t.market_structure||{};
+  const sw = t.liquidity_sweep||{};
+  const brt = t.breakout_retest||{};
+  $("techpanel").innerHTML = "<b>My technicals</b>"+
+    kv("Multi-timeframe (M5/M15/H1/H4)", mtfTxt+" <span class='dim'>(score "+(t.mtf_score??"–")+")</span>")+
+    kv("EMA 20 / 50 / 200", [t.ema20,t.ema50,t.ema200].map(v=>v?("$"+v):"–").join(" / "))+
+    kv("RSI 14", t.rsi14??"–")+
+    kv("MACD", t.macd_bullish===undefined?"–":(t.macd_bullish?'<span class="green">bullish</span>':'<span class="red">bearish</span>'))+
+    kv("ADX 14", (t.adx14??"–")+(t.trend_strong?' <span class="dim">(strong trend)</span>':""))+
+    kv("Support / Resistance", (t.support?"$"+t.support:"–")+" / "+(t.resistance?"$"+t.resistance:"–"))+
+    kv("Market structure", (ms.state||"–")+(ms.last_event?" — "+ms.last_event:""))+
+    kv("Liquidity sweep", (sw.bullish_sweep?'<span class="green">bullish</span>':"")+(sw.bearish_sweep?'<span class="red">bearish</span>':"")||"<span class='dim'>none</span>")+
+    kv("Breakout + retest", (brt.bullish?'<span class="green">bullish</span>':"")+(brt.bearish?'<span class="red">bearish</span>':"")||"<span class='dim'>none</span>")+
+    kv("Candle pattern", t.candle_pattern||"<span class='dim'>none</span>")+
+    kv("Session", (sess.session||"–")+" "+(sess.trade_ok?'<span class="green">entries allowed</span>':'<span class="red">entries blocked (London/NY only)</span>'))+
+    kv("News blackout", nblk.blocked?'<span class="red">ACTIVE — '+nblk.event+'</span>':'<span class="green">clear</span>')+
+    kv("Technical score", t.tech_score??"–");
+
   // history
   drawHist(d.history||[]);
 
@@ -284,6 +313,9 @@ async function load(){
       row("CAGR",pct(b.strategy.cagr),pct(b.buy_hold.cagr))+
       row("Sharpe",b.strategy.sharpe.toFixed(2),b.buy_hold.sharpe.toFixed(2))+
       row("Max drawdown",pct(b.strategy.maxdd),pct(b.buy_hold.maxdd))+
+      row("Win rate",b.strategy.win_rate!=null?pct(b.strategy.win_rate):"–","–")+
+      row("Profit factor",b.strategy.profit_factor!=null?b.strategy.profit_factor.toFixed(2):"–","–")+
+      row("Expectancy / trade",b.strategy.expectancy!=null?pct(b.strategy.expectancy)+" ("+b.strategy.n_trades+" trades)":"–","–")+
       "</table><div class='dim' style='font-size:.82rem;margin-top:8px'>Accuracy "+pct(b.accuracy)+" · AUC "+b.auc+
       " · Brier "+b.brier+" · high-conviction hit rate "+(b.hi_conf_hit_rate!=null?pct(b.hi_conf_hit_rate):"n/a")+
       " (n="+b.hi_conf_n+") — <b>base model only</b>, ensemble/critic layers too new for walk-forward.</div>";

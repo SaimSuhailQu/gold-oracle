@@ -50,11 +50,16 @@ class DecisionCriticEngine:
         gold_price: float,
         ma50: float,
         ma200: float,
-        atr14: float
+        atr14: float,
+        technicals: Optional[Dict[str, Any]] = None,
+        news_blocked: bool = False,
+        news_event: Optional[str] = None,
+        rr_ratio: float = 0.0,
     ) -> Dict[str, Any]:
         """
         Runs full MCDA scoring, adversarial self-criticism, and trade clearance.
         """
+        technicals = technicals or {}
         p_down = 1.0 - p_up
         raw_direction = "LONG" if p_up >= 0.50 else "SHORT"
         prob_directional = p_up if raw_direction == "LONG" else p_down
@@ -150,6 +155,37 @@ class DecisionCriticEngine:
         # Critic 5: Model Disagreement
         if abs(p_linear - p_boosted) > 0.25:
             criticisms.append(f"CRITIC WARNING: Model divergence detected (Linear Logistic={p_linear:.2f} vs Boosted ML={p_boosted:.2f}). Market regime may be transitioning.")
+
+        # Critic 6: Economic news blackout (fatal — never enter into NFP/CPI/FOMC)
+        if news_blocked:
+            fatal_flaws.append(
+                f"NEWS BLACKOUT: {news_event or 'high-impact event'} within ±30 min — no new entries into event volatility."
+            )
+
+        # Critic 7: Session filter (trade London/New York only)
+        sess = (technicals.get("session") or {}).get("session", "UNKNOWN")
+        if not (technicals.get("session") or {}).get("trade_ok", True):
+            fatal_flaws.append(
+                f"SESSION FILTER: current session is {sess} — entries only during London/New York."
+            )
+
+        # Critic 8: Risk-to-reward filter (need ≥ 1.5:1)
+        if rr_ratio and rr_ratio < 1.5:
+            fatal_flaws.append(
+                f"POOR R:R — planned reward:risk is {rr_ratio:.2f}:1, below the 1.5:1 minimum."
+            )
+
+        # Critic 9: Technical alignment (multi-condition entry confirmation)
+        tech_score = float(technicals.get("tech_score") or 0.0)
+        if raw_direction == "LONG" and tech_score < -0.30:
+            criticisms.append(
+                f"CRITIC WARNING: technical stack is bearish (tech_score={tech_score}) against a LONG — "
+                f"MTF={technicals.get('mtf_score')}, RSI={technicals.get('rsi14')}, structure={technicals.get('market_structure', {}).get('state')}."
+            )
+        elif raw_direction == "SHORT" and tech_score > 0.30:
+            criticisms.append(
+                f"CRITIC WARNING: technical stack is bullish (tech_score={tech_score}) against a SHORT."
+            )
 
         # 3. Tiered clearance: FULL / QUARTER / FLAT
         fatal = len(fatal_flaws) > 0

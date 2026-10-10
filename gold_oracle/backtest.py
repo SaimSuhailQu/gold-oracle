@@ -24,6 +24,7 @@ MIN_TRAIN = 4 * 252
 LONG_T = float(os.environ.get("GOLD_LONG_T", "0.53"))
 SHORT_T = float(os.environ.get("GOLD_SHORT_T", "0.47"))
 BULL_MULT = float(os.environ.get("GOLD_BULL_MULT", "1.5"))  # exposure in confirmed low-vol bull
+COST_BPS = float(os.environ.get("GOLD_COST_BPS", "8.0"))  # one-way spread cost (XAUUSD ~$0.35/oz ≈ 8bps)
 
 
 def regime_exposure(gold: pd.Series, bull_mult: float = BULL_MULT) -> pd.Series:
@@ -78,7 +79,10 @@ def walk_forward(f: pd.DataFrame, verbose: bool = True,
     else:
         out["exposure"] = 1.0
     # approximate daily P&L attribution: position * forward return * exposure
-    out["strat_ret"] = out["pos"] * out["fwd_ret"] / 100.0 * out["exposure"]
+    # minus realistic trading costs: spread paid on every position change
+    turnover = out["pos"].diff().abs().fillna(0.0)
+    out["cost"] = turnover * COST_BPS / 10000.0 * out["exposure"]
+    out["strat_ret"] = out["pos"] * out["fwd_ret"] / 100.0 * out["exposure"] - out["cost"]
     out["bh_ret"] = out["fwd_ret"] / 100.0
     if verbose:
         _report(out, model)
@@ -142,8 +146,18 @@ def summarize(out: pd.DataFrame, model: GoldProbabilityModel) -> dict:
         curve = [[d.strftime("%Y-%m-%d"), round(float(v), 4)]
                  for d, v in zip(out_s.index[:: max(1, len(out_s) // 90)],
                                  eq[:: max(1, len(out_s) // 90)])]
+        # trade stats (items 41-43): win rate, profit factor, expectancy
+        pr = out_s[col].to_numpy()
+        positioned = pr[out_s["pos"].to_numpy() != 0] if "pos" in out_s else pr[pr != 0]
+        wins = positioned[positioned > 0]
+        losses = positioned[positioned < 0]
+        win_rate = float(len(wins) / max(len(positioned), 1))
+        profit_factor = float(wins.sum() / abs(losses.sum())) if losses.sum() != 0 else None
+        expectancy = float(positioned.mean()) if len(positioned) else 0.0
         return {"cagr": round(cagr, 4), "sharpe": round(sharpe, 2),
-                "maxdd": round(dd, 4), "equity_curve": curve}
+                "maxdd": round(dd, 4), "equity_curve": curve,
+                "win_rate": round(win_rate, 3), "profit_factor": round(profit_factor, 2) if profit_factor else None,
+                "expectancy": round(expectancy, 5), "n_trades": int(len(positioned))}
 
     return {
         "n": n, "from": str(out.index[0].date()), "to": str(out.index[-1].date()),

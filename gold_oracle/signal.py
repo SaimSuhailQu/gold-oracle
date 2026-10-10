@@ -137,6 +137,7 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
     from .audit import OrderFlowAuditEngine
 
     real_micro = None
+    _bars = None
     try:
         from .intraday import get_1m_bars, microstructure_from_bars
         _bars, _provider = get_1m_bars(days=3)
@@ -145,6 +146,29 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
             real_micro["provider"] = _provider
     except Exception as e:
         print(f"[signal] intraday feed unavailable ({type(e).__name__}); using synthesized microstructure")
+
+    # --- Technical stack: MTF trends, EMA/RSI/MACD/ADX, S/R, BOS/CHOCH,
+    #     sweeps, breakout+retest, candle patterns, session filter ---
+    tech = {}
+    try:
+        from .technicals import compute_technicals
+        dframe = pd.DataFrame({
+            "open": df["gold"], "close": df["gold"],
+            "high": df.get("gold_high", df["gold"] * 1.001),
+            "low": df.get("gold_low", df["gold"] * 0.999),
+        })
+        tech = compute_technicals(dframe, _bars)
+    except Exception as e:
+        print(f"[signal] technicals unavailable ({type(e).__name__})")
+        tech = {"tech_score": 0.0, "session": {"session": "UNKNOWN", "trade_ok": True}}
+
+    # --- Economic news blackout (no entries ±30 min around NFP/CPI/FOMC) ---
+    news_blocked, news_event = False, None
+    try:
+        from .economic_calendar import is_blackout
+        news_blocked, news_event = is_blackout()
+    except Exception:
+        pass
 
     if real_micro is not None:
         micro_source = "real_1m:" + real_micro["provider"]
@@ -196,6 +220,8 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
     # 3. Adversarial Multi-Criteria & Self-Criticism Engine
     from .critic import DecisionCriticEngine
     critic_eng = DecisionCriticEngine(min_prob_threshold=0.80)
+    sl_dollars = round(max(20.0, 2.0 * atr_val), 2)
+    tp_dollars = round(max(40.0, 3.5 * atr_val), 2)
     critic_report = critic_eng.evaluate_multi_criteria_with_criticism(
         p_up=p_up_final,
         factors=contrib,
@@ -211,7 +237,11 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
         gold_price=gold_last,
         ma50=ma50_val,
         ma200=ma200_val,
-        atr14=atr_val
+        atr14=atr_val,
+        technicals=tech,
+        news_blocked=news_blocked,
+        news_event=news_event,
+        rr_ratio=(tp_dollars / sl_dollars) if sl_dollars else 0.0,
     )
 
     final_signal = critic_report["final_audited_signal"]
@@ -242,8 +272,8 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
         "ma50": round(ma50_val, 2),
         "ma200": round(ma200_val, 2),
         "atr14": round(atr_val, 2),
-        "sl_dollars": round(max(20.0, 2.0 * atr_val), 2),
-        "tp_dollars": round(max(40.0, 3.5 * atr_val), 2),
+        "sl_dollars": sl_dollars,
+        "tp_dollars": tp_dollars,
         "exposure_mult": exposure_mult,
         "factors": {k: round(v, 4) for k, v in contrib.items()},
         "model_weights": {k: round(v, 4) for k, v in model.weights_.items()},
@@ -256,7 +286,9 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
             "val": round(val_v, 2),
             "audit_verdict": audit_res["audit_verdict"],
             "audit_confidence": audit_res["confidence_score"]
-        }
+        },
+        "technicals": tech,
+        "news_blackout": {"blocked": news_blocked, "event": news_event},
     }
 
 

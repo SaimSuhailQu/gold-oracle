@@ -80,6 +80,13 @@ def _fetch(period: str) -> pd.DataFrame:
         except Exception as exc:  # keep going; model tolerates a missing leg
             print(f"[data] {sym} failed: {exc}")
     df = pd.DataFrame(closes).dropna(how="all")
+    # real daily high/low for gold (technicals: ATR/ADX/swings need real range)
+    try:
+        gsub = _flatten(raw[TICKERS["gold"]])
+        df["gold_high"] = gsub["High"].reindex(df.index)
+        df["gold_low"] = gsub["Low"].reindex(df.index)
+    except Exception:
+        pass
     if df.empty or len(df) < 500 or "gold" not in df.columns:
         raise RuntimeError(
             f"unusable download: {len(df)} rows, columns={list(df.columns)[:5]}")

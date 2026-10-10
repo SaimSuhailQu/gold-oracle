@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-10T07:07:39.998456+00:00",
-  "timestamp_epoch": 1791616059,
+  "timestamp": "2026-10-10T09:19:46.718059+00:00",
+  "timestamp_epoch": 1791623986,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.3865,
@@ -41,13 +41,13 @@
     "directional_probability": 0.6135,
     "min_required_probability": 0.8,
     "quarter_probability": 0.65,
-    "mcda_score": 0.752,
+    "mcda_score": 0.792,
     "mcda_criteria_scores": {
       "macro_alignment": 0.8333333333333334,
       "ml_consensus": 0.918,
       "news_sentiment_alignment": 0.0,
       "technical_trend": 1.0,
-      "auction_location": 0.8
+      "auction_location": 1.0
     },
     "fatal_flaws": [
       "INSUFFICIENT PROBABILITY: Calculated win probability is 61.3%, which fails the mandatory >= 80% threshold."
@@ -64,21 +64,21 @@
     "nlp_sentiment_score": 0.0
   },
   "ai_sentiment": {
-    "sentiment_score": 0.5385,
-    "bullish_indicators": 10,
+    "sentiment_score": 0.5,
+    "bullish_indicators": 9,
     "bearish_indicators": 3,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.538,
+      "news": 0.5,
       "youtube": null,
       "papers": 0.0,
-      "blended": 0.385
+      "blended": 0.357
     },
     "narrative_zscore": {
       "z": null,
       "mean": null,
       "std": null,
-      "n": 3
+      "n": 4
     }
   },
   "youtube_memory": {
@@ -166,12 +166,54 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4185.58,
-    "vwap_zscore": -1.02,
-    "poc": 4189.3,
-    "vah": 4190.64,
-    "val": 4179.67,
+    "vwap": 4182.18,
+    "vwap_zscore": 1.75,
+    "poc": 4182.72,
+    "vah": 4183.3,
+    "val": 4179.82,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
+  },
+  "technicals": {
+    "ema20": 4252.22,
+    "ema50": 4313.83,
+    "ema200": 4327.5,
+    "rsi14": 56.7,
+    "macd_hist": -0.755,
+    "macd_bullish": false,
+    "adx14": 10.4,
+    "atr14": 33.26,
+    "trend_strong": false,
+    "resistance": 4191.29,
+    "support": 4136.56,
+    "mtf_trends": {
+      "M5": 1
+    },
+    "mtf_score": 1.0,
+    "mtf_aligned_bull": true,
+    "mtf_aligned_bear": false,
+    "market_structure": {
+      "state": "UNKNOWN",
+      "last_event": null
+    },
+    "liquidity_sweep": {
+      "bullish_sweep": false,
+      "bearish_sweep": false
+    },
+    "breakout_retest": {
+      "bullish": false,
+      "bearish": false
+    },
+    "candle_pattern": null,
+    "session": {
+      "session": "LONDON",
+      "trade_ok": true,
+      "utc_hour": 9.32
+    },
+    "tech_score": 0.184
+  },
+  "news_blackout": {
+    "blocked": false,
+    "event": null
   }
 }
