@@ -11,7 +11,8 @@
   body { background:var(--bg); color:var(--txt); font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
          margin:0; padding:20px; max-width:1180px; margin-inline:auto; }
   h1 { font-size:1.5rem; margin:0 0 4px; }
-  h2 { font-size:1.05rem; margin:26px 0 10px; color:var(--dim); text-transform:uppercase; letter-spacing:.06em; }
+  h2 { font-size:1.05rem; margin:26px 0 4px; color:var(--dim); text-transform:uppercase; letter-spacing:.06em; }
+  .hsub { color:var(--dim); font-size:.88rem; margin:0 0 10px; font-style:italic; }
   .pulse { display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--green);
            margin-right:8px; animation:pl 2s infinite; vertical-align:1px; }
   @keyframes pl { 0%,100%{opacity:1} 50%{opacity:.35} }
@@ -72,8 +73,17 @@
   <div style="flex:1;min-width:200px" id="herokv"></div>
 </div></div>
 
+<!-- IN PLAIN ENGLISH -->
+<div class="card" id="plaincard" style="border-left:4px solid var(--green)">
+  <div class="dim" style="font-size:.8rem">IN PLAIN ENGLISH</div>
+  <div id="plainheadline" style="font-size:1.35rem;font-weight:700;margin:8px 0;line-height:1.4">–</div>
+  <ul id="plainreasons" style="margin:8px 0 8px 20px;line-height:1.65"></ul>
+  <div class="dim" style="font-size:.9rem"><b style="color:var(--fg)">What would change my mind:</b> <span id="plainchange">–</span></div>
+</div>
+
 <!-- HOW I THINK -->
 <h2>How I think</h2>
+<div class="hsub">My recipe: half economic math, a third machine learning, a pinch of news mood.</div>
 <div class="card"><div class="grid" style="grid-template-columns:1fr auto 1fr auto 1fr auto 1fr" id="pipe"></div>
 <div class="dim" style="font-size:.8rem;margin-top:10px">50% linear-logistic on 12 macro factors · 35% boosted trees ·
 ±10% max AI-sentiment nudge, clipped to [0.05, 0.95] · raw stance at
@@ -81,6 +91,7 @@
 
 <!-- MY VERDICT -->
 <h2>My verdict · Would I trade this?</h2>
+<div class="hsub">My inner skeptic's final answer — and whether I'd actually risk money on it.</div>
 <div class="grid g2">
   <div class="card" id="eapanel"></div>
   <div class="card" id="criticpanel"></div>
@@ -88,6 +99,7 @@
 
 <!-- WHAT I'M WATCHING -->
 <h2>What I'm watching</h2>
+<div class="hsub">The news stories moving gold right now, and how they make me feel.</div>
 <div class="grid g2">
   <div class="card" id="enspanel"></div>
   <div class="card" id="sentpanel"></div>
@@ -95,6 +107,7 @@
 
 <!-- MY BRAIN: 12 factors -->
 <h2>My brain — 12 macro factors</h2>
+<div class="hsub">The 12 economic forces I measure — things like bond yields, the dollar, and central-bank buying.</div>
 <div class="card"><div class="math" id="mathline"></div>
 <div class="dim" style="font-size:.82rem">Composite = Σ(weight × z-score), bullish-positive. P = σ(a + b·composite).
 Weights are non-negative normalized univariate IC — the model only listens to factors that predicted well alone.</div></div>
@@ -102,20 +115,24 @@ Weights are non-negative normalized univariate IC — the model only listens to 
 
 <!-- MY SENSES: microstructure + trend -->
 <h2>My senses — market microstructure · trend &amp; risk</h2>
+<div class="hsub">What traders are doing this very minute — where the money sits and which way it's leaning.</div>
 <div class="grid g2">
   <div class="card" id="micro"></div>
   <div class="card" id="trend"></div>
 </div>
 
 <h2>My technicals — multi-timeframe · indicators · structure</h2>
+<div class="hsub">Chart signals in plain words: trend, momentum gauges, and price patterns across timeframes.</div>
 <div class="card" id="techpanel"></div>
 
 <!-- MY DECISIONS -->
 <h2>My decisions</h2>
+<div class="hsub">Every call I've made — right or wrong, no hiding.</div>
 <canvas id="hist" width="1100" height="220"></canvas>
 
 <!-- MY TRACK RECORD -->
 <h2>My track record</h2>
+<div class="hsub">How my past calls would have done, with real trading costs. The honest numbers.</div>
 <div class="card" id="btpanel"></div>
 <div class="grid g2" style="margin-top:12px">
   <div><div class="dim" style="font-size:.8rem;margin-bottom:6px">STRATEGY EQUITY</div><canvas id="eqS" width="540" height="220"></canvas></div>
@@ -124,6 +141,7 @@ Weights are non-negative normalized univariate IC — the model only listens to 
 
 <!-- RUN ME -->
 <h2>Run me yourself</h2>
+<div class="hsub">Want your own copy of me? Five-minute setup.</div>
 <div class="card"><div class="math">git clone https://github.com/SaimSuhailQu/gold-oracle.git
 cd gold-oracle
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
@@ -134,6 +152,7 @@ reads that JSON every 60s on your Exness demo. Cron + <code>gold_oracle/notify.p
 
 <!-- LIMITS -->
 <h2>Honest limits</h2>
+<div class="hsub">What I'm bad at. Read this before you trust me with money.</div>
 <div class="warn"><ul class="tight">
 <li><b>Does not beat buy-and-hold in a bull market.</b> 14.9% strategy CAGR vs 15.8% buy-and-hold (2019–2026, walk-forward).
 Use as a defensive regime filter, not a money printer.</li>
@@ -170,15 +189,23 @@ async function load(){
   $("pup").textContent = pct(p);
   $("pup").style.color = p>=0.5 ? "var(--green)" : "var(--red)";
   const st = $("stance"); st.textContent = s.signal; st.className = "badge "+s.signal;
+
+  // plain-English card
+  const pl = d.plain;
+  if(pl){
+    $("plainheadline").textContent = pl.headline;
+    $("plainreasons").innerHTML = pl.reasons.map(r=>"<li>"+r+"</li>").join("");
+    $("plainchange").textContent = pl.what_would_change_my_mind;
+  }
   $("rawline").innerHTML = "raw model stance: <b>"+s.raw_signal+"</b>" +
     (s.raw_signal!==s.signal ? ' → critic overrode to <b>'+s.signal+'</b>' : ' · critic agreed') +
     (s.size_tier? ' · size tier: <b>'+s.size_tier+'</b> ('+s.size_mult+'x)':"");
   $("thline").textContent = pct(s.long_t||0.8)+" / "+pct(s.short_t||0.2);
   $("herokv").innerHTML =
     kv("Gold", "$"+s.gold_price.toLocaleString()) +
-    kv("Signal age", ea.age_hrs<1 ? Math.round(ea.age_hrs*60)+" min" : ea.age_hrs.toFixed(1)+" h") +
-    kv("Conviction", pct(s.confidence)) +
-    kv("Suggested SL / TP", "$"+s.sl_dollars+" / $"+s.tp_dollars+" <span class='dim'>(ATR-based)</span>");
+    kv("How fresh is this <span class='dim'>(signal age)</span>", ea.age_hrs<1 ? Math.round(ea.age_hrs*60)+" min" : ea.age_hrs.toFixed(1)+" h") +
+    kv("How sure I am", pct(s.confidence)) +
+    kv("Where I\u2019d exit <span class='dim'>(cut loss / take profit)</span>", "$"+s.sl_dollars+" / $"+s.tp_dollars+" <span class='dim'>(ATR-based)</span>");
 
   // pipeline strip
   const e = s.ensemble_ml||{};
@@ -203,10 +230,10 @@ async function load(){
   ch += tier==="FULL" ? "<span class='ok'>✓ TRADE APPROVED — FULL SIZE</span>"
       : tier==="QUARTER" ? "<span class='amber' style='font-weight:700'>◐ APPROVED — QUARTER SIZE (exploratory)</span>"
       : "<span class='red' style='font-weight:700'>✗ BLOCKED — STAND ASIDE</span>";
-  ch += "</div>"+kv("Evaluated direction", c.evaluated_direction||"–")+
-    kv("Directional P", c.directional_probability!=null?pct(c.directional_probability):"–")+
-    kv("Required P", c.min_required_probability!=null?pct(c.min_required_probability):"–")+
-    kv("MCDA score", (c.mcda_score??"–")+" <span class='dim'>(need ≥ 0.70)</span>");
+  ch += "</div>"+kv("Direction I judged", c.evaluated_direction||"–")+
+    kv("My estimated odds", c.directional_probability!=null?pct(c.directional_probability):"–")+
+    kv("Odds I demand", c.min_required_probability!=null?pct(c.min_required_probability):"–")+
+    kv("Overall quality score", (c.mcda_score??"–")+" <span class='dim'>(need ≥ 0.70)</span>");
   (c.fatal_flaws||[]).forEach(f=>{ ch+="<div class='flaw'>■ "+f+"</div>"; });
   (c.self_criticisms||[]).forEach(f=>{ ch+="<div class='crit'>▲ "+f+"</div>"; });
   if(!(c.fatal_flaws||[]).length && !(c.self_criticisms||[]).length) ch+="<div class='dim' style='font-size:.85rem'>no objections raised</div>";
@@ -215,9 +242,9 @@ async function load(){
   // ensemble
   const nz = ai.narrative_zscore||{};
   $("enspanel").innerHTML = "<b>Ensemble blend</b>"+
-    kv("Linear logistic (50%)", pct(e.p_linear_logistic??NaN))+
-    kv("Boosted trees (35%)", pct(e.p_boosted_ml??NaN))+
-    kv("Narrative nudge", nz.z!=null?("z="+sgn(nz.z)+" → "+sgn(nz.z/3)+" <span class='dim'>(30d window, n="+nz.n+")</span>"):"<span class='dim'>calibrating (need 5+ days)</span>")+
+    kv("Economic model <span class='dim'>(50% weight)</span>", pct(e.p_linear_logistic??NaN))+
+    kv("Pattern model <span class='dim'>(35% weight)</span>", pct(e.p_boosted_ml??NaN))+
+    kv("News mood tweak", nz.z!=null?("z="+sgn(nz.z)+" → "+sgn(nz.z/3)+" <span class='dim'>(30d window, n="+nz.n+")</span>"):"<span class='dim'>calibrating (need 5+ days)</span>")+
     kv("<b>Blended P(up)</b>", "<b>"+pct(p)+"</b>")+
     "<div class='dim' style='font-size:.8rem;margin-top:6px'>blended = 0.50·logistic + 0.35·trees + clip(z/3·0.10), clipped to [5%, 95%]. Only |z|>2 anomalies move the needle.</div>";
 
@@ -262,9 +289,9 @@ async function load(){
   const dsrcHtml = dsrc.startsWith("real_1m") ? `<span class="green">${dsrc}</span>` : `<span class="amber">${dsrc} (hallucinated H/L/V!)</span>`;
   $("micro").innerHTML = "<b>Microstructure</b>"+
     kv("Data source", dsrcHtml)+
-    kv("VWAP", "$"+(m.vwap||"–"))+kv("VWAP z-score", m.vwap_zscore!=null?sgn(m.vwap_zscore):"–")+
-    kv("POC / VAH / VAL", [m.poc,m.vah,m.val].map(v=>v?"$"+v:"–").join(" / "))+
-    kv("Order-flow audit", m.audit_verdict?`<b>${m.audit_verdict}</b> <span class='dim'>(${(m.audit_confidence??0)})</span>`:"–");
+    kv("Fair price <span class='dim'>(avg price paid today)</span>", "$"+(m.vwap||"–"))+kv("Price vs fair <span class='dim'>(how stretched?)</span>", m.vwap_zscore!=null?sgn(m.vwap_zscore):"–")+
+    kv("Busy price zones <span class='dim'>(where most trading happened)</span>", [m.poc,m.vah,m.val].map(v=>v?"$"+v:"–").join(" / "))+
+    kv("Is the buying real? <span class='dim'>(order-flow check)</span>", m.audit_verdict?`<b>${m.audit_verdict}</b> <span class='dim'>(${(m.audit_confidence??0)})</span>`:"–");
 
   // trend
   const bull = s.gold_price >= (s.ma50||0);
@@ -288,19 +315,19 @@ async function load(){
   const sw = t.liquidity_sweep||{};
   const brt = t.breakout_retest||{};
   $("techpanel").innerHTML = "<b>My technicals</b>"+
-    kv("Multi-timeframe (M5/M15/H1/H4)", mtfTxt+" <span class='dim'>(score "+(t.mtf_score??"–")+")</span>")+
-    kv("EMA 20 / 50 / 200", [t.ema20,t.ema50,t.ema200].map(v=>v?("$"+v):"–").join(" / "))+
-    kv("RSI 14", t.rsi14??"–")+
-    kv("MACD", t.macd_bullish===undefined?"–":(t.macd_bullish?'<span class="green">bullish</span>':'<span class="red">bearish</span>'))+
-    kv("ADX 14", (t.adx14??"–")+(t.trend_strong?' <span class="dim">(strong trend)</span>':""))+
-    kv("Support / Resistance", (t.support?"$"+t.support:"–")+" / "+(t.resistance?"$"+t.resistance:"–"))+
-    kv("Market structure", (ms.state||"–")+(ms.last_event?" — "+ms.last_event:""))+
-    kv("Liquidity sweep", (sw.bullish_sweep?'<span class="green">bullish</span>':"")+(sw.bearish_sweep?'<span class="red">bearish</span>':"")||"<span class='dim'>none</span>")+
-    kv("Breakout + retest", (brt.bullish?'<span class="green">bullish</span>':"")+(brt.bearish?'<span class="red">bearish</span>':"")||"<span class='dim'>none</span>")+
-    kv("Candle pattern", t.candle_pattern||"<span class='dim'>none</span>")+
-    kv("Session", (sess.session||"–")+" "+(sess.trade_ok?'<span class="green">entries allowed</span>':'<span class="red">entries blocked (London/NY only)</span>'))+
-    kv("News blackout", nblk.blocked?'<span class="red">ACTIVE — '+nblk.event+'</span>':'<span class="green">clear</span>')+
-    kv("Technical score", t.tech_score??"–");
+    kv("Trend across timeframes <span class='dim'>(M5–H4: all pointing the same way?</span>)", mtfTxt+" <span class='dim'>(score "+(t.mtf_score??"–")+")</span>")+
+    kv("Average prices <span class='dim'>(are buyers in control?)</span>", [t.ema20,t.ema50,t.ema200].map(v=>v?("$"+v):"–").join(" / "))+
+    kv("Buying heat <span class='dim'>(RSI: over 70 = overheated)</span>", t.rsi14??"–")+
+    kv("Momentum <span class='dim'>(speeding up or slowing down?)</span>", t.macd_bullish===undefined?"–":(t.macd_bullish?'<span class="green">bullish</span>':'<span class="red">bearish</span>'))+
+    kv("Trend strength <span class='dim'>(ADX: over 25 = strong)</span>", (t.adx14??"–")+(t.trend_strong?' <span class="dim">(strong trend)</span>':""))+
+    kv("Price floors & ceilings", (t.support?"$"+t.support:"–")+" / "+(t.resistance?"$"+t.resistance:"–"))+
+    kv("Who's winning <span class='dim'>(buyers or sellers?)</span>", (ms.state||"–")+(ms.last_event?" — "+ms.last_event:""))+
+    kv("Fake-out move <span class='dim'>(traps traders, then reverses)</span>", (sw.bullish_sweep?'<span class="green">bullish</span>':"")+(sw.bearish_sweep?'<span class="red">bearish</span>':"")||"<span class='dim'>none</span>")+
+    kv("Breakout + retest <span class='dim'>(broke out, came back, held?)</span>", (brt.bullish?'<span class="green">bullish</span>':"")+(brt.bearish?'<span class="red">bearish</span>':"")||"<span class='dim'>none</span>")+
+    kv("Last candles <span class='dim'>(what the price action looks like)</span>", t.candle_pattern||"<span class='dim'>none</span>")+
+    kv("Market session <span class='dim'>(who\u2019s awake?)</span>", (sess.session||"–")+" "+(sess.trade_ok?'<span class="green">entries allowed</span>':'<span class="red">entries blocked (London/NY only)</span>'))+
+    kv("News blackout <span class='dim'>(big announcement landing?)</span>", nblk.blocked?'<span class="red">ACTIVE — '+nblk.event+'</span>':'<span class="green">clear</span>')+
+    kv("Overall chart verdict <span class='dim'>(-1 bearish … +1 bullish)</span>", t.tech_score??"–");
 
   // history
   drawHist(d.history||[]);

@@ -25,6 +25,7 @@ def main() -> None:
     built = datetime.now(timezone.utc)
     state = {
         "signal": sig,
+        "plain": serve.plain_summary(sig),
         "history": serve.read_history(),
         "backtest": serve.read_json("data/backtest_summary.json", {}),
         "ea": serve.ea_status(sig),

@@ -43,6 +43,104 @@ FACTOR_META = {
     "cb_regime": ("Central-bank buying", "WGC quarterly regime · manual input"),
 }
 
+# Plain-English translations for the user-friendly layer
+FACTOR_PLAIN = {
+    "real_rates": "inflation-adjusted interest rates",
+    "nom_yield": "bond yields",
+    "dollar": "the strength of the US dollar",
+    "fed_stance": "the Fed's posture on rates",
+    "fear": "fear in the markets",
+    "risk_app": "investors' appetite for risk",
+    "btc_comp": "Bitcoin (gold's rival for speculative money)",
+    "etf_flow": "money flowing into gold ETFs",
+    "momentum": "gold's own price momentum",
+    "curve": "the shape of the yield curve",
+    "duration": "demand for long-term bonds",
+    "cb_regime": "central-bank gold buying",
+}
+
+
+def _translate_flaw(flaw: str, dc: dict) -> str | None:
+    f = flaw.upper()
+    if "INSUFFICIENT PROBABILITY" in f:
+        p = dc.get("directional_probability", 0)
+        need = dc.get("min_required_probability", 0.80)
+        return (f"My estimated odds are only {p:.0%} — I need at least {need:.0%} "
+                f"before I risk real money.")
+    if "NEWS BLACKOUT" in f:
+        return ("A big economic announcement is landing right now — "
+                "I never trade into that storm.")
+    if "SESSION FILTER" in f:
+        return ("It's the market's quiet hours — I only trade when "
+                "London or New York are open.")
+    if "POOR R:R" in f or "RISK-TO-REWARD" in f or "R:R" in f:
+        return "The potential reward isn't big enough compared to the risk."
+    if "MACRO" in f and "HEADWIND" in f:
+        return "The big economic picture is fighting against this trade."
+    return None
+
+
+def plain_summary(sig: dict) -> dict:
+    """One-paragraph, jargon-free explanation of the bot's current mind."""
+    dc = sig.get("decision_critic", {}) or {}
+    stance = dc.get("final_audited_signal") or sig.get("signal", "FLAT")
+    p = float(sig.get("p_up", 0.5) or 0.5)
+    p_dir = float(dc.get("directional_probability") or max(p, 1 - p))
+    flaws = dc.get("fatal_flaws", []) or []
+    crits = dc.get("self_criticisms", []) or []
+
+    translated = [t for t in (_translate_flaw(f, dc) for f in flaws[:2]) if t]
+
+    if stance == "LONG":
+        headline = (f"I'm buying gold — I give it a {p:.0%} chance of rising "
+                    f"over the next 20 days.")
+        change = ("If my estimated odds fall below 65%, I'll step aside. "
+                  "A sudden spike in the dollar or bond yields would also make me reconsider.")
+    elif stance == "SHORT":
+        headline = (f"I'm betting against gold — I give it a {1 - p:.0%} chance of "
+                    f"falling over the next 20 days.")
+        change = ("If my estimated odds fall below 65%, I'll step aside. "
+                  "Strong central-bank buying or falling real yields would make me reconsider.")
+    else:
+        if any("NEWS BLACKOUT" in f.upper() for f in flaws):
+            headline = "I'm sitting out — big economic news is landing and I never trade into that storm."
+        elif any("SESSION FILTER" in f.upper() for f in flaws):
+            headline = "I'm sitting out — it's the market's quiet hours. I'll look again when London or New York opens."
+        elif any("INSUFFICIENT PROBABILITY" in f.upper() for f in flaws):
+            headline = (f"I'm sitting out — the odds ({p_dir:.0%}) aren't good enough "
+                        f"for me to risk money on.")
+        else:
+            headline = "I'm sitting out — nothing in the market convinces me right now."
+        need_q = dc.get("quarter_probability", 0.65)
+        need_f = dc.get("min_required_probability", 0.80)
+        change = (f"If my estimated odds reach {need_q:.0%}, I'd take a small test position; "
+                  f"{need_f:.0%} for full size.")
+
+    reasons = list(translated)
+    # top 2 driving factors, in plain words
+    factors = sig.get("factors", {}) or {}
+    zscores = sig.get("factor_zscores", {}) or {}
+    top = sorted(factors.items(), key=lambda kv: abs(kv[1]), reverse=True)[:2]
+    for name, contrib in top:
+        if abs(contrib) < 0.03:
+            continue
+        plain = FACTOR_PLAIN.get(name, name.replace("_", " "))
+        z = zscores.get(name, 0)
+        level = "unusually high" if z > 1 else ("unusually low" if z < -1 else "running hot" if z > 0.5 else "soft" if z < -0.5 else "about normal")
+        direction = "pushing me toward buying gold" if contrib > 0 else "pushing me away from buying gold"
+        reasons.append(f"{plain.capitalize()} — {level}, which is {direction}.")
+
+    if crits and len(reasons) < 4:
+        n = len(crits)
+        reasons.append(f"My inner skeptic has {n} warning{'s' if n != 1 else ''} — I'm cautious even about my own math.")
+
+    return {
+        "headline": headline,
+        "stance": stance,
+        "reasons": reasons[:4],
+        "what_would_change_my_mind": change,
+    }
+
 
 def read_json(rel, default):
     try:
@@ -102,6 +200,7 @@ class Handler(BaseHTTPRequestHandler):
             sig = read_json("signals/gold_signal.json", {})
             self._send(json.dumps({
                 "signal": sig,
+                "plain": plain_summary(sig),
                 "history": read_history(),
                 "backtest": read_json("data/backtest_summary.json", {}),
                 "ea": ea_status(sig),
