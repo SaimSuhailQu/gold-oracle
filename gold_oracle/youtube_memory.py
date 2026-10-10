@@ -217,21 +217,33 @@ class YouTubeMemoryEngine:
             return None
 
     # ---------- learning loop ----------
-    def process_all_channels(self) -> Dict[str, Any]:
-        """Fetch new videos, score them, and grade old predictions. Network I/O."""
+    def process_all_channels(self, limit: int = 8, since_days: int | None = None) -> Dict[str, Any]:
+        """Fetch new videos, score them, and grade old predictions. Network I/O.
+
+        limit: max videos per channel per run. since_days: only process videos
+        published within the last N days (for backfills).
+        """
         now = datetime.now(timezone.utc)
         gold_now = self._gold_now()
         new_videos = 0
+        cutoff = now - timedelta(days=since_days) if since_days else None
 
         for ch in self._load_channel_list():
             handle = ch.get("handle", "")
             cid = self.resolve_handle(handle)
             if not cid:
                 continue
-            for v in self.fetch_channel_videos(cid):
+            for v in self.fetch_channel_videos(cid, limit=limit):
                 vid = v["video_id"]
                 if vid in self.memory["processed_videos"]:
                     continue
+                if cutoff and v.get("published"):
+                    try:
+                        pub = datetime.fromisoformat(v["published"].replace("Z", "+00:00"))
+                        if pub < cutoff:
+                            continue
+                    except Exception:
+                        pass
                 text = v["description"] or self.extract_transcript(vid)
                 analysis = self.analyze_content(text, v["title"])
                 self.memory["processed_videos"][vid] = {

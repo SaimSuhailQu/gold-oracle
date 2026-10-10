@@ -9,7 +9,13 @@
 //|                                                                   |
 //|  signal.json schema (flat, written by Python):                    |
 //|   { "timestamp_epoch": 1728..., "symbol": "XAUUSD",                |
-//|     "p_up": 0.63, "signal": "LONG"/"SHORT"/"FLAT", ... }           |
+//|     "p_up": 0.63, "signal": "LONG"/"SHORT"/"FLAT",                |
+//|     "size_mult": 1.0/0.25/0.0 (critic tier),                      |
+//|     "exposure_mult": 1.0-1.5 (regime scaling), ... }              |
+//|                                                                   |
+//| Volume = risk% lots x size_mult (critic tier) x exposure_mult      |
+//| (regime scaling, toggleable). Older signal files without the      |
+//| multiplier fields default both to 1.0.                            |
 //|                                                                   |
 //| NOTE: MQL5/MetaEditor is not available to the author of this      |
 //| file, so it is carefully written but NOT compiled. Compile with   |
@@ -21,16 +27,15 @@
 #include <Trade\Trade.mqh>
 
 //--- inputs
-input string InpSignalFile          = "gold_signal.json"; // signal file in MQL5/Files
-input double InpRiskPercent         = 1.0;                // risk per trade (% of equity)
-input double InpMinWinProbability   = 0.80;               // minimum win probability to trade (e.g. 0.80 = 80%)
-input bool   InpRequireOrderFlowAudit = true;             // require Order Flow Audit pass before entry
-input int    InpSLDollars           = 30;                 // fallback stop loss in USD per oz
-input int    InpTPDollars           = 60;                 // fallback take profit in USD per oz
-input int    InpMaxSpreadPoints     = 500;                // max spread (points)
-input int    InpSignalMaxAgeHrs     = 36;                 // ignore signals older than this
-input ulong  InpMagic               = 20261005;           // magic number
-input int    InpTimerSeconds        = 60;                 // re-evaluate every N sec
+input string InpSignalFile     = "gold_signal.json"; // signal file in MQL5/Files
+input double InpRiskPercent     = 1.0;                // risk per trade (% of equity)
+input int    InpSLDollars       = 30;                 // stop loss in USD per oz
+input int    InpTPDollars       = 60;                 // take profit in USD per oz
+input int    InpMaxSpreadPoints = 500;                // max spread (points)
+input int    InpSignalMaxAgeHrs = 36;                 // ignore signals older than this
+input ulong  InpMagic           = 20261005;           // magic number
+input int    InpTimerSeconds    = 60;                 // re-evaluate every N sec
+input bool   InpUseDynamicExposure = true;           // scale lots by signal exposure_mult
 
 CTrade trade;
 
@@ -182,55 +187,33 @@ void Evaluate()
    // FLAT signal (or unknown): close any open oracle position
    if(sig != "LONG" && sig != "SHORT")
    {
-      if(in_pos) { trade.PositionClose(ticket); Print("GoldOracle: FLAT signal -> closed #", ticket); }
+      if(in_pos) { trade.PositionClose((ulong)ticket); Print("GoldOracle: FLAT signal -> closed #", ticket); }
       DrawStatus(StringFormat("FLAT (p_up=%.2f)", p_up));
       return;
-   }
-
-   // Win probability check (must meet or exceed InpMinWinProbability)
-   double win_prob = (sig == "LONG") ? p_up : (1.0 - p_up);
-   if(win_prob < InpMinWinProbability)
-   {
-      if(in_pos) { trade.PositionClose(ticket); Print("GoldOracle: closed due to low win prob: ", win_prob); }
-      DrawStatus(StringFormat("LOW PROB (prob=%.2f < %.2f)", win_prob, InpMinWinProbability));
-      return;
-   }
-
-   // Microstructure & Order Flow Audit gate
-   if(InpRequireOrderFlowAudit)
-   {
-      string audit_verdict = JsonGetString(json, "audit_verdict");
-      if(StringLen(audit_verdict) > 0 && StringFind(audit_verdict, "AUDIT_PASSED") < 0)
-      {
-         if(!in_pos)
-         {
-            DrawStatus(StringFormat("OF AUDIT BLOCKED (%s)", audit_verdict));
-            return;
-         }
-      }
    }
 
    long want = (sig == "LONG") ? POSITION_TYPE_BUY : POSITION_TYPE_SELL;
    if(in_pos)
    {
       if(ptype == want) { DrawStatus(StringFormat("HOLD %s (p_up=%.2f)", sig, p_up)); return; }
-      trade.PositionClose(ticket);
+      trade.PositionClose((ulong)ticket);
       Print("GoldOracle: reversed, closed #", ticket);
       in_pos = false;
    }
 
    if(!SpreadOK(sym)) { DrawStatus("SPREAD TOO WIDE"); return; }
 
-   double sl_dist = InpSLDollars;                 // fallback USD per oz
-   double tp_dist = InpTPDollars;
-   if(InpUseDynamicATR)
+   // Critic tier sizing + regime exposure scaling (default 1.0 for old files)
+   double size_mult = JsonGetDouble(json, "size_mult");
+   if(size_mult <= 0.0 || size_mult > 1.0) size_mult = 1.0;
+   double exposure = 1.0;
+   if(InpUseDynamicExposure)
    {
-      double dyn_sl = JsonGetDouble(json, "sl_dollars");
-      double dyn_tp = JsonGetDouble(json, "tp_dollars");
-      if(dyn_sl > 10.0) sl_dist = dyn_sl;
-      if(dyn_tp > 10.0) tp_dist = dyn_tp;
+      exposure = JsonGetDouble(json, "exposure_mult");
+      if(exposure <= 0.0 || exposure > 2.0) exposure = 1.0;
    }
 
+   double sl_dist = InpSLDollars;                 // USD per oz
    double sl_pts  = sl_dist / point;              // in points
    long stops_level = SymbolInfoInteger(sym, SYMBOL_TRADE_STOPS_LEVEL);
    if(sl_pts < stops_level + 10)
@@ -239,8 +222,10 @@ void Evaluate()
       return;
    }
 
-   double vol = CalcVolume(sym, sl_dist);
+   double vol = CalcVolume(sym, sl_dist) * size_mult * exposure;
    if(vol <= 0) { Print("GoldOracle: volume calc failed"); return; }
+   Print(StringFormat("GoldOracle: sizing risk=%.2f%% x tier=%.2f x exposure=%.2f",
+                      InpRiskPercent, size_mult, exposure));
 
    double price, sl, tp;
    trade.SetExpertMagicNumber(InpMagic);
@@ -249,9 +234,9 @@ void Evaluate()
    {
       price = SymbolInfoDouble(sym, SYMBOL_ASK);
       sl = NormalizeDouble(price - sl_dist, digits);
-      tp = NormalizeDouble(price + tp_dist, digits);
+      tp = NormalizeDouble(price + InpTPDollars, digits);
       if(trade.Buy(vol, sym, price, sl, tp, "GoldOracle LONG"))
-         Print("GoldOracle: BUY ", vol, " @ ", price, " SL=", sl, " TP=", tp, " p_up=", p_up);
+         Print("GoldOracle: BUY ", vol, " @ ", price, " p_up=", p_up);
       else
          Print("GoldOracle: BUY failed: ", trade.ResultRetcodeDescription());
    }
@@ -259,9 +244,9 @@ void Evaluate()
    {
       price = SymbolInfoDouble(sym, SYMBOL_BID);
       sl = NormalizeDouble(price + sl_dist, digits);
-      tp = NormalizeDouble(price - tp_dist, digits);
+      tp = NormalizeDouble(price - InpTPDollars, digits);
       if(trade.Sell(vol, sym, price, sl, tp, "GoldOracle SHORT"))
-         Print("GoldOracle: SELL ", vol, " @ ", price, " SL=", sl, " TP=", tp, " p_up=", p_up);
+         Print("GoldOracle: SELL ", vol, " @ ", price, " p_up=", p_up);
       else
          Print("GoldOracle: SELL failed: ", trade.ResultRetcodeDescription());
    }
