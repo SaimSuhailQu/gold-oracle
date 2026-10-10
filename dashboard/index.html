@@ -236,7 +236,7 @@ async function load(){
   $("criticpanel").innerHTML = ch;
 
   // ensemble
-  const nz = ai.narrative_zscore||{};
+  const nz = (s.ai_sentiment||{}).narrative_zscore||{};
   $("enspanel").innerHTML = "<b>Ensemble blend</b>"+
     kv("Economic model <span class='dim'>(50% weight)</span>", pct(e.p_linear_logistic??NaN))+
     kv("Pattern model <span class='dim'>(35% weight)</span>", pct(e.p_boosted_ml??NaN))+
@@ -268,7 +268,7 @@ async function load(){
   // base model math + factors
   $("mathline").textContent = "composite "+sgn(s.composite||0)+"  →  P = σ("+(s.calibration?.a??0)+" + "+(s.calibration?.b??0)+" × composite) = "+pct(e.p_linear_logistic??p)+" (base)";
   const zs = s.factor_zscores||{}, ws = s.model_weights||{}, fs = s.factors||{};
-  $("factors").innerHTML = (d.factor_meta||[]).map(([k,[name,desc]])=>{
+  $("factors").innerHTML = Object.entries(d.factor_meta||{}).map(([k,{title:name,desc}])=>{
     const z=zs[k]??0, w=ws[k]??0, cf=fs[k]??0;
     const zn = Math.min(1, Math.abs(z)/3), left = z>=0?50:50-zn*50, width = zn*50;
     return `<div class="card"><div style="font-size:.85rem;font-weight:600">${name}</div>
