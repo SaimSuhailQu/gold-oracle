@@ -24,7 +24,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate fresh signal
-        run: python -m gold_oracle.signal
+        # If the fresh run fails (e.g. broken market-data pull), keep the last
+        # committed signal so the site stays up; staleness is shown honestly.
+        run: python -m gold_oracle.signal || echo "::warning::signal generation failed — deploying last committed signal"
 
       - name: Build static site
         run: python scripts/build_static_dashboard.py

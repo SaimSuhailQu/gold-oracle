@@ -46,12 +46,28 @@ def _flatten(df: pd.DataFrame) -> pd.DataFrame:
 
 def download(period: str = "15y", use_cache: bool = True) -> pd.DataFrame:
     """Download OHLCV for all factor tickers; returns wide Close-price frame
-    (plus GLD volume). Index is tz-naive dates."""
+    (plus GLD volume). Index is tz-naive dates. Retries once on failure."""
     if use_cache and os.path.exists(CACHE_PATH):
         mtime = datetime.fromtimestamp(os.path.getmtime(CACHE_PATH), tz=timezone.utc)
         if (datetime.now(timezone.utc) - mtime).days < 1:
-            return pd.read_csv(CACHE_PATH, index_col=0, parse_dates=True)
+            df = pd.read_csv(CACHE_PATH, index_col=0, parse_dates=True)
+            if not df.empty and "gold" in df.columns and len(df) >= 500:
+                return df
+            print("[data] cache unusable, re-downloading")
 
+    last_err: Exception | None = None
+    for attempt in (1, 2):
+        try:
+            return _fetch(period)
+        except Exception as exc:
+            last_err = exc
+            print(f"[data] download attempt {attempt} failed: {exc}")
+            import time
+            time.sleep(5)
+    raise RuntimeError(f"download failed twice: {last_err}")
+
+
+def _fetch(period: str) -> pd.DataFrame:
     raw = yf.download(
         list(TICKERS.values()), period=period, progress=False,
         auto_adjust=True, group_by="ticker",
@@ -64,6 +80,9 @@ def download(period: str = "15y", use_cache: bool = True) -> pd.DataFrame:
         except Exception as exc:  # keep going; model tolerates a missing leg
             print(f"[data] {sym} failed: {exc}")
     df = pd.DataFrame(closes).dropna(how="all")
+    if df.empty or len(df) < 500 or "gold" not in df.columns:
+        raise RuntimeError(
+            f"unusable download: {len(df)} rows, columns={list(df.columns)[:5]}")
     df.index = pd.to_datetime(df.index).tz_localize(None)
     # GLD volume for the flow proxy
     try:

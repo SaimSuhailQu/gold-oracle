@@ -37,6 +37,8 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
         except Exception:
             df = latest()
     f = build_features(df)
+    if f.empty or len(f) < 252:
+        raise RuntimeError(f"insufficient feature rows: {len(f)} (need 252+)")
     X, y = f[FEATURES], f["target"]
     model = GoldProbabilityModel().fit(X, y)
 
