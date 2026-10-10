@@ -32,7 +32,7 @@ def main() -> None:
                         for k, v in serve.FACTOR_META.items()},
         "static": True,
         "built_utc": built.strftime("%Y-%m-%d %H:%M UTC"),
-        "next_update_utc": (built + timedelta(hours=6)).strftime("%Y-%m-%d %H:%M UTC"),
+        "next_update_utc": (built + timedelta(minutes=30)).strftime("%Y-%m-%d %H:%M UTC"),
     }
     with open(os.path.join(BASE, "dashboard", "index.html"), encoding="utf-8") as fh:
         html = fh.read()
@@ -42,7 +42,7 @@ def main() -> None:
         f'<script>window.__STATE__={payload};</script>\n'
         f'<div id="staticbanner" style="background:#1a1a2e;color:#aab;padding:6px '
         f'12px;font-size:.8rem;text-align:center">Static snapshot · built '
-        f'{state["built_utc"]} · I update every 6 hours (next ~{state["next_update_utc"]}) · '
+        f'{state["built_utc"]} · I rethink every 30 minutes (next ~{state["next_update_utc"]}) · '
         f'<a href="https://github.com/SaimSuhailQu/gold-oracle" style="color:#7aa2ff">source</a></div>\n'
     )
     html = html.replace("<script>", inject + "<script>", 1)

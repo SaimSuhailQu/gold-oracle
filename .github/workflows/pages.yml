@@ -4,7 +4,7 @@ name: Live dashboard
 # GitHub Pages (gh-pages branch). Manual runs: Actions tab -> Live dashboard.
 on:
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 permissions:
