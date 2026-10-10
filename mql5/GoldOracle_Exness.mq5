@@ -41,7 +41,7 @@ input double InpRiskPercent     = 0.5;                // risk per trade (% of eq
 input int    InpSLDollars       = 30;                 // stop loss in USD per oz
 input int    InpTPDollars       = 60;                 // take profit in USD per oz
 input int    InpMaxSpreadPoints = 500;                // max spread (points)
-input int    InpSignalMaxAgeHrs = 36;                 // ignore signals older than this
+input int    InpSignalMaxAgeHrs = 6;                  // ignore signals older than this (bot rebuilds every 5 min)
 input ulong  InpMagic           = 20261005;           // magic number
 input int    InpTimerSeconds    = 60;                 // re-evaluate every N sec
 input bool   InpUseDynamicExposure = true;           // scale lots by signal exposure_mult
@@ -481,9 +481,9 @@ void Evaluate()
       return;
    }
 
-   // Critic tier sizing + regime exposure scaling (default 1.0 for old files)
+   // Critic tier sizing + regime exposure scaling (fail CLOSED: unknown tier = no trade)
    double size_mult = JsonGetDouble(json, "size_mult");
-   if(size_mult <= 0.0 || size_mult > 1.0) size_mult = 1.0;
+   if(size_mult <= 0.0 || size_mult > 1.0) { Print("GoldOracle: bad size_mult, standing aside"); return; }
    double exposure = 1.0;
    if(InpUseDynamicExposure)
    {

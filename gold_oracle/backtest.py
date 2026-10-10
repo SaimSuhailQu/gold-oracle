@@ -50,7 +50,8 @@ def _auc(y: np.ndarray, p: np.ndarray) -> float:
 
 
 def walk_forward_full(f: pd.DataFrame, verbose: bool = True,
-                      gold: pd.Series | None = None) -> pd.DataFrame:
+                      gold: pd.Series | None = None,
+                      full_t: float = 0.80, quarter_t: float = 0.65) -> pd.DataFrame:
     """Full-pipeline walk-forward: base logistic + boosted-trees ensemble
     + critic probability tiers + dynamic exposure + realistic costs.
 
@@ -59,7 +60,8 @@ def walk_forward_full(f: pd.DataFrame, verbose: bool = True,
     - sentiment nudge: no historical headlines exist, so the ±10% nudge is 0
     - microstructure/technicals: no historical 1m bars, so no contribution
     - MCDA / news-blackout / session critic checks: live-only, not replicated
-    Only the critic's probability tiers (FULL ≥80%, QUARTER ≥65%) gate positions.
+    Only the critic's probability tiers (FULL ≥full_t, QUARTER ≥quarter_t)
+    gate positions.
     """
     from .ensemble_ml import EnsembleGoldAI
     f = f.dropna().copy()
@@ -89,11 +91,11 @@ def walk_forward_full(f: pd.DataFrame, verbose: bool = True,
     out["p_up"] = preds
     out["y"] = y_all.loc[out.index].to_numpy()
     out["fwd_ret"] = f.loc[out.index, "fwd_ret"].to_numpy()
-    # critic probability tiers (live thresholds): FULL 1.0x ≥80%, QUARTER 0.25x ≥65%
+    # critic probability tiers: FULL 1.0x ≥full_t, QUARTER 0.25x ≥quarter_t
     p = out["p_up"].to_numpy()
     p_dir = np.maximum(p, 1.0 - p)
     direction = np.where(p >= 0.5, 1.0, -1.0)
-    size_mult = np.where(p_dir >= 0.80, 1.0, np.where(p_dir >= 0.65, 0.25, 0.0))
+    size_mult = np.where(p_dir >= full_t, 1.0, np.where(p_dir >= quarter_t, 0.25, 0.0))
     out["pos"] = direction * size_mult
     if gold is not None:
         out["exposure"] = regime_exposure(gold).reindex(out.index).fillna(1.0).values

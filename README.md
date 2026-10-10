@@ -206,11 +206,24 @@ data (default reflects the post-2022 record-buying regime).
 1. Open Exness MT5 → File → Open Data Folder → `MQL5/Experts` → copy
    `mql5/GoldOracle_Exness.mq5` there.
 2. Open MetaEditor (F4), compile (F7). **This file was carefully written but
-   not compiled by its author — compile before use.**
+   not compiled by its author — compile before use.** Fix any errors/warnings
+   before proceeding.
 3. Copy the latest `gold_signal.json` into `MQL5/Files/`.
 4. Drag the EA onto an **XAUUSD** chart. Enable **Algo Trading**.
-5. Inputs: risk per trade (default 1%), SL/TP in USD/oz (30/60), max spread,
-   signal max age (36h — stale signals are ignored).
+5. Inputs: risk per trade (default 0.5%), SL/TP in USD/oz (30/60), max spread,
+   signal max age (6h — stale signals are ignored).
+
+**Before real money — minimum 4 weeks on demo:**
+- [ ] Compiles with zero errors and zero warnings in MetaEditor
+- [ ] Takes a LONG on a LONG signal, SHORT on SHORT, closes on FLAT
+- [ ] Rejects signals older than 6 hours
+- [ ] Rejects trades when spread > max
+- [ ] Sizes positions at 0.5% risk × critic tier × exposure
+- [ ] Hits daily loss limit (2%) and stops for the day
+- [ ] Break-even, trailing stop, and 50% partial TP all trigger correctly
+- [ ] Pauses 24h after 3 consecutive losses
+- [ ] CSV journal writes to MQL5/Files/goldoracle_journal.csv
+- [ ] Kill switch input halts all trading immediately
 
 Behavior: LONG when signal=LONG, SHORT when SHORT, flat/close when FLAT or
 the signal is stale. One position at a time, fixed-fractional sizing, spread

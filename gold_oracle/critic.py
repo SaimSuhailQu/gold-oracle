@@ -11,8 +11,12 @@ Evaluates trading setups across independent orthogonal criteria:
 Adversarial Self-Criticism (The 'Devil's Advocate' Engine):
 - Actively seeks reasons why the trade could fail
 - Tests for trap risk, fakeouts, volatility compression, and macro regime contradictions
-- Enforces tiered clearance: >= 80% win probability + MCDA >= 0.70 -> FULL size;
-  >= 65% + MCDA >= 0.50 -> QUARTER-size exploratory; else FLAT.
+- Enforces tiered clearance: >= 70% win probability + MCDA >= 0.70 -> FULL size;
+  >= 60% + MCDA >= 0.50 -> QUARTER-size exploratory; else FLAT.
+  (Thresholds recalibrated 2026-10-10 from walk-forward evidence: the
+  ensemble's blended probability maxes at ~0.76, so the old 80%/65% bars
+  were unreachable — 5 trades in 7 years. 70%/60% matches what the model
+  can actually produce.)
 """
 
 from typing import Dict, List, Any, Optional
@@ -22,18 +26,20 @@ import numpy as np
 class DecisionCriticEngine:
     """Tiered sizing critic.
 
-    - FULL (1.0x):  directional P >= full_prob (0.80) and MCDA >= full_mcda (0.70),
+    - FULL (1.0x):  directional P >= full_prob (0.70) and MCDA >= full_mcda (0.70),
       no fatal flaws — full-sized position.
-    - QUARTER (0.25x): directional P >= q_prob (0.65) and MCDA >= q_mcda (0.50),
+    - QUARTER (0.25x): directional P >= q_prob (0.60) and MCDA >= q_mcda (0.50),
       no fatal flaws — exploratory position that gathers out-of-sample data
       without heavy risk.
     - FLAT (0.0x): anything else, or any fatal flaw.
     Thresholds overridable via constructor (env GOLD_FULL_P / GOLD_Q_P).
+    Recalibrated 2026-10-10 from walk-forward evidence (old 0.80/0.65 bars
+    were unreachable: ensemble max ~0.76, 5 trades/7yr).
     """
 
-    def __init__(self, min_prob_threshold: float = 0.80,
+    def __init__(self, min_prob_threshold: float = 0.70,
                  full_mcda: float = 0.70,
-                 q_prob: float = 0.65, q_mcda: float = 0.50):
+                 q_prob: float = 0.60, q_mcda: float = 0.50):
         import os
         self.min_prob_threshold = float(os.environ.get("GOLD_FULL_P", min_prob_threshold))
         self.full_mcda = full_mcda

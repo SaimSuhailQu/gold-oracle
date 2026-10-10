@@ -36,19 +36,78 @@ class SentimentBackend:
 
 
 class LexiconBackend(SentimentBackend):
-    """Current keyless lexicon scorer (FinBERT proxy)."""
+    """Keyless lexicon scorer (FinBERT proxy) with negation, intensifiers
+    and clause boundaries — so "not hawkish" doesn't count as bearish and
+    "gold rallies as dollar strengthens" doesn't cancel itself out."""
     name = "lexicon"
-    BULL = {"cut", "cuts", "easing", "rally", "soar", "record", "buying",
-            "accumulate", "debasement", "deficit", "stimulus", "crisis",
-            "tension", "war", "safe haven", "hedge", "inflows", "gold highs"}
-    BEAR = {"hike", "hawkish", "higher for longer", "selloff", "plunge",
-            "tumble", "outflows", "strong dollar", "yields surge"}
+    BULL = {"cut", "cuts", "cutting", "easing", "ease", "rally", "rallies",
+            "soar", "soars", "record", "records", "buying", "buys",
+            "accumulate", "accumulation", "debasement", "deficit", "deficits",
+            "stimulus", "crisis", "tension", "tensions", "war",
+            "safe haven", "safe-haven", "hedge", "inflows", "inflow",
+            "gold highs", "all-time high", "breakout", "surge", "surged",
+            "jumps", "climbs", "dovish", "pivot"}
+    BEAR = {"hike", "hikes", "hiking", "hawkish", "higher for longer",
+            "selloff", "sell-off", "plunge", "plunges", "plunged",
+            "tumble", "tumbles", "tumbled", "outflows", "outflow",
+            "strong dollar", "dollar strength", "yields surge",
+            "yields jump", "sell", "sells", "drops", "falls", "slump"}
+    NEGATORS = {"not", "no", "never", "n't", "without", "fails", "failed",
+                "unlikely", "doubt", "delays", "delayed", "pauses", "paused",
+                "backs away", "rules out", "dismisses"}
+    INTENSIFIERS = {"sharply": 1.5, "steeply": 1.5, "surged": 1.4,
+                    "plunged": 1.4, "soaring": 1.4, "collapses": 1.4,
+                    "very": 1.3, "highly": 1.3, "strongly": 1.3,
+                    "slightly": 0.6, "modestly": 0.6, "marginally": 0.5}
 
     def score(self, text: str) -> float:
-        t = text.lower()
-        b = sum(1 for w in self.BULL if w in t)
-        r = sum(1 for w in self.BEAR if w in t)
-        return (b - r) / (b + r) if (b + r) else 0.0
+        # split into clauses so mixed headlines don't cancel out
+        clauses = [c.strip() for c in text.lower().replace(";", ",").split(",")]
+        total, weight = 0.0, 0.0
+        for clause in clauses:
+            words = clause.split()
+            c_score, c_w = 0.0, 0.0
+            # multi-word negators ("rules out", "backs away") arm negation
+            # for the whole clause — headlines are short enough for this
+            negated = any(p in clause for p in self.NEGATORS if " " in p)
+            mult = 1.0
+            for w in words:
+                w = w.strip(".,:!?()\"'")
+                if w in self.NEGATORS or w.endswith("n't"):
+                    negated = True
+                    continue
+                if w in self.INTENSIFIERS:
+                    mult = self.INTENSIFIERS[w]
+                    continue
+                s = 0
+                if w in self.BULL:
+                    s = 1
+                elif w in self.BEAR:
+                    s = -1
+                else:
+                    # multi-word phrases
+                    continue
+                if negated:
+                    s = -s
+                    negated = False  # negator applies to the next sentiment word
+                c_score += s * mult
+                c_w += mult
+                mult = 1.0
+            # whole-phrase check for phrases the word loop missed
+            for phrase in self.BULL:
+                if " " in phrase and phrase in clause:
+                    c_score += 1.0
+                    c_w += 1.0
+            for phrase in self.BEAR:
+                if " " in phrase and phrase in clause:
+                    c_score -= 1.0
+                    c_w += 1.0
+            if c_w:
+                total += c_score / c_w
+                weight += 1.0
+        if not weight:
+            return 0.0
+        return max(-1.0, min(1.0, total / weight))
 
 
 class FinBERTBackend(SentimentBackend):

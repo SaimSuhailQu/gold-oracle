@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import json
 import os
+from datetime import datetime, timezone
 
 import numpy as np
 import pandas as pd
@@ -50,11 +51,34 @@ def _ret(s: pd.Series, win: int = RET_WIN) -> pd.Series:
 
 def load_cb_regime() -> dict:
     """Slow-moving central-bank demand input. WGC quarterly data, manually
-    refreshed; values are z-like scores (0 = neutral, +1 = record buying)."""
+    refreshed in cb_regime.json; values are z-like scores
+    (0 = neutral, +1 = record buying). Warns loudly when stale — a silent
+    stale input is worse than no input."""
+    default = {"value": 0.5, "note": "post-2022 record buying regime",
+               "last_updated": None, "stale": True}
     if os.path.exists(REGIME_PATH):
         with open(REGIME_PATH) as f:
-            return json.load(f)
-    return {"default": 0.5, "note": "post-2022 record buying regime"}
+            d = json.load(f)
+        # legacy format: {"default": 0.6, ...}
+        if "value" not in d and "default" in d:
+            d["value"] = d.pop("default")
+        d.setdefault("value", 0.5)
+        lu = d.get("last_updated")
+        if lu:
+            try:
+                age = (datetime.now(timezone.utc).date() -
+                       datetime.fromisoformat(lu).date()).days
+                d["age_days"] = age
+                d["stale"] = age > 100
+                if d["stale"]:
+                    print(f"[cb_regime] WARNING: input is {age} days old "
+                          f"(updated {lu}) — refresh from WGC quarterly data")
+            except (ValueError, TypeError):
+                d["stale"] = True
+        else:
+            d["stale"] = True
+        return d
+    return default
 
 
 def build_features(df: pd.DataFrame) -> pd.DataFrame:

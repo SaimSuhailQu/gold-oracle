@@ -20,8 +20,8 @@ from .data import latest
 from .factors import FEATURES, HORIZON, build_features
 from .model import GoldProbabilityModel
 
-LONG_T = float(os.environ.get("GOLD_LONG_T", "0.80"))
-SHORT_T = float(os.environ.get("GOLD_SHORT_T", "0.20"))
+LONG_T = float(os.environ.get("GOLD_LONG_T", "0.70"))
+SHORT_T = float(os.environ.get("GOLD_SHORT_T", "0.30"))
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SIGNAL_PATH = os.environ.get(
@@ -219,7 +219,7 @@ def generate(df: pd.DataFrame | None = None, use_cache: bool = True) -> dict:
 
     # 3. Adversarial Multi-Criteria & Self-Criticism Engine
     from .critic import DecisionCriticEngine
-    critic_eng = DecisionCriticEngine(min_prob_threshold=0.80)
+    critic_eng = DecisionCriticEngine()  # defaults: FULL 0.70 / QUARTER 0.60
     sl_dollars = round(max(20.0, 2.0 * atr_val), 2)
     tp_dollars = round(max(40.0, 3.5 * atr_val), 2)
     critic_report = critic_eng.evaluate_multi_criteria_with_criticism(

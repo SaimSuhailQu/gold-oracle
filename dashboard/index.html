@@ -255,7 +255,7 @@ async function load(){
       sp += `<div class="dim" style="font-size:.78rem;padding:2px 0">· ${c.label} — `+
         (c.hit_rate!=null?`calls graded: <b class="${c.hit_rate>=0.5?'green':'red'}">${pct(c.hit_rate)}</b> (${c.graded})`:"not enough history to grade yet")+"</div>";
     });
-  } else sp += kv("YouTube learning", "<span class='dim'>no videos watched yet — run the daemon</span>");
+  } else sp += kv("YouTube learning", "<span class='dim'>4 channels configured, but YouTube blocks this server's network — run <b>scripts/backfill_youtube.py</b> from home wifi</span>");
   if(pr.n_papers>0){
     sp += kv("Paper consensus", `<span class="${col(pr.consensus||0)}">${sgn(pr.consensus||0)}</span> <span class='dim'>(${pr.n_papers} papers)</span>`);
     const tf = Object.entries(pr.factor_reinforcement||{}).map(([k,v])=>k+"×"+v).join(", ");
@@ -356,18 +356,25 @@ async function load(){
        " I would have made "+pct(bb.strategy?bb.strategy.cagr:0.147)+" a year vs "+
        pct(bb.buy_hold?bb.buy_hold.cagr:0.158)+" for just holding gold. I'm a defensive filter — "+
        "I sit out the scary parts — not a get-rich machine.")+
-    li("Those test results only cover my <b>core economic model</b>. My newer tricks — the "+
-       "pattern-learning model, news mood, 1-minute data, and my inner skeptic — haven't been "+
-       "tested across years yet. Their edge is <b>unproven</b>.")+
-    li("I think in <b>20-day swings</b>. Don't ask me what happens in the next hour — "+
-       "my inputs move too slowly for that.")+
-    li("My news reading is <b>simple word-counting</b> on free headlines, not an AI that truly "+
-       "understands. I've tuned it so only genuinely unusual news moves me.")+
-    li("I learn from YouTube analysts — but only if someone sets up the channels to watch. "+
-       "Otherwise that part of my brain is empty.")+
-    li("My 1-minute price data is <b>real when the feed works</b> — check the data-source badge. "+
-       "If it fails, I fall back to rough daily estimates and say so clearly.")+
-    li("Central-bank buying is <b>typed in by hand</b> every quarter — it's not a live feed.")+
+    li("Those test results only cover my <b>core economic model</b> — but I've now also "+
+       "walk-forward tested the full stack (pattern model + critic tiers): with evidence-based "+
+       "70%/60% bars it takes ~16-31 trades in 7 years at ~56-58% win rate. The tricks "+
+       "that can't be backtested — news mood, 1-minute data — remain <b>unproven</b>.")+
+    li("I think in <b>20-trading-day swings</b> (about a month). Don't ask me what happens in "+
+       "the next hour — my inputs move too slowly for that. The 1-minute data only times "+
+       "entries, it never changes the forecast.")+
+    li("My news reading is a <b>smarter word-counter</b> — it understands negation "+
+       "(\"not hawkish\" isn't bearish) and intensity (\"plunged\" hits harder than \"dipped\"). "+
+       "Still not an AI that truly understands — I've tuned it so only genuinely unusual "+
+       "news moves me.")+
+    li("I learn from YouTube analysts — <b>4 channels are configured</b>, but YouTube blocks "+
+       "this server's network. Run <b>scripts/backfill_youtube.py</b> from home wifi to fill "+
+       "that part of my brain.")+
+    li("My 1-minute price data is <b>real</b> — currently via Kraken PAXG, check the green "+
+       "data-source badge. If a feed fails, I fall back to rough daily estimates and the "+
+       "badge turns amber to say so clearly.")+
+    li("Central-bank buying is <b>typed in by hand</b> every quarter into <b>cb_regime.json</b> "+
+       "— it's not a live feed, and I now warn loudly if it goes stale (>100 days).")+
     li("The trading robot (the MT5 EA) was written carefully but <b>never compiled or tested</b> — "+
        "compile it in MetaEditor (F7) and run it on a demo account for weeks before real money.");
 

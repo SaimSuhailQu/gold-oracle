@@ -64,7 +64,7 @@ def _translate_flaw(flaw: str, dc: dict) -> str | None:
     f = flaw.upper()
     if "INSUFFICIENT PROBABILITY" in f:
         p = dc.get("directional_probability", 0)
-        need = dc.get("min_required_probability", 0.80)
+        need = dc.get("min_required_probability", 0.70)
         return (f"My estimated odds are only {p:.0%} — I need at least {need:.0%} "
                 f"before I risk real money.")
     if "NEWS BLACKOUT" in f:
@@ -111,8 +111,8 @@ def plain_summary(sig: dict) -> dict:
                         f"for me to risk money on.")
         else:
             headline = "I'm sitting out — nothing in the market convinces me right now."
-        need_q = dc.get("quarter_probability", 0.65)
-        need_f = dc.get("min_required_probability", 0.80)
+        need_q = dc.get("quarter_probability", 0.60)
+        need_f = dc.get("min_required_probability", 0.70)
         change = (f"If my estimated odds reach {need_q:.0%}, I'd take a small test position; "
                   f"{need_f:.0%} for full size.")
 
