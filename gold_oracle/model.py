@@ -28,11 +28,27 @@ def _logistic_fit(X: np.ndarray, y: np.ndarray, l2: float = 1.0, iters: int = 10
         w = pr * (1 - pr) + 1e-8
         grad = X.T @ (y - pr) - l2 * beta
         hess = -(X.T * w) @ X - l2 * np.eye(p)
-        step = np.linalg.solve(hess, grad)
+        step = _solve(hess, grad, "univariate")
         beta -= step
         if np.max(np.abs(step)) < 1e-8:
             break
     return beta
+
+
+def _solve(hess: np.ndarray, grad: np.ndarray, where: str) -> np.ndarray:
+    """Solve the Newton step; fall back to least-squares on singular/degenerate
+    systems instead of hard-crashing the whole signal pipeline."""
+    if not np.isfinite(hess).all() or not np.isfinite(grad).all():
+        bad_h = np.where(~np.isfinite(hess).any(axis=1))[0]
+        print(f"[model] non-finite Hessian/grad in {where} (rows {bad_h.tolist()[:5]}); using lstsq fallback")
+        hess = np.nan_to_num(hess, nan=0.0, posinf=0.0, neginf=0.0)
+        grad = np.nan_to_num(grad, nan=0.0, posinf=0.0, neginf=0.0)
+    try:
+        return np.linalg.solve(hess, grad)
+    except np.linalg.LinAlgError:
+        print(f"[model] singular Hessian in {where}; using lstsq fallback")
+        sol, *_ = np.linalg.lstsq(hess, grad, rcond=None)
+        return sol
 
 
 def _ridge_logistic_fit(X: np.ndarray, y: np.ndarray, l2: float = 100.0, iters: int = 100) -> np.ndarray:
@@ -46,7 +62,7 @@ def _ridge_logistic_fit(X: np.ndarray, y: np.ndarray, l2: float = 100.0, iters: 
         w = pr * (1 - pr) + 1e-6
         grad = X.T @ (y - pr) - pen @ beta
         hess = -(X.T * w) @ X - pen
-        step = np.linalg.solve(hess, grad)
+        step = _solve(hess, grad, "ridge")
         beta -= step
         if np.max(np.abs(step)) < 1e-6:
             break
@@ -63,6 +79,12 @@ class GoldProbabilityModel:
     def fit(self, X: pd.DataFrame, y: pd.Series) -> "GoldProbabilityModel":
         X = X[FEATURES].astype(float)
         yv = y.astype(float).to_numpy()
+
+        # Drop rows with no label (e.g. trailing rows where the forward
+        # target isn't known yet) — fitting on them is meaningless.
+        valid = np.isfinite(yv)
+        X = X.loc[valid]
+        yv = yv[valid]
 
         # 1. Univariate IC per factor -> non-negative normalized weights
         w: dict[str, float] = {}
@@ -88,7 +110,7 @@ class GoldProbabilityModel:
         self.cal_a_, self.cal_b_ = float(beta[0]), float(beta[1])
 
         # 2. Multivariate Ridge Logistic Regression
-        X_mat = np.nan_to_num(X.to_numpy(), nan=0.0)
+        X_mat = np.nan_to_num(X.to_numpy(), nan=0.0, posinf=0.0, neginf=0.0)
         Xc_multi = np.column_stack([np.ones(len(X_mat)), X_mat])
         self.multi_beta_ = _ridge_logistic_fit(Xc_multi, yv, l2=100.0)
 
