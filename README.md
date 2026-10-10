@@ -33,19 +33,27 @@ Narrative layer (three free sources, weights renormalize over whichever have dat
 - `public_apis_ai.py`: macro headlines (Google News RSS) → lexicon sentiment
 - `youtube_memory.py`: curated gold/macro YouTube channels (see below)
 - `papers.py`: arXiv gold-forecasting papers → literature consensus
-Blended narrative nudges the ensemble at most ±10%.
+Blended narrative → rolling 30-day z-score (`narrative.py`) → only |z|>2
+anomalies nudge the ensemble, max ±10%. (FinBERT/LLM backends are a
+documented drop-in via `narrative.set_backend()`.)
   ▼
-microstructure (vwap.py, profile.py, footprint.py, gex.py) + order-flow
-audit (audit.py) → VWAP z-score, POC/VAH/VAL, audit verdict
+microstructure: **real 1-minute data** (`intraday.py`: Dukascopy XAU/USD ticks,
+Kraken PAXG fallback) → session VWAP, VWAP z-score, POC/VAH/VAL, volume ratio
++ order-flow audit (audit.py). Falls back to the old daily synthesis only if
+both feeds fail — and says so in `microstructure.data_source`.
   ▼
-decision critic (critic.py): 5 adversarial checks (probability floor 80%,
-macro/momentum contradiction, trend disconnect, VWAP overextension, model
-divergence) + MCDA score ≥ 0.70 → final_audited_signal (or FLAT if blocked)
+decision critic (critic.py): tiered clearance —
+  FULL (1.0x): directional P ≥ 80% and MCDA ≥ 0.70, no fatal flaws
+  QUARTER (0.25x): P ≥ 65% and MCDA ≥ 0.50 — exploratory, gathers OOS data
+  FLAT: anything else or any fatal flaw
+  ▼
+regime exposure (`backtest.regime_exposure`): 1.5x in confirmed low-volatility
+bull regimes (price > 200MA and 20d vol < 1y median), else 1.0x.
+Exposed to the EA as `exposure_mult` (toggleable via InpUseDynamicExposure).
 ```
 
 `daemon.py` runs the pipeline on a loop; `heatmap.py` renders factor heatmaps.
-Thresholds and the critic's probability floor are deliberately strict — the
-pipeline prefers standing aside to forcing a trade.
+`shadow.py` logs every layer's daily recommendation without executing — see below.
 
 ### Watch-and-learn: YouTube channels + research papers
 
@@ -77,6 +85,45 @@ The bot studies two outside sources and folds them into the narrative layer:
 The daemon refreshes both on its loop; `signal.py` only ever reads the local
 memory files (no network), so signal generation stays fast and offline-safe.
 
+### Shadow logging (validating the unproven layers)
+
+The ensemble, narrative, microstructure and critic layers have no walk-forward
+history. `gold_oracle/shadow.py` records every layer's daily recommendation
+(base stance, ensemble stance, critic stance, narrative z) to
+`data/shadow_log.jsonl` — **without routing anything to execution**. Mature
+entries (20+ days old) are graded against the actual gold move:
+
+```bash
+python -m gold_oracle.shadow --report
+```
+
+Review after ~3 months / 60+ graded entries per layer before granting the new
+layers capital allocation. The daemon and `signal.py` log automatically.
+
+### Cron observability
+
+Wrap the scheduled run so failures page you:
+
+```bash
+export HEALTHCHECKS_URL="https://hc-ping.com/<your-uuid>"
+# and/or
+export DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
+python -m gold_oracle.notify -- python -m gold_oracle.signal
+```
+
+Pings `/start` on launch, success on exit 0, `/fail` on crash — plus a Discord
+embed on failure. Without either env var it runs the command unwatched (with
+a warning, never silently).
+
+### Environment
+
+Standardize on the pinned requirements and a venv so local runs match prod:
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python -m gold_oracle.signal   # real sklearn ensemble, not the fallback
+```
+
 ## Dashboard
 
 A live GUI for the whole model — base factors, ensemble, sentiment, critic,
@@ -96,19 +143,20 @@ vs buy-and-hold, and a "bot right now" panel mirroring the EA's logic
 
 ## Honest backtest (2019–2026, walk-forward, refit yearly)
 
-Base 12-factor model, stance thresholds 0.53/0.47 (env-overridable defaults):
+Base 12-factor model, stance thresholds 0.53/0.47 (env-overridable defaults),
+dynamic exposure 1.5x in confirmed low-volatility bull regimes:
 
 | | Accuracy | AUC | CAGR | Sharpe | MaxDD |
-|---|---|---|---|---|---|\n| Model stances (positioned 72% of the time) | 61% hit rate when positioned | 0.50 | — | — | — |
-| Signal strategy | — | — | 11.9% | 0.95 | −16.7% |
+|---|---|---|---|---|---|
+| Model stances (positioned 72% of the time) | 61% hit rate when positioned | 0.50 | — | — | — |
+| Signal strategy | — | — | 14.9% | 0.99 | −18.4% |
 | Buy-and-hold gold | — | — | 15.8% | 1.04 | −23.2% |
 
-Read this carefully: the model **still does not beat buy-and-hold in a bull market**,
-but with the wider stance bands it stays invested through most of the rally instead of
-sitting out — 11.9% CAGR at 0.95 Sharpe with a shallower max drawdown (−16.7% vs −23.2%).
-Use it as a **regime filter / risk overlay** (size up when P(up) is high, stand aside
-when low) — not as a money printer. It cuts drawdowns; it does not manufacture
-return in a one-way market.
+Read this carefully: the model **still doesn't beat buy-and-hold in a bull
+market** — but the gap is now small (14.9% vs 15.8% CAGR) with a shallower max
+drawdown (−18.4% vs −23.2%). Dynamic exposure (mean 1.16x, boosted ~1/3 of the
+time in calm bull regimes) captured upside the static 1.0x cap left behind.
+Use it as a **regime filter / risk overlay**, not a money printer.
 
 Note: the walk-forward above covers the base 12-factor model only. The ensemble ML,
 AI sentiment, microstructure and critic layers are newer than the test window's

@@ -119,9 +119,13 @@ Use as a defensive regime filter, not a money printer.</li>
 <li>Backtest covers the <b>base 12-factor model only</b> — the ensemble, sentiment, microstructure and critic
 layers are too new to have walk-forward history. Their edge is unproven.</li>
 <li>Factors are slow-moving; the model times 20-day swings, not intraday moves.</li>
-<li>Sentiment is a word-count lexicon on free headlines, not an LLM — a weak signal by design (±10% max).</li>
+<li>Sentiment is a word-count lexicon on free headlines, not an LLM — but it's now
+calibrated as a rolling 30-day z-score, so only genuine anomalies nudge the model.
+FinBERT/LLM backend is a documented drop-in (<code>narrative.set_backend()</code>).</li>
 <li>YouTube memory only matters if channels are actually tracked; otherwise it contributes nothing.</li>
-<li>VWAP/profile are synthesized from daily closes (high/low/volume are approximations), not real order flow.</li>
+<li>VWAP/profile use <b>real 1-minute data</b> (Dukascopy XAU/USD ticks, Kraken PAXG
+fallback) when the feed is reachable — check the data source badge. If both fail,
+it falls back to the old daily-close synthesis, which is clearly labeled.</li>
 <li>Central-bank demand is a manual quarterly input, not a live feed.</li>
 <li>The MQL5 EA was carefully written but <b>never compiled</b> — compile in MetaEditor (F7) and
 forward-test on demo before anything touches a live Exness account.</li>
@@ -145,7 +149,8 @@ async function load(){
   $("pup").style.color = p>=0.5 ? "var(--green)" : "var(--red)";
   const st = $("stance"); st.textContent = s.signal; st.className = "badge "+s.signal;
   $("rawline").innerHTML = "raw model stance: <b>"+s.raw_signal+"</b>" +
-    (s.raw_signal!==s.signal ? ' → critic overrode to <b>'+s.signal+'</b>' : ' · critic agreed');
+    (s.raw_signal!==s.signal ? ' → critic overrode to <b>'+s.signal+'</b>' : ' · critic agreed') +
+    (s.size_tier? ' · size tier: <b>'+s.size_tier+'</b> ('+s.size_mult+'x)':"");
   $("thline").textContent = pct(s.long_t||0.8)+" / "+pct(s.short_t||0.2);
   $("herokv").innerHTML =
     kv("Gold", "$"+s.gold_price.toLocaleString()) +
@@ -172,7 +177,10 @@ async function load(){
   // critic
   const c = s.decision_critic||{};
   let ch = "<b>Decision critic</b><div style='margin:8px 0'>";
-  ch += c.is_cleared_to_trade ? "<span class='ok'>✓ TRADE APPROVED</span>" : "<span class='red' style='font-weight:700'>✗ BLOCKED — STAND ASIDE</span>";
+  const tier = c.size_tier||"FLAT";
+  ch += tier==="FULL" ? "<span class='ok'>✓ TRADE APPROVED — FULL SIZE</span>"
+      : tier==="QUARTER" ? "<span class='amber' style='font-weight:700'>◐ APPROVED — QUARTER SIZE (exploratory)</span>"
+      : "<span class='red' style='font-weight:700'>✗ BLOCKED — STAND ASIDE</span>";
   ch += "</div>"+kv("Evaluated direction", c.evaluated_direction||"–")+
     kv("Directional P", c.directional_probability!=null?pct(c.directional_probability):"–")+
     kv("Required P", c.min_required_probability!=null?pct(c.min_required_probability):"–")+
@@ -183,12 +191,13 @@ async function load(){
   $("criticpanel").innerHTML = ch;
 
   // ensemble
+  const nz = ai.narrative_zscore||{};
   $("enspanel").innerHTML = "<b>Ensemble blend</b>"+
     kv("Linear logistic (50%)", pct(e.p_linear_logistic??NaN))+
     kv("Boosted trees (35%)", pct(e.p_boosted_ml??NaN))+
-    kv("Sentiment nudge", e.nlp_sentiment_score!=null?sgn(e.nlp_sentiment_score*0.10):"–")+
+    kv("Narrative nudge", nz.z!=null?("z="+sgn(nz.z)+" → "+sgn(nz.z/3)+" <span class='dim'>(30d window, n="+nz.n+")</span>"):"<span class='dim'>calibrating (need 5+ days)</span>")+
     kv("<b>Blended P(up)</b>", "<b>"+pct(p)+"</b>")+
-    "<div class='dim' style='font-size:.8rem;margin-top:6px'>blended = 0.50·logistic + 0.35·trees + clip(sentiment·0.10), clipped to [5%, 95%]</div>";
+    "<div class='dim' style='font-size:.8rem;margin-top:6px'>blended = 0.50·logistic + 0.35·trees + clip(z/3·0.10), clipped to [5%, 95%]. Only |z|>2 anomalies move the needle.</div>";
 
   // sentiment: headlines + youtube learning + research papers
   const ai = s.ai_sentiment||{}, yt = s.youtube_memory||{}, pr = s.research_papers||{};
@@ -227,7 +236,10 @@ async function load(){
 
   // microstructure
   const m = s.microstructure||{};
-  $("micro").innerHTML = "<b>Microstructure (daily-close synthesis)</b>"+
+  const dsrc = m.data_source||"synthesized_daily_proxy";
+  const dsrcHtml = dsrc.startsWith("real_1m") ? `<span class="green">${dsrc}</span>` : `<span class="amber">${dsrc} (hallucinated H/L/V!)</span>`;
+  $("micro").innerHTML = "<b>Microstructure</b>"+
+    kv("Data source", dsrcHtml)+
     kv("VWAP", "$"+(m.vwap||"–"))+kv("VWAP z-score", m.vwap_zscore!=null?sgn(m.vwap_zscore):"–")+
     kv("POC / VAH / VAL", [m.poc,m.vah,m.val].map(v=>v?"$"+v:"–").join(" / "))+
     kv("Order-flow audit", m.audit_verdict?`<b>${m.audit_verdict}</b> <span class='dim'>(${(m.audit_confidence??0)})</span>`:"–");
@@ -238,8 +250,9 @@ async function load(){
     kv("MA50 / MA200", "$"+(s.ma50||"–")+" / $"+(s.ma200||"–"))+
     kv("Position vs MA50", bull?'<span class="green">above (bull trend)</span>':'<span class="red">below (bear trend)</span>')+
     kv("ATR14", "$"+(s.atr14||"–"))+
+    kv("Exposure mult", s.exposure_mult? (s.exposure_mult>1?`<span class="green">${s.exposure_mult}x (low-vol bull)</span>`:`${s.exposure_mult}x`):"–")+
     kv("Signal SL / TP", "$"+s.sl_dollars+" / $"+s.tp_dollars+" <span class='dim'>(2×/3.5× ATR)</span>")+
-    "<div class='dim' style='font-size:.8rem;margin-top:6px'>EA uses its own fixed $30/$60 inputs; these are the signal's ATR-based suggestions.</div>";
+    "<div class='dim' style='font-size:.8rem;margin-top:6px'>EA uses its own fixed $30/$60 inputs; these are the signal's ATR-based suggestions. EA scales lots by tier × exposure (toggleable).</div>";
 
   // history
   drawHist(d.history||[]);
@@ -249,7 +262,8 @@ async function load(){
   if(b){
     const row=(l,stt,bh)=>`<tr><td>${l}</td><td>${stt}</td><td>${bh}</td></tr>`;
     $("btpanel").innerHTML = "<b>Walk-forward</b> <span class='dim'>"+b.n+" predictions · "+b.from+" → "+b.to+
-      " · stance thresholds "+pct(b.long_t)+"/"+pct(b.short_t)+"</span>"+
+      " · stance thresholds "+pct(b.long_t)+"/"+pct(b.short_t)+
+      (b.exposure_mean? " · dynamic exposure "+b.exposure_mean+"x avg":"")+"</span>"+
       "<table class='bt' style='margin-top:8px'><tr><th>Metric</th><th>Strategy</th><th>Buy-and-hold</th></tr>"+
       row("CAGR",pct(b.strategy.cagr),pct(b.buy_hold.cagr))+
       row("Sharpe",b.strategy.sharpe.toFixed(2),b.buy_hold.sharpe.toFixed(2))+

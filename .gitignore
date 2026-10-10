@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 data/cache.csv
 signals/
+.venv/
+data/intraday_cache/
