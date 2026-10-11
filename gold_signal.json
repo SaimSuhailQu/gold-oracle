@@ -1,0 +1,219 @@
+{
+  "timestamp": "2026-10-11T16:43:06.536444+00:00",
+  "timestamp_epoch": 1791736986,
+  "symbol": "XAUUSD",
+  "horizon_days": 20,
+  "p_up": 0.4686,
+  "p_down": 0.5314,
+  "signal": "FLAT",
+  "raw_signal": "FLAT",
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
+  "long_t": 0.7,
+  "short_t": 0.3,
+  "confidence": 0.0628,
+  "gold_price": 4216.3,
+  "composite": -0.9524,
+  "calibration": {
+    "a": 0.2398,
+    "b": 0.6451
+  },
+  "factor_zscores": {
+    "real_rates": -1.4172,
+    "nom_yield": -1.1724,
+    "dollar": -1.8815,
+    "fed_stance": -1.2163,
+    "fear": -0.2413,
+    "risk_app": -0.2671,
+    "btc_comp": -0.6994,
+    "etf_flow": -1.1278,
+    "momentum": 0.0659,
+    "curve": 1.826,
+    "duration": -1.24,
+    "cb_regime": 0.5
+  },
+  "decision_critic": {
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
+    "evaluated_direction": "SHORT",
+    "directional_probability": 0.5314,
+    "min_required_probability": 0.7,
+    "quarter_probability": 0.6,
+    "mcda_score": 0.797,
+    "mcda_criteria_scores": {
+      "macro_alignment": 0.8333333333333334,
+      "ml_consensus": 0.942,
+      "news_sentiment_alignment": 0.0,
+      "technical_trend": 1.0,
+      "auction_location": 1.0
+    },
+    "fatal_flaws": [
+      "INSUFFICIENT PROBABILITY: Calculated win probability is 53.1%, which fails the mandatory >= 70% threshold."
+    ],
+    "self_criticisms": [
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
+    ],
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
+  },
+  "ensemble_ml": {
+    "p_ensemble_up": 0.4686,
+    "p_linear_logistic": 0.421,
+    "p_boosted_ml": 0.4791,
+    "nlp_sentiment_score": 0.2367
+  },
+  "ai_sentiment": {
+    "sentiment_score": 0.5385,
+    "bullish_indicators": 10,
+    "bearish_indicators": 3,
+    "sample_headlines_analyzed": 14,
+    "narrative_blend": {
+      "news": 0.538,
+      "youtube": null,
+      "papers": 0.0,
+      "blended": 0.385
+    },
+    "narrative_zscore": {
+      "z": 0.71,
+      "mean": 0.3754,
+      "std": 0.013,
+      "n": 6
+    }
+  },
+  "youtube_memory": {
+    "collective_sentiment": 0.0,
+    "total_memory_nodes": 0,
+    "channels_tracked": 4,
+    "channels": [
+      {
+        "label": "Bloomberg Television",
+        "handle": "@BloombergTelevision",
+        "hit_rate": null,
+        "graded": 0
+      },
+      {
+        "label": "Real Vision Finance",
+        "handle": "@RealVisionFinance",
+        "hit_rate": null,
+        "graded": 0
+      },
+      {
+        "label": "Peter Schiff",
+        "handle": "@PeterSchiff",
+        "hit_rate": null,
+        "graded": 0
+      },
+      {
+        "label": "Milk Road Macro",
+        "handle": "@MilkRoadMacro",
+        "hit_rate": null,
+        "graded": 0
+      }
+    ],
+    "fetch_status": "not_run_yet",
+    "last_updated": "2026-10-10T06:02:33.485030+00:00"
+  },
+  "research_papers": {
+    "consensus": 0.0,
+    "n_papers": 3,
+    "factor_reinforcement": {
+      "momentum": 2,
+      "dollar": 2,
+      "fear": 1,
+      "nom_yield": 1
+    },
+    "recent_titles": [
+      "Trend-Adjusted Time Series Models with an Application to Gold Price Forecasting",
+      "Gold Price Prediction Using Long Short-Term Memory and Multi-Layer Perceptron with Gray Wo",
+      "Forecast-to-Fill: Benchmark-Neutral Alpha and Billion-Dollar Capacity in Gold Futures (201"
+    ],
+    "last_updated": "2026-10-10T06:02:36.414008+00:00"
+  },
+  "ma50": 4376.97,
+  "ma200": 4548.02,
+  "atr14": 35.26,
+  "sl_dollars": 70.51,
+  "tp_dollars": 123.4,
+  "exposure_mult": 1.0,
+  "factors": {
+    "real_rates": -0.0813,
+    "nom_yield": -0.2156,
+    "dollar": -0.1851,
+    "fed_stance": -0.1743,
+    "fear": -0.0215,
+    "risk_app": -0.0325,
+    "btc_comp": -0.0473,
+    "etf_flow": -0.0028,
+    "momentum": 0.0,
+    "curve": 0.0018,
+    "duration": -0.2219,
+    "cb_regime": 0.0281
+  },
+  "model_weights": {
+    "real_rates": 0.0574,
+    "nom_yield": 0.1839,
+    "dollar": 0.0984,
+    "fed_stance": 0.1433,
+    "fear": 0.0889,
+    "risk_app": 0.1218,
+    "btc_comp": 0.0677,
+    "etf_flow": 0.0025,
+    "momentum": 0.0,
+    "curve": 0.001,
+    "duration": 0.179,
+    "cb_regime": 0.0563
+  },
+  "microstructure": {
+    "data_source": "real_1m:kraken_paxg_1m",
+    "vwap": 4184.1,
+    "vwap_zscore": 3.04,
+    "poc": 4184.54,
+    "vah": 4189.34,
+    "val": 4181.11,
+    "audit_verdict": "STAND_ASIDE",
+    "audit_confidence": 0.0
+  },
+  "technicals": {
+    "ema20": 4255.56,
+    "ema50": 4314.49,
+    "ema200": 4326.54,
+    "rsi14": 43.5,
+    "macd_hist": -6.365,
+    "macd_bullish": false,
+    "adx14": 20.6,
+    "atr14": 88.93,
+    "trend_strong": false,
+    "resistance": 4259.0,
+    "support": 4091.2,
+    "mtf_trends": {
+      "M5": 1
+    },
+    "mtf_score": 1.0,
+    "mtf_aligned_bull": true,
+    "mtf_aligned_bear": false,
+    "market_structure": {
+      "state": "UNKNOWN",
+      "last_event": null
+    },
+    "liquidity_sweep": {
+      "bullish_sweep": false,
+      "bearish_sweep": false
+    },
+    "breakout_retest": {
+      "bullish": false,
+      "bearish": false
+    },
+    "candle_pattern": null,
+    "session": {
+      "session": "NEW_YORK",
+      "trade_ok": true,
+      "utc_hour": 16.72
+    },
+    "tech_score": 0.117
+  },
+  "news_blackout": {
+    "blocked": false,
+    "event": null
+  }
+}
