@@ -59,6 +59,14 @@ def main() -> None:
     with open(out, "w", encoding="utf-8") as fh:
         fh.write(html)
     print(f"wrote {out} ({len(html)//1024} KB)")
+    # publish the raw signal too, so the MT5 EA (or a small downloader
+    # script on the user's machine) can fetch it at
+    # https://saimsuhailqu.github.io/gold-oracle/gold_signal.json
+    import shutil
+    sig_src = os.path.join(BASE, "signals", "gold_signal.json")
+    if os.path.exists(sig_src):
+        shutil.copy(sig_src, os.path.join(out_dir, "gold_signal.json"))
+        print("wrote site/gold_signal.json")
 
 
 if __name__ == "__main__":
