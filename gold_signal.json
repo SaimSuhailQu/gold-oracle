@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-11T16:58:43.145598+00:00",
-  "timestamp_epoch": 1791737923,
+  "timestamp": "2026-10-11T17:03:56.866812+00:00",
+  "timestamp_epoch": 1791738236,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4686,
@@ -50,7 +50,8 @@
       "auction_location": 1.0
     },
     "fatal_flaws": [
-      "INSUFFICIENT PROBABILITY: Calculated win probability is 53.1%, which fails the mandatory >= 70% threshold."
+      "INSUFFICIENT PROBABILITY: Calculated win probability is 53.1%, which fails the mandatory >= 70% threshold.",
+      "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
@@ -166,11 +167,11 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4184.18,
-    "vwap_zscore": 4.23,
+    "vwap": 4184.24,
+    "vwap_zscore": 4.22,
     "poc": 4185.27,
-    "vah": 4189.37,
-    "val": 4181.17,
+    "vah": 4189.34,
+    "val": 4181.19,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
@@ -181,8 +182,8 @@
     "rsi14": 43.5,
     "macd_hist": -6.365,
     "macd_bullish": false,
-    "adx14": 20.6,
-    "atr14": 88.93,
+    "adx14": 20.7,
+    "atr14": 88.85,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
@@ -206,9 +207,9 @@
     },
     "candle_pattern": null,
     "session": {
-      "session": "NEW_YORK",
-      "trade_ok": true,
-      "utc_hour": 16.97
+      "session": "OFF_HOURS",
+      "trade_ok": false,
+      "utc_hour": 17.05
     },
     "tech_score": 0.117
   },
