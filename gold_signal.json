@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-12T02:14:01.019235+00:00",
-  "timestamp_epoch": 1791771241,
+  "timestamp": "2026-10-12T02:18:44.362423+00:00",
+  "timestamp_epoch": 1791771524,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.3781,
@@ -12,7 +12,7 @@
   "long_t": 0.7,
   "short_t": 0.3,
   "confidence": 0.2438,
-  "gold_price": 4235.5,
+  "gold_price": 4232.5,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -54,8 +54,7 @@
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.428) against a SHORT."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -168,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4190.65,
-    "vwap_zscore": 1.87,
+    "vwap": 4190.72,
+    "vwap_zscore": 2.24,
     "poc": 4189.75,
     "vah": 4196.83,
     "val": 4177.58,
@@ -177,12 +176,12 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4253.65,
-    "ema50": 4311.39,
-    "ema200": 4325.63,
-    "rsi14": 45.6,
-    "macd_hist": 0.152,
-    "macd_bullish": true,
+    "ema20": 4253.37,
+    "ema50": 4311.27,
+    "ema200": 4325.6,
+    "rsi14": 45.3,
+    "macd_hist": -0.039,
+    "macd_bullish": false,
     "adx14": 19.9,
     "atr14": 84.95,
     "trend_strong": false,
@@ -206,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.23
+      "utc_hour": 2.3
     },
-    "tech_score": 0.428
+    "tech_score": 0.026
   },
   "news_blackout": {
     "blocked": false,
