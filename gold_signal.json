@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-12T01:49:03.697921+00:00",
-  "timestamp_epoch": 1791769743,
+  "timestamp": "2026-10-12T01:54:06.477537+00:00",
+  "timestamp_epoch": 1791770046,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4686,
@@ -12,7 +12,7 @@
   "long_t": 0.7,
   "short_t": 0.3,
   "confidence": 0.0628,
-  "gold_price": 4226.8,
+  "gold_price": 4229.1,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -41,13 +41,13 @@
     "directional_probability": 0.5314,
     "min_required_probability": 0.7,
     "quarter_probability": 0.6,
-    "mcda_score": 0.757,
+    "mcda_score": 0.797,
     "mcda_criteria_scores": {
       "macro_alignment": 0.8333333333333334,
       "ml_consensus": 0.942,
       "news_sentiment_alignment": 0.0,
       "technical_trend": 1.0,
-      "auction_location": 0.8
+      "auction_location": 1.0
     },
     "fatal_flaws": [
       "INSUFFICIENT PROBABILITY: Calculated win probability is 53.1%, which fails the mandatory >= 70% threshold.",
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4190.38,
-    "vwap_zscore": 0.73,
+    "vwap": 4190.42,
+    "vwap_zscore": 1.76,
     "poc": 4189.75,
     "vah": 4196.83,
     "val": 4177.58,
@@ -176,14 +176,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4252.82,
-    "ema50": 4311.05,
-    "ema200": 4325.55,
-    "rsi14": 44.7,
-    "macd_hist": -0.403,
+    "ema20": 4253.04,
+    "ema50": 4311.14,
+    "ema200": 4325.57,
+    "rsi14": 44.9,
+    "macd_hist": -0.256,
     "macd_bullish": false,
     "adx14": 19.9,
-    "atr14": 84.93,
+    "atr14": 84.95,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 1.82
+      "utc_hour": 1.9
     },
-    "tech_score": 0.124
+    "tech_score": 0.024
   },
   "news_blackout": {
     "blocked": false,
