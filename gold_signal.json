@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-12T08:49:00.683312+00:00",
-  "timestamp_epoch": 1791794940,
+  "timestamp": "2026-10-12T08:54:05.049987+00:00",
+  "timestamp_epoch": 1791795245,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4783,
-  "p_down": 0.5217,
+  "p_up": 0.4744,
+  "p_down": 0.5256,
   "signal": "FLAT",
-  "raw_signal": "FLAT",
+  "raw_signal": "SHORT",
   "size_tier": "FLAT",
   "size_mult": 0.0,
-  "long_t": 0.7,
-  "short_t": 0.3,
-  "confidence": 0.0434,
-  "gold_price": 4200.0,
+  "long_t": 0.52,
+  "short_t": 0.48,
+  "confidence": 0.0512,
+  "gold_price": 4203.2,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -38,9 +38,9 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5217,
-    "min_required_probability": 0.7,
-    "quarter_probability": 0.6,
+    "directional_probability": 0.5256,
+    "min_required_probability": 0.53,
+    "quarter_probability": 0.5,
     "mcda_score": 0.757,
     "mcda_criteria_scores": {
       "macro_alignment": 0.8333333333333334,
@@ -50,7 +50,7 @@
       "auction_location": 0.8
     },
     "fatal_flaws": [
-      "INSUFFICIENT PROBABILITY: Calculated win probability is 52.2%, which fails the mandatory >= 70% threshold.",
+      "INSUFFICIENT PROBABILITY: Calculated win probability is 52.6%, which fails the mandatory >= 53% threshold.",
       "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
     ],
     "self_criticisms": [
@@ -59,10 +59,10 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4783,
+    "p_ensemble_up": 0.4744,
     "p_linear_logistic": 0.421,
     "p_boosted_ml": 0.4791,
-    "nlp_sentiment_score": 0.3333
+    "nlp_sentiment_score": 0.294
   },
   "ai_sentiment": {
     "sentiment_score": 0.7333,
@@ -76,10 +76,10 @@
       "blended": 0.524
     },
     "narrative_zscore": {
-      "z": 1.0,
-      "mean": 0.4301,
-      "std": 0.0936,
-      "n": 7
+      "z": 0.882,
+      "mean": 0.4418,
+      "std": 0.0929,
+      "n": 8
     }
   },
   "youtube_memory": {
@@ -167,20 +167,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4189.13,
-    "vwap_zscore": -2.01,
-    "poc": 4199.96,
-    "vah": 4204.49,
-    "val": 4171.7,
+    "vwap": 4188.51,
+    "vwap_zscore": -2.12,
+    "poc": 4200.3,
+    "vah": 4200.67,
+    "val": 4168.65,
     "audit_verdict": "STAND_ASIDE",
-    "audit_confidence": 0.0
+    "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4250.27,
-    "ema50": 4310.0,
-    "ema200": 4325.28,
-    "rsi14": 42.1,
-    "macd_hist": -2.113,
+    "ema20": 4250.58,
+    "ema50": 4310.12,
+    "ema200": 4325.31,
+    "rsi14": 42.4,
+    "macd_hist": -1.909,
     "macd_bullish": false,
     "adx14": 19.9,
     "atr14": 85.67,
@@ -209,9 +209,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.82
+      "utc_hour": 8.9
     },
-    "tech_score": -0.489
+    "tech_score": -0.488
   },
   "news_blackout": {
     "blocked": false,
