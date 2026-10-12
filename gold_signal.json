@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-12T09:19:01.564150+00:00",
-  "timestamp_epoch": 1791796741,
+  "timestamp": "2026-10-12T09:24:00.537640+00:00",
+  "timestamp_epoch": 1791797040,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4949,
-  "p_down": 0.5051,
-  "signal": "FLAT",
+  "p_up": 0.4871,
+  "p_down": 0.5129,
+  "signal": "SHORT",
   "raw_signal": "FLAT",
-  "size_tier": "FLAT",
-  "size_mult": 0.0,
+  "size_tier": "QUARTER",
+  "size_mult": 0.25,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0102,
-  "gold_price": 4201.3,
+  "confidence": 0.0258,
+  "gold_price": 4201.1,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -33,12 +33,12 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": false,
-    "size_tier": "FLAT",
-    "size_mult": 0.0,
-    "final_audited_signal": "FLAT",
+    "is_cleared_to_trade": true,
+    "size_tier": "QUARTER",
+    "size_mult": 0.25,
+    "final_audited_signal": "SHORT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5051,
+    "directional_probability": 0.5129,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.757,
@@ -49,19 +49,17 @@
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
-    "fatal_flaws": [
-      "INSUFFICIENT PROBABILITY: Calculated win probability is 50.5%, which fails the mandatory >= 53% threshold."
-    ],
+    "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
-    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
+    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4949,
+    "p_ensemble_up": 0.4871,
     "p_linear_logistic": 0.421,
     "p_boosted_ml": 0.4791,
-    "nlp_sentiment_score": 0.4997
+    "nlp_sentiment_score": 0.4213
   },
   "ai_sentiment": {
     "sentiment_score": 0.8571,
@@ -75,10 +73,10 @@
       "blended": 0.612
     },
     "narrative_zscore": {
-      "z": 1.499,
-      "mean": 0.4529,
-      "std": 0.1063,
-      "n": 8
+      "z": 1.264,
+      "mean": 0.4706,
+      "std": 0.112,
+      "n": 9
     }
   },
   "youtube_memory": {
@@ -166,20 +164,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4187.87,
-    "vwap_zscore": -1.74,
+    "vwap": 4187.82,
+    "vwap_zscore": -1.52,
     "poc": 4200.3,
-    "vah": 4200.67,
+    "vah": 4204.4,
     "val": 4168.65,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4250.4,
-    "ema50": 4310.05,
+    "ema20": 4250.38,
+    "ema50": 4310.04,
     "ema200": 4325.29,
     "rsi14": 42.2,
-    "macd_hist": -2.03,
+    "macd_hist": -2.043,
     "macd_bullish": false,
     "adx14": 19.9,
     "atr14": 85.83,
@@ -208,7 +206,7 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 9.32
+      "utc_hour": 9.4
     },
     "tech_score": -0.489
   },
