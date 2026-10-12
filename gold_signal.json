@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-12T08:13:52.279885+00:00",
-  "timestamp_epoch": 1791792832,
+  "timestamp": "2026-10-12T08:18:54.413124+00:00",
+  "timestamp_epoch": 1791793134,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4974,
@@ -12,7 +12,7 @@
   "long_t": 0.7,
   "short_t": 0.3,
   "confidence": 0.0052,
-  "gold_price": 4204.4,
+  "gold_price": 4203.5,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -50,7 +50,8 @@
       "auction_location": 0.8
     },
     "fatal_flaws": [
-      "INSUFFICIENT PROBABILITY: Calculated win probability is 50.3%, which fails the mandatory >= 70% threshold."
+      "INSUFFICIENT PROBABILITY: Calculated win probability is 50.3%, which fails the mandatory >= 70% threshold.",
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
@@ -166,20 +167,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4189.91,
-    "vwap_zscore": -1.98,
-    "poc": 4199.76,
-    "vah": 4204.6,
-    "val": 4174.91,
+    "vwap": 4189.76,
+    "vwap_zscore": -2.1,
+    "poc": 4200.16,
+    "vah": 4204.54,
+    "val": 4174.89,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4250.69,
-    "ema50": 4310.17,
+    "ema20": 4250.6,
+    "ema50": 4310.13,
     "ema200": 4325.32,
-    "rsi14": 42.5,
-    "macd_hist": -1.832,
+    "rsi14": 42.4,
+    "macd_hist": -1.89,
     "macd_bullish": false,
     "adx14": 19.9,
     "atr14": 85.39,
@@ -208,9 +209,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.22
+      "utc_hour": 8.3
     },
-    "tech_score": -0.487
+    "tech_score": -0.488
   },
   "news_blackout": {
     "blocked": false,
