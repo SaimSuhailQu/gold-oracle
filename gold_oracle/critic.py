@@ -127,9 +127,9 @@ class DecisionCriticEngine:
         fatal_flaws: List[str] = []
 
         # Critic 1: Check Probability Threshold
-        if prob_directional < self.min_prob_threshold:
+        if prob_directional < self.q_prob:
             fatal_flaws.append(
-                f"INSUFFICIENT PROBABILITY: Calculated win probability is {prob_directional*100:.1f}%, which fails the mandatory >= {self.min_prob_threshold*100:.0f}% threshold."
+                f"INSUFFICIENT PROBABILITY: Calculated win probability is {prob_directional*100:.1f}%, which fails the mandatory >= {self.q_prob*100:.0f}% threshold."
             )
 
         # Critic 2: Macro vs Momentum Contradiction
