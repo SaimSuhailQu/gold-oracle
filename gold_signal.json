@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-12T09:38:48.558943+00:00",
-  "timestamp_epoch": 1791797928,
+  "timestamp": "2026-10-12T09:43:52.189112+00:00",
+  "timestamp_epoch": 1791798232,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4871,
   "p_down": 0.5129,
-  "signal": "SHORT",
+  "signal": "FLAT",
   "raw_signal": "FLAT",
-  "size_tier": "QUARTER",
-  "size_mult": 0.25,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0258,
-  "gold_price": 4200.1,
+  "gold_price": 4198.2,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "QUARTER",
-    "size_mult": 0.25,
-    "final_audited_signal": "SHORT",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
     "directional_probability": 0.5129,
     "min_required_probability": 0.53,
@@ -49,11 +49,13 @@
       "technical_trend": 1.0,
       "auction_location": 0.4
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.4871,
@@ -164,20 +166,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4187.62,
-    "vwap_zscore": -2.0,
-    "poc": 4200.13,
-    "vah": 4204.35,
-    "val": 4168.25,
+    "vwap": 4187.51,
+    "vwap_zscore": -2.1,
+    "poc": 4199.92,
+    "vah": 4204.3,
+    "val": 4168.5,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4250.28,
-    "ema50": 4310.0,
-    "ema200": 4325.28,
-    "rsi14": 42.1,
-    "macd_hist": -2.107,
+    "ema20": 4250.1,
+    "ema50": 4309.92,
+    "ema200": 4325.26,
+    "rsi14": 42.0,
+    "macd_hist": -2.228,
     "macd_bullish": false,
     "adx14": 19.9,
     "atr14": 85.83,
@@ -206,9 +208,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 9.63
+      "utc_hour": 9.72
     },
-    "tech_score": -0.489
+    "tech_score": -0.49
   },
   "news_blackout": {
     "blocked": false,
