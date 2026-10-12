@@ -518,16 +518,17 @@ void Evaluate()
    double sl_dist = InpSLDollars;                 // USD per oz
    double sl_pts  = sl_dist / point;              // in points
    long stops_level = SymbolInfoInteger(sym, SYMBOL_TRADE_STOPS_LEVEL);
-   if(sl_pts < stops_level + 10)
+   if(stops_level > 0 && sl_pts < stops_level + 10)
    {
-      Print("GoldOracle: SL too tight for broker stops level");
-      return;
+      sl_pts = stops_level + 20;
+      sl_dist = sl_pts * point;
+      Print("GoldOracle: adjusted sl_dist to broker stops level: ", sl_dist);
    }
 
    double vol = CalcVolume(sym, sl_dist) * size_mult * exposure;
-   if(vol <= 0) { Print("GoldOracle: volume calc failed"); return; }
-   Print(StringFormat("GoldOracle: sizing risk=%.2f%% x tier=%.2f x exposure=%.2f",
-                      InpRiskPercent, size_mult, exposure));
+   if(vol <= 0) { Print("GoldOracle: volume calc failed for vol: ", vol); return; }
+   Print(StringFormat("GoldOracle: executing %s vol=%.2f risk=%.2f%% x tier=%.2f",
+                      sig, vol, InpRiskPercent, size_mult));
 
    double price, sl, tp;
    trade.SetExpertMagicNumber(InpMagic);
@@ -570,6 +571,11 @@ void OnDeinit(const int reason)
 {
    EventKillTimer();
    Comment("");
+}
+
+void OnTick()
+{
+   Evaluate();
 }
 
 void OnTimer()
