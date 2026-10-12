@@ -36,6 +36,7 @@
 #include <Trade\Trade.mqh>
 
 //--- inputs
+input string InpSymbol          = "";                 // trade symbol (empty = current chart symbol)
 input string InpSignalFile     = "gold_signal.json"; // signal file in MQL5/Files
 input double InpRiskPercent     = 0.5;                // risk per trade (% of equity)
 input int    InpSLDollars       = 30;                 // stop loss in USD per oz
@@ -408,9 +409,13 @@ bool ExecWithRetry(const bool isBuy, const double vol, const string sym,
 //+------------------------------------------------------------------+
 void Evaluate()
 {
-   const string sym = "XAUUSD";
-   if(!SymbolInfoInteger(sym, SYMBOL_SELECT))
+   string sym = (InpSymbol != "") ? InpSymbol : _Symbol;
+   if(sym == "" || !SymbolInfoInteger(sym, SYMBOL_SELECT))
+   {
+      if(SymbolInfoInteger("XAUUSD", SYMBOL_SELECT)) sym = "XAUUSD";
+      else if(SymbolInfoInteger("XAUUSDm", SYMBOL_SELECT)) sym = "XAUUSDm";
       SymbolSelect(sym, true);
+   }
 
    double point = SymbolInfoDouble(sym, SYMBOL_POINT);
    int    digits = (int)SymbolInfoInteger(sym, SYMBOL_DIGITS);
