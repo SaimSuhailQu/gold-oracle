@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-12T23:14:14.249207+00:00",
-  "timestamp_epoch": 1791846854,
+  "timestamp": "2026-10-12T23:19:08.486423+00:00",
+  "timestamp_epoch": 1791847148,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4369,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1262,
-  "gold_price": 4192.5,
-  "composite": -0.9437,
+  "gold_price": 4190.9,
+  "composite": -0.9442,
   "calibration": {
     "a": 0.2393,
     "b": 0.645
@@ -25,9 +25,9 @@
     "fed_stance": -0.9426,
     "fear": -0.4597,
     "risk_app": -0.4027,
-    "btc_comp": -0.5483,
+    "btc_comp": -0.5566,
     "etf_flow": -1.1075,
-    "momentum": -0.0261,
+    "momentum": -0.0291,
     "curve": 1.8214,
     "duration": -1.2248,
     "cb_regime": 0.5
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4378.68,
-  "ma200": 4546.45,
-  "atr14": 36.42,
-  "sl_dollars": 72.84,
-  "tp_dollars": 127.47,
+  "ma50": 4378.65,
+  "ma200": 4546.44,
+  "atr14": 36.54,
+  "sl_dollars": 73.07,
+  "tp_dollars": 127.88,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": -0.075,
@@ -143,7 +143,7 @@
     "fed_stance": -0.135,
     "fear": -0.0409,
     "risk_app": -0.049,
-    "btc_comp": -0.0371,
+    "btc_comp": -0.0377,
     "etf_flow": -0.0033,
     "momentum": -0.0,
     "curve": 0.0006,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4164.94,
-    "vwap_zscore": -0.5,
+    "vwap": 4164.93,
+    "vwap_zscore": 0.26,
     "poc": 4167.1,
     "vah": 4169.26,
     "val": 4160.25,
@@ -175,14 +175,14 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4249.56,
-    "ema50": 4309.7,
-    "ema200": 4325.21,
-    "rsi14": 41.5,
-    "macd_hist": -2.592,
+    "ema20": 4249.4,
+    "ema50": 4309.64,
+    "ema200": 4325.19,
+    "rsi14": 41.4,
+    "macd_hist": -2.694,
     "macd_bullish": false,
     "adx14": 20.0,
-    "atr14": 84.27,
+    "atr14": 84.38,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.23
+      "utc_hour": 23.32
     },
-    "tech_score": 0.108
+    "tech_score": 0.207
   },
   "news_blackout": {
     "blocked": false,
