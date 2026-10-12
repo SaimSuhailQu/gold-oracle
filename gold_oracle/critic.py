@@ -37,9 +37,9 @@ class DecisionCriticEngine:
     were unreachable: ensemble max ~0.76, 5 trades/7yr).
     """
 
-    def __init__(self, min_prob_threshold: float = 0.70,
-                 full_mcda: float = 0.70,
-                 q_prob: float = 0.60, q_mcda: float = 0.50):
+    def __init__(self, min_prob_threshold: float = 0.53,
+                 full_mcda: float = 0.55,
+                 q_prob: float = 0.50, q_mcda: float = 0.40):
         import os
         self.min_prob_threshold = float(os.environ.get("GOLD_FULL_P", min_prob_threshold))
         self.full_mcda = full_mcda

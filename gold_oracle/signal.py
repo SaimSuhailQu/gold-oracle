@@ -20,8 +20,8 @@ from .data import latest
 from .factors import FEATURES, HORIZON, build_features
 from .model import GoldProbabilityModel
 
-LONG_T = float(os.environ.get("GOLD_LONG_T", "0.70"))
-SHORT_T = float(os.environ.get("GOLD_SHORT_T", "0.30"))
+LONG_T = float(os.environ.get("GOLD_LONG_T", "0.52"))
+SHORT_T = float(os.environ.get("GOLD_SHORT_T", "0.48"))
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SIGNAL_PATH = os.environ.get(

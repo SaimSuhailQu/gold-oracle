@@ -38,30 +38,31 @@
 //--- inputs
 input string InpSymbol          = "";                 // trade symbol (empty = current chart symbol)
 input string InpSignalFile     = "gold_signal.json"; // signal file in MQL5/Files
+input bool   InpScalpMode       = true;               // Mini-Trade / Scalper Mode (fast frequent trades)
 input double InpRiskPercent     = 0.5;                // risk per trade (% of equity)
-input int    InpSLDollars       = 30;                 // stop loss in USD per oz
-input int    InpTPDollars       = 60;                 // take profit in USD per oz
+input double InpSLDollars       = 3.0;                // stop loss in USD per oz (mini scalp: $3.00)
+input double InpTPDollars       = 5.0;                // take profit in USD per oz (mini scalp: $5.00)
 input int    InpMaxSpreadPoints = 500;                // max spread (points)
-input int    InpSignalMaxAgeHrs = 6;                  // ignore signals older than this (bot rebuilds every 5 min)
+input int    InpSignalMaxAgeHrs = 48;                 // max signal age (hrs)
 input ulong  InpMagic           = 20261005;           // magic number
-input int    InpTimerSeconds    = 60;                 // re-evaluate every N sec
+input int    InpTimerSeconds    = 10;                 // re-evaluate every N sec (10s for scalping)
 input bool   InpUseDynamicExposure = true;           // scale lots by signal exposure_mult
 //--- risk engine (checklist 28-30, 33-36, 50)
-input double InpMaxDailyLossPct = 2.0;                // halt trading if daily loss exceeds this % (29)
-input double InpMaxDrawdownPct  = 10.0;               // kill switch if drawdown from peak equity exceeds % (30,50)
-input bool   InpUseBreakEven    = true;               // move SL to breakeven at trigger (33)
-input double InpBreakEvenTriggerDollars = 20.0;       // breakeven trigger: +$ per oz
-input double InpBreakEvenOffsetDollars  = 2.0;        // lock in +$ per oz beyond entry
-input bool   InpUseTrailing     = true;               // trailing stop-loss (34)
-input double InpTrailingStartDollars   = 30.0;        // start trailing at +$ per oz
-input double InpTrailingStepDollars    = 10.0;        // trail SL in $ steps
-input bool   InpUsePartialTP    = true;               // partial profit-taking (35)
-input double InpPartialTP1Dollars  = 40.0;             // take partial at +$ per oz
+input double InpMaxDailyLossPct = 3.0;                // halt trading if daily loss exceeds this %
+input double InpMaxDrawdownPct  = 10.0;               // kill switch if drawdown from peak equity exceeds %
+input bool   InpUseBreakEven    = true;               // move SL to breakeven at trigger
+input double InpBreakEvenTriggerDollars = 2.0;        // breakeven trigger: +$ per oz
+input double InpBreakEvenOffsetDollars  = 0.5;        // lock in +$ per oz beyond entry
+input bool   InpUseTrailing     = true;               // trailing stop-loss
+input double InpTrailingStartDollars   = 2.5;         // start trailing at +$ per oz
+input double InpTrailingStepDollars    = 1.0;         // trail SL in $ steps
+input bool   InpUsePartialTP    = true;               // partial profit-taking
+input double InpPartialTP1Dollars  = 3.5;              // take partial at +$ per oz
 input double InpPartialClosePct    = 50.0;             // % of volume to close at TP1
-input int    InpMaxConsecutiveLosses = 3;             // pause trading after N consecutive losses (36)
-input int    InpPauseHours        = 24;               // pause duration in hours
-input int    InpMaxRetries        = 3;                // broker execution retries (37)
-input bool   InpKillSwitch       = false;            // MASTER kill switch — set true to halt everything (50)
+input int    InpMaxConsecutiveLosses = 5;             // pause trading after N consecutive losses
+input int    InpPauseHours        = 4;                // pause duration in hours
+input int    InpMaxRetries        = 3;                // broker execution retries
+input bool   InpKillSwitch       = false;            // MASTER kill switch — set true to halt everything
 
 CTrade trade;
 
@@ -120,20 +121,27 @@ long JsonGetLong(const string json, const string key)
 //+------------------------------------------------------------------+
 bool ReadSignalFile(string &out_json)
 {
-   int h = FileOpen(InpSignalFile, FILE_READ | FILE_TXT | FILE_ANSI);
+   out_json = "";
+   int h = FileOpen(InpSignalFile, FILE_READ | FILE_TXT);
+   if(h == INVALID_HANDLE)
+      h = FileOpen(InpSignalFile, FILE_READ | FILE_BIN);
    if(h == INVALID_HANDLE)
    {
       Print("GoldOracle: cannot open ", InpSignalFile, " err=", GetLastError());
       return false;
    }
    ulong size = FileSize(h);
-   if(size == 0 || size > 65536)
+   if(size == 0 || size > 131072)
    {
       FileClose(h);
       Print("GoldOracle: signal file has unexpected size: ", size);
       return false;
    }
-   out_json = FileReadString(h, (int)size);
+   while(!FileIsEnding(h))
+   {
+      string line = FileReadString(h);
+      out_json += line + "\n";
+   }
    FileClose(h);
    return StringLen(out_json) > 10;
 }
@@ -454,6 +462,13 @@ void Evaluate()
 
    // ticket/ptype/in_pos already resolved at the top of Evaluate()
 
+   // In Scalp Mode: if model has even a tiny directional bias (p_up != 0.50), trade it!
+   if(InpScalpMode && sig != "LONG" && sig != "SHORT")
+   {
+      if(p_up >= 0.50) sig = "LONG";
+      else sig = "SHORT";
+   }
+
    // FLAT signal (or unknown): close any open oracle position
    if(sig != "LONG" && sig != "SHORT")
    {
@@ -478,17 +493,21 @@ void Evaluate()
 
    if(!SpreadOK(sym)) { DrawStatus("SPREAD TOO WIDE"); return; }
 
-   // 26. risk-to-reward filter: need >= 1.5:1 on the planned trade
-   if(InpTPDollars < InpSLDollars * 1.5)
+   // 26. risk-to-reward filter: need >= 1.2:1 on the planned trade
+   if(InpTPDollars < InpSLDollars * 1.2)
    {
-      DrawStatus("POOR R:R — TP/SL below 1.5:1");
-      Journal("RR_BLOCK", 0, StringFormat("tp=%d sl=%d", InpTPDollars, InpSLDollars));
+      DrawStatus("POOR R:R — TP/SL below 1.2:1");
+      Journal("RR_BLOCK", 0, StringFormat("tp=%.1f sl=%.1f", InpTPDollars, InpSLDollars));
       return;
    }
 
-   // Critic tier sizing + regime exposure scaling (fail CLOSED: unknown tier = no trade)
+   // Critic tier sizing + regime exposure scaling
    double size_mult = JsonGetDouble(json, "size_mult");
-   if(size_mult <= 0.0 || size_mult > 1.0) { Print("GoldOracle: bad size_mult, standing aside"); return; }
+   if(size_mult <= 0.0 || size_mult > 1.0)
+   {
+      if(InpScalpMode) size_mult = 1.0; // In scalp mode, trade active size
+      else { Print("GoldOracle: bad size_mult, standing aside"); return; }
+   }
    double exposure = 1.0;
    if(InpUseDynamicExposure)
    {

@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-10-12T08:00:41.230322+00:00",
-  "timestamp_epoch": 1791792041,
+  "timestamp": "2026-10-12T08:52:43.069746+00:00",
+  "timestamp_epoch": 1791795163,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5188,
-  "p_down": 0.4812,
+  "p_up": 0.4783,
+  "p_down": 0.5217,
   "signal": "FLAT",
-  "raw_signal": "FLAT",
+  "raw_signal": "SHORT",
   "size_tier": "FLAT",
   "size_mult": 0.0,
-  "long_t": 0.7,
-  "short_t": 0.3,
-  "confidence": 0.0376,
+  "long_t": 0.52,
+  "short_t": 0.48,
+  "confidence": 0.0434,
   "gold_price": 4207.2,
   "composite": -0.9524,
   "calibration": {
@@ -37,48 +37,48 @@
     "size_tier": "FLAT",
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
-    "evaluated_direction": "LONG",
-    "directional_probability": 0.5188,
-    "min_required_probability": 0.7,
-    "quarter_probability": 0.6,
-    "mcda_score": 0.535,
+    "evaluated_direction": "SHORT",
+    "directional_probability": 0.5217,
+    "min_required_probability": 0.53,
+    "quarter_probability": 0.5,
+    "mcda_score": 0.757,
     "mcda_criteria_scores": {
-      "macro_alignment": 0.16666666666666666,
+      "macro_alignment": 0.8333333333333334,
       "ml_consensus": 0.942,
-      "news_sentiment_alignment": 1.3667,
-      "technical_trend": 0.1,
-      "auction_location": 0.4
+      "news_sentiment_alignment": 0.0,
+      "technical_trend": 1.0,
+      "auction_location": 0.8
     },
     "fatal_flaws": [
-      "INSUFFICIENT PROBABILITY: Calculated win probability is 51.9%, which fails the mandatory >= 70% threshold."
+      "INSUFFICIENT PROBABILITY: Calculated win probability is 52.2%, which fails the mandatory >= 53% threshold."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5188,
+    "p_ensemble_up": 0.4783,
     "p_linear_logistic": 0.421,
     "p_boosted_ml": 0.4791,
-    "nlp_sentiment_score": 0.7387
+    "nlp_sentiment_score": 0.3333
   },
   "ai_sentiment": {
-    "sentiment_score": 0.8667,
-    "bullish_indicators": 14,
-    "bearish_indicators": 1,
+    "sentiment_score": 0.7333,
+    "bullish_indicators": 13,
+    "bearish_indicators": 2,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.867,
+      "news": 0.733,
       "youtube": null,
       "papers": 0.0,
-      "blended": 0.619
+      "blended": 0.524
     },
     "narrative_zscore": {
-      "z": 2.216,
-      "mean": 0.4145,
-      "std": 0.0923,
-      "n": 6
+      "z": 1.0,
+      "mean": 0.4301,
+      "std": 0.0936,
+      "n": 7
     }
   },
   "youtube_memory": {
@@ -172,7 +172,7 @@
     "vah": 3298.5,
     "val": 1262.0,
     "audit_verdict": "STAND_ASIDE",
-    "audit_confidence": 0.0
+    "audit_confidence": 0.4
   },
   "technicals": {
     "ema20": 4250.96,
@@ -206,7 +206,7 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.0
+      "utc_hour": 8.87
     },
     "tech_score": -0.186
   },
