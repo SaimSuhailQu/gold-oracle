@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-12T08:24:00.626389+00:00",
-  "timestamp_epoch": 1791793440,
+  "timestamp": "2026-10-12T08:28:34.320085+00:00",
+  "timestamp_epoch": 1791793714,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4974,
@@ -12,7 +12,7 @@
   "long_t": 0.7,
   "short_t": 0.3,
   "confidence": 0.0052,
-  "gold_price": 4201.2,
+  "gold_price": 4199.7,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -41,16 +41,17 @@
     "directional_probability": 0.5026,
     "min_required_probability": 0.7,
     "quarter_probability": 0.6,
-    "mcda_score": 0.757,
+    "mcda_score": 0.677,
     "mcda_criteria_scores": {
       "macro_alignment": 0.8333333333333334,
       "ml_consensus": 0.942,
       "news_sentiment_alignment": 0.0,
       "technical_trend": 1.0,
-      "auction_location": 0.8
+      "auction_location": 0.4
     },
     "fatal_flaws": [
-      "INSUFFICIENT PROBABILITY: Calculated win probability is 50.3%, which fails the mandatory >= 70% threshold."
+      "INSUFFICIENT PROBABILITY: Calculated win probability is 50.3%, which fails the mandatory >= 70% threshold.",
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
@@ -166,23 +167,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4189.59,
-    "vwap_zscore": -1.94,
-    "poc": 4200.16,
-    "vah": 4204.54,
-    "val": 4174.89,
+    "vwap": 4189.49,
+    "vwap_zscore": -2.04,
+    "poc": 4200.12,
+    "vah": 4204.53,
+    "val": 4175.34,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4250.39,
-    "ema50": 4310.04,
-    "ema200": 4325.29,
-    "rsi14": 42.2,
-    "macd_hist": -2.037,
+    "ema20": 4250.24,
+    "ema50": 4309.98,
+    "ema200": 4325.28,
+    "rsi14": 42.1,
+    "macd_hist": -2.132,
     "macd_bullish": false,
     "adx14": 19.9,
-    "atr14": 85.52,
+    "atr14": 85.65,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
@@ -208,7 +209,7 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.4
+      "utc_hour": 8.47
     },
     "tech_score": -0.489
   },
