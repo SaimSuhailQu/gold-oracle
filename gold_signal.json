@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-12T07:54:01.808889+00:00",
-  "timestamp_epoch": 1791791641,
+  "timestamp": "2026-10-12T07:59:00.388458+00:00",
+  "timestamp_epoch": 1791791940,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5188,
-  "p_down": 0.4812,
+  "p_up": 0.5182,
+  "p_down": 0.4818,
   "signal": "FLAT",
   "raw_signal": "FLAT",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.7,
   "short_t": 0.3,
-  "confidence": 0.0376,
-  "gold_price": 4208.8,
+  "confidence": 0.0364,
+  "gold_price": 4207.1,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -38,47 +38,47 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.5188,
+    "directional_probability": 0.5182,
     "min_required_probability": 0.7,
     "quarter_probability": 0.6,
-    "mcda_score": 0.575,
+    "mcda_score": 0.56,
     "mcda_criteria_scores": {
       "macro_alignment": 0.16666666666666666,
       "ml_consensus": 0.942,
-      "news_sentiment_alignment": 1.3667,
+      "news_sentiment_alignment": 1.2647,
       "technical_trend": 0.1,
       "auction_location": 0.6
     },
     "fatal_flaws": [
-      "INSUFFICIENT PROBABILITY: Calculated win probability is 51.9%, which fails the mandatory >= 70% threshold."
+      "INSUFFICIENT PROBABILITY: Calculated win probability is 51.8%, which fails the mandatory >= 70% threshold."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.486) against a LONG \u2014 MTF=-1.0, RSI=42.9, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.486) against a LONG \u2014 MTF=-1.0, RSI=42.7, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5188,
+    "p_ensemble_up": 0.5182,
     "p_linear_logistic": 0.421,
     "p_boosted_ml": 0.4791,
-    "nlp_sentiment_score": 0.7387
+    "nlp_sentiment_score": 0.7323
   },
   "ai_sentiment": {
-    "sentiment_score": 0.8667,
-    "bullish_indicators": 14,
-    "bearish_indicators": 1,
+    "sentiment_score": 0.7647,
+    "bullish_indicators": 15,
+    "bearish_indicators": 2,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.867,
+      "news": 0.765,
       "youtube": null,
       "papers": 0.0,
-      "blended": 0.619
+      "blended": 0.546
     },
     "narrative_zscore": {
-      "z": 2.216,
-      "mean": 0.4145,
-      "std": 0.0923,
+      "z": 2.197,
+      "mean": 0.4024,
+      "std": 0.0655,
       "n": 6
     }
   },
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4190.93,
-    "vwap_zscore": -1.55,
+    "vwap": 4190.6,
+    "vwap_zscore": -1.54,
     "poc": 4200.17,
     "vah": 4204.68,
     "val": 4177.58,
@@ -176,11 +176,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4251.11,
-    "ema50": 4310.34,
-    "ema200": 4325.37,
-    "rsi14": 42.9,
-    "macd_hist": -1.552,
+    "ema20": 4250.95,
+    "ema50": 4310.27,
+    "ema200": 4325.35,
+    "rsi14": 42.7,
+    "macd_hist": -1.66,
     "macd_bullish": false,
     "adx14": 19.9,
     "atr14": 85.39,
@@ -209,7 +209,7 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 7.9
+      "utc_hour": 7.98
     },
     "tech_score": -0.486
   },
