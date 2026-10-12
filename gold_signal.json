@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-12T02:33:41.932891+00:00",
-  "timestamp_epoch": 1791772421,
+  "timestamp": "2026-10-12T02:39:00.543715+00:00",
+  "timestamp_epoch": 1791772740,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4989,
@@ -12,7 +12,7 @@
   "long_t": 0.7,
   "short_t": 0.3,
   "confidence": 0.0022,
-  "gold_price": 4234.9,
+  "gold_price": 4235.8,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -41,13 +41,13 @@
     "directional_probability": 0.5011,
     "min_required_probability": 0.7,
     "quarter_probability": 0.6,
-    "mcda_score": 0.797,
+    "mcda_score": 0.757,
     "mcda_criteria_scores": {
       "macro_alignment": 0.8333333333333334,
       "ml_consensus": 0.942,
       "news_sentiment_alignment": 0.0,
       "technical_trend": 1.0,
-      "auction_location": 1.0
+      "auction_location": 0.8
     },
     "fatal_flaws": [
       "INSUFFICIENT PROBABILITY: Calculated win probability is 50.1%, which fails the mandatory >= 70% threshold.",
@@ -55,7 +55,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.428) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.329) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -168,8 +168,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4191.1,
-    "vwap_zscore": 1.79,
+    "vwap": 4191.15,
+    "vwap_zscore": 0.96,
     "poc": 4189.75,
     "vah": 4204.19,
     "val": 4177.58,
@@ -177,11 +177,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4253.6,
-    "ema50": 4311.36,
-    "ema200": 4325.63,
-    "rsi14": 45.6,
-    "macd_hist": 0.114,
+    "ema20": 4253.68,
+    "ema50": 4311.4,
+    "ema200": 4325.64,
+    "rsi14": 45.7,
+    "macd_hist": 0.172,
     "macd_bullish": true,
     "adx14": 19.9,
     "atr14": 84.95,
@@ -206,13 +206,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "BEARISH_ENGULFING",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.55
+      "utc_hour": 2.65
     },
-    "tech_score": 0.428
+    "tech_score": 0.329
   },
   "news_blackout": {
     "blocked": false,
