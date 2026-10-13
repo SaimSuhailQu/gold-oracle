@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-13T16:44:12.003710+00:00",
-  "timestamp_epoch": 1791909852,
+  "timestamp": "2026-10-13T16:48:46.355315+00:00",
+  "timestamp_epoch": 1791910126,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5237,
-  "p_down": 0.4763,
+  "p_up": 0.5239,
+  "p_down": 0.4761,
   "signal": "LONG",
   "raw_signal": "LONG",
   "size_tier": "QUARTER",
   "size_mult": 0.25,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0474,
-  "gold_price": 4181.2,
-  "composite": -0.8312,
+  "confidence": 0.0478,
+  "gold_price": 4181.4,
+  "composite": -0.8299,
   "calibration": {
     "a": 0.2388,
     "b": 0.6453
   },
   "factor_zscores": {
-    "real_rates": -1.2828,
+    "real_rates": -1.2773,
     "nom_yield": -0.921,
-    "dollar": -1.5558,
+    "dollar": -1.5672,
     "fed_stance": -0.8259,
-    "fear": -0.4161,
-    "risk_app": -0.5357,
-    "btc_comp": -0.9212,
-    "etf_flow": -1.0811,
-    "momentum": -0.0373,
+    "fear": -0.4286,
+    "risk_app": -0.5271,
+    "btc_comp": -0.9206,
+    "etf_flow": -1.0812,
+    "momentum": -0.0369,
     "curve": 1.7099,
-    "duration": -0.9697,
+    "duration": -0.9579,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,7 +38,7 @@
     "size_mult": 0.25,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.5237,
+    "directional_probability": 0.5239,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.627,
@@ -52,13 +52,13 @@
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.597) against a LONG \u2014 MTF=-1.0, RSI=40.6, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.397) against a LONG \u2014 MTF=-1.0, RSI=40.6, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5237,
-    "p_linear_logistic": 0.4456,
+    "p_ensemble_up": 0.5239,
+    "p_linear_logistic": 0.4458,
     "p_boosted_ml": 0.5327,
     "nlp_sentiment_score": 0.4227
   },
@@ -130,23 +130,23 @@
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
   "ma50": 4380.46,
-  "ma200": 4544.83,
-  "atr14": 33.09,
-  "sl_dollars": 66.17,
-  "tp_dollars": 115.8,
+  "ma200": 4544.84,
+  "atr14": 33.07,
+  "sl_dollars": 66.14,
+  "tp_dollars": 115.75,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": -0.0746,
+    "real_rates": -0.0743,
     "nom_yield": -0.1693,
-    "dollar": -0.1545,
+    "dollar": -0.1557,
     "fed_stance": -0.1182,
-    "fear": -0.037,
-    "risk_app": -0.0652,
-    "btc_comp": -0.0626,
+    "fear": -0.0381,
+    "risk_app": -0.0641,
+    "btc_comp": -0.0625,
     "etf_flow": -0.0038,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": -0.1735,
+    "duration": -0.1714,
     "cb_regime": 0.0274
   },
   "model_weights": {
@@ -165,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4179.21,
-    "vwap_zscore": -2.15,
+    "vwap": 4179.16,
+    "vwap_zscore": -2.07,
     "poc": 4183.76,
     "vah": 4190.1,
     "val": 4155.44,
@@ -174,11 +174,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4242.88,
-    "ema50": 4304.59,
-    "ema200": 4323.75,
+    "ema20": 4242.9,
+    "ema50": 4304.6,
+    "ema200": 4323.76,
     "rsi14": 40.6,
-    "macd_hist": -0.347,
+    "macd_hist": -0.334,
     "macd_bullish": false,
     "adx14": 19.2,
     "atr14": 84.58,
@@ -203,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 16.73
+      "utc_hour": 16.8
     },
-    "tech_score": -0.597
+    "tech_score": -0.397
   },
   "news_blackout": {
     "blocked": false,
