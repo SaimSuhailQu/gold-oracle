@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-12T09:20:03.276695+00:00",
-  "timestamp_epoch": 1791796803,
+  "timestamp": "2026-10-13T01:53:37.949570+00:00",
+  "timestamp_epoch": 1791856417,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4949,
-  "p_down": 0.5051,
-  "signal": "SHORT",
-  "raw_signal": "FLAT",
-  "size_tier": "QUARTER",
-  "size_mult": 0.25,
+  "p_up": 0.4319,
+  "p_down": 0.5681,
+  "signal": "FLAT",
+  "raw_signal": "SHORT",
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0102,
-  "gold_price": 4207.2,
+  "confidence": 0.1362,
+  "gold_price": 4178.9,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -33,12 +33,12 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "QUARTER",
-    "size_mult": 0.25,
-    "final_audited_signal": "SHORT",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5051,
+    "directional_probability": 0.5681,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.757,
@@ -49,34 +49,37 @@
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze.",
+      "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4949,
+    "p_ensemble_up": 0.4319,
     "p_linear_logistic": 0.421,
     "p_boosted_ml": 0.4791,
-    "nlp_sentiment_score": 0.4997
+    "nlp_sentiment_score": -0.131
   },
   "ai_sentiment": {
-    "sentiment_score": 0.8571,
-    "bullish_indicators": 13,
-    "bearish_indicators": 1,
+    "sentiment_score": 0.5714,
+    "bullish_indicators": 11,
+    "bearish_indicators": 3,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.857,
+      "news": 0.571,
       "youtube": null,
       "papers": 0.0,
-      "blended": 0.612
+      "blended": 0.408
     },
     "narrative_zscore": {
-      "z": 1.499,
-      "mean": 0.4529,
-      "std": 0.1063,
-      "n": 8
+      "z": -0.393,
+      "mean": 0.4479,
+      "std": 0.1012,
+      "n": 9
     }
   },
   "youtube_memory": {
@@ -163,31 +166,33 @@
     "cb_regime": 0.0563
   },
   "microstructure": {
-    "data_source": "synthesized_daily_proxy",
-    "vwap": 4207.2,
-    "vwap_zscore": 0.0,
-    "poc": 1273.5,
-    "vah": 3298.5,
-    "val": 1262.0,
+    "data_source": "real_1m:kraken_paxg_1m",
+    "vwap": 4163.95,
+    "vwap_zscore": -2.81,
+    "poc": 4167.27,
+    "vah": 4169.36,
+    "val": 4160.08,
     "audit_verdict": "STAND_ASIDE",
-    "audit_confidence": 0.0
+    "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4250.96,
-    "ema50": 4310.28,
-    "ema200": 4325.35,
-    "rsi14": 42.7,
-    "macd_hist": -1.654,
+    "ema20": 4248.26,
+    "ema50": 4309.17,
+    "ema200": 4325.07,
+    "rsi14": 40.5,
+    "macd_hist": -3.46,
     "macd_bullish": false,
-    "adx14": 19.9,
-    "atr14": 85.39,
+    "adx14": 20.0,
+    "atr14": 85.47,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
-    "mtf_trends": {},
-    "mtf_score": 0.0,
+    "mtf_trends": {
+      "M5": -1
+    },
+    "mtf_score": -1.0,
     "mtf_aligned_bull": false,
-    "mtf_aligned_bear": false,
+    "mtf_aligned_bear": true,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -200,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
-      "session": "LONDON",
-      "trade_ok": true,
-      "utc_hour": 9.33
+      "session": "ASIAN",
+      "trade_ok": false,
+      "utc_hour": 1.88
     },
-    "tech_score": -0.186
+    "tech_score": -0.597
   },
   "news_blackout": {
     "blocked": false,
