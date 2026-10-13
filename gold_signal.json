@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-13T23:14:05.119851+00:00",
-  "timestamp_epoch": 1791933245,
+  "timestamp": "2026-10-13T23:18:53.606989+00:00",
+  "timestamp_epoch": 1791933533,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5057,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0114,
-  "gold_price": 4183.6,
+  "gold_price": 4181.2,
   "composite": -0.9428,
   "calibration": {
     "a": 0.2393,
@@ -53,7 +53,8 @@
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.597) against a LONG \u2014 MTF=-1.0, RSI=40.6, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -166,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4167.07,
-    "vwap_zscore": -0.89,
+    "vwap": 4166.95,
+    "vwap_zscore": -0.93,
     "poc": 4156.04,
     "vah": 4184.99,
     "val": 4153.27,
@@ -175,23 +176,23 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4243.11,
-    "ema50": 4304.68,
-    "ema200": 4323.78,
-    "rsi14": 40.8,
-    "macd_hist": -0.193,
+    "ema20": 4242.88,
+    "ema50": 4304.59,
+    "ema200": 4323.75,
+    "rsi14": 40.6,
+    "macd_hist": -0.347,
     "macd_bullish": false,
     "adx14": 19.2,
-    "atr14": 81.54,
+    "atr14": 81.64,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
     "mtf_trends": {
-      "M5": 1
+      "M5": -1
     },
-    "mtf_score": 1.0,
-    "mtf_aligned_bull": true,
-    "mtf_aligned_bear": false,
+    "mtf_score": -1.0,
+    "mtf_aligned_bull": false,
+    "mtf_aligned_bear": true,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -208,9 +209,9 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.23
+      "utc_hour": 23.3
     },
-    "tech_score": 0.004
+    "tech_score": -0.597
   },
   "news_blackout": {
     "blocked": false,
