@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-13T02:39:04.183091+00:00",
-  "timestamp_epoch": 1791859144,
+  "timestamp": "2026-10-13T02:43:40.814339+00:00",
+  "timestamp_epoch": 1791859420,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4834,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0332,
-  "gold_price": 4193.2,
+  "gold_price": 4190.8,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -41,13 +41,13 @@
     "directional_probability": 0.5166,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.757,
+    "mcda_score": 0.797,
     "mcda_criteria_scores": {
       "macro_alignment": 0.8333333333333334,
       "ml_consensus": 0.942,
       "news_sentiment_alignment": 0.0,
       "technical_trend": 1.0,
-      "auction_location": 0.8
+      "auction_location": 1.0
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4163.93,
-    "vwap_zscore": 1.33,
+    "vwap": 4163.97,
+    "vwap_zscore": 1.62,
     "poc": 4163.1,
     "vah": 4169.82,
     "val": 4161.94,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4249.62,
-    "ema50": 4309.73,
-    "ema200": 4325.21,
-    "rsi14": 41.6,
-    "macd_hist": -2.547,
+    "ema20": 4249.4,
+    "ema50": 4309.63,
+    "ema200": 4325.19,
+    "rsi14": 41.4,
+    "macd_hist": -2.7,
     "macd_bullish": false,
     "adx14": 20.0,
     "atr14": 85.61,
@@ -187,11 +187,11 @@
     "resistance": 4259.0,
     "support": 4091.2,
     "mtf_trends": {
-      "M5": -1
+      "M5": 1
     },
-    "mtf_score": -1.0,
-    "mtf_aligned_bull": false,
-    "mtf_aligned_bear": true,
+    "mtf_score": 1.0,
+    "mtf_aligned_bull": true,
+    "mtf_aligned_bear": false,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -208,9 +208,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.65
+      "utc_hour": 2.72
     },
-    "tech_score": -0.492
+    "tech_score": 0.107
   },
   "news_blackout": {
     "blocked": false,
