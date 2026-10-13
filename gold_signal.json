@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-13T22:43:50.340059+00:00",
-  "timestamp_epoch": 1791931430,
+  "timestamp": "2026-10-13T22:49:13.192212+00:00",
+  "timestamp_epoch": 1791931753,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.547,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.094,
-  "gold_price": 4183.6,
-  "composite": -0.7922,
+  "gold_price": 4183.2,
+  "composite": -0.7924,
   "calibration": {
     "a": 0.2388,
     "b": 0.6452
@@ -25,9 +25,9 @@
     "fed_stance": -0.7712,
     "fear": -0.4635,
     "risk_app": -0.5339,
-    "btc_comp": -0.9243,
+    "btc_comp": -0.9276,
     "etf_flow": -1.0936,
-    "momentum": -0.0328,
+    "momentum": -0.0336,
     "curve": 1.6946,
     "duration": -0.8985,
     "cb_regime": 0.5
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4380.51,
-  "ma200": 4544.85,
-  "atr14": 32.91,
-  "sl_dollars": 65.83,
-  "tp_dollars": 115.2,
+  "ma50": 4380.5,
+  "ma200": 4544.84,
+  "atr14": 32.94,
+  "sl_dollars": 65.89,
+  "tp_dollars": 115.3,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": -0.0691,
@@ -143,7 +143,7 @@
     "fed_stance": -0.1103,
     "fear": -0.0412,
     "risk_app": -0.0649,
-    "btc_comp": -0.0628,
+    "btc_comp": -0.063,
     "etf_flow": -0.0038,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4167.93,
-    "vwap_zscore": -0.79,
+    "vwap": 4167.76,
+    "vwap_zscore": -0.62,
     "poc": 4156.04,
     "vah": 4184.99,
     "val": 4153.27,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4243.11,
-    "ema50": 4304.68,
-    "ema200": 4323.78,
-    "rsi14": 40.8,
-    "macd_hist": -0.193,
+    "ema20": 4243.07,
+    "ema50": 4304.67,
+    "ema200": 4323.77,
+    "rsi14": 40.7,
+    "macd_hist": -0.219,
     "macd_bullish": false,
     "adx14": 19.2,
     "atr14": 81.53,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": null,
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.72
+      "utc_hour": 22.82
     },
-    "tech_score": 0.004
+    "tech_score": 0.104
   },
   "news_blackout": {
     "blocked": false,
