@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-13T09:23:40.252600+00:00",
-  "timestamp_epoch": 1791883420,
+  "timestamp": "2026-10-13T09:28:59.619159+00:00",
+  "timestamp_epoch": 1791883739,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4282,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1436,
-  "gold_price": 4211.8,
+  "gold_price": 4208.5,
   "composite": -0.9428,
   "calibration": {
     "a": 0.2393,
@@ -51,8 +51,7 @@
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.419) against a SHORT."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,20 +164,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4175.33,
-    "vwap_zscore": 0.59,
-    "poc": 4169.02,
-    "vah": 4194.91,
+    "vwap": 4175.44,
+    "vwap_zscore": 0.57,
+    "poc": 4189.54,
+    "vah": 4191.98,
     "val": 4160.72,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4245.8,
-    "ema50": 4305.79,
-    "ema200": 4324.06,
-    "rsi14": 43.8,
-    "macd_hist": 1.606,
+    "ema20": 4245.48,
+    "ema50": 4305.66,
+    "ema200": 4324.03,
+    "rsi14": 43.5,
+    "macd_hist": 1.396,
     "macd_bullish": true,
     "adx14": 19.2,
     "atr14": 84.58,
@@ -186,11 +185,11 @@
     "resistance": 4259.0,
     "support": 4091.2,
     "mtf_trends": {
-      "M5": 1
+      "M5": -1
     },
-    "mtf_score": 1.0,
-    "mtf_aligned_bull": true,
-    "mtf_aligned_bear": false,
+    "mtf_score": -1.0,
+    "mtf_aligned_bull": false,
+    "mtf_aligned_bear": true,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -207,9 +206,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 9.38
+      "utc_hour": 9.47
     },
-    "tech_score": 0.419
+    "tech_score": -0.183
   },
   "news_blackout": {
     "blocked": false,
