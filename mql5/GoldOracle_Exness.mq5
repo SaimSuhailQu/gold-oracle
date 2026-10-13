@@ -68,6 +68,7 @@ input int    InpSessionStartUTC  = 7;               // session start hour UTC (0
 input int    InpSessionEndUTC    = 21;              // session end hour UTC (21:00 NY close)
 input int    InpMaxConsecutiveLosses = 5;             // pause trading after N consecutive losses
 input int    InpPauseHours        = 4;                // pause duration in hours
+input bool   InpResetLossPause    = false;            // set to true to clear consecutive losses pause
 input int    InpMaxRetries        = 3;                // broker execution retries
 input bool   InpKillSwitch       = false;            // MASTER kill switch — set true to halt everything
 
@@ -296,6 +297,11 @@ int ConsecutiveLosses()
 
 bool PauseActive()
 {
+   if(InpResetLossPause)
+   {
+      FileDelete(RE_PauseFile());
+      return false;
+   }
    int h = FileOpen(RE_PauseFile(), FILE_READ | FILE_TXT | FILE_ANSI);
    if(h == INVALID_HANDLE) return false;
    string line = "";
@@ -307,6 +313,7 @@ bool PauseActive()
 
 void StartPause(const string reason)
 {
+   if(InpResetLossPause) return;
    long until = TimeGMT() + InpPauseHours * 3600;
    int h = FileOpen(RE_PauseFile(), FILE_WRITE | FILE_TXT | FILE_ANSI);
    if(h != INVALID_HANDLE) { FileWriteString(h, IntegerToString(until) + "\n"); FileClose(h); }
