@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-13T04:09:05.493915+00:00",
-  "timestamp_epoch": 1791864545,
+  "timestamp": "2026-10-13T04:13:54.839828+00:00",
+  "timestamp_epoch": 1791864834,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4378,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1244,
-  "gold_price": 4190.6,
+  "gold_price": 4212.7,
   "composite": -0.9524,
   "calibration": {
     "a": 0.2398,
@@ -53,7 +53,8 @@
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.419) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -166,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4165.89,
-    "vwap_zscore": 3.22,
+    "vwap": 4166.06,
+    "vwap_zscore": 3.11,
     "poc": 4166.88,
     "vah": 4170.34,
     "val": 4160.33,
@@ -175,14 +176,14 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4249.38,
-    "ema50": 4309.63,
-    "ema200": 4325.19,
-    "rsi14": 41.4,
-    "macd_hist": -2.713,
-    "macd_bullish": false,
-    "adx14": 19.9,
-    "atr14": 87.16,
+    "ema20": 4245.88,
+    "ema50": 4305.83,
+    "ema200": 4324.07,
+    "rsi14": 43.9,
+    "macd_hist": 1.664,
+    "macd_bullish": true,
+    "adx14": 19.2,
+    "atr14": 83.78,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
@@ -208,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 4.15
+      "utc_hour": 4.22
     },
-    "tech_score": 0.107
+    "tech_score": 0.419
   },
   "news_blackout": {
     "blocked": false,
