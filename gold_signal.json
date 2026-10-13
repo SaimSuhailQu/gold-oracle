@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-13T22:03:52.772585+00:00",
-  "timestamp_epoch": 1791929032,
+  "timestamp": "2026-10-13T22:09:06.949877+00:00",
+  "timestamp_epoch": 1791929346,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.547,
@@ -13,7 +13,7 @@
   "short_t": 0.48,
   "confidence": 0.094,
   "gold_price": 4184.2,
-  "composite": -0.7919,
+  "composite": -0.7918,
   "calibration": {
     "a": 0.2388,
     "b": 0.6452
@@ -25,7 +25,7 @@
     "fed_stance": -0.7712,
     "fear": -0.4635,
     "risk_app": -0.5339,
-    "btc_comp": -0.9201,
+    "btc_comp": -0.9191,
     "etf_flow": -1.0934,
     "momentum": -0.0317,
     "curve": 1.6946,
@@ -41,13 +41,13 @@
     "directional_probability": 0.547,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.61,
+    "mcda_score": 0.53,
     "mcda_criteria_scores": {
       "macro_alignment": 0.08333333333333333,
       "ml_consensus": 0.92,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
-      "auction_location": 0.8
+      "auction_location": 0.4
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
@@ -59,7 +59,7 @@
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.547,
-    "p_linear_logistic": 0.4524,
+    "p_linear_logistic": 0.4525,
     "p_boosted_ml": 0.5327,
     "nlp_sentiment_score": 0.6153
   },
@@ -143,7 +143,7 @@
     "fed_stance": -0.1103,
     "fear": -0.0412,
     "risk_app": -0.0649,
-    "btc_comp": -0.0625,
+    "btc_comp": -0.0624,
     "etf_flow": -0.0038,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,9 +166,9 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4168.93,
-    "vwap_zscore": -0.74,
-    "poc": 4184.23,
+    "vwap": 4168.77,
+    "vwap_zscore": -0.72,
+    "poc": 4181.83,
     "vah": 4184.64,
     "val": 4153.34,
     "audit_verdict": "STAND_ASIDE",
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BULLISH",
+    "candle_pattern": null,
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.05
+      "utc_hour": 22.15
     },
-    "tech_score": 0.204
+    "tech_score": 0.104
   },
   "news_blackout": {
     "blocked": false,
