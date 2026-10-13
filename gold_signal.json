@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-13T23:29:03.117094+00:00",
-  "timestamp_epoch": 1791934143,
+  "timestamp": "2026-10-13T23:33:42.251033+00:00",
+  "timestamp_epoch": 1791934422,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5057,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0114,
-  "gold_price": 4181.0,
+  "gold_price": 4178.7,
   "composite": -0.9428,
   "calibration": {
     "a": 0.2393,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.597) against a LONG \u2014 MTF=-1.0, RSI=40.6, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.598) against a LONG \u2014 MTF=-1.0, RSI=40.4, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -66,7 +66,7 @@
   },
   "ai_sentiment": {
     "sentiment_score": 1.0,
-    "bullish_indicators": 15,
+    "bullish_indicators": 16,
     "bearish_indicators": 0,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
@@ -167,23 +167,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4166.65,
-    "vwap_zscore": -1.05,
+    "vwap": 4166.51,
+    "vwap_zscore": -0.95,
     "poc": 4156.04,
-    "vah": 4184.99,
+    "vah": 4186.58,
     "val": 4153.27,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4242.86,
-    "ema50": 4304.58,
-    "ema200": 4323.75,
-    "rsi14": 40.6,
-    "macd_hist": -0.359,
+    "ema20": 4242.64,
+    "ema50": 4304.49,
+    "ema200": 4323.73,
+    "rsi14": 40.4,
+    "macd_hist": -0.506,
     "macd_bullish": false,
     "adx14": 19.2,
-    "atr14": 81.72,
+    "atr14": 81.81,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
@@ -209,9 +209,9 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.48
+      "utc_hour": 23.55
     },
-    "tech_score": -0.597
+    "tech_score": -0.598
   },
   "news_blackout": {
     "blocked": false,
