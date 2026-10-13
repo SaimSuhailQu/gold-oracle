@@ -40,12 +40,15 @@ input string InpSymbol          = "";                 // trade symbol (empty = c
 input string InpSignalFile     = "gold_signal.json"; // signal file in MQL5/Files
 input bool   InpScalpMode       = true;               // Mini-Trade / Scalper Mode (fast frequent trades)
 input double InpRiskPercent     = 0.5;                // risk per trade (% of equity)
-input double InpSLDollars       = 3.0;                // stop loss in USD per oz (mini scalp: $3.00)
-input double InpTPDollars       = 5.0;                // take profit in USD per oz (mini scalp: $5.00)
+input double InpMaxLotCap       = 0.30;               // HARD CEILING on trade volume (max lots)
+input double InpSLDollars       = 2.5;                // stop loss in USD per oz ($2.50)
+input double InpTPDollars       = 5.0;                // take profit in USD per oz ($5.00 -> 2:1 R:R)
+input double InpProbLongThreshold  = 0.53;            // min P_up required to open/flip LONG
+input double InpProbShortThreshold = 0.47;            // max P_up required to open/flip SHORT
 input int    InpMaxSpreadPoints = 500;                // max spread (points)
 input int    InpSignalMaxAgeHrs = 48;                 // max signal age (hrs)
 input ulong  InpMagic           = 20261005;           // magic number
-input int    InpTimerSeconds    = 10;                 // re-evaluate every N sec (10s for scalping)
+input int    InpTimerSeconds    = 3;                  // re-evaluate every N sec (3s for scalping)
 input bool   InpUseDynamicExposure = true;           // scale lots by signal exposure_mult
 //--- risk engine (checklist 28-30, 33-36, 50)
 input double InpMaxDailyLossPct = 3.0;                // halt trading if daily loss exceeds this %
@@ -59,6 +62,10 @@ input double InpTrailingStepDollars    = 1.0;         // trail SL in $ steps
 input bool   InpUsePartialTP    = true;               // partial profit-taking
 input double InpPartialTP1Dollars  = 3.5;              // take partial at +$ per oz
 input double InpPartialClosePct    = 50.0;             // % of volume to close at TP1
+input int    InpTradeCooldownSec = 180;             // cooldown (sec) after trade closes before next entry
+input bool   InpFilterSessions   = true;            // enforce London/NY trading hours (07:00-21:00 UTC)
+input int    InpSessionStartUTC  = 7;               // session start hour UTC (07:00 London open)
+input int    InpSessionEndUTC    = 21;              // session end hour UTC (21:00 NY close)
 input int    InpMaxConsecutiveLosses = 5;             // pause trading after N consecutive losses
 input int    InpPauseHours        = 4;                // pause duration in hours
 input int    InpMaxRetries        = 3;                // broker execution retries
@@ -99,6 +106,13 @@ double JsonGetDouble(const string json, const string key)
    p = StringFind(json, ":", p + StringLen(pat));
    if(p < 0) return 0.0;
    p++;
+   // skip whitespace after colon
+   while(p < StringLen(json))
+   {
+      ushort c = StringGetCharacter(json, p);
+      if(c == ' ' || c == '\t' || c == '\r' || c == '\n') p++;
+      else break;
+   }
    int q = p;
    while(q < StringLen(json))
    {
@@ -117,24 +131,30 @@ long JsonGetLong(const string json, const string key)
 }
 
 //+------------------------------------------------------------------+
-//| Read the whole signal file into a string                         |
+//| Read the whole signal file into a string (with share & retry)    |
 //+------------------------------------------------------------------+
 bool ReadSignalFile(string &out_json)
 {
    out_json = "";
-   int h = FileOpen(InpSignalFile, FILE_READ | FILE_TXT);
-   if(h == INVALID_HANDLE)
-      h = FileOpen(InpSignalFile, FILE_READ | FILE_BIN);
+   int h = INVALID_HANDLE;
+   // Retry up to 5 times (10ms pause) if python is actively rewriting the file
+   for(int attempt = 0; attempt < 5; attempt++)
+   {
+      h = FileOpen(InpSignalFile, FILE_READ | FILE_TXT | FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_ANSI);
+      if(h == INVALID_HANDLE)
+         h = FileOpen(InpSignalFile, FILE_READ | FILE_BIN | FILE_SHARE_READ | FILE_SHARE_WRITE);
+      if(h != INVALID_HANDLE) break;
+      Sleep(10);
+   }
+
    if(h == INVALID_HANDLE)
    {
-      Print("GoldOracle: cannot open ", InpSignalFile, " err=", GetLastError());
       return false;
    }
    ulong size = FileSize(h);
    if(size == 0 || size > 131072)
    {
       FileClose(h);
-      Print("GoldOracle: signal file has unexpected size: ", size);
       return false;
    }
    while(!FileIsEnding(h))
@@ -176,10 +196,10 @@ double CalcVolume(const string sym, double sl_distance)
 
    double vmin  = SymbolInfoDouble(sym, SYMBOL_VOLUME_MIN);
    double vmax  = SymbolInfoDouble(sym, SYMBOL_VOLUME_MAX);
+   if(InpMaxLotCap > 0.0 && InpMaxLotCap < vmax) vmax = InpMaxLotCap;
    double vstep = SymbolInfoDouble(sym, SYMBOL_VOLUME_STEP);
    if(vstep > 0) vol = MathFloor(vol / vstep) * vstep;
    vol = MathMax(vmin, MathMin(vmax, vol));
-   // never risk more than 2x the intended fraction due to rounding
    return vol;
 }
 
@@ -300,6 +320,36 @@ string RiskBlockReason()
    if(InpKillSwitch) return "MANUAL KILL SWITCH ENGAGED";
    if(!TerminalInfoInteger(TERMINAL_CONNECTED)) return "TERMINAL DISCONNECTED";
    if(PauseActive()) return "PAUSED AFTER CONSECUTIVE LOSSES";
+
+   // Session hours check (UTC)
+   if(InpFilterSessions)
+   {
+      MqlDateTime dt;
+      TimeToStruct(TimeGMT(), dt);
+      if(dt.hour < InpSessionStartUTC || dt.hour >= InpSessionEndUTC)
+         return StringFormat("OUTSIDE TRADING SESSION (current hour %02d UTC, allowed %02d-%02d)",
+                             dt.hour, InpSessionStartUTC, InpSessionEndUTC);
+   }
+
+   // Post-trade cooldown check
+   if(InpTradeCooldownSec > 0 && HistorySelect(TimeCurrent() - InpTradeCooldownSec, TimeCurrent()))
+   {
+      int deals = HistoryDealsTotal();
+      for(int i = deals - 1; i >= 0; i--)
+      {
+         ulong dt = HistoryDealGetTicket(i);
+         if(dt > 0 && HistoryDealGetInteger(dt, DEAL_MAGIC) == (long)InpMagic && HistoryDealGetInteger(dt, DEAL_ENTRY) == DEAL_ENTRY_OUT)
+         {
+            datetime closeTime = (datetime)HistoryDealGetInteger(dt, DEAL_TIME);
+            if(TimeCurrent() - closeTime < InpTradeCooldownSec)
+            {
+               long rem = InpTradeCooldownSec - (TimeCurrent() - closeTime);
+               return StringFormat("POST-TRADE COOLDOWN (%ds remaining)", rem);
+            }
+         }
+      }
+   }
+
    double eq = AccountInfoDouble(ACCOUNT_EQUITY);
    double dayStart = GetDayStartEquity();
    if(dayStart > 0)
@@ -389,12 +439,29 @@ void ManagePosition(const string sym, const long ticket, const long ptype)
    }
 }
 
-// 37. execution with broker-error retries
+// 37. execution with broker-error retries (fetches fresh Bid/Ask on each attempt)
 bool ExecWithRetry(const bool isBuy, const double vol, const string sym,
-                   const double price, const double sl, const double tp, const string comment)
+                   const double sl_dist, const double tp_dist, const string comment)
 {
+   int digits = (int)SymbolInfoInteger(sym, SYMBOL_DIGITS);
+   double point = SymbolInfoDouble(sym, SYMBOL_POINT);
+   long stops_level = SymbolInfoInteger(sym, SYMBOL_TRADE_STOPS_LEVEL);
+
    for(int r = 0; r < InpMaxRetries; r++)
    {
+      double price = isBuy ? SymbolInfoDouble(sym, SYMBOL_ASK) : SymbolInfoDouble(sym, SYMBOL_BID);
+      double actual_sl_dist = sl_dist;
+      double sl_pts = actual_sl_dist / (point > 0 ? point : 0.01);
+      if(stops_level > 0 && sl_pts < stops_level + 10)
+      {
+         actual_sl_dist = (stops_level + 20) * point;
+      }
+
+      double sl = isBuy ? NormalizeDouble(price - actual_sl_dist, digits)
+                        : NormalizeDouble(price + actual_sl_dist, digits);
+      double tp = isBuy ? NormalizeDouble(price + tp_dist, digits)
+                        : NormalizeDouble(price - tp_dist, digits);
+
       bool ok = isBuy ? trade.Buy(vol, sym, price, sl, tp, comment)
                       : trade.Sell(vol, sym, price, sl, tp, comment);
       if(ok)
@@ -417,17 +484,23 @@ bool ExecWithRetry(const bool isBuy, const double vol, const string sym,
 //+------------------------------------------------------------------+
 void Evaluate()
 {
+   // 1. Symbol resolution
    string sym = (InpSymbol != "") ? InpSymbol : _Symbol;
-   if(sym == "" || !SymbolInfoInteger(sym, SYMBOL_SELECT))
-   {
-      if(SymbolInfoInteger("XAUUSD", SYMBOL_SELECT)) sym = "XAUUSD";
-      else if(SymbolInfoInteger("XAUUSDm", SYMBOL_SELECT)) sym = "XAUUSDm";
-      SymbolSelect(sym, true);
-   }
+   if(sym == "") sym = _Symbol;
+   SymbolSelect(sym, true);
 
    double point = SymbolInfoDouble(sym, SYMBOL_POINT);
    int    digits = (int)SymbolInfoInteger(sym, SYMBOL_DIGITS);
-   if(point <= 0) { Print("GoldOracle: bad symbol info for ", sym); return; }
+   if(point <= 0)
+   {
+      static datetime last_bad_sym = 0;
+      if(TimeCurrent() - last_bad_sym > 30)
+      {
+         Print("GoldOracle: bad symbol info for ", sym);
+         last_bad_sym = TimeCurrent();
+      }
+      return;
+   }
 
    long ticket = 0, ptype = -1;
    bool in_pos = HasPosition(sym, ticket, ptype);
@@ -443,30 +516,60 @@ void Evaluate()
    string blockReason = RiskBlockReason();
    if(blockReason != "")
    {
+      static datetime last_block_log = 0;
+      if(TimeCurrent() - last_block_log > 15)
+      {
+         Print("GoldOracle blocked by risk engine: ", blockReason);
+         last_block_log = TimeCurrent();
+      }
       DrawStatus("BLOCKED: " + blockReason);
       return;
    }
 
    string json;
-   if(!ReadSignalFile(json)) { DrawStatus("NO SIGNAL FILE"); return; }
+   if(!ReadSignalFile(json))
+   {
+      DrawStatus("NO SIGNAL FILE");
+      return;
+   }
 
    string sig = JsonGetString(json, "signal");
    double p_up = JsonGetDouble(json, "p_up");
    long   ts   = JsonGetLong(json, "timestamp_epoch");
    long   now  = TimeGMT();
-   if(ts <= 0 || now - ts > InpSignalMaxAgeHrs * 3600)
+   // Stale signal check (bypassed in Strategy Tester since historical simulated time differs from live signal timestamp)
+   if(!MQLInfoInteger(MQL_TESTER) && (ts <= 0 || now - ts > InpSignalMaxAgeHrs * 3600))
    {
+      static datetime last_stale_log = 0;
+      if(TimeCurrent() - last_stale_log > 30)
+      {
+         Print(StringFormat("GoldOracle: STALE SIGNAL (ts=%d now=%d diff=%d max=%d)",
+                            ts, now, now - ts, InpSignalMaxAgeHrs * 3600));
+         last_stale_log = TimeCurrent();
+      }
       DrawStatus("STALE SIGNAL");
       return;
    }
 
-   // ticket/ptype/in_pos already resolved at the top of Evaluate()
-
-   // In Scalp Mode: if model has even a tiny directional bias (p_up != 0.50), trade it!
-   if(InpScalpMode && sig != "LONG" && sig != "SHORT")
+   // Directional deadband (hysteresis) to prevent spread churn & rapid whip-sawing
+   if(InpScalpMode)
    {
-      if(p_up >= 0.50) sig = "LONG";
-      else sig = "SHORT";
+      if(p_up >= InpProbLongThreshold)
+         sig = "LONG";
+      else if(p_up <= InpProbShortThreshold)
+         sig = "SHORT";
+      else
+         sig = "HOLD"; // inside deadband: hold current stance, do not flip
+   }
+
+   // If inside deadband (HOLD), manage position and stand aside
+   if(sig == "HOLD")
+   {
+      if(in_pos)
+         DrawStatus(StringFormat("HOLDING POSITION (p_up=%.2f in deadband)", p_up));
+      else
+         DrawStatus(StringFormat("STANDBY (p_up=%.2f in deadband)", p_up));
+      return;
    }
 
    // FLAT signal (or unknown): close any open oracle position
@@ -485,13 +588,30 @@ void Evaluate()
    long want = (sig == "LONG") ? POSITION_TYPE_BUY : POSITION_TYPE_SELL;
    if(in_pos)
    {
-      if(ptype == want) { DrawStatus(StringFormat("HOLD %s (p_up=%.2f)", sig, p_up)); return; }
+      if(ptype == want)
+      {
+         DrawStatus(StringFormat("HOLD %s (p_up=%.2f)", sig, p_up));
+         return;
+      }
+      // Reversal only occurs when signal decisively crosses opposite threshold
       trade.PositionClose((ulong)ticket);
-      Print("GoldOracle: reversed, closed #", ticket);
+      Print("GoldOracle: strong opposite signal, reversed and closed #", ticket);
       in_pos = false;
    }
 
-   if(!SpreadOK(sym)) { DrawStatus("SPREAD TOO WIDE"); return; }
+   if(!SpreadOK(sym))
+   {
+      long cur_spread = SymbolInfoInteger(sym, SYMBOL_SPREAD);
+      static datetime last_spread_log = 0;
+      if(TimeCurrent() - last_spread_log > 15)
+      {
+         Print(StringFormat("GoldOracle: SPREAD TOO WIDE for %s (current=%d, max=%d)",
+                            sym, cur_spread, InpMaxSpreadPoints));
+         last_spread_log = TimeCurrent();
+      }
+      DrawStatus(StringFormat("SPREAD TOO WIDE (%d > %d)", cur_spread, InpMaxSpreadPoints));
+      return;
+   }
 
    // 26. risk-to-reward filter: need >= 1.2:1 on the planned trade
    if(InpTPDollars < InpSLDollars * 1.2)
@@ -501,12 +621,16 @@ void Evaluate()
       return;
    }
 
-   // Critic tier sizing + regime exposure scaling
-   double size_mult = JsonGetDouble(json, "size_mult");
-   if(size_mult <= 0.0 || size_mult > 1.0)
+   // Sizing: In scalp mode, trade active 1.0 tier
+   double size_mult = 1.0;
+   if(!InpScalpMode)
    {
-      if(InpScalpMode) size_mult = 1.0; // In scalp mode, trade active size
-      else { Print("GoldOracle: bad size_mult, standing aside"); return; }
+      size_mult = JsonGetDouble(json, "size_mult");
+      if(size_mult <= 0.0 || size_mult > 1.0)
+      {
+         Print("GoldOracle: bad size_mult, standing aside");
+         return;
+      }
    }
    double exposure = 1.0;
    if(InpUseDynamicExposure)
@@ -526,33 +650,55 @@ void Evaluate()
    }
 
    double vol = CalcVolume(sym, sl_dist) * size_mult * exposure;
-   if(vol <= 0) { Print("GoldOracle: volume calc failed for vol: ", vol); return; }
-   Print(StringFormat("GoldOracle: executing %s vol=%.2f risk=%.2f%% x tier=%.2f",
-                      sig, vol, InpRiskPercent, size_mult));
+   if(vol <= 0)
+   {
+      static datetime last_vol_log = 0;
+      if(TimeCurrent() - last_vol_log > 15)
+      {
+         Print(StringFormat("GoldOracle: CalcVolume failed (vol=%.4f) eq=%.2f risk=%.2f sl=%.2f tick_val=%.4f tick_sz=%.4f",
+                            vol, AccountInfoDouble(ACCOUNT_EQUITY), InpRiskPercent, sl_dist,
+                            SymbolInfoDouble(sym, SYMBOL_TRADE_TICK_VALUE),
+                            SymbolInfoDouble(sym, SYMBOL_TRADE_TICK_SIZE)));
+         last_vol_log = TimeCurrent();
+      }
+      return;
+   }
+
+   // Check if Algo Trading is allowed
+   if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED))
+   {
+      static datetime last_algo_log = 0;
+      if(TimeCurrent() - last_algo_log > 15)
+      {
+         Print(StringFormat("GoldOracle: Trading not allowed! Terminal Trade Allowed: %d, MQL Trade Allowed: %d. Check Algo Trading button!",
+                            TerminalInfoInteger(TERMINAL_TRADE_ALLOWED),
+                            MQLInfoInteger(MQL_TRADE_ALLOWED)));
+         last_algo_log = TimeCurrent();
+      }
+      DrawStatus("ALGO TRADING DISABLED IN MT5");
+      return;
+   }
+
+   Print(StringFormat("GoldOracle: attempting %s on %s vol=%.2f (p_up=%.2f)",
+                      sig, sym, vol, p_up));
 
    double price, sl, tp;
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetDeviationInPoints(30);
    if(want == POSITION_TYPE_BUY)
    {
-      price = SymbolInfoDouble(sym, SYMBOL_ASK);
-      sl = NormalizeDouble(price - sl_dist, digits);
-      tp = NormalizeDouble(price + InpTPDollars, digits);
-      ExecWithRetry(true, vol, sym, price, sl, tp, "GoldOracle LONG p_up=" + DoubleToString(p_up, 2));
+      ExecWithRetry(true, vol, sym, sl_dist, InpTPDollars, "GoldOracle LONG p_up=" + DoubleToString(p_up, 2));
    }
    else
    {
-      price = SymbolInfoDouble(sym, SYMBOL_BID);
-      sl = NormalizeDouble(price + sl_dist, digits);
-      tp = NormalizeDouble(price - InpTPDollars, digits);
-      ExecWithRetry(false, vol, sym, price, sl, tp, "GoldOracle SHORT p_up=" + DoubleToString(p_up, 2));
+      ExecWithRetry(false, vol, sym, sl_dist, InpTPDollars, "GoldOracle SHORT p_up=" + DoubleToString(p_up, 2));
    }
    DrawStatus(StringFormat("%s (p_up=%.2f)", sig, p_up));
 }
 
 void DrawStatus(const string text)
 {
-   Comment(StringFormat("GOLD ORACLE  |  %s  |  %s", text, TimeToString(TimeGMT(), TIME_DATE | TIME_MINUTES)));
+   Comment(StringFormat("GOLD ORACLE SCALPER  |  %s  |  %s", text, TimeToString(TimeGMT(), TIME_DATE | TIME_SECONDS)));
 }
 
 //+------------------------------------------------------------------+
@@ -562,7 +708,7 @@ int OnInit()
 {
    trade.SetExpertMagicNumber(InpMagic);
    EventSetTimer(InpTimerSeconds);
-   Print("GoldOracle_Exness v1.00 started. Signal file: ", InpSignalFile);
+   Print("GoldOracle_Exness Scalper v2.10 started. Timer=", InpTimerSeconds, "s, Signal file: ", InpSignalFile);
    Evaluate();
    return INIT_SUCCEEDED;
 }
