@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-13T12:14:02.571434+00:00",
-  "timestamp_epoch": 1791893642,
+  "timestamp": "2026-10-13T12:18:41.197836+00:00",
+  "timestamp_epoch": 1791893921,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4633,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0734,
-  "gold_price": 4208.2,
+  "gold_price": 4211.3,
   "composite": -0.9428,
   "calibration": {
     "a": 0.2393,
@@ -51,8 +51,7 @@
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.417) against a SHORT."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,8 +164,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4178.78,
-    "vwap_zscore": 0.68,
+    "vwap": 4178.84,
+    "vwap_zscore": 0.19,
     "poc": 4183.68,
     "vah": 4190.03,
     "val": 4162.67,
@@ -174,11 +173,11 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4245.45,
-    "ema50": 4305.65,
-    "ema200": 4324.02,
-    "rsi14": 43.4,
-    "macd_hist": 1.377,
+    "ema20": 4245.75,
+    "ema50": 4305.77,
+    "ema200": 4324.05,
+    "rsi14": 43.8,
+    "macd_hist": 1.574,
     "macd_bullish": true,
     "adx14": 19.2,
     "atr14": 84.58,
@@ -186,11 +185,11 @@
     "resistance": 4259.0,
     "support": 4091.2,
     "mtf_trends": {
-      "M5": 1
+      "M5": -1
     },
-    "mtf_score": 1.0,
-    "mtf_aligned_bull": true,
-    "mtf_aligned_bear": false,
+    "mtf_score": -1.0,
+    "mtf_aligned_bull": false,
+    "mtf_aligned_bear": true,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -207,9 +206,9 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 12.23
+      "utc_hour": 12.3
     },
-    "tech_score": 0.417
+    "tech_score": -0.181
   },
   "news_blackout": {
     "blocked": false,
