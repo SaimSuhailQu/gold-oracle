@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-14T21:28:52.044342+00:00",
-  "timestamp_epoch": 1792013332,
+  "timestamp": "2026-10-14T21:34:01.422032+00:00",
+  "timestamp_epoch": 1792013641,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4094,
-  "p_down": 0.5906,
+  "p_up": 0.4093,
+  "p_down": 0.5907,
   "signal": "FLAT",
   "raw_signal": "SHORT",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.1812,
+  "confidence": 0.1814,
   "gold_price": 4127.3,
-  "composite": -0.6069,
+  "composite": -0.6076,
   "calibration": {
     "a": 0.2383,
     "b": 0.646
@@ -25,7 +25,7 @@
     "fed_stance": -0.9295,
     "fear": -0.1863,
     "risk_app": -0.3209,
-    "btc_comp": -0.7172,
+    "btc_comp": -0.7275,
     "etf_flow": -1.0475,
     "momentum": -0.2498,
     "curve": 1.4729,
@@ -38,13 +38,13 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5906,
+    "directional_probability": 0.5907,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.868,
     "mcda_criteria_scores": {
       "macro_alignment": 0.9166666666666666,
-      "ml_consensus": 0.938,
+      "ml_consensus": 0.937,
       "news_sentiment_alignment": 0.6111,
       "technical_trend": 1.0,
       "auction_location": 0.8
@@ -58,8 +58,8 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4094,
-    "p_linear_logistic": 0.4693,
+    "p_ensemble_up": 0.4093,
+    "p_linear_logistic": 0.4692,
     "p_boosted_ml": 0.5318,
     "nlp_sentiment_score": -0.857
   },
@@ -143,7 +143,7 @@
     "fed_stance": -0.133,
     "fear": -0.0166,
     "risk_app": -0.039,
-    "btc_comp": -0.0488,
+    "btc_comp": -0.0495,
     "etf_flow": -0.0042,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,10 +166,10 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4112.87,
-    "vwap_zscore": -0.25,
+    "vwap": 4112.63,
+    "vwap_zscore": -0.24,
     "poc": 4108.29,
-    "vah": 4145.33,
+    "vah": 4143.93,
     "val": 4088.02,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
@@ -208,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.47
+      "utc_hour": 21.57
     },
     "tech_score": 0.081
   },
