@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-14T01:48:56.561171+00:00",
-  "timestamp_epoch": 1791942536,
+  "timestamp": "2026-10-14T01:53:42.784561+00:00",
+  "timestamp_epoch": 1791942822,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4697,
@@ -50,7 +50,6 @@
       "auction_location": 0.8
     },
     "fatal_flaws": [
-      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze.",
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
@@ -167,11 +166,11 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4158.92,
-    "vwap_zscore": -2.58,
-    "poc": 4158.1,
-    "vah": 4168.25,
-    "val": 4150.56,
+    "vwap": 4158.72,
+    "vwap_zscore": 0.1,
+    "poc": 4162.15,
+    "vah": 4164.32,
+    "val": 4150.3,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
   },
@@ -183,7 +182,7 @@
     "macd_hist": -0.972,
     "macd_bullish": false,
     "adx14": 19.3,
-    "atr14": 82.41,
+    "atr14": 82.49,
     "trend_strong": false,
     "resistance": 4259.0,
     "support": 4091.2,
@@ -205,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 1.8
+      "utc_hour": 1.88
     },
-    "tech_score": -0.501
+    "tech_score": -0.401
   },
   "news_blackout": {
     "blocked": false,
