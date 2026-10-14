@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-14T21:54:01.417529+00:00",
-  "timestamp_epoch": 1792014841,
+  "timestamp": "2026-10-14T21:58:57.869840+00:00",
+  "timestamp_epoch": 1792015137,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4074,
@@ -25,7 +25,7 @@
     "fed_stance": -0.9295,
     "fear": -0.1863,
     "risk_app": -0.3209,
-    "btc_comp": -0.7132,
+    "btc_comp": -0.7127,
     "etf_flow": -1.0475,
     "momentum": -0.2498,
     "curve": 1.4729,
@@ -143,7 +143,7 @@
     "fed_stance": -0.133,
     "fear": -0.0166,
     "risk_app": -0.039,
-    "btc_comp": -0.0486,
+    "btc_comp": -0.0485,
     "etf_flow": -0.0042,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4112.06,
-    "vwap_zscore": -0.05,
+    "vwap": 4111.91,
+    "vwap_zscore": -0.04,
     "poc": 4108.29,
     "vah": 4143.93,
     "val": 4088.02,
@@ -208,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.9
+      "utc_hour": 21.97
     },
     "tech_score": -0.019
   },
