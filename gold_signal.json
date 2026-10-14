@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-14T04:08:54.804992+00:00",
-  "timestamp_epoch": 1791950934,
+  "timestamp": "2026-10-14T04:13:53.139932+00:00",
+  "timestamp_epoch": 1791951233,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4865,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.027,
-  "gold_price": 4177.3,
+  "gold_price": 4184.8,
   "composite": -0.9428,
   "calibration": {
     "a": 0.2393,
@@ -53,7 +53,8 @@
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.406) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -166,25 +167,25 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4158.77,
+    "vwap": 4158.79,
     "vwap_zscore": 0.07,
     "poc": 4161.06,
-    "vah": 4167.41,
+    "vah": 4166.59,
     "val": 4150.61,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4242.51,
-    "ema50": 4304.44,
-    "ema200": 4323.72,
-    "rsi14": 40.3,
-    "macd_hist": -0.595,
-    "macd_bullish": false,
-    "adx14": 19.3,
-    "atr14": 84.87,
+    "ema20": 4237.02,
+    "ema50": 4299.75,
+    "ema200": 4322.33,
+    "rsi14": 41.2,
+    "macd_hist": 1.778,
+    "macd_bullish": true,
+    "adx14": 18.8,
+    "atr14": 80.66,
     "trend_strong": false,
-    "resistance": 4259.0,
+    "resistance": 4242.3,
     "support": 4091.2,
     "mtf_trends": {
       "M5": 1
@@ -208,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 4.13
+      "utc_hour": 4.22
     },
-    "tech_score": 0.102
+    "tech_score": 0.406
   },
   "news_blackout": {
     "blocked": false,
