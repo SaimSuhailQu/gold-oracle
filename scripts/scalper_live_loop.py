@@ -40,9 +40,9 @@ def run_scalper_sync_loop(interval_seconds: float = 3.0):
         drift = random.choice([-0.002, -0.001, 0.0, 0.001, 0.002])
         new_p = max(0.40, min(0.60, round(curr_p + drift, 4)))
 
-        if new_p >= 0.53:
+        if new_p >= 0.55:
             direction = "LONG"
-        elif new_p <= 0.47:
+        elif new_p <= 0.45:
             direction = "SHORT"
         else:
             direction = "HOLD"
@@ -52,6 +52,8 @@ def run_scalper_sync_loop(interval_seconds: float = 3.0):
         data["p_up"] = new_p
         data["p_down"] = round(1.0 - new_p, 4)
         data["signal"] = direction
+        data["sl_dollars"] = 4.0
+        data["tp_dollars"] = 8.0
         data["size_tier"] = "FULL"
         data["size_mult"] = 1.0
         data["exposure_mult"] = 1.0
