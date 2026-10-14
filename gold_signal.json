@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-14T07:49:02.500070+00:00",
-  "timestamp_epoch": 1791964142,
+  "timestamp": "2026-10-14T07:53:28.424326+00:00",
+  "timestamp_epoch": 1791964408,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4759,
-  "p_down": 0.5241,
-  "signal": "FLAT",
-  "raw_signal": "SHORT",
-  "size_tier": "FLAT",
-  "size_mult": 0.0,
+  "p_up": 0.5008,
+  "p_down": 0.4992,
+  "signal": "LONG",
+  "raw_signal": "FLAT",
+  "size_tier": "QUARTER",
+  "size_mult": 0.25,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0482,
-  "gold_price": 4169.9,
+  "confidence": 0.0016,
+  "gold_price": 4168.9,
   "composite": -0.7902,
   "calibration": {
     "a": 0.2388,
@@ -33,51 +33,49 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": false,
-    "size_tier": "FLAT",
-    "size_mult": 0.0,
-    "final_audited_signal": "FLAT",
-    "evaluated_direction": "SHORT",
-    "directional_probability": 0.5241,
+    "is_cleared_to_trade": true,
+    "size_tier": "QUARTER",
+    "size_mult": 0.25,
+    "final_audited_signal": "LONG",
+    "evaluated_direction": "LONG",
+    "directional_probability": 0.5008,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.773,
+    "mcda_score": 0.527,
     "mcda_criteria_scores": {
-      "macro_alignment": 0.9166666666666666,
+      "macro_alignment": 0.08333333333333333,
       "ml_consensus": 0.92,
-      "news_sentiment_alignment": 0.0,
-      "technical_trend": 1.0,
-      "auction_location": 0.8
+      "news_sentiment_alignment": 1.2143000000000002,
+      "technical_trend": 0.1,
+      "auction_location": 0.6
     },
-    "fatal_flaws": [
-      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
-    ],
+    "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
-    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
+    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4759,
+    "p_ensemble_up": 0.5008,
     "p_linear_logistic": 0.4528,
     "p_boosted_ml": 0.5327,
-    "nlp_sentiment_score": -0.0987
+    "nlp_sentiment_score": 0.1507
   },
   "ai_sentiment": {
-    "sentiment_score": 0.6,
+    "sentiment_score": 0.7143,
     "bullish_indicators": 12,
-    "bearish_indicators": 3,
+    "bearish_indicators": 2,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.6,
+      "news": 0.714,
       "youtube": null,
       "papers": 0.0,
-      "blended": 0.429
+      "blended": 0.51
     },
     "narrative_zscore": {
-      "z": -0.296,
-      "mean": 0.4576,
-      "std": 0.0979,
+      "z": 0.452,
+      "mean": 0.4657,
+      "std": 0.0985,
       "n": 10
     }
   },
@@ -166,20 +164,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4158.23,
-    "vwap_zscore": -2.07,
+    "vwap": 4158.16,
+    "vwap_zscore": -1.66,
     "poc": 4161.29,
     "vah": 4167.41,
     "val": 4147.47,
     "audit_verdict": "STAND_ASIDE",
-    "audit_confidence": 0.4
+    "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4235.6,
-    "ema50": 4299.16,
-    "ema200": 4322.18,
-    "rsi14": 39.6,
-    "macd_hist": 0.827,
+    "ema20": 4235.5,
+    "ema50": 4299.12,
+    "ema200": 4322.17,
+    "rsi14": 39.5,
+    "macd_hist": 0.763,
     "macd_bullish": true,
     "adx14": 18.8,
     "atr14": 80.77,
@@ -204,13 +202,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": "BULLISH_ENGULFING",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 7.82
+      "utc_hour": 7.88
     },
-    "tech_score": -0.302
+    "tech_score": -0.102
   },
   "news_blackout": {
     "blocked": false,
