@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-15T03:59:03.471131+00:00",
-  "timestamp_epoch": 1792036743,
+  "timestamp": "2026-10-15T04:03:57.520398+00:00",
+  "timestamp_epoch": 1792037037,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4024,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1952,
-  "gold_price": 4168.2,
+  "gold_price": 4107.9,
   "composite": -0.7902,
   "calibration": {
     "a": 0.2388,
@@ -41,20 +41,19 @@
     "directional_probability": 0.5976,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.854,
+    "mcda_score": 0.774,
     "mcda_criteria_scores": {
       "macro_alignment": 0.9166666666666666,
       "ml_consensus": 0.92,
       "news_sentiment_alignment": 0.54,
       "technical_trend": 1.0,
-      "auction_location": 0.8
+      "auction_location": 0.4
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.397) against a SHORT."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,23 +166,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4115.85,
+    "vwap": 4116.3,
     "vwap_zscore": 1.37,
     "poc": 4109.56,
     "vah": 4150.0,
-    "val": 4086.76,
+    "val": 4088.24,
     "audit_verdict": "STAND_ASIDE",
-    "audit_confidence": 0.4
+    "audit_confidence": 0.2
   },
   "technicals": {
-    "ema20": 4235.43,
-    "ema50": 4299.09,
-    "ema200": 4322.17,
-    "rsi14": 39.5,
-    "macd_hist": 0.719,
-    "macd_bullish": true,
-    "adx14": 19.5,
-    "atr14": 83.26,
+    "ema20": 4229.69,
+    "ema50": 4296.73,
+    "ema200": 4321.57,
+    "rsi14": 35.0,
+    "macd_hist": -3.129,
+    "macd_bullish": false,
+    "adx14": 19.8,
+    "atr14": 85.84,
     "trend_strong": false,
     "resistance": 4242.3,
     "support": 4091.2,
@@ -209,9 +208,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 3.98
+      "utc_hour": 4.05
     },
-    "tech_score": 0.397
+    "tech_score": 0.075
   },
   "news_blackout": {
     "blocked": false,
