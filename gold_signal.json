@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-15T11:54:00.030754+00:00",
-  "timestamp_epoch": 1792065240,
+  "timestamp": "2026-10-15T11:58:31.900125+00:00",
+  "timestamp_epoch": 1792065511,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4105,
-  "p_down": 0.5895,
+  "p_up": 0.4157,
+  "p_down": 0.5843,
   "signal": "SHORT",
   "raw_signal": "SHORT",
   "size_tier": "FULL",
   "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.179,
-  "gold_price": 4172.0,
+  "confidence": 0.1686,
+  "gold_price": 4172.5,
   "composite": -0.6059,
   "calibration": {
     "a": 0.2383,
@@ -38,14 +38,14 @@
     "size_mult": 1.0,
     "final_audited_signal": "SHORT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5895,
+    "directional_probability": 0.5843,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.864,
+    "mcda_score": 0.845,
     "mcda_criteria_scores": {
       "macro_alignment": 0.9166666666666666,
       "ml_consensus": 0.938,
-      "news_sentiment_alignment": 0.5833,
+      "news_sentiment_alignment": 0.4524,
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
@@ -57,26 +57,26 @@
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4105,
+    "p_ensemble_up": 0.4157,
     "p_linear_logistic": 0.4697,
     "p_boosted_ml": 0.5318,
-    "nlp_sentiment_score": -0.8483
+    "nlp_sentiment_score": -0.796
   },
   "ai_sentiment": {
-    "sentiment_score": -0.0833,
+    "sentiment_score": 0.0476,
     "bullish_indicators": 11,
-    "bearish_indicators": 13,
+    "bearish_indicators": 10,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": -0.083,
+      "news": 0.048,
       "youtube": null,
       "papers": 0.0,
-      "blended": -0.06
+      "blended": 0.034
     },
     "narrative_zscore": {
-      "z": -2.545,
-      "mean": 0.4087,
-      "std": 0.184,
+      "z": -2.388,
+      "mean": 0.4181,
+      "std": 0.1609,
       "n": 10
     }
   },
@@ -165,20 +165,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4144.4,
-    "vwap_zscore": 0.34,
-    "poc": 4142.71,
-    "vah": 4155.58,
-    "val": 4133.39,
+    "vwap": 4144.71,
+    "vwap_zscore": 0.02,
+    "poc": 4142.86,
+    "vah": 4155.01,
+    "val": 4133.06,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4224.2,
-    "ema50": 4291.84,
+    "ema20": 4224.24,
+    "ema50": 4291.86,
     "ema200": 4320.08,
     "rsi14": 42.5,
-    "macd_hist": 0.081,
+    "macd_hist": 0.113,
     "macd_bullish": true,
     "adx14": 20.3,
     "atr14": 85.1,
@@ -207,7 +207,7 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 11.9
+      "utc_hour": 11.97
     },
     "tech_score": 0.412
   },
