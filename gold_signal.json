@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-15T15:08:54.126365+00:00",
-  "timestamp_epoch": 1792076934,
+  "timestamp": "2026-10-15T15:14:20.536291+00:00",
+  "timestamp_epoch": 1792077260,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4436,
-  "p_down": 0.5564,
+  "p_up": 0.4419,
+  "p_down": 0.5581,
   "signal": "SHORT",
   "raw_signal": "SHORT",
   "size_tier": "FULL",
   "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.1128,
-  "gold_price": 4179.5,
-  "composite": -0.351,
+  "confidence": 0.1162,
+  "gold_price": 4176.1,
+  "composite": -0.3739,
   "calibration": {
     "a": 0.2376,
     "b": 0.6463
   },
   "factor_zscores": {
-    "real_rates": -0.2836,
-    "nom_yield": -0.1145,
-    "dollar": -1.1367,
+    "real_rates": -0.3055,
+    "nom_yield": -0.2017,
+    "dollar": -1.1137,
     "fed_stance": -0.8955,
-    "fear": 0.4454,
-    "risk_app": 0.0174,
-    "btc_comp": -0.7086,
-    "etf_flow": -1.0138,
-    "momentum": -0.2897,
-    "curve": 0.9531,
-    "duration": -0.4856,
+    "fear": 0.4128,
+    "risk_app": -0.0208,
+    "btc_comp": -0.7236,
+    "etf_flow": -1.014,
+    "momentum": -0.2961,
+    "curve": 1.0077,
+    "duration": -0.4827,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,13 +38,13 @@
     "size_mult": 1.0,
     "final_audited_signal": "SHORT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5564,
+    "directional_probability": 0.5581,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.785,
+    "mcda_score": 0.805,
     "mcda_criteria_scores": {
-      "macro_alignment": 0.75,
-      "ml_consensus": 0.989,
+      "macro_alignment": 0.8333333333333334,
+      "ml_consensus": 0.986,
       "news_sentiment_alignment": 0.2619,
       "technical_trend": 1.0,
       "auction_location": 0.8
@@ -52,13 +52,13 @@
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.416) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.414) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4436,
-    "p_linear_logistic": 0.5058,
+    "p_ensemble_up": 0.4419,
+    "p_linear_logistic": 0.503,
     "p_boosted_ml": 0.5167,
     "nlp_sentiment_score": -0.667
   },
@@ -129,24 +129,24 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4376.97,
-  "ma200": 4541.77,
-  "atr14": 40.32,
-  "sl_dollars": 80.64,
-  "tp_dollars": 141.12,
+  "ma50": 4376.9,
+  "ma200": 4541.75,
+  "atr14": 40.08,
+  "sl_dollars": 80.16,
+  "tp_dollars": 140.28,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": -0.0165,
-    "nom_yield": -0.021,
-    "dollar": -0.1137,
+    "real_rates": -0.0178,
+    "nom_yield": -0.037,
+    "dollar": -0.1114,
     "fed_stance": -0.1282,
-    "fear": 0.0395,
-    "risk_app": 0.0021,
-    "btc_comp": -0.0484,
+    "fear": 0.0366,
+    "risk_app": -0.0025,
+    "btc_comp": -0.0494,
     "etf_flow": -0.0045,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": -0.0868,
+    "duration": -0.0863,
     "cb_regime": 0.0267
   },
   "model_weights": {
@@ -165,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4146.12,
-    "vwap_zscore": 0.45,
+    "vwap": 4146.09,
+    "vwap_zscore": 0.57,
     "poc": 4142.02,
     "vah": 4157.64,
     "val": 4132.88,
@@ -174,11 +174,11 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4224.91,
-    "ema50": 4292.13,
-    "ema200": 4320.15,
-    "rsi14": 43.2,
-    "macd_hist": 0.559,
+    "ema20": 4224.59,
+    "ema50": 4292.0,
+    "ema200": 4320.12,
+    "rsi14": 42.9,
+    "macd_hist": 0.342,
     "macd_bullish": true,
     "adx14": 20.3,
     "atr14": 85.57,
@@ -207,9 +207,9 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 15.13
+      "utc_hour": 15.23
     },
-    "tech_score": 0.416
+    "tech_score": 0.414
   },
   "news_blackout": {
     "blocked": false,
