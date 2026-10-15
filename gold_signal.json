@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-15T02:23:46.932195+00:00",
-  "timestamp_epoch": 1792031026,
+  "timestamp": "2026-10-15T02:28:59.427022+00:00",
+  "timestamp_epoch": 1792031339,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4025,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.195,
-  "gold_price": 4166.7,
+  "gold_price": 4168.0,
   "composite": -0.7902,
   "calibration": {
     "a": 0.2388,
@@ -53,8 +53,7 @@
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.497) against a SHORT."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4108.7,
-    "vwap_zscore": 1.97,
+    "vwap": 4108.74,
+    "vwap_zscore": 1.72,
     "poc": 4109.02,
     "vah": 4145.12,
     "val": 4086.55,
@@ -176,11 +175,11 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4235.29,
-    "ema50": 4299.04,
-    "ema200": 4322.15,
-    "rsi14": 39.4,
-    "macd_hist": 0.623,
+    "ema20": 4235.42,
+    "ema50": 4299.09,
+    "ema200": 4322.17,
+    "rsi14": 39.5,
+    "macd_hist": 0.706,
     "macd_bullish": true,
     "adx14": 19.5,
     "atr14": 82.84,
@@ -205,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "BULLISH_ENGULFING",
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.38
+      "utc_hour": 2.47
     },
-    "tech_score": 0.497
+    "tech_score": 0.297
   },
   "news_blackout": {
     "blocked": false,
