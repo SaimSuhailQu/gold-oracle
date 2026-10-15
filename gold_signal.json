@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-15T20:33:44.104335+00:00",
-  "timestamp_epoch": 1792096424,
+  "timestamp": "2026-10-15T20:38:58.826654+00:00",
+  "timestamp_epoch": 1792096738,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4381,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1238,
-  "gold_price": 4191.4,
-  "composite": -0.4423,
+  "gold_price": 4191.6,
+  "composite": -0.4428,
   "calibration": {
     "a": 0.2377,
     "b": 0.6464
@@ -25,9 +25,9 @@
     "fed_stance": -0.9955,
     "fear": 0.285,
     "risk_app": -0.0645,
-    "btc_comp": -0.7372,
+    "btc_comp": -0.7441,
     "etf_flow": -1.0426,
-    "momentum": -0.2675,
+    "momentum": -0.2671,
     "curve": 1.0623,
     "duration": -0.5585,
     "cb_regime": 0.5
@@ -60,7 +60,7 @@
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.4381,
-    "p_linear_logistic": 0.4913,
+    "p_linear_logistic": 0.4912,
     "p_boosted_ml": 0.5277,
     "nlp_sentiment_score": -0.6813
   },
@@ -133,9 +133,9 @@
   },
   "ma50": 4377.21,
   "ma200": 4541.83,
-  "atr14": 41.17,
-  "sl_dollars": 82.34,
-  "tp_dollars": 144.1,
+  "atr14": 41.19,
+  "sl_dollars": 82.37,
+  "tp_dollars": 144.15,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": -0.0168,
@@ -144,7 +144,7 @@
     "fed_stance": -0.1425,
     "fear": 0.0253,
     "risk_app": -0.0078,
-    "btc_comp": -0.0503,
+    "btc_comp": -0.0508,
     "etf_flow": -0.0047,
     "momentum": -0.0,
     "curve": 0.0,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4152.18,
-    "vwap_zscore": 2.42,
+    "vwap": 4152.3,
+    "vwap_zscore": 2.14,
     "poc": 4149.82,
     "vah": 4157.65,
     "val": 4145.28,
@@ -176,11 +176,11 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4226.04,
-    "ema50": 4292.6,
+    "ema20": 4226.06,
+    "ema50": 4292.61,
     "ema200": 4320.27,
     "rsi14": 44.4,
-    "macd_hist": 1.319,
+    "macd_hist": 1.332,
     "macd_bullish": true,
     "adx14": 20.2,
     "atr14": 86.13,
@@ -209,7 +209,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 20.55
+      "utc_hour": 20.63
     },
     "tech_score": 0.422
   },
