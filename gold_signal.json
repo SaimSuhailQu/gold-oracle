@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-16T13:18:50.838943+00:00",
-  "timestamp_epoch": 1792156730,
+  "timestamp": "2026-10-16T13:23:54.405718+00:00",
+  "timestamp_epoch": 1792157034,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4499,
   "p_down": 0.5501,
-  "signal": "SHORT",
+  "signal": "FLAT",
   "raw_signal": "SHORT",
-  "size_tier": "FULL",
-  "size_mult": 1.0,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1002,
-  "gold_price": 4187.6,
+  "gold_price": 4189.0,
   "composite": -0.4416,
   "calibration": {
     "a": 0.2377,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "FULL",
-    "size_mult": 1.0,
-    "final_audited_signal": "SHORT",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
     "directional_probability": 0.5501,
     "min_required_probability": 0.53,
@@ -49,11 +49,13 @@
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.4499,
@@ -164,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4169.91,
-    "vwap_zscore": -1.7,
+    "vwap": 4169.92,
+    "vwap_zscore": -2.28,
     "poc": 4171.61,
     "vah": 4181.18,
     "val": 4159.76,
@@ -173,11 +175,11 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4220.55,
-    "ema50": 4287.68,
-    "ema200": 4318.74,
-    "rsi14": 44.2,
-    "macd_hist": 3.558,
+    "ema20": 4220.68,
+    "ema50": 4287.73,
+    "ema200": 4318.76,
+    "rsi14": 44.3,
+    "macd_hist": 3.648,
     "macd_bullish": true,
     "adx14": 20.2,
     "atr14": 83.25,
@@ -206,7 +208,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 13.3
+      "utc_hour": 13.38
     },
     "tech_score": -0.179
   },
