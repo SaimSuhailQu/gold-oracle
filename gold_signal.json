@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-16T22:43:59.688905+00:00",
-  "timestamp_epoch": 1792190639,
+  "timestamp": "2026-10-16T22:49:00.812495+00:00",
+  "timestamp_epoch": 1792190940,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4911,
@@ -13,7 +13,7 @@
   "short_t": 0.48,
   "confidence": 0.0178,
   "gold_price": 4186.7,
-  "composite": -0.0518,
+  "composite": -0.0519,
   "calibration": {
     "a": 0.2369,
     "b": 0.646
@@ -25,7 +25,7 @@
     "fed_stance": -0.7073,
     "fear": 1.3316,
     "risk_app": 0.3347,
-    "btc_comp": -0.2596,
+    "btc_comp": -0.2624,
     "etf_flow": -1.0305,
     "momentum": -0.0766,
     "curve": 1.1627,
@@ -54,13 +54,13 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.321) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.42) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.4911,
-    "p_linear_logistic": 0.5408,
+    "p_linear_logistic": 0.5407,
     "p_boosted_ml": 0.552,
     "nlp_sentiment_score": -0.5423
   },
@@ -144,7 +144,7 @@
     "fed_stance": -0.1015,
     "fear": 0.1173,
     "risk_app": 0.0406,
-    "btc_comp": -0.0178,
+    "btc_comp": -0.0179,
     "etf_flow": -0.0051,
     "momentum": -0.0,
     "curve": 0.0,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4168.22,
-    "vwap_zscore": -1.01,
+    "vwap": 4168.15,
+    "vwap_zscore": -0.98,
     "poc": 4177.61,
     "vah": 4178.0,
     "val": 4152.2,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "BEARISH_ENGULFING",
+    "candle_pattern": null,
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.72
+      "utc_hour": 22.82
     },
-    "tech_score": 0.321
+    "tech_score": 0.42
   },
   "news_blackout": {
     "blocked": false,
