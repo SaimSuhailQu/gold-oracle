@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-16T03:08:46.326479+00:00",
-  "timestamp_epoch": 1792120126,
+  "timestamp": "2026-10-16T03:14:03.135931+00:00",
+  "timestamp_epoch": 1792120443,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4297,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1406,
-  "gold_price": 4200.0,
+  "gold_price": 4193.8,
   "composite": -0.6059,
   "calibration": {
     "a": 0.2383,
@@ -41,20 +41,20 @@
     "directional_probability": 0.5703,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.854,
+    "mcda_score": 0.814,
     "mcda_criteria_scores": {
       "macro_alignment": 0.9166666666666666,
       "ml_consensus": 0.938,
       "news_sentiment_alignment": 0.25,
       "technical_trend": 1.0,
-      "auction_location": 1.0
+      "auction_location": 0.8
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.426) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.423) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4157.04,
-    "vwap_zscore": 1.54,
+    "vwap": 4157.28,
+    "vwap_zscore": 1.5,
     "poc": 4153.17,
     "vah": 4168.56,
     "val": 4145.63,
@@ -176,14 +176,14 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4226.86,
-    "ema50": 4292.94,
-    "ema200": 4320.36,
-    "rsi14": 45.2,
-    "macd_hist": 1.868,
+    "ema20": 4226.27,
+    "ema50": 4292.69,
+    "ema200": 4320.3,
+    "rsi14": 44.6,
+    "macd_hist": 1.472,
     "macd_bullish": true,
     "adx14": 20.1,
-    "atr14": 86.33,
+    "atr14": 86.38,
     "trend_strong": false,
     "resistance": 4242.3,
     "support": 4091.2,
@@ -209,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 3.13
+      "utc_hour": 3.23
     },
-    "tech_score": 0.426
+    "tech_score": 0.423
   },
   "news_blackout": {
     "blocked": false,
