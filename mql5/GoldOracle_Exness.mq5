@@ -39,40 +39,51 @@
 input string InpSymbol          = "";                 // trade symbol (empty = current chart symbol)
 input string InpSignalFile     = "gold_signal.json"; // signal file in MQL5/Files
 input bool   InpScalpMode       = true;               // Mini-Trade / Scalper Mode (fast frequent trades)
-input double InpRiskPercent     = 0.5;                // risk per trade (% of equity)
-input double InpMaxLotCap       = 0.30;               // HARD CEILING on trade volume (max lots)
-input double InpSLDollars       = 4.0;                // stop loss in USD per oz ($4.00, gives room to breathe on M1)
-input double InpTPDollars       = 8.0;                // take profit in USD per oz ($8.00 -> 2:1 R:R)
-input double InpProbLongThreshold  = 0.55;            // min P_up required to open/flip LONG (strong momentum only)
-input double InpProbShortThreshold = 0.45;            // max P_up required to open/flip SHORT (strong momentum only)
+input double InpRiskPercent     = 0.15;               // risk per trade (0.15% equity = extremely low risk, ~$15 per trade on $10k)
+input double InpMaxLotCap       = 0.05;               // HARD CEILING on trade volume (micro lots only)
+input double InpSLDollars       = 2.5;                // stop loss in USD per oz ($2.50 quick exit)
+input double InpTPDollars       = 3.5;                // take profit in USD per oz ($3.50 quick minor profit)
+input double InpProbLongThreshold  = 0.51;            // quick entry threshold: any bullish bias
+input double InpProbShortThreshold = 0.49;            // quick entry threshold: any bearish bias
 input int    InpMaxSpreadPoints = 500;                // max spread (points)
 input int    InpSignalMaxAgeHrs = 48;                 // max signal age (hrs)
 input ulong  InpMagic           = 20261005;           // magic number
-input int    InpTimerSeconds    = 3;                  // re-evaluate every N sec (3s for scalping)
-input bool   InpUseDynamicExposure = true;           // scale lots by signal exposure_mult
+input int    InpTimerSeconds    = 1;                  // re-evaluate every 1 sec for lightning response
+input bool   InpUseDynamicExposure = false;          // use static micro-sizing
+//--- trend & volatility filters
+input bool   InpUseTrendFilter  = true;               // quick micro-trend alignment
+input int    InpFastEMAPeriod   = 9;                  // fast EMA 9 for rapid entries
+input int    InpSlowEMAPeriod   = 21;                 // slow EMA 21 for micro-trend
+input bool   InpUseATRStops     = false;              // use strict micro dollar stops ($2.50 / $3.50)
+input int    InpATRPeriod       = 14;                 // ATR period
+input double InpATRMultiplierSL = 1.0;                // ATR multiplier SL
+input double InpATRMultiplierTP = 1.5;                // ATR multiplier TP
 //--- risk engine (checklist 28-30, 33-36, 50)
-input double InpMaxDailyLossPct = 3.0;                // halt trading if daily loss exceeds this %
-input double InpMaxDrawdownPct  = 10.0;               // kill switch if drawdown from peak equity exceeds %
-input bool   InpUseBreakEven    = true;               // move SL to breakeven at trigger
-input double InpBreakEvenTriggerDollars = 3.0;        // breakeven trigger: +$ per oz
-input double InpBreakEvenOffsetDollars  = 1.0;        // lock in +$ per oz beyond entry
-input bool   InpUseTrailing     = true;               // trailing stop-loss
-input double InpTrailingStartDollars   = 4.5;         // start trailing at +$ per oz
-input double InpTrailingStepDollars    = 2.0;         // trail SL in $ steps (lets winners run)
-input bool   InpUsePartialTP    = true;               // partial profit-taking
-input double InpPartialTP1Dollars  = 5.5;              // take partial at +$ per oz
-input double InpPartialClosePct    = 50.0;             // % of volume to close at TP1
-input int    InpTradeCooldownSec = 180;             // cooldown (sec) after trade closes before next entry
-input bool   InpFilterSessions   = true;            // enforce London/NY trading hours (07:00-21:00 UTC)
-input int    InpSessionStartUTC  = 7;               // session start hour UTC (07:00 London open)
-input int    InpSessionEndUTC    = 21;              // session end hour UTC (21:00 NY close)
-input int    InpMaxConsecutiveLosses = 5;             // pause trading after N consecutive losses
-input int    InpPauseHours        = 4;                // pause duration in hours
-input bool   InpResetLossPause    = false;            // set to true to clear consecutive losses pause
+input double InpMaxDailyLossPct = 2.0;                // halt trading if daily loss exceeds this %
+input double InpMaxDrawdownPct  = 5.0;                // kill switch if drawdown exceeds %
+input bool   InpUseBreakEven    = true;               // quick breakeven
+input double InpBreakEvenTriggerDollars = 1.5;        // move to BE at just +$1.50 profit
+input double InpBreakEvenOffsetDollars  = 0.5;        // lock in +$0.50 profit
+input bool   InpUseTrailing     = true;               // tight trailing stop
+input double InpTrailingStartDollars   = 2.0;         // start trailing at +$2.00
+input double InpTrailingStepDollars    = 0.8;         // trail closely every $0.80
+input bool   InpUsePartialTP    = false;              // single quick exit at full TP
+input double InpPartialTP1Dollars  = 2.5;              // partial TP dollars
+input double InpPartialClosePct    = 50.0;             // % of volume to close
+input int    InpTradeCooldownSec = 30;              // quick cooldown: ready for next scalp in 30 sec
+input bool   InpFilterSessions   = false;             // scalp active during all hours
+input int    InpSessionStartUTC  = 0;                 // 24h scalping
+input int    InpSessionEndUTC    = 24;                // 24h scalping
+input int    InpMaxConsecutiveLosses = 4;             // pause trading after 4 micro losses
+input int    InpPauseHours        = 1;                // short 1h pause
+input bool   InpResetLossPause    = true;             // clear any previous pause immediately
 input int    InpMaxRetries        = 3;                // broker execution retries
-input bool   InpKillSwitch       = false;            // MASTER kill switch — set true to halt everything
+input bool   InpKillSwitch       = false;            // MASTER kill switch
 
 CTrade trade;
+int    h_ema_fast = INVALID_HANDLE;
+int    h_ema_slow = INVALID_HANDLE;
+int    h_atr      = INVALID_HANDLE;
 
 //+------------------------------------------------------------------+
 //| Tiny flat-JSON extractors (schema is flat; no nested objects)     |
@@ -295,6 +306,23 @@ int ConsecutiveLosses()
    return losses;
 }
 
+datetime LastLossTime()
+{
+   if(!HistorySelect(0, TimeCurrent())) return 0;
+   int n = HistoryDealsTotal();
+   for(int i = n - 1; i >= 0; i--)
+   {
+      ulong dt = HistoryDealGetTicket(i);
+      if(dt == 0) continue;
+      if(HistoryDealGetInteger(dt, DEAL_MAGIC) != (long)InpMagic) continue;
+      if(HistoryDealGetInteger(dt, DEAL_ENTRY) != DEAL_ENTRY_OUT) continue;
+      double profit = HistoryDealGetDouble(dt, DEAL_PROFIT) + HistoryDealGetDouble(dt, DEAL_SWAP) + HistoryDealGetDouble(dt, DEAL_COMMISSION);
+      if(profit < 0) return (datetime)HistoryDealGetInteger(dt, DEAL_TIME);
+      else break;
+   }
+   return 0;
+}
+
 bool PauseActive()
 {
    if(InpResetLossPause)
@@ -319,6 +347,20 @@ void StartPause(const string reason)
    if(h != INVALID_HANDLE) { FileWriteString(h, IntegerToString(until) + "\n"); FileClose(h); }
    Journal("PAUSE_START", 0, reason + " until=" + TimeToString(until, TIME_DATE | TIME_MINUTES));
    Print("GoldOracle: trading paused — ", reason);
+}
+
+// Check if a pause was already completed for the latest sequence of losses
+bool AlreadyPausedForLastLoss()
+{
+   if(!FileIsExist(RE_PauseFile())) return false;
+   int h = FileOpen(RE_PauseFile(), FILE_READ | FILE_TXT | FILE_ANSI);
+   if(h == INVALID_HANDLE) return false;
+   string line = "";
+   while(!FileIsEnding(h)) line = FileReadString(h);
+   FileClose(h);
+   long until = StringToInteger(line);
+   // If the pause period has expired, allow trading to resume!
+   return (TimeGMT() >= until);
 }
 
 // Returns "" when trading is allowed, else the block reason.
@@ -516,7 +558,7 @@ void Evaluate()
    if(in_pos) ManagePosition(sym, ticket, ptype);
 
    // 36. arm the pause when consecutive losses hit the limit (checked every tick)
-   if(ConsecutiveLosses() >= InpMaxConsecutiveLosses && !PauseActive())
+   if(ConsecutiveLosses() >= InpMaxConsecutiveLosses && !PauseActive() && !AlreadyPausedForLastLoss())
       StartPause(StringFormat("%d consecutive losses", InpMaxConsecutiveLosses));
 
    // risk engine gate (29, 30, 36, 38, 50)
@@ -565,8 +607,8 @@ void Evaluate()
          sig = "LONG";
       else if(p_up <= InpProbShortThreshold)
          sig = "SHORT";
-      else
-         sig = "HOLD"; // inside deadband: hold current stance, do not flip
+      else if(sig != "LONG" && sig != "SHORT")
+         sig = "HOLD"; // inside deadband only when model has no directional conviction
    }
 
    // If inside deadband (HOLD), manage position and stand aside
@@ -604,6 +646,39 @@ void Evaluate()
       trade.PositionClose((ulong)ticket);
       Print("GoldOracle: strong opposite signal, reversed and closed #", ticket);
       in_pos = false;
+   }
+
+   // Technical Trend Filter: prevents buying in downtrends or selling into sharp rallies
+   if(InpUseTrendFilter)
+   {
+      if(h_ema_fast == INVALID_HANDLE)
+         h_ema_fast = iMA(sym, PERIOD_M1, InpFastEMAPeriod, 0, MODE_EMA, PRICE_CLOSE);
+      if(h_ema_slow == INVALID_HANDLE)
+         h_ema_slow = iMA(sym, PERIOD_M1, InpSlowEMAPeriod, 0, MODE_EMA, PRICE_CLOSE);
+
+      double ema_f[1], ema_s[1];
+      if(CopyBuffer(h_ema_fast, 0, 0, 1, ema_f) > 0 && CopyBuffer(h_ema_slow, 0, 0, 1, ema_s) > 0)
+      {
+         double cur_price = SymbolInfoDouble(sym, SYMBOL_BID);
+         if(want == POSITION_TYPE_BUY)
+         {
+            // For BUY: price should be above slow EMA and fast EMA above slow EMA
+            if(cur_price < ema_s[0] || ema_f[0] < ema_s[0])
+            {
+               DrawStatus(StringFormat("TREND BLOCKED: BUY rejected (price < EMA%d)", InpSlowEMAPeriod));
+               return;
+            }
+         }
+         else if(want == POSITION_TYPE_SELL)
+         {
+            // For SELL: price should be below slow EMA and fast EMA below slow EMA
+            if(cur_price > ema_s[0] || ema_f[0] > ema_s[0])
+            {
+               DrawStatus(StringFormat("TREND BLOCKED: SELL rejected (price > EMA%d)", InpSlowEMAPeriod));
+               return;
+            }
+         }
+      }
    }
 
    if(!SpreadOK(sym))
@@ -647,6 +722,23 @@ void Evaluate()
    }
 
    double sl_dist = InpSLDollars;                 // USD per oz
+   double tp_dist = InpTPDollars;                 // USD per oz
+
+   // Dynamic ATR-based stops: scales SL/TP to current volatility
+   if(InpUseATRStops)
+   {
+      if(h_atr == INVALID_HANDLE)
+         h_atr = iATR(sym, PERIOD_M1, InpATRPeriod);
+
+      double atr_buf[1];
+      if(CopyBuffer(h_atr, 0, 0, 1, atr_buf) > 0 && atr_buf[0] > 0)
+      {
+         double cur_atr = atr_buf[0]; // in price units ($/oz)
+         sl_dist = NormalizeDouble(MathMax(5.0, cur_atr * InpATRMultiplierSL), 2);
+         tp_dist = NormalizeDouble(MathMax(sl_dist * 1.5, cur_atr * InpATRMultiplierTP), 2);
+      }
+   }
+
    double sl_pts  = sl_dist / point;              // in points
    long stops_level = SymbolInfoInteger(sym, SYMBOL_TRADE_STOPS_LEVEL);
    if(stops_level > 0 && sl_pts < stops_level + 10)
@@ -686,19 +778,19 @@ void Evaluate()
       return;
    }
 
-   Print(StringFormat("GoldOracle: attempting %s on %s vol=%.2f (p_up=%.2f)",
-                      sig, sym, vol, p_up));
+   Print(StringFormat("GoldOracle: attempting %s on %s vol=%.2f (p_up=%.2f, sl=$%.2f, tp=$%.2f)",
+                      sig, sym, vol, p_up, sl_dist, tp_dist));
 
    double price, sl, tp;
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetDeviationInPoints(30);
    if(want == POSITION_TYPE_BUY)
    {
-      ExecWithRetry(true, vol, sym, sl_dist, InpTPDollars, "GoldOracle LONG p_up=" + DoubleToString(p_up, 2));
+      ExecWithRetry(true, vol, sym, sl_dist, tp_dist, "GoldOracle LONG p_up=" + DoubleToString(p_up, 2));
    }
    else
    {
-      ExecWithRetry(false, vol, sym, sl_dist, InpTPDollars, "GoldOracle SHORT p_up=" + DoubleToString(p_up, 2));
+      ExecWithRetry(false, vol, sym, sl_dist, tp_dist, "GoldOracle SHORT p_up=" + DoubleToString(p_up, 2));
    }
    DrawStatus(StringFormat("%s (p_up=%.2f)", sig, p_up));
 }
@@ -724,6 +816,9 @@ void OnDeinit(const int reason)
 {
    EventKillTimer();
    Comment("");
+   if(h_ema_fast != INVALID_HANDLE) { IndicatorRelease(h_ema_fast); h_ema_fast = INVALID_HANDLE; }
+   if(h_ema_slow != INVALID_HANDLE) { IndicatorRelease(h_ema_slow); h_ema_slow = INVALID_HANDLE; }
+   if(h_atr      != INVALID_HANDLE) { IndicatorRelease(h_atr);      h_atr      = INVALID_HANDLE; }
 }
 
 void OnTick()

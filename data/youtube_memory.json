@@ -1,12 +1,354 @@
 {
  "channels": [],
- "processed_videos": {},
+ "processed_videos": {
+  "Nq6h3rjklDg": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "Crypto Is Selling Off. Is the Bull Trend Broken? Trading the Markets w/ Kris Bullock and Nico Brugge",
+   "url": "https://www.youtube.com/watch?v=Nq6h3rjklDg",
+   "published": "2026-10-15T05:51:43+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "yEaf6einSmE": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "A Potential Hidden Gem for AI Investors?",
+   "url": "https://www.youtube.com/watch?v=yEaf6einSmE",
+   "published": "2026-10-12T17:00:01+00:00",
+   "analysis": {
+    "sentiment_score": -1.0,
+    "bullish_signals": 0,
+    "bearish_signals": 1,
+    "summary_tag": "BEARISH"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "MIAMC_w-FqY": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "Macro Mondays LIVE @10am ET  w/ Andreas & Mikkel",
+   "url": "https://www.youtube.com/watch?v=MIAMC_w-FqY",
+   "published": "2026-10-12T13:13:20+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "h3jDc5Bg8Sc": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "Why the Next Crisis Could Unleash Massive Money Printing",
+   "url": "https://www.youtube.com/watch?v=h3jDc5Bg8Sc",
+   "published": "2026-10-11T19:30:11+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "3Atl7qFvtnU": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "Why Oil Could Still Go Much Higher with Josh Young, Bison Interests | The Geopolitical Edge",
+   "url": "https://www.youtube.com/watch?v=3Atl7qFvtnU",
+   "published": "2026-10-10T13:00:00+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "6p0VQMYpzLU": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "The Samurai Mindset Every Investor Needs to Learn",
+   "url": "https://www.youtube.com/watch?v=6p0VQMYpzLU",
+   "published": "2026-10-09T21:00:03+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "0M_WpErdhrM": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "Sui Basecamp 2026: Day 2 | Marina Bay Sand, Singapore",
+   "url": "https://www.youtube.com/watch?v=0M_WpErdhrM",
+   "published": "2026-10-08T09:26:13+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "7Kf-HWgJJsA": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "Sui Basecamp 2026: Day 1 | Marina Bay Sands, Singapore",
+   "url": "https://www.youtube.com/watch?v=7Kf-HWgJJsA",
+   "published": "2026-10-07T09:10:40+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "WN-w5WPUrRw": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "How Much Longer Can This Cycle Run? w/ Andreas & Mikkel | Macro Mondays",
+   "url": "https://www.youtube.com/watch?v=WN-w5WPUrRw",
+   "published": "2026-10-06T02:49:21+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "B-8atU3qJDY": {
+   "channel": "Real Vision Finance",
+   "handle": "@RealVisionFinance",
+   "title": "Time to Buy the Dip in France? \ud83c\uddeb\ud83c\uddf7",
+   "url": "https://www.youtube.com/watch?v=B-8atU3qJDY",
+   "published": "2026-10-05T20:01:25+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "XNLKn_X43h4": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "His chart aged BADLY \ud83d\udcc9\ud83d\ude2c",
+   "url": "https://www.youtube.com/watch?v=XNLKn_X43h4",
+   "published": "2026-10-15T18:33:15+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "tWczSy6qDyw": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "Fannie Mae Just Crashed 23% in Three Days... Home Prices Are Next",
+   "url": "https://www.youtube.com/watch?v=tWczSy6qDyw",
+   "published": "2026-10-15T12:15:20+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "M_RGS9H8syY": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "Americans Have Never Been This Worried About Money",
+   "url": "https://www.youtube.com/watch?v=M_RGS9H8syY",
+   "published": "2026-10-13T06:16:02+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "uDPp-XxtcJo": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "Worse Than 2008. Worse Than COVID. And They Call It a Boom.",
+   "url": "https://www.youtube.com/watch?v=uDPp-XxtcJo",
+   "published": "2026-10-10T15:30:14+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "q2BVLJnsRM4": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "Tariffs Failed. Imports Hit a Record. France Is Rioting. We're Next.",
+   "url": "https://www.youtube.com/watch?v=q2BVLJnsRM4",
+   "published": "2026-10-07T09:20:07+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "jpRyQe3l0uQ": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "Paying off the debt with inflation isn't paying it off. It's a default with better PR.",
+   "url": "https://www.youtube.com/watch?v=jpRyQe3l0uQ",
+   "published": "2026-10-05T00:01:09+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "EdmuUX134Io": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "Jobs Missed. Wages Stalled. Tariffs Failed. Bonds Fell Anyway.",
+   "url": "https://www.youtube.com/watch?v=EdmuUX134Io",
+   "published": "2026-10-03T06:15:14+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "wd-M0JEotos": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "Every Crisis I Warned About Is Converging... This Is the End Game",
+   "url": "https://www.youtube.com/watch?v=wd-M0JEotos",
+   "published": "2026-09-30T06:35:22+00:00",
+   "analysis": {
+    "sentiment_score": 1.0,
+    "bullish_signals": 1,
+    "bearish_signals": 0,
+    "summary_tag": "BULLISH"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "GEGgSywAHlk": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "S&P Near a Record... 60% of Its Stocks in a Bear Market",
+   "url": "https://www.youtube.com/watch?v=GEGgSywAHlk",
+   "published": "2026-09-27T08:45:13+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  },
+  "JdVLKB7cHtc": {
+   "channel": "Peter Schiff",
+   "handle": "@PeterSchiff",
+   "title": "The 5-Year Treasury Just Broke 5%... The Whole Curve Is Next",
+   "url": "https://www.youtube.com/watch?v=JdVLKB7cHtc",
+   "published": "2026-09-24T08:45:16+00:00",
+   "analysis": {
+    "sentiment_score": 0.0,
+    "bullish_signals": 0,
+    "bearish_signals": 0,
+    "summary_tag": "NEUTRAL"
+   },
+   "gold_at_watch": 4181.1,
+   "processed_at": "2026-10-16T15:27:26.706984+00:00",
+   "graded": false,
+   "hit": null
+  }
+ },
  "collective_sentiment": 0.0,
- "last_updated": "2026-10-10T06:02:33.485030+00:00",
+ "last_updated": "2026-10-16T15:27:26.706984+00:00",
  "handle_cache": {
   "@BloombergTelevision": "UCdK2BueKxC9VxXh7e1Ne4oQ",
   "@RealVisionFinance": "UCGXWKlq1Oxr3ddEtmKhAkPg",
   "@PeterSchiff": "UCIjuLiLHdFxYtFmWlbTGQRQ",
   "@MilkRoadMacro": "UC0tMvte4_cvUtkKf9APAvvA"
- }
+ },
+ "fetch_status": "rss_ok"
 }

@@ -305,16 +305,35 @@ def append_history(sig: dict) -> None:
         fh.write(json.dumps(rec) + "\n")
 
 
+def _atomic_write_json(filepath: str, data: dict) -> None:
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    tmp_path = filepath + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as fh:
+        json.dump(data, fh, indent=2)
+        fh.flush()
+        os.fsync(fh.fileno())
+    os.replace(tmp_path, filepath)
+
+
 def main() -> None:
     sig = generate()
-    os.makedirs(os.path.dirname(SIGNAL_PATH), exist_ok=True)
-    with open(SIGNAL_PATH, "w") as fh:
-        json.dump(sig, fh, indent=2)
+    _atomic_write_json(SIGNAL_PATH, sig)
+
+    # Mirror to default MT5 terminal Files directory if available
+    mt5_path = r"C:\Users\saim_\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Files\gold_signal.json"
+    if os.path.exists(os.path.dirname(mt5_path)):
+        try:
+            _atomic_write_json(mt5_path, sig)
+            print(f"[signal] mirrored to MT5: {mt5_path}")
+        except Exception as e:
+            print(f"[signal] failed to mirror to MT5: {e}")
+
     append_history(sig)
     from .shadow import log_daily
     log_daily(sig)
     print(json.dumps(sig, indent=2))
     print(f"[signal] wrote {SIGNAL_PATH} + history + shadow")
+
 
 
 if __name__ == "__main__":
