@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-10-16T20:59:10.438329+00:00",
-  "timestamp_epoch": 1792184350,
+  "timestamp": "2026-10-16T21:03:36.063439+00:00",
+  "timestamp_epoch": 1792184616,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4867,
-  "p_down": 0.5133,
+  "p_up": 0.4831,
+  "p_down": 0.5169,
   "signal": "FLAT",
   "raw_signal": "FLAT",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0266,
-  "gold_price": 4188.3,
-  "composite": -0.0516,
+  "confidence": 0.0338,
+  "gold_price": 4185.6,
+  "composite": -0.0507,
   "calibration": {
     "a": 0.2369,
-    "b": 0.646
+    "b": 0.6459
   },
   "factor_zscores": {
     "real_rates": 0.4687,
@@ -25,9 +25,9 @@
     "fed_stance": -0.7073,
     "fear": 1.3316,
     "risk_app": 0.3347,
-    "btc_comp": -0.2567,
-    "etf_flow": -1.0302,
-    "momentum": -0.0736,
+    "btc_comp": -0.2442,
+    "etf_flow": -1.0305,
+    "momentum": -0.0787,
     "curve": 1.1627,
     "duration": -0.2033,
     "cb_regime": 0.5
@@ -38,14 +38,14 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5133,
+    "directional_probability": 0.5169,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.769,
+    "mcda_score": 0.778,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666667,
       "ml_consensus": 0.989,
-      "news_sentiment_alignment": 0.3,
+      "news_sentiment_alignment": 0.3571,
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
@@ -54,31 +54,31 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.421) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.52) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4867,
-    "p_linear_logistic": 0.5408,
+    "p_ensemble_up": 0.4831,
+    "p_linear_logistic": 0.5409,
     "p_boosted_ml": 0.552,
-    "nlp_sentiment_score": -0.587
+    "nlp_sentiment_score": -0.6243
   },
   "ai_sentiment": {
-    "sentiment_score": 0.2,
+    "sentiment_score": 0.1429,
     "bullish_indicators": 12,
-    "bearish_indicators": 8,
+    "bearish_indicators": 9,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.2,
+      "news": 0.143,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.1
+      "blended": 0.071
     },
     "narrative_zscore": {
-      "z": -1.761,
-      "mean": 0.3847,
-      "std": 0.1616,
+      "z": -1.873,
+      "mean": 0.3823,
+      "std": 0.166,
       "n": 12
     }
   },
@@ -131,11 +131,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4374.56,
-  "ma200": 4540.73,
-  "atr14": 30.04,
-  "sl_dollars": 60.07,
-  "tp_dollars": 105.12,
+  "ma50": 4374.5,
+  "ma200": 4540.72,
+  "atr14": 29.84,
+  "sl_dollars": 59.69,
+  "tp_dollars": 104.45,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": 0.0272,
@@ -144,7 +144,7 @@
     "fed_stance": -0.1015,
     "fear": 0.1173,
     "risk_app": 0.0406,
-    "btc_comp": -0.0176,
+    "btc_comp": -0.0167,
     "etf_flow": -0.0051,
     "momentum": -0.0,
     "curve": 0.0,
@@ -167,23 +167,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4170.31,
-    "vwap_zscore": -1.15,
+    "vwap": 4169.65,
+    "vwap_zscore": -0.95,
     "poc": 4177.61,
-    "vah": 4183.48,
+    "vah": 4181.91,
     "val": 4152.2,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4220.61,
-    "ema50": 4287.71,
-    "ema200": 4318.75,
-    "rsi14": 44.3,
-    "macd_hist": 3.603,
+    "ema20": 4220.36,
+    "ema50": 4287.6,
+    "ema200": 4318.72,
+    "rsi14": 44.0,
+    "macd_hist": 3.431,
     "macd_bullish": true,
     "adx14": 20.1,
-    "atr14": 83.74,
+    "atr14": 83.75,
     "trend_strong": false,
     "resistance": 4242.3,
     "support": 4095.0,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 20.98
+      "utc_hour": 21.05
     },
-    "tech_score": 0.421
+    "tech_score": 0.52
   },
   "news_blackout": {
     "blocked": false,
