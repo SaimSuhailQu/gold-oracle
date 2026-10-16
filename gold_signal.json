@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-16T04:33:53.501222+00:00",
-  "timestamp_epoch": 1792125233,
+  "timestamp": "2026-10-16T04:39:20.967382+00:00",
+  "timestamp_epoch": 1792125560,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4254,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1492,
-  "gold_price": 4200.8,
+  "gold_price": 4200.4,
   "composite": -0.6059,
   "calibration": {
     "a": 0.2383,
@@ -41,20 +41,20 @@
     "directional_probability": 0.5746,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.862,
+    "mcda_score": 0.822,
     "mcda_criteria_scores": {
       "macro_alignment": 0.9166666666666666,
       "ml_consensus": 0.938,
       "news_sentiment_alignment": 0.3,
       "technical_trend": 1.0,
-      "auction_location": 1.0
+      "auction_location": 0.8
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.427) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.328) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4159.74,
-    "vwap_zscore": 1.87,
+    "vwap": 4159.89,
+    "vwap_zscore": 1.45,
     "poc": 4167.9,
     "vah": 4175.93,
     "val": 4148.01,
@@ -176,14 +176,14 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4221.81,
-    "ema50": 4288.2,
+    "ema20": 4221.77,
+    "ema50": 4288.18,
     "ema200": 4318.87,
     "rsi14": 45.5,
-    "macd_hist": 4.401,
+    "macd_hist": 4.375,
     "macd_bullish": true,
     "adx14": 20.3,
-    "atr14": 82.86,
+    "atr14": 82.82,
     "trend_strong": false,
     "resistance": 4242.3,
     "support": 4095.0,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "BEARISH_ENGULFING",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 4.55
+      "utc_hour": 4.65
     },
-    "tech_score": 0.427
+    "tech_score": 0.328
   },
   "news_blackout": {
     "blocked": false,
