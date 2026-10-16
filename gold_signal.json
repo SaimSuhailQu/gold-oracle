@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-16T18:27:15.208331+00:00",
-  "timestamp_epoch": 1792175235,
+  "timestamp": "2026-10-16T18:31:48.090846+00:00",
+  "timestamp_epoch": 1792175508,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4812,
-  "p_down": 0.5188,
+  "p_up": 0.4839,
+  "p_down": 0.5161,
   "signal": "FLAT",
   "raw_signal": "FLAT",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0376,
-  "gold_price": 4184.9,
-  "composite": -0.0592,
+  "confidence": 0.0322,
+  "gold_price": 4181.6,
+  "composite": -0.0717,
   "calibration": {
     "a": 0.2369,
     "b": 0.6459
   },
   "factor_zscores": {
-    "real_rates": 0.3757,
-    "nom_yield": -0.1664,
-    "dollar": -0.9251,
+    "real_rates": 0.3631,
+    "nom_yield": -0.154,
+    "dollar": -0.9484,
     "fed_stance": -0.7073,
-    "fear": 1.6171,
-    "risk_app": 0.3824,
-    "btc_comp": -0.2285,
-    "etf_flow": -1.0155,
-    "momentum": -0.08,
-    "curve": 1.2096,
-    "duration": -0.2822,
+    "fear": 1.5229,
+    "risk_app": 0.3988,
+    "btc_comp": -0.2244,
+    "etf_flow": -1.0158,
+    "momentum": -0.0862,
+    "curve": 1.2018,
+    "duration": -0.3144,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,18 +38,19 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5188,
+    "directional_probability": 0.5161,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.77,
+    "mcda_score": 0.768,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666667,
-      "ml_consensus": 0.994,
+      "ml_consensus": 0.984,
       "news_sentiment_alignment": 0.3,
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
     "fatal_flaws": [
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze.",
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
@@ -58,9 +59,9 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4812,
-    "p_linear_logistic": 0.5374,
-    "p_boosted_ml": 0.5435,
+    "p_ensemble_up": 0.4839,
+    "p_linear_logistic": 0.536,
+    "p_boosted_ml": 0.552,
     "nlp_sentiment_score": -0.587
   },
   "ai_sentiment": {
@@ -130,24 +131,24 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4374.49,
-  "ma200": 4540.72,
-  "atr14": 29.79,
-  "sl_dollars": 59.59,
-  "tp_dollars": 104.27,
+  "ma50": 4374.42,
+  "ma200": 4540.7,
+  "atr14": 29.56,
+  "sl_dollars": 59.11,
+  "tp_dollars": 103.45,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": 0.0218,
-    "nom_yield": -0.0306,
-    "dollar": -0.0929,
+    "real_rates": 0.0211,
+    "nom_yield": -0.0283,
+    "dollar": -0.0953,
     "fed_stance": -0.1015,
-    "fear": 0.1423,
-    "risk_app": 0.0464,
-    "btc_comp": -0.0156,
+    "fear": 0.134,
+    "risk_app": 0.0484,
+    "btc_comp": -0.0153,
     "etf_flow": -0.0051,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": -0.0505,
+    "duration": -0.0563,
     "cb_regime": 0.0264
   },
   "model_weights": {
@@ -166,20 +167,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4172.02,
-    "vwap_zscore": -1.71,
+    "vwap": 4172.05,
+    "vwap_zscore": -2.22,
     "poc": 4177.61,
-    "vah": 4182.69,
+    "vah": 4181.91,
     "val": 4152.2,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4220.29,
-    "ema50": 4287.57,
-    "ema200": 4318.72,
-    "rsi14": 43.9,
-    "macd_hist": 3.386,
+    "ema20": 4219.98,
+    "ema50": 4287.44,
+    "ema200": 4318.68,
+    "rsi14": 43.5,
+    "macd_hist": 3.175,
     "macd_bullish": true,
     "adx14": 20.1,
     "atr14": 83.74,
@@ -204,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "BEARISH_ENGULFING",
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 18.45
+      "utc_hour": 18.52
     },
-    "tech_score": -0.181
+    "tech_score": -0.283
   },
   "news_blackout": {
     "blocked": false,
