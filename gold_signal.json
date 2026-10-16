@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-16T09:18:57.305234+00:00",
-  "timestamp_epoch": 1792142337,
+  "timestamp": "2026-10-16T09:23:58.765371+00:00",
+  "timestamp_epoch": 1792142638,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4454,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1092,
-  "gold_price": 4212.1,
+  "gold_price": 4211.4,
   "composite": -0.4416,
   "calibration": {
     "a": 0.2377,
@@ -41,18 +41,18 @@
     "directional_probability": 0.5546,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.832,
+    "mcda_score": 0.792,
     "mcda_criteria_scores": {
       "macro_alignment": 0.8333333333333334,
       "ml_consensus": 0.964,
       "news_sentiment_alignment": 0.20590000000000003,
       "technical_trend": 1.0,
-      "auction_location": 1.0
+      "auction_location": 0.8
     },
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.433) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.333) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4166.18,
-    "vwap_zscore": 1.64,
+    "vwap": 4166.24,
+    "vwap_zscore": 1.5,
     "poc": 4166.26,
     "vah": 4178.88,
     "val": 4150.57,
@@ -174,14 +174,14 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4222.88,
-    "ema50": 4288.64,
-    "ema200": 4318.99,
+    "ema20": 4222.81,
+    "ema50": 4288.61,
+    "ema200": 4318.98,
     "rsi14": 46.6,
-    "macd_hist": 5.122,
+    "macd_hist": 5.077,
     "macd_bullish": true,
     "adx14": 20.2,
-    "atr14": 83.16,
+    "atr14": 83.17,
     "trend_strong": false,
     "resistance": 4242.3,
     "support": 4095.0,
@@ -203,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 9.3
+      "utc_hour": 9.38
     },
-    "tech_score": 0.433
+    "tech_score": 0.333
   },
   "news_blackout": {
     "blocked": false,
