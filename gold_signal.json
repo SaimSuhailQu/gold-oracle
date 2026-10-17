@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-17T20:54:05.420988+00:00",
-  "timestamp_epoch": 1792270445,
+  "timestamp": "2026-10-17T20:58:43.982059+00:00",
+  "timestamp_epoch": 1792270723,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4913,
@@ -209,7 +209,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 20.9
+      "utc_hour": 20.97
     },
     "tech_score": 0.517
   },
