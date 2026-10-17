@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-17T16:58:36.845778+00:00",
-  "timestamp_epoch": 1792256316,
+  "timestamp": "2026-10-17T17:02:29.353933+00:00",
+  "timestamp_epoch": 1792256549,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4913,
@@ -50,7 +50,8 @@
       "auction_location": 0.8
     },
     "fatal_flaws": [
-      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze.",
+      "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
@@ -166,10 +167,10 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4157.7,
-    "vwap_zscore": -3.09,
-    "poc": 4158.56,
-    "vah": 4159.7,
+    "vwap": 4157.67,
+    "vwap_zscore": -3.37,
+    "poc": 4158.91,
+    "vah": 4159.65,
     "val": 4154.54,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
@@ -206,9 +207,9 @@
     },
     "candle_pattern": null,
     "session": {
-      "session": "NEW_YORK",
-      "trade_ok": true,
-      "utc_hour": 16.97
+      "session": "OFF_HOURS",
+      "trade_ok": false,
+      "utc_hour": 17.03
     },
     "tech_score": -0.183
   },
