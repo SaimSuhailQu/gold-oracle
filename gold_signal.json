@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-10-17T15:38:31.867970+00:00",
-  "timestamp_epoch": 1792251511,
+  "timestamp": "2026-10-17T15:44:01.912149+00:00",
+  "timestamp_epoch": 1792251841,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4913,
   "p_down": 0.5087,
-  "signal": "SHORT",
+  "signal": "FLAT",
   "raw_signal": "FLAT",
-  "size_tier": "QUARTER",
-  "size_mult": 0.25,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0174,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "QUARTER",
-    "size_mult": 0.25,
-    "final_audited_signal": "SHORT",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
     "directional_probability": 0.5087,
     "min_required_probability": 0.53,
@@ -49,11 +49,13 @@
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.4913,
@@ -164,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4158.43,
-    "vwap_zscore": -0.69,
+    "vwap": 4158.41,
+    "vwap_zscore": -2.08,
     "poc": 4159.5,
     "vah": 4159.69,
     "val": 4154.57,
@@ -206,7 +208,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 15.63
+      "utc_hour": 15.73
     },
     "tech_score": -0.183
   },
