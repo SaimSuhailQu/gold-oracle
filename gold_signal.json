@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-17T17:28:53.711479+00:00",
-  "timestamp_epoch": 1792258133,
+  "timestamp": "2026-10-17T17:34:13.715453+00:00",
+  "timestamp_epoch": 1792258453,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4913,
@@ -50,7 +50,6 @@
       "auction_location": 0.8
     },
     "fatal_flaws": [
-      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze.",
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
@@ -167,11 +166,11 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4157.37,
-    "vwap_zscore": -2.37,
+    "vwap": 4157.32,
+    "vwap_zscore": -1.61,
     "poc": 4158.62,
     "vah": 4159.61,
-    "val": 4154.57,
+    "val": 4151.94,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
@@ -209,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 17.47
+      "utc_hour": 17.57
     },
     "tech_score": -0.183
   },
