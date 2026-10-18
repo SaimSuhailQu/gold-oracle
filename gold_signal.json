@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-10-18T16:58:40.042227+00:00",
-  "timestamp_epoch": 1792342720,
+  "timestamp": "2026-10-18T17:03:35.220230+00:00",
+  "timestamp_epoch": 1792343015,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4777,
   "p_down": 0.5223,
-  "signal": "SHORT",
+  "signal": "FLAT",
   "raw_signal": "SHORT",
-  "size_tier": "QUARTER",
-  "size_mult": 0.25,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0446,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "QUARTER",
-    "size_mult": 0.25,
-    "final_audited_signal": "SHORT",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
     "directional_probability": 0.5223,
     "min_required_probability": 0.53,
@@ -49,11 +49,13 @@
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.4777,
@@ -164,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4151.37,
-    "vwap_zscore": -1.74,
+    "vwap": 4151.33,
+    "vwap_zscore": -1.72,
     "poc": 4154.63,
     "vah": 4155.28,
     "val": 4143.08,
@@ -202,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
-      "session": "NEW_YORK",
-      "trade_ok": true,
-      "utc_hour": 16.97
+      "session": "OFF_HOURS",
+      "trade_ok": false,
+      "utc_hour": 17.05
     },
-    "tech_score": -0.183
+    "tech_score": -0.083
   },
   "news_blackout": {
     "blocked": false,
