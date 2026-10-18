@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-18T23:18:41.076926+00:00",
-  "timestamp_epoch": 1792365521,
+  "timestamp": "2026-10-18T23:23:56.682090+00:00",
+  "timestamp_epoch": 1792365836,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4777,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0446,
-  "gold_price": 4199.8,
+  "gold_price": 4196.6,
   "composite": -0.0508,
   "calibration": {
     "a": 0.2369,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.328) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.426) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,23 +167,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4147.91,
-    "vwap_zscore": 2.56,
-    "poc": 4145.31,
-    "vah": 4153.54,
-    "val": 4143.18,
+    "vwap": 4147.82,
+    "vwap_zscore": 3.07,
+    "poc": 4145.4,
+    "vah": 4153.14,
+    "val": 4143.24,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4218.01,
-    "ema50": 4283.99,
-    "ema200": 4317.5,
-    "rsi14": 45.6,
-    "macd_hist": 6.704,
+    "ema20": 4217.71,
+    "ema50": 4283.86,
+    "ema200": 4317.46,
+    "rsi14": 45.2,
+    "macd_hist": 6.5,
     "macd_bullish": true,
     "adx14": 20.0,
-    "atr14": 79.4,
+    "atr14": 79.63,
     "trend_strong": false,
     "resistance": 4242.3,
     "support": 4095.0,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": null,
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.3
+      "utc_hour": 23.38
     },
-    "tech_score": 0.328
+    "tech_score": 0.426
   },
   "news_blackout": {
     "blocked": false,
