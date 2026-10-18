@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-18T10:23:29.986608+00:00",
-  "timestamp_epoch": 1792319009,
+  "timestamp": "2026-10-18T10:28:55.381598+00:00",
+  "timestamp_epoch": 1792319335,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4777,
@@ -51,7 +51,8 @@
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.318) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
@@ -164,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4152.72,
-    "vwap_zscore": 0.17,
+    "vwap": 4152.78,
+    "vwap_zscore": 0.55,
     "poc": 4154.7,
     "vah": 4155.51,
     "val": 4148.42,
@@ -180,16 +181,16 @@
     "macd_hist": 3.143,
     "macd_bullish": true,
     "adx14": 20.1,
-    "atr14": 83.74,
+    "atr14": 83.75,
     "trend_strong": false,
     "resistance": 4242.3,
     "support": 4095.0,
     "mtf_trends": {
-      "M5": -1
+      "M5": 1
     },
-    "mtf_score": -1.0,
-    "mtf_aligned_bull": false,
-    "mtf_aligned_bear": true,
+    "mtf_score": 1.0,
+    "mtf_aligned_bull": true,
+    "mtf_aligned_bear": false,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -202,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 10.38
+      "utc_hour": 10.47
     },
-    "tech_score": -0.183
+    "tech_score": 0.318
   },
   "news_blackout": {
     "blocked": false,
