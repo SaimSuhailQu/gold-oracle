@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-18T16:04:02.002493+00:00",
-  "timestamp_epoch": 1792339442,
+  "timestamp": "2026-10-18T16:08:39.911196+00:00",
+  "timestamp_epoch": 1792339719,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4777,
@@ -166,11 +166,11 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4152.23,
+    "vwap": 4152.18,
     "vwap_zscore": -2.64,
-    "poc": 4155.16,
-    "vah": 4155.55,
-    "val": 4145.03,
+    "poc": 4155.15,
+    "vah": 4155.28,
+    "val": 4144.9,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
   },
@@ -182,7 +182,7 @@
     "macd_hist": 3.143,
     "macd_bullish": true,
     "adx14": 20.1,
-    "atr14": 83.74,
+    "atr14": 83.75,
     "trend_strong": false,
     "resistance": 4242.3,
     "support": 4095.0,
@@ -208,7 +208,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 16.07
+      "utc_hour": 16.13
     },
     "tech_score": -0.183
   },
