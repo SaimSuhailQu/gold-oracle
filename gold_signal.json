@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-10-18T11:18:40.778458+00:00",
-  "timestamp_epoch": 1792322320,
+  "timestamp": "2026-10-18T11:23:46.525940+00:00",
+  "timestamp_epoch": 1792322626,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4781,
-  "p_down": 0.5219,
+  "p_up": 0.4777,
+  "p_down": 0.5223,
   "signal": "SHORT",
   "raw_signal": "SHORT",
   "size_tier": "QUARTER",
   "size_mult": 0.25,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0438,
+  "confidence": 0.0446,
   "gold_price": 4181.1,
   "composite": -0.0508,
   "calibration": {
@@ -38,14 +38,14 @@
     "size_mult": 0.25,
     "final_audited_signal": "SHORT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5219,
+    "directional_probability": 0.5223,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.791,
+    "mcda_score": 0.792,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666667,
       "ml_consensus": 0.989,
-      "news_sentiment_alignment": 0.4412,
+      "news_sentiment_alignment": 0.4474,
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
@@ -57,26 +57,26 @@
     "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4781,
+    "p_ensemble_up": 0.4777,
     "p_linear_logistic": 0.541,
     "p_boosted_ml": 0.552,
-    "nlp_sentiment_score": -0.674
+    "nlp_sentiment_score": -0.6777
   },
   "ai_sentiment": {
-    "sentiment_score": 0.0588,
-    "bullish_indicators": 9,
-    "bearish_indicators": 8,
+    "sentiment_score": 0.0526,
+    "bullish_indicators": 10,
+    "bearish_indicators": 9,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.059,
+      "news": 0.053,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.029
+      "blended": 0.026
     },
     "narrative_zscore": {
-      "z": -2.022,
-      "mean": 0.3788,
-      "std": 0.1728,
+      "z": -2.033,
+      "mean": 0.3786,
+      "std": 0.1733,
       "n": 12
     }
   },
@@ -165,7 +165,7 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4153.11,
+    "vwap": 4153.12,
     "vwap_zscore": -0.01,
     "poc": 4154.68,
     "vah": 4155.62,
@@ -207,7 +207,7 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 11.3
+      "utc_hour": 11.38
     },
     "tech_score": 0.417
   },
