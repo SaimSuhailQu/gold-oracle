@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-18T10:08:52.108469+00:00",
-  "timestamp_epoch": 1792318132,
+  "timestamp": "2026-10-18T10:14:02.253437+00:00",
+  "timestamp_epoch": 1792318442,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4777,
@@ -52,7 +52,7 @@
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.417) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.318) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
@@ -165,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4152.58,
-    "vwap_zscore": 0.99,
+    "vwap": 4152.67,
+    "vwap_zscore": 0.68,
     "poc": 4155.31,
     "vah": 4155.63,
     "val": 4149.17,
@@ -203,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 10.13
+      "utc_hour": 10.23
     },
-    "tech_score": 0.417
+    "tech_score": 0.318
   },
   "news_blackout": {
     "blocked": false,
