@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-10-18T03:44:02.256011+00:00",
-  "timestamp_epoch": 1792295042,
+  "timestamp": "2026-10-18T03:48:45.688064+00:00",
+  "timestamp_epoch": 1792295325,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4883,
-  "p_down": 0.5117,
+  "p_up": 0.4811,
+  "p_down": 0.5189,
   "signal": "FLAT",
   "raw_signal": "FLAT",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0234,
+  "confidence": 0.0378,
   "gold_price": 4181.1,
   "composite": -0.0508,
   "calibration": {
@@ -38,14 +38,14 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.5117,
+    "directional_probability": 0.5189,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.766,
+    "mcda_score": 0.783,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666667,
       "ml_consensus": 0.989,
-      "news_sentiment_alignment": 0.2778,
+      "news_sentiment_alignment": 0.3889,
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
@@ -59,26 +59,26 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4883,
+    "p_ensemble_up": 0.4811,
     "p_linear_logistic": 0.541,
     "p_boosted_ml": 0.552,
-    "nlp_sentiment_score": -0.572
+    "nlp_sentiment_score": -0.644
   },
   "ai_sentiment": {
-    "sentiment_score": 0.2222,
-    "bullish_indicators": 11,
-    "bearish_indicators": 7,
+    "sentiment_score": 0.1111,
+    "bullish_indicators": 10,
+    "bearish_indicators": 8,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.222,
+      "news": 0.111,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.111
+      "blended": 0.056
     },
     "narrative_zscore": {
-      "z": -1.716,
-      "mean": 0.3856,
-      "std": 0.16,
+      "z": -1.932,
+      "mean": 0.381,
+      "std": 0.1685,
       "n": 12
     }
   },
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4152.26,
-    "vwap_zscore": 1.05,
+    "vwap": 4152.25,
+    "vwap_zscore": 1.04,
     "poc": 4150.33,
     "vah": 4157.35,
     "val": 4148.75,
@@ -209,7 +209,7 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 3.73
+      "utc_hour": 3.8
     },
     "tech_score": 0.417
   },
