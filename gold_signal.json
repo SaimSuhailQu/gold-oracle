@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-18T22:44:03.752266+00:00",
-  "timestamp_epoch": 1792363443,
+  "timestamp": "2026-10-18T22:49:05.987965+00:00",
+  "timestamp_epoch": 1792363745,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4777,
-  "p_down": 0.5223,
+  "p_up": 0.5651,
+  "p_down": 0.4349,
   "signal": "FLAT",
-  "raw_signal": "SHORT",
+  "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0446,
-  "gold_price": 4198.7,
+  "confidence": 0.1302,
+  "gold_price": 4196.4,
   "composite": -0.0508,
   "calibration": {
     "a": 0.2369,
@@ -37,48 +37,48 @@
     "size_tier": "FLAT",
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
-    "evaluated_direction": "SHORT",
-    "directional_probability": 0.5223,
+    "evaluated_direction": "LONG",
+    "directional_probability": 0.5651,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.832,
+    "mcda_score": 0.606,
     "mcda_criteria_scores": {
-      "macro_alignment": 0.6666666666666667,
+      "macro_alignment": 0.3333333333333333,
       "ml_consensus": 0.989,
-      "news_sentiment_alignment": 0.4474,
-      "technical_trend": 1.0,
-      "auction_location": 1.0
+      "news_sentiment_alignment": 1.5,
+      "technical_trend": 0.1,
+      "auction_location": 0.4
     },
     "fatal_flaws": [
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at +2.0 standard deviations above VWAP; high risk of mean reversion.",
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.427) against a SHORT."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4777,
+    "p_ensemble_up": 0.5651,
     "p_linear_logistic": 0.541,
     "p_boosted_ml": 0.552,
-    "nlp_sentiment_score": -0.6777
+    "nlp_sentiment_score": 0.1963
   },
   "ai_sentiment": {
-    "sentiment_score": 0.0526,
-    "bullish_indicators": 10,
-    "bearish_indicators": 9,
-    "sample_headlines_analyzed": 14,
+    "sentiment_score": 1.0,
+    "bullish_indicators": 4,
+    "bearish_indicators": 0,
+    "sample_headlines_analyzed": 3,
     "narrative_blend": {
-      "news": 0.053,
+      "news": 1.0,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.026
+      "blended": 0.5
     },
     "narrative_zscore": {
-      "z": -2.033,
-      "mean": 0.3786,
-      "std": 0.1733,
+      "z": 0.589,
+      "mean": 0.4181,
+      "std": 0.1392,
       "n": 12
     }
   },
@@ -167,20 +167,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4148.28,
-    "vwap_zscore": 3.35,
+    "vwap": 4148.26,
+    "vwap_zscore": 3.19,
     "poc": 4145.14,
-    "vah": 4154.32,
+    "vah": 4153.72,
     "val": 4143.07,
     "audit_verdict": "STAND_ASIDE",
-    "audit_confidence": 0.4
+    "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4217.91,
-    "ema50": 4283.95,
-    "ema200": 4317.48,
-    "rsi14": 45.5,
-    "macd_hist": 6.634,
+    "ema20": 4217.69,
+    "ema50": 4283.85,
+    "ema200": 4317.46,
+    "rsi14": 45.2,
+    "macd_hist": 6.487,
     "macd_bullish": true,
     "adx14": 20.0,
     "atr14": 79.22,
@@ -209,9 +209,9 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.73
+      "utc_hour": 22.82
     },
-    "tech_score": 0.427
+    "tech_score": 0.426
   },
   "news_blackout": {
     "blocked": false,
