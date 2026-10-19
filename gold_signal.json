@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-19T23:14:06.234055+00:00",
-  "timestamp_epoch": 1792451646,
+  "timestamp": "2026-10-19T23:19:10.069404+00:00",
+  "timestamp_epoch": 1792451950,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4559,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0882,
-  "gold_price": 4154.9,
-  "composite": -0.2561,
+  "gold_price": 4153.8,
+  "composite": -0.2557,
   "calibration": {
     "a": 0.2363,
     "b": 0.6455
@@ -25,9 +25,9 @@
     "fed_stance": -0.7116,
     "fear": 0.9421,
     "risk_app": 0.6731,
-    "btc_comp": 0.2187,
+    "btc_comp": 0.2245,
     "etf_flow": -1.0174,
-    "momentum": -0.1705,
+    "momentum": -0.1726,
     "curve": 1.2892,
     "duration": -0.8602,
     "cb_regime": 0.5
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4369.52,
-  "ma200": 4539.77,
-  "atr14": 30.59,
-  "sl_dollars": 61.17,
-  "tp_dollars": 107.05,
+  "ma50": 4369.5,
+  "ma200": 4539.76,
+  "atr14": 30.66,
+  "sl_dollars": 61.33,
+  "tp_dollars": 107.32,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": -0.0166,
@@ -143,7 +143,7 @@
     "fed_stance": -0.1022,
     "fear": 0.0826,
     "risk_app": 0.0815,
-    "btc_comp": 0.0149,
+    "btc_comp": 0.0153,
     "etf_flow": -0.0056,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,20 +166,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4138.98,
-    "vwap_zscore": -0.99,
-    "poc": 4137.13,
-    "vah": 4142.13,
-    "val": 4134.43,
+    "vwap": 4138.91,
+    "vwap_zscore": -1.06,
+    "poc": 4136.81,
+    "vah": 4142.53,
+    "val": 4134.9,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4213.74,
-    "ema50": 4282.23,
-    "ema200": 4317.05,
-    "rsi14": 41.3,
-    "macd_hist": 3.839,
+    "ema20": 4213.63,
+    "ema50": 4282.18,
+    "ema200": 4317.04,
+    "rsi14": 41.2,
+    "macd_hist": 3.769,
     "macd_bullish": true,
     "adx14": 20.2,
     "atr14": 79.76,
@@ -208,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.23
+      "utc_hour": 23.32
     },
     "tech_score": -0.194
   },
