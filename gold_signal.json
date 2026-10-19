@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-19T23:29:09.265967+00:00",
-  "timestamp_epoch": 1792452549,
+  "timestamp": "2026-10-19T23:33:53.949108+00:00",
+  "timestamp_epoch": 1792452833,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4559,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0882,
-  "gold_price": 4153.0,
+  "gold_price": 4154.3,
   "composite": -0.2563,
   "calibration": {
     "a": 0.2363,
@@ -25,9 +25,9 @@
     "fed_stance": -0.7116,
     "fear": 0.9421,
     "risk_app": 0.6731,
-    "btc_comp": 0.2159,
+    "btc_comp": 0.2154,
     "etf_flow": -1.0174,
-    "momentum": -0.1741,
+    "momentum": -0.1717,
     "curve": 1.2892,
     "duration": -0.8602,
     "cb_regime": 0.5
@@ -59,7 +59,7 @@
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.4559,
-    "p_linear_logistic": 0.5226,
+    "p_linear_logistic": 0.5225,
     "p_boosted_ml": 0.5319,
     "nlp_sentiment_score": -0.7053
   },
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4369.48,
+  "ma50": 4369.51,
   "ma200": 4539.76,
-  "atr14": 30.72,
-  "sl_dollars": 61.44,
-  "tp_dollars": 107.52,
+  "atr14": 30.63,
+  "sl_dollars": 61.26,
+  "tp_dollars": 107.2,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": -0.0166,
@@ -166,20 +166,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4138.72,
-    "vwap_zscore": -0.85,
-    "poc": 4136.77,
-    "vah": 4141.91,
-    "val": 4134.37,
+    "vwap": 4138.69,
+    "vwap_zscore": -0.97,
+    "poc": 4136.7,
+    "vah": 4142.47,
+    "val": 4134.32,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4213.55,
-    "ema50": 4282.15,
-    "ema200": 4317.03,
-    "rsi14": 41.1,
-    "macd_hist": 3.717,
+    "ema20": 4213.68,
+    "ema50": 4282.2,
+    "ema200": 4317.04,
+    "rsi14": 41.2,
+    "macd_hist": 3.8,
     "macd_bullish": true,
     "adx14": 20.2,
     "atr14": 79.84,
@@ -208,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.48
+      "utc_hour": 23.55
     },
     "tech_score": -0.194
   },
