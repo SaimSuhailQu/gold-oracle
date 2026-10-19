@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-19T05:43:53.674089+00:00",
-  "timestamp_epoch": 1792388633,
+  "timestamp": "2026-10-19T05:49:02.613911+00:00",
+  "timestamp_epoch": 1792388942,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.484,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.032,
-  "gold_price": 4197.1,
+  "gold_price": 4200.3,
   "composite": -0.0508,
   "calibration": {
     "a": 0.2369,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.526) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.528) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4157.48,
-    "vwap_zscore": 1.45,
+    "vwap": 4158.49,
+    "vwap_zscore": 1.39,
     "poc": 4164.59,
     "vah": 4172.45,
     "val": 4141.02,
@@ -176,11 +176,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4217.75,
-    "ema50": 4283.88,
-    "ema200": 4317.47,
-    "rsi14": 45.3,
-    "macd_hist": 6.532,
+    "ema20": 4218.06,
+    "ema50": 4284.01,
+    "ema200": 4317.5,
+    "rsi14": 45.6,
+    "macd_hist": 6.736,
     "macd_bullish": true,
     "adx14": 20.0,
     "atr14": 80.08,
@@ -209,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 5.72
+      "utc_hour": 5.82
     },
-    "tech_score": 0.526
+    "tech_score": 0.528
   },
   "news_blackout": {
     "blocked": false,
