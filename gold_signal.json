@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-19T20:44:04.948927+00:00",
-  "timestamp_epoch": 1792442644,
+  "timestamp": "2026-10-19T20:49:08.814724+00:00",
+  "timestamp_epoch": 1792442948,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4569,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0862,
-  "gold_price": 4158.2,
-  "composite": -0.256,
+  "gold_price": 4157.4,
+  "composite": -0.2561,
   "calibration": {
     "a": 0.2363,
     "b": 0.6455
@@ -25,9 +25,9 @@
     "fed_stance": -0.7116,
     "fear": 0.9421,
     "risk_app": 0.6731,
-    "btc_comp": 0.2203,
+    "btc_comp": 0.219,
     "etf_flow": -1.0164,
-    "momentum": -0.1643,
+    "momentum": -0.1658,
     "curve": 1.2892,
     "duration": -0.8602,
     "cb_regime": 0.5
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4369.58,
+  "ma50": 4369.57,
   "ma200": 4539.78,
-  "atr14": 30.35,
-  "sl_dollars": 60.7,
-  "tp_dollars": 106.22,
+  "atr14": 30.41,
+  "sl_dollars": 60.81,
+  "tp_dollars": 106.42,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": -0.0166,
@@ -143,7 +143,7 @@
     "fed_stance": -0.1022,
     "fear": 0.0826,
     "risk_app": 0.0815,
-    "btc_comp": 0.015,
+    "btc_comp": 0.0149,
     "etf_flow": -0.0056,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4141.31,
-    "vwap_zscore": -0.61,
+    "vwap": 4141.25,
+    "vwap_zscore": -0.62,
     "poc": 4142.01,
     "vah": 4142.36,
     "val": 4134.84,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4214.05,
-    "ema50": 4282.36,
-    "ema200": 4317.08,
+    "ema20": 4213.97,
+    "ema50": 4282.33,
+    "ema200": 4317.07,
     "rsi14": 41.5,
-    "macd_hist": 4.049,
+    "macd_hist": 3.998,
     "macd_bullish": true,
     "adx14": 20.1,
     "atr14": 81.74,
@@ -208,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 20.73
+      "utc_hour": 20.82
     },
     "tech_score": -0.192
   },
