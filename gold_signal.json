@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-19T21:09:04.205448+00:00",
-  "timestamp_epoch": 1792444144,
+  "timestamp": "2026-10-19T21:13:55.780340+00:00",
+  "timestamp_epoch": 1792444435,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.46,
-  "p_down": 0.54,
+  "p_up": 0.4558,
+  "p_down": 0.5442,
   "signal": "FLAT",
   "raw_signal": "SHORT",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.08,
-  "gold_price": 4159.8,
-  "composite": -0.2561,
+  "confidence": 0.0884,
+  "gold_price": 4160.3,
+  "composite": -0.2566,
   "calibration": {
     "a": 0.2363,
     "b": 0.6455
@@ -25,9 +25,9 @@
     "fed_stance": -0.7116,
     "fear": 0.9421,
     "risk_app": 0.6731,
-    "btc_comp": 0.2195,
+    "btc_comp": 0.2121,
     "etf_flow": -1.0174,
-    "momentum": -0.1613,
+    "momentum": -0.1603,
     "curve": 1.2892,
     "duration": -0.8602,
     "cb_regime": 0.5
@@ -38,14 +38,14 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "SHORT",
-    "directional_probability": 0.54,
+    "directional_probability": 0.5442,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.788,
+    "mcda_score": 0.8,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666667,
-      "ml_consensus": 0.991,
-      "news_sentiment_alignment": 0.42310000000000003,
+      "ml_consensus": 0.99,
+      "news_sentiment_alignment": 0.5,
       "technical_trend": 1.0,
       "auction_location": 0.8
     },
@@ -58,26 +58,26 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.46,
-    "p_linear_logistic": 0.5225,
+    "p_ensemble_up": 0.4558,
+    "p_linear_logistic": 0.5224,
     "p_boosted_ml": 0.5319,
-    "nlp_sentiment_score": -0.664
+    "nlp_sentiment_score": -0.7053
   },
   "ai_sentiment": {
-    "sentiment_score": 0.0769,
-    "bullish_indicators": 7,
+    "sentiment_score": 0.0,
+    "bullish_indicators": 6,
     "bearish_indicators": 6,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.077,
+      "news": 0.0,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.038
+      "blended": 0.0
     },
     "narrative_zscore": {
-      "z": -1.992,
-      "mean": 0.3796,
-      "std": 0.1713,
+      "z": -2.116,
+      "mean": 0.3764,
+      "std": 0.1779,
       "n": 12
     }
   },
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4369.62,
+  "ma50": 4369.63,
   "ma200": 4539.79,
-  "atr14": 30.24,
-  "sl_dollars": 60.47,
-  "tp_dollars": 105.82,
+  "atr14": 30.2,
+  "sl_dollars": 60.4,
+  "tp_dollars": 105.7,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": -0.0166,
@@ -143,7 +143,7 @@
     "fed_stance": -0.1022,
     "fear": 0.0826,
     "risk_app": 0.0815,
-    "btc_comp": 0.015,
+    "btc_comp": 0.0145,
     "etf_flow": -0.0056,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4140.53,
-    "vwap_zscore": -0.41,
+    "vwap": 4140.51,
+    "vwap_zscore": -0.32,
     "poc": 4142.01,
     "vah": 4142.36,
     "val": 4134.84,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4214.2,
-    "ema50": 4282.42,
+    "ema20": 4214.25,
+    "ema50": 4282.44,
     "ema200": 4317.1,
     "rsi14": 41.7,
-    "macd_hist": 4.151,
+    "macd_hist": 4.183,
     "macd_bullish": true,
     "adx14": 20.1,
     "atr14": 81.74,
@@ -208,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.15
+      "utc_hour": 21.22
     },
     "tech_score": -0.191
   },
