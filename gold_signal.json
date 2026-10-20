@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-20T08:58:57.668019+00:00",
-  "timestamp_epoch": 1792486737,
+  "timestamp": "2026-10-20T09:04:01.136041+00:00",
+  "timestamp_epoch": 1792487041,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.4776,
-  "p_down": 0.5224,
-  "signal": "FLAT",
-  "raw_signal": "SHORT",
-  "size_tier": "FLAT",
-  "size_mult": 0.0,
+  "p_up": 0.5024,
+  "p_down": 0.4976,
+  "signal": "LONG",
+  "raw_signal": "FLAT",
+  "size_tier": "QUARTER",
+  "size_mult": 0.25,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0448,
-  "gold_price": 4140.9,
+  "confidence": 0.0048,
+  "gold_price": 4139.8,
   "composite": -0.2557,
   "calibration": {
     "a": 0.2363,
@@ -33,51 +33,49 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": false,
-    "size_tier": "FLAT",
-    "size_mult": 0.0,
-    "final_audited_signal": "FLAT",
-    "evaluated_direction": "SHORT",
-    "directional_probability": 0.5224,
+    "is_cleared_to_trade": true,
+    "size_tier": "QUARTER",
+    "size_mult": 0.25,
+    "final_audited_signal": "LONG",
+    "evaluated_direction": "LONG",
+    "directional_probability": 0.5024,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.75,
+    "mcda_score": 0.587,
     "mcda_criteria_scores": {
-      "macro_alignment": 0.6666666666666667,
+      "macro_alignment": 0.3333333333333333,
       "ml_consensus": 0.991,
-      "news_sentiment_alignment": 0.16670000000000001,
-      "technical_trend": 1.0,
-      "auction_location": 0.8
+      "news_sentiment_alignment": 1.1,
+      "technical_trend": 0.1,
+      "auction_location": 0.6
     },
-    "fatal_flaws": [
-      "FATAL MICROSTRUCTURE FLAW: Price is overextended at -2.0 standard deviations below VWAP; high risk of short squeeze."
-    ],
+    "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
-    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
+    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.4776,
+    "p_ensemble_up": 0.5024,
     "p_linear_logistic": 0.5226,
     "p_boosted_ml": 0.5319,
-    "nlp_sentiment_score": -0.4883
+    "nlp_sentiment_score": -0.2407
   },
   "ai_sentiment": {
-    "sentiment_score": 0.3333,
+    "sentiment_score": 0.6,
     "bullish_indicators": 8,
-    "bearish_indicators": 4,
+    "bearish_indicators": 2,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.333,
+      "news": 0.6,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.167
+      "blended": 0.3
     },
     "narrative_zscore": {
-      "z": -1.465,
-      "mean": 0.3903,
-      "std": 0.1527,
+      "z": -0.722,
+      "mean": 0.4014,
+      "std": 0.1403,
       "n": 12
     }
   },
@@ -166,20 +164,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4130.95,
-    "vwap_zscore": -2.16,
+    "vwap": 4130.76,
+    "vwap_zscore": -2.26,
     "poc": 4138.48,
     "vah": 4140.53,
     "val": 4118.18,
     "audit_verdict": "STAND_ASIDE",
-    "audit_confidence": 0.4
+    "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4207.25,
-    "ema50": 4276.88,
-    "ema200": 4315.35,
-    "rsi14": 40.1,
-    "macd_hist": 3.898,
+    "ema20": 4207.14,
+    "ema50": 4276.84,
+    "ema200": 4315.34,
+    "rsi14": 40.0,
+    "macd_hist": 3.827,
     "macd_bullish": true,
     "adx14": 20.5,
     "atr14": 78.16,
@@ -208,9 +206,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.97
+      "utc_hour": 9.07
     },
-    "tech_score": -0.199
+    "tech_score": -0.2
   },
   "news_blackout": {
     "blocked": false,
