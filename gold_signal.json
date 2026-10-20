@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-20T21:23:54.803075+00:00",
-  "timestamp_epoch": 1792531434,
+  "timestamp": "2026-10-20T21:28:47.587154+00:00",
+  "timestamp_epoch": 1792531727,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5256,
-  "p_down": 0.4744,
+  "p_up": 0.5257,
+  "p_down": 0.4743,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0512,
+  "confidence": 0.0514,
   "gold_price": 4142.5,
-  "composite": -0.1108,
+  "composite": -0.1107,
   "calibration": {
     "a": 0.2356,
     "b": 0.6449
@@ -25,7 +25,7 @@
     "fed_stance": -0.5427,
     "fear": 0.8269,
     "risk_app": 0.5821,
-    "btc_comp": 0.101,
+    "btc_comp": 0.1033,
     "etf_flow": -1.0075,
     "momentum": -0.2006,
     "curve": 1.1885,
@@ -38,7 +38,7 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.5256,
+    "directional_probability": 0.5257,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.585,
@@ -58,7 +58,7 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5256,
+    "p_ensemble_up": 0.5257,
     "p_linear_logistic": 0.5467,
     "p_boosted_ml": 0.5148,
     "nlp_sentiment_score": -0.0793
@@ -143,7 +143,7 @@
     "fed_stance": -0.078,
     "fear": 0.0722,
     "risk_app": 0.0703,
-    "btc_comp": 0.0069,
+    "btc_comp": 0.007,
     "etf_flow": -0.006,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4125.68,
-    "vwap_zscore": 0.25,
+    "vwap": 4125.71,
+    "vwap_zscore": 0.26,
     "poc": 4124.93,
     "vah": 4149.76,
     "val": 4111.04,
@@ -208,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.38
+      "utc_hour": 21.47
     },
     "tech_score": 0.401
   },
