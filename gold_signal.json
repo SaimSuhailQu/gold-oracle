@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-20T04:38:41.928012+00:00",
-  "timestamp_epoch": 1792471121,
+  "timestamp": "2026-10-20T04:43:51.232462+00:00",
+  "timestamp_epoch": 1792471431,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4846,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0308,
-  "gold_price": 4162.7,
+  "gold_price": 4161.9,
   "composite": -0.0508,
   "calibration": {
     "a": 0.2369,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.41) against a SHORT."
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.409) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,23 +167,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4135.51,
-    "vwap_zscore": 0.46,
+    "vwap": 4135.54,
+    "vwap_zscore": 0.45,
     "poc": 4139.03,
     "vah": 4141.87,
-    "val": 4129.23,
+    "val": 4133.03,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4209.32,
-    "ema50": 4277.74,
+    "ema20": 4209.25,
+    "ema50": 4277.7,
     "ema200": 4315.56,
-    "rsi14": 42.0,
-    "macd_hist": 5.289,
+    "rsi14": 41.9,
+    "macd_hist": 5.238,
     "macd_bullish": true,
     "adx14": 20.5,
-    "atr14": 78.17,
+    "atr14": 78.16,
     "trend_strong": false,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -209,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 4.63
+      "utc_hour": 4.72
     },
-    "tech_score": 0.41
+    "tech_score": 0.409
   },
   "news_blackout": {
     "blocked": false,
