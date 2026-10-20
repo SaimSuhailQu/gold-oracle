@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-20T05:33:44.231530+00:00",
-  "timestamp_epoch": 1792474424,
+  "timestamp": "2026-10-20T05:39:02.376193+00:00",
+  "timestamp_epoch": 1792474742,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4903,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0194,
-  "gold_price": 4155.5,
+  "gold_price": 4153.1,
   "composite": -0.0508,
   "calibration": {
     "a": 0.2369,
@@ -53,8 +53,7 @@
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
-      "CRITIC WARNING: technical stack is bullish (tech_score=0.406) against a SHORT."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4135.56,
-    "vwap_zscore": -1.09,
+    "vwap": 4135.52,
+    "vwap_zscore": -1.39,
     "poc": 4139.03,
     "vah": 4141.87,
     "val": 4129.23,
@@ -176,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4208.64,
-    "ema50": 4277.45,
-    "ema200": 4315.49,
-    "rsi14": 41.3,
-    "macd_hist": 4.829,
+    "ema20": 4208.41,
+    "ema50": 4277.36,
+    "ema200": 4315.47,
+    "rsi14": 41.1,
+    "macd_hist": 4.676,
     "macd_bullish": true,
     "adx14": 20.5,
     "atr14": 78.16,
@@ -188,11 +187,11 @@
     "resistance": 4220.4,
     "support": 4095.0,
     "mtf_trends": {
-      "M5": 1
+      "M5": -1
     },
-    "mtf_score": 1.0,
-    "mtf_aligned_bull": true,
-    "mtf_aligned_bear": false,
+    "mtf_score": -1.0,
+    "mtf_aligned_bull": false,
+    "mtf_aligned_bear": true,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -209,9 +208,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 5.55
+      "utc_hour": 5.65
     },
-    "tech_score": 0.406
+    "tech_score": -0.194
   },
   "news_blackout": {
     "blocked": false,
