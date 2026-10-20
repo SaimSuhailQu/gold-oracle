@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-20T22:58:52.885672+00:00",
-  "timestamp_epoch": 1792537132,
+  "timestamp": "2026-10-20T23:04:04.386932+00:00",
+  "timestamp_epoch": 1792537444,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5216,
-  "p_down": 0.4784,
+  "p_up": 0.5287,
+  "p_down": 0.4713,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.0432,
-  "gold_price": 4140.7,
-  "composite": -0.1119,
+  "confidence": 0.0574,
+  "gold_price": 4140.0,
+  "composite": -0.1114,
   "calibration": {
     "a": 0.2356,
     "b": 0.6449
@@ -25,9 +25,9 @@
     "fed_stance": -0.5427,
     "fear": 0.8269,
     "risk_app": 0.5821,
-    "btc_comp": 0.0855,
+    "btc_comp": 0.0924,
     "etf_flow": -1.0075,
-    "momentum": -0.204,
+    "momentum": -0.2053,
     "curve": 1.1885,
     "duration": -0.43,
     "cb_regime": 0.5
@@ -38,14 +38,14 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.5216,
+    "directional_probability": 0.5287,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.58,
+    "mcda_score": 0.589,
     "mcda_criteria_scores": {
       "macro_alignment": 0.4166666666666667,
       "ml_consensus": 0.968,
-      "news_sentiment_alignment": 1.2143000000000002,
+      "news_sentiment_alignment": 1.2778,
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
@@ -58,26 +58,26 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5216,
-    "p_linear_logistic": 0.5466,
+    "p_ensemble_up": 0.5287,
+    "p_linear_logistic": 0.5467,
     "p_boosted_ml": 0.5148,
-    "nlp_sentiment_score": -0.1187
+    "nlp_sentiment_score": -0.0483
   },
   "ai_sentiment": {
-    "sentiment_score": 0.7143,
-    "bullish_indicators": 6,
+    "sentiment_score": 0.7778,
+    "bullish_indicators": 8,
     "bearish_indicators": 1,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.714,
+      "news": 0.778,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.357
+      "blended": 0.389
     },
     "narrative_zscore": {
-      "z": -0.356,
-      "mean": 0.4062,
-      "std": 0.1378,
+      "z": -0.145,
+      "mean": 0.4088,
+      "std": 0.1371,
       "n": 12
     }
   },
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4364.04,
-  "ma200": 4538.85,
-  "atr14": 31.1,
-  "sl_dollars": 62.2,
-  "tp_dollars": 108.85,
+  "ma50": 4364.03,
+  "ma200": 4538.84,
+  "atr14": 31.15,
+  "sl_dollars": 62.3,
+  "tp_dollars": 109.02,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": 0.0052,
@@ -143,7 +143,7 @@
     "fed_stance": -0.078,
     "fear": 0.0722,
     "risk_app": 0.0703,
-    "btc_comp": 0.0058,
+    "btc_comp": 0.0063,
     "etf_flow": -0.006,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,7 +166,7 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4127.61,
+    "vwap": 4127.67,
     "vwap_zscore": -0.84,
     "poc": 4124.2,
     "vah": 4149.86,
@@ -175,14 +175,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4207.23,
-    "ema50": 4276.87,
+    "ema20": 4207.16,
+    "ema50": 4276.85,
     "ema200": 4315.34,
-    "rsi14": 40.1,
-    "macd_hist": 3.885,
+    "rsi14": 40.0,
+    "macd_hist": 3.84,
     "macd_bullish": true,
     "adx14": 20.4,
-    "atr14": 77.32,
+    "atr14": 77.37,
     "trend_strong": false,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "BEARISH_ENGULFING",
+    "candle_pattern": null,
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.97
+      "utc_hour": 23.07
     },
-    "tech_score": 0.3
+    "tech_score": 0.4
   },
   "news_blackout": {
     "blocked": false,
