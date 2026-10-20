@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-20T02:43:54.356659+00:00",
-  "timestamp_epoch": 1792464234,
+  "timestamp": "2026-10-20T02:57:50.225157+00:00",
+  "timestamp_epoch": 1792465070,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.4799,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0402,
-  "gold_price": 4155.3,
+  "gold_price": 4154.5,
   "composite": -0.0508,
   "calibration": {
     "a": 0.2369,
@@ -53,7 +53,8 @@
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips."
+      "CRITIC WARNING: Structural central-bank reserve accumulation creates sticky long-term price support on dips.",
+      "CRITIC WARNING: technical stack is bullish (tech_score=0.406) against a SHORT."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -166,20 +167,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4135.16,
-    "vwap_zscore": -0.62,
+    "vwap": 4135.12,
+    "vwap_zscore": 0.0,
     "poc": 4136.59,
     "vah": 4141.98,
-    "val": 4119.15,
+    "val": 4129.29,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.4
   },
   "technicals": {
-    "ema20": 4213.77,
-    "ema50": 4282.24,
-    "ema200": 4317.05,
-    "rsi14": 41.3,
-    "macd_hist": 3.864,
+    "ema20": 4213.7,
+    "ema50": 4282.21,
+    "ema200": 4317.04,
+    "rsi14": 41.2,
+    "macd_hist": 3.813,
     "macd_bullish": true,
     "adx14": 20.4,
     "atr14": 81.1,
@@ -187,11 +188,11 @@
     "resistance": 4242.3,
     "support": 4095.0,
     "mtf_trends": {
-      "M5": -1
+      "M5": 1
     },
-    "mtf_score": -1.0,
-    "mtf_aligned_bull": false,
-    "mtf_aligned_bear": true,
+    "mtf_score": 1.0,
+    "mtf_aligned_bull": true,
+    "mtf_aligned_bear": false,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -208,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.72
+      "utc_hour": 2.95
     },
-    "tech_score": -0.194
+    "tech_score": 0.406
   },
   "news_blackout": {
     "blocked": false,
