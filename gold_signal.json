@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-21T22:58:35.454201+00:00",
-  "timestamp_epoch": 1792623515,
+  "timestamp": "2026-10-21T23:03:54.066366+00:00",
+  "timestamp_epoch": 1792623834,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.597,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.194,
-  "gold_price": 4149.7,
-  "composite": 0.2081,
+  "gold_price": 4148.1,
+  "composite": 0.2085,
   "calibration": {
     "a": 0.2347,
     "b": 0.6441
@@ -25,9 +25,9 @@
     "fed_stance": -0.1742,
     "fear": 0.4198,
     "risk_app": 0.1603,
-    "btc_comp": -0.1934,
+    "btc_comp": -0.1869,
     "etf_flow": -0.9966,
-    "momentum": -0.105,
+    "momentum": -0.108,
     "curve": 1.3674,
     "duration": 0.3967,
     "cb_regime": 0.5
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4358.25,
-  "ma200": 4537.35,
-  "atr14": 30.36,
-  "sl_dollars": 60.71,
-  "tp_dollars": 106.25,
+  "ma50": 4358.22,
+  "ma200": 4537.34,
+  "atr14": 30.24,
+  "sl_dollars": 60.49,
+  "tp_dollars": 105.85,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": 0.0574,
@@ -143,7 +143,7 @@
     "fed_stance": -0.0251,
     "fear": 0.0366,
     "risk_app": 0.0194,
-    "btc_comp": -0.0132,
+    "btc_comp": -0.0128,
     "etf_flow": -0.0064,
     "momentum": -0.0,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4130.01,
-    "vwap_zscore": 0.33,
+    "vwap": 4130.0,
+    "vwap_zscore": -0.18,
     "poc": 4117.13,
     "vah": 4140.3,
     "val": 4116.83,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4201.91,
-    "ema50": 4271.96,
-    "ema200": 4313.72,
-    "rsi14": 41.1,
-    "macd_hist": 4.664,
+    "ema20": 4201.76,
+    "ema50": 4271.9,
+    "ema200": 4313.7,
+    "rsi14": 40.9,
+    "macd_hist": 4.562,
     "macd_bullish": true,
     "adx14": 20.9,
     "atr14": 75.0,
@@ -187,11 +187,11 @@
     "resistance": 4220.4,
     "support": 4095.0,
     "mtf_trends": {
-      "M5": 1
+      "M5": -1
     },
-    "mtf_score": 1.0,
-    "mtf_aligned_bull": true,
-    "mtf_aligned_bear": false,
+    "mtf_score": -1.0,
+    "mtf_aligned_bull": false,
+    "mtf_aligned_bear": true,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -208,9 +208,9 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.97
+      "utc_hour": 23.05
     },
-    "tech_score": 0.405
+    "tech_score": -0.195
   },
   "news_blackout": {
     "blocked": false,
