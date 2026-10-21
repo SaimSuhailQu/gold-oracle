@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-21T12:59:46.637510+00:00",
-  "timestamp_epoch": 1792587586,
+  "timestamp": "2026-10-21T13:07:42.933374+00:00",
+  "timestamp_epoch": 1792588062,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5193,
   "p_down": 0.4807,
-  "signal": "LONG",
+  "signal": "FLAT",
   "raw_signal": "FLAT",
-  "size_tier": "QUARTER",
-  "size_mult": 0.25,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.0386,
-  "gold_price": 4143.5,
+  "gold_price": 4146.6,
   "composite": -0.1114,
   "calibration": {
     "a": 0.2356,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "QUARTER",
-    "size_mult": 0.25,
-    "final_audited_signal": "LONG",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
     "directional_probability": 0.5193,
     "min_required_probability": 0.53,
@@ -49,11 +49,13 @@
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at +2.0 standard deviations above VWAP; high risk of mean reversion."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.5193,
@@ -164,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4121.64,
-    "vwap_zscore": 1.86,
+    "vwap": 4121.79,
+    "vwap_zscore": 2.91,
     "poc": 4116.42,
     "vah": 4126.02,
     "val": 4116.11,
@@ -173,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4201.32,
-    "ema50": 4271.71,
-    "ema200": 4313.65,
-    "rsi14": 40.3,
-    "macd_hist": 4.268,
+    "ema20": 4201.62,
+    "ema50": 4271.84,
+    "ema200": 4313.68,
+    "rsi14": 40.7,
+    "macd_hist": 4.466,
     "macd_bullish": true,
     "adx14": 21.0,
     "atr14": 76.07,
@@ -206,9 +208,9 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 12.98
+      "utc_hour": 13.12
     },
-    "tech_score": 0.401
+    "tech_score": 0.403
   },
   "news_blackout": {
     "blocked": false,
