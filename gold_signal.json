@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-22T15:19:13.959327+00:00",
-  "timestamp_epoch": 1792682353,
+  "timestamp": "2026-10-22T15:23:41.158483+00:00",
+  "timestamp_epoch": 1792682621,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6546,
-  "p_down": 0.3454,
+  "p_up": 0.6538,
+  "p_down": 0.3462,
   "signal": "LONG",
   "raw_signal": "LONG",
   "size_tier": "FULL",
   "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.3092,
-  "gold_price": 4071.4,
-  "composite": 0.9089,
+  "confidence": 0.3076,
+  "gold_price": 4072.4,
+  "composite": 0.8948,
   "calibration": {
     "a": 0.2336,
     "b": 0.6417
   },
   "factor_zscores": {
-    "real_rates": 2.0821,
+    "real_rates": 2.0181,
     "nom_yield": 1.515,
-    "dollar": -0.1702,
+    "dollar": -0.194,
     "fed_stance": 0.4763,
-    "fear": 0.9362,
-    "risk_app": 0.5421,
-    "btc_comp": 0.0605,
-    "etf_flow": -0.9778,
-    "momentum": -0.2468,
+    "fear": 0.9261,
+    "risk_app": 0.5214,
+    "btc_comp": 0.0678,
+    "etf_flow": -0.9787,
+    "momentum": -0.2448,
     "curve": 0.9426,
-    "duration": 1.6234,
+    "duration": 1.5944,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,27 +38,26 @@
     "size_mult": 1.0,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6546,
+    "directional_probability": 0.6538,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.662,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666666,
-      "ml_consensus": 0.851,
+      "ml_consensus": 0.852,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.326) against a LONG \u2014 MTF=-1.0, RSI=34.8, structure=UNKNOWN."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6546,
-    "p_linear_logistic": 0.6965,
+    "p_ensemble_up": 0.6538,
+    "p_linear_logistic": 0.6952,
     "p_boosted_ml": 0.547,
     "nlp_sentiment_score": 0.1963
   },
@@ -129,24 +128,24 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4350.34,
+  "ma50": 4350.36,
   "ma200": 4535.23,
-  "atr14": 33.14,
-  "sl_dollars": 66.27,
-  "tp_dollars": 115.97,
+  "atr14": 33.06,
+  "sl_dollars": 66.13,
+  "tp_dollars": 115.72,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": 0.1183,
-    "nom_yield": 0.2784,
-    "dollar": -0.0173,
+    "real_rates": 0.1147,
+    "nom_yield": 0.2783,
+    "dollar": -0.0197,
     "fed_stance": 0.0687,
-    "fear": 0.0817,
-    "risk_app": 0.0657,
-    "btc_comp": 0.0041,
+    "fear": 0.0808,
+    "risk_app": 0.0632,
+    "btc_comp": 0.0046,
     "etf_flow": -0.0068,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": 0.2908,
+    "duration": 0.2856,
     "cb_regime": 0.0253
   },
   "model_weights": {
@@ -165,20 +164,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4079.89,
-    "vwap_zscore": -1.21,
-    "poc": 4069.25,
-    "vah": 4097.58,
-    "val": 4063.37,
+    "vwap": 4079.69,
+    "vwap_zscore": -1.4,
+    "poc": 4069.48,
+    "vah": 4102.2,
+    "val": 4063.94,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4189.51,
-    "ema50": 4264.1,
-    "ema200": 4311.31,
-    "rsi14": 34.8,
-    "macd_hist": 0.353,
+    "ema20": 4189.6,
+    "ema50": 4264.14,
+    "ema200": 4311.32,
+    "rsi14": 34.9,
+    "macd_hist": 0.417,
     "macd_bullish": true,
     "adx14": 22.3,
     "atr14": 78.22,
@@ -203,13 +202,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": null,
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 15.32
+      "utc_hour": 15.38
     },
-    "tech_score": -0.326
+    "tech_score": -0.226
   },
   "news_blackout": {
     "blocked": false,
