@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-22T08:58:51.026588+00:00",
-  "timestamp_epoch": 1792659531,
+  "timestamp": "2026-10-22T09:03:35.859009+00:00",
+  "timestamp_epoch": 1792659815,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5972,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1944,
-  "gold_price": 4106.9,
+  "gold_price": 4102.9,
   "composite": 0.2106,
   "calibration": {
     "a": 0.2347,
@@ -41,17 +41,18 @@
     "directional_probability": 0.5972,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.64,
+    "mcda_score": 0.72,
     "mcda_criteria_scores": {
       "macro_alignment": 0.5,
       "ml_consensus": 0.949,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
-      "auction_location": 0.4
+      "auction_location": 0.8
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.315) against a LONG \u2014 MTF=-1.0, RSI=37.1, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -164,20 +165,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4102.86,
-    "vwap_zscore": -0.87,
-    "poc": 4104.92,
-    "vah": 4118.23,
+    "vwap": 4102.82,
+    "vwap_zscore": -0.92,
+    "poc": 4104.81,
+    "vah": 4120.6,
     "val": 4076.39,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4192.89,
-    "ema50": 4265.5,
-    "ema200": 4311.66,
-    "rsi14": 37.4,
-    "macd_hist": 2.619,
+    "ema20": 4192.51,
+    "ema50": 4265.34,
+    "ema200": 4311.62,
+    "rsi14": 37.1,
+    "macd_hist": 2.363,
     "macd_bullish": true,
     "adx14": 22.0,
     "atr14": 76.6,
@@ -202,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.97
+      "utc_hour": 9.05
     },
-    "tech_score": -0.213
+    "tech_score": -0.315
   },
   "news_blackout": {
     "blocked": false,
