@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-22T08:48:58.599903+00:00",
-  "timestamp_epoch": 1792658938,
+  "timestamp": "2026-10-22T08:53:43.494884+00:00",
+  "timestamp_epoch": 1792659223,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5972,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1944,
-  "gold_price": 4103.0,
+  "gold_price": 4109.0,
   "composite": 0.2106,
   "calibration": {
     "a": 0.2347,
@@ -51,7 +51,8 @@
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.312) against a LONG \u2014 MTF=-1.0, RSI=37.6, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -63,7 +64,7 @@
   },
   "ai_sentiment": {
     "sentiment_score": 1.0,
-    "bullish_indicators": 11,
+    "bullish_indicators": 10,
     "bearish_indicators": 0,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
@@ -164,20 +165,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4103.4,
-    "vwap_zscore": -0.51,
-    "poc": 4096.31,
-    "vah": 4117.52,
+    "vwap": 4102.87,
+    "vwap_zscore": -0.68,
+    "poc": 4104.92,
+    "vah": 4118.23,
     "val": 4076.39,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4192.52,
-    "ema50": 4265.34,
-    "ema200": 4311.62,
-    "rsi14": 37.1,
-    "macd_hist": 2.37,
+    "ema20": 4193.09,
+    "ema50": 4265.58,
+    "ema200": 4311.68,
+    "rsi14": 37.6,
+    "macd_hist": 2.753,
     "macd_bullish": true,
     "adx14": 22.0,
     "atr14": 76.6,
@@ -202,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BULLISH",
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.8
+      "utc_hour": 8.88
     },
-    "tech_score": -0.114
+    "tech_score": -0.312
   },
   "news_blackout": {
     "blocked": false,
