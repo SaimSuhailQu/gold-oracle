@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-22T15:23:41.158483+00:00",
-  "timestamp_epoch": 1792682621,
+  "timestamp": "2026-10-22T15:29:12.035098+00:00",
+  "timestamp_epoch": 1792682952,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6538,
-  "p_down": 0.3462,
+  "p_up": 0.6545,
+  "p_down": 0.3455,
   "signal": "LONG",
   "raw_signal": "LONG",
   "size_tier": "FULL",
   "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.3076,
-  "gold_price": 4072.4,
-  "composite": 0.8948,
+  "confidence": 0.309,
+  "gold_price": 4075.9,
+  "composite": 0.9039,
   "calibration": {
     "a": 0.2336,
     "b": 0.6417
   },
   "factor_zscores": {
-    "real_rates": 2.0181,
-    "nom_yield": 1.515,
+    "real_rates": 2.0341,
+    "nom_yield": 1.5275,
     "dollar": -0.194,
     "fed_stance": 0.4763,
-    "fear": 0.9261,
-    "risk_app": 0.5214,
-    "btc_comp": 0.0678,
-    "etf_flow": -0.9787,
-    "momentum": -0.2448,
-    "curve": 0.9426,
-    "duration": 1.5944,
+    "fear": 0.9337,
+    "risk_app": 0.5342,
+    "btc_comp": 0.0687,
+    "etf_flow": -0.9793,
+    "momentum": -0.2379,
+    "curve": 0.9345,
+    "duration": 1.6147,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,13 +38,13 @@
     "size_mult": 1.0,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6538,
+    "directional_probability": 0.6545,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.662,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666666,
-      "ml_consensus": 0.852,
+      "ml_consensus": 0.851,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
       "auction_location": 0.4
@@ -56,14 +56,14 @@
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6538,
-    "p_linear_logistic": 0.6952,
+    "p_ensemble_up": 0.6545,
+    "p_linear_logistic": 0.6964,
     "p_boosted_ml": 0.547,
     "nlp_sentiment_score": 0.1963
   },
   "ai_sentiment": {
     "sentiment_score": 1.0,
-    "bullish_indicators": 10,
+    "bullish_indicators": 11,
     "bearish_indicators": 0,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
@@ -128,24 +128,24 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4350.36,
-  "ma200": 4535.23,
-  "atr14": 33.06,
-  "sl_dollars": 66.13,
-  "tp_dollars": 115.72,
+  "ma50": 4350.43,
+  "ma200": 4535.25,
+  "atr14": 32.81,
+  "sl_dollars": 65.63,
+  "tp_dollars": 114.85,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": 0.1147,
-    "nom_yield": 0.2783,
+    "real_rates": 0.1156,
+    "nom_yield": 0.2806,
     "dollar": -0.0197,
     "fed_stance": 0.0687,
-    "fear": 0.0808,
-    "risk_app": 0.0632,
-    "btc_comp": 0.0046,
+    "fear": 0.0814,
+    "risk_app": 0.0647,
+    "btc_comp": 0.0047,
     "etf_flow": -0.0068,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": 0.2856,
+    "duration": 0.2893,
     "cb_regime": 0.0253
   },
   "model_weights": {
@@ -164,8 +164,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4079.69,
-    "vwap_zscore": -1.4,
+    "vwap": 4079.34,
+    "vwap_zscore": -1.49,
     "poc": 4069.48,
     "vah": 4102.2,
     "val": 4063.94,
@@ -173,14 +173,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4189.6,
-    "ema50": 4264.14,
-    "ema200": 4311.32,
-    "rsi14": 34.9,
-    "macd_hist": 0.417,
+    "ema20": 4189.94,
+    "ema50": 4264.28,
+    "ema200": 4311.35,
+    "rsi14": 35.1,
+    "macd_hist": 0.64,
     "macd_bullish": true,
     "adx14": 22.3,
-    "atr14": 78.22,
+    "atr14": 78.23,
     "trend_strong": false,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -206,9 +206,9 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 15.38
+      "utc_hour": 15.48
     },
-    "tech_score": -0.226
+    "tech_score": -0.225
   },
   "news_blackout": {
     "blocked": false,
