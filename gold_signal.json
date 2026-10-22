@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-22T01:57:43.073630+00:00",
-  "timestamp_epoch": 1792634263,
+  "timestamp": "2026-10-22T02:24:04.398867+00:00",
+  "timestamp_epoch": 1792635844,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5532,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1064,
-  "gold_price": 4129.3,
+  "gold_price": 4127.6,
   "composite": -0.1114,
   "calibration": {
     "a": 0.2356,
@@ -41,13 +41,13 @@
     "directional_probability": 0.5532,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.663,
+    "mcda_score": 0.623,
     "mcda_criteria_scores": {
       "macro_alignment": 0.4166666666666667,
       "ml_consensus": 0.968,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
-      "auction_location": 0.6
+      "auction_location": 0.4
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
@@ -166,20 +166,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4125.49,
-    "vwap_zscore": -1.53,
-    "poc": 4116.7,
-    "vah": 4140.58,
-    "val": 4112.28,
+    "vwap": 4124.13,
+    "vwap_zscore": -1.02,
+    "poc": 4117.25,
+    "vah": 4140.56,
+    "val": 4110.89,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4199.97,
-    "ema50": 4271.16,
-    "ema200": 4313.51,
-    "rsi14": 39.1,
-    "macd_hist": 3.362,
+    "ema20": 4199.81,
+    "ema50": 4271.09,
+    "ema200": 4313.5,
+    "rsi14": 38.9,
+    "macd_hist": 3.254,
     "macd_bullish": true,
     "adx14": 21.0,
     "atr14": 76.35,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 1.95
+      "utc_hour": 2.4
     },
-    "tech_score": -0.204
+    "tech_score": -0.105
   },
   "news_blackout": {
     "blocked": false,
