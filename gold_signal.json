@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-22T05:52:51.249664+00:00",
-  "timestamp_epoch": 1792648371,
+  "timestamp": "2026-10-22T06:01:15.475367+00:00",
+  "timestamp_epoch": 1792648875,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5532,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1064,
-  "gold_price": 4094.2,
+  "gold_price": 4087.2,
   "composite": -0.1114,
   "calibration": {
     "a": 0.2356,
@@ -41,13 +41,13 @@
     "directional_probability": 0.5532,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.743,
+    "mcda_score": 0.703,
     "mcda_criteria_scores": {
       "macro_alignment": 0.4166666666666667,
       "ml_consensus": 0.968,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
-      "auction_location": 1.0
+      "auction_location": 0.8
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
@@ -65,7 +65,7 @@
   },
   "ai_sentiment": {
     "sentiment_score": 1.0,
-    "bullish_indicators": 9,
+    "bullish_indicators": 11,
     "bearish_indicators": 0,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4109.9,
-    "vwap_zscore": -1.91,
+    "vwap": 4109.47,
+    "vwap_zscore": -0.81,
     "poc": 4117.2,
     "vah": 4139.87,
     "val": 4076.39,
@@ -175,14 +175,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4191.68,
-    "ema50": 4265.0,
-    "ema200": 4311.53,
-    "rsi14": 36.4,
-    "macd_hist": 1.808,
+    "ema20": 4191.01,
+    "ema50": 4264.72,
+    "ema200": 4311.46,
+    "rsi14": 35.9,
+    "macd_hist": 1.361,
     "macd_bullish": true,
-    "adx14": 21.9,
-    "atr14": 75.99,
+    "adx14": 22.0,
+    "atr14": 76.6,
     "trend_strong": false,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -208,9 +208,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 5.87
+      "utc_hour": 6.02
     },
-    "tech_score": -0.218
+    "tech_score": -0.221
   },
   "news_blackout": {
     "blocked": false,
