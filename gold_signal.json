@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-22T05:22:27.173367+00:00",
-  "timestamp_epoch": 1792646547,
+  "timestamp": "2026-10-22T05:38:33.483055+00:00",
+  "timestamp_epoch": 1792647513,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5532,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1064,
-  "gold_price": 4105.8,
+  "gold_price": 4102.2,
   "composite": -0.1114,
   "calibration": {
     "a": 0.2356,
@@ -41,13 +41,13 @@
     "directional_probability": 0.5532,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.743,
+    "mcda_score": 0.703,
     "mcda_criteria_scores": {
       "macro_alignment": 0.4166666666666667,
       "ml_consensus": 0.968,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
-      "auction_location": 1.0
+      "auction_location": 0.8
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
@@ -166,23 +166,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4114.9,
-    "vwap_zscore": -1.51,
-    "poc": 4117.21,
-    "vah": 4139.21,
-    "val": 4093.26,
+    "vwap": 4113.73,
+    "vwap_zscore": -1.34,
+    "poc": 4117.2,
+    "vah": 4139.13,
+    "val": 4090.18,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4192.79,
-    "ema50": 4265.45,
-    "ema200": 4311.65,
-    "rsi14": 37.3,
-    "macd_hist": 2.548,
+    "ema20": 4192.44,
+    "ema50": 4265.31,
+    "ema200": 4311.61,
+    "rsi14": 37.0,
+    "macd_hist": 2.319,
     "macd_bullish": true,
     "adx14": 21.8,
-    "atr14": 75.1,
+    "atr14": 75.28,
     "trend_strong": false,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -208,9 +208,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 5.37
+      "utc_hour": 5.63
     },
-    "tech_score": -0.213
+    "tech_score": -0.215
   },
   "news_blackout": {
     "blocked": false,
