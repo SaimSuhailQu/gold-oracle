@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-22T03:50:37.190594+00:00",
-  "timestamp_epoch": 1792641037,
+  "timestamp": "2026-10-22T04:07:35.094316+00:00",
+  "timestamp_epoch": 1792642055,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5532,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1064,
-  "gold_price": 4109.9,
+  "gold_price": 4150.0,
   "composite": -0.1114,
   "calibration": {
     "a": 0.2356,
@@ -41,13 +41,13 @@
     "directional_probability": 0.5532,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.743,
+    "mcda_score": 0.663,
     "mcda_criteria_scores": {
       "macro_alignment": 0.4166666666666667,
       "ml_consensus": 0.968,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
-      "auction_location": 1.0
+      "auction_location": 0.6
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
@@ -166,23 +166,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4118.3,
-    "vwap_zscore": -1.98,
-    "poc": 4116.75,
-    "vah": 4140.25,
-    "val": 4095.1,
+    "vwap": 4117.81,
+    "vwap_zscore": -2.03,
+    "poc": 4116.93,
+    "vah": 4140.22,
+    "val": 4095.54,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4198.12,
-    "ema50": 4270.4,
-    "ema200": 4313.32,
-    "rsi14": 37.5,
-    "macd_hist": 2.124,
+    "ema20": 4201.94,
+    "ema50": 4271.97,
+    "ema200": 4313.72,
+    "rsi14": 41.2,
+    "macd_hist": 4.683,
     "macd_bullish": true,
-    "adx14": 21.2,
-    "atr14": 77.48,
+    "adx14": 21.0,
+    "atr14": 76.19,
     "trend_strong": false,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -208,9 +208,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 3.83
+      "utc_hour": 4.12
     },
-    "tech_score": -0.212
+    "tech_score": -0.194
   },
   "news_blackout": {
     "blocked": false,
