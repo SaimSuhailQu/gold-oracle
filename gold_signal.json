@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-23T08:28:48.158336+00:00",
-  "timestamp_epoch": 1792744128,
+  "timestamp": "2026-10-23T08:33:51.717487+00:00",
+  "timestamp_epoch": 1792744431,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6453,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2906,
-  "gold_price": 4029.4,
+  "gold_price": 4032.7,
   "composite": 1.0596,
   "calibration": {
     "a": 0.2336,
@@ -51,8 +51,7 @@
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.54) against a LONG \u2014 MTF=-1.0, RSI=32.0, structure=UNKNOWN."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,8 +164,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4022.31,
-    "vwap_zscore": 0.35,
+    "vwap": 4022.26,
+    "vwap_zscore": 0.79,
     "poc": 4022.63,
     "vah": 4030.67,
     "val": 4000.04,
@@ -174,11 +173,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4173.31,
-    "ema50": 4254.49,
-    "ema200": 4308.39,
-    "rsi14": 32.0,
-    "macd_hist": -4.955,
+    "ema20": 4173.63,
+    "ema50": 4254.61,
+    "ema200": 4308.43,
+    "rsi14": 32.2,
+    "macd_hist": -4.744,
     "macd_bullish": false,
     "adx14": 24.2,
     "atr14": 78.4,
@@ -186,11 +185,11 @@
     "resistance": 4220.4,
     "support": 4095.0,
     "mtf_trends": {
-      "M5": -1
+      "M5": 1
     },
-    "mtf_score": -1.0,
-    "mtf_aligned_bull": false,
-    "mtf_aligned_bear": true,
+    "mtf_score": 1.0,
+    "mtf_aligned_bull": true,
+    "mtf_aligned_bear": false,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -207,9 +206,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.47
+      "utc_hour": 8.55
     },
-    "tech_score": -0.54
+    "tech_score": 0.061
   },
   "news_blackout": {
     "blocked": false,
