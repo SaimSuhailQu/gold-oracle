@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-23T08:13:52.400060+00:00",
-  "timestamp_epoch": 1792743232,
+  "timestamp": "2026-10-23T08:18:51.229128+00:00",
+  "timestamp_epoch": 1792743531,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6453,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2906,
-  "gold_price": 4027.0,
+  "gold_price": 4025.0,
   "composite": 1.0596,
   "calibration": {
     "a": 0.2336,
@@ -41,18 +41,18 @@
     "directional_probability": 0.6453,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.706,
+    "mcda_score": 0.626,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666666,
       "ml_consensus": 0.84,
       "news_sentiment_alignment": 1.2778,
       "technical_trend": 0.1,
-      "auction_location": 0.8
+      "auction_location": 0.4
     },
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.54) against a LONG \u2014 MTF=-1.0, RSI=31.9, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.541) against a LONG \u2014 MTF=-1.0, RSI=31.7, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,20 +165,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4022.34,
-    "vwap_zscore": -0.35,
-    "poc": 4030.28,
+    "vwap": 4022.29,
+    "vwap_zscore": 0.1,
+    "poc": 4022.63,
     "vah": 4030.67,
     "val": 4000.04,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4173.08,
-    "ema50": 4254.39,
-    "ema200": 4308.37,
-    "rsi14": 31.9,
-    "macd_hist": -5.108,
+    "ema20": 4172.89,
+    "ema50": 4254.31,
+    "ema200": 4308.35,
+    "rsi14": 31.7,
+    "macd_hist": -5.236,
     "macd_bullish": false,
     "adx14": 24.2,
     "atr14": 78.4,
@@ -207,9 +207,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.22
+      "utc_hour": 8.3
     },
-    "tech_score": -0.54
+    "tech_score": -0.541
   },
   "news_blackout": {
     "blocked": false,
