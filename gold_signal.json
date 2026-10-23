@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-23T04:09:00.974290+00:00",
-  "timestamp_epoch": 1792728540,
+  "timestamp": "2026-10-23T04:14:09.231041+00:00",
+  "timestamp_epoch": 1792728849,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5972,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1944,
-  "gold_price": 4060.4,
+  "gold_price": 4026.0,
   "composite": 0.2106,
   "calibration": {
     "a": 0.2347,
@@ -41,20 +41,20 @@
     "directional_probability": 0.5972,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.64,
+    "mcda_score": 0.72,
     "mcda_criteria_scores": {
       "macro_alignment": 0.5,
       "ml_consensus": 0.949,
       "news_sentiment_alignment": 1.5,
       "technical_trend": 0.1,
-      "auction_location": 0.4
+      "auction_location": 0.8
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.529) against a LONG \u2014 MTF=-1.0, RSI=34.1, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.541) against a LONG \u2014 MTF=-1.0, RSI=31.8, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4027.87,
-    "vwap_zscore": -0.73,
+    "vwap": 4027.84,
+    "vwap_zscore": -0.83,
     "poc": 4030.55,
     "vah": 4044.94,
     "val": 4000.04,
@@ -176,14 +176,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4188.46,
-    "ema50": 4263.67,
-    "ema200": 4311.2,
-    "rsi14": 34.1,
-    "macd_hist": -0.349,
+    "ema20": 4172.99,
+    "ema50": 4254.35,
+    "ema200": 4308.36,
+    "rsi14": 31.8,
+    "macd_hist": -5.172,
     "macd_bullish": false,
-    "adx14": 22.5,
-    "atr14": 79.85,
+    "adx14": 24.2,
+    "atr14": 78.4,
     "trend_strong": false,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -209,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 4.15
+      "utc_hour": 4.23
     },
-    "tech_score": -0.529
+    "tech_score": -0.541
   },
   "news_blackout": {
     "blocked": false,
