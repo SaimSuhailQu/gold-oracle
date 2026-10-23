@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-23T08:43:55.090095+00:00",
-  "timestamp_epoch": 1792745035,
+  "timestamp": "2026-10-23T08:48:59.202085+00:00",
+  "timestamp_epoch": 1792745339,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6453,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2906,
-  "gold_price": 4030.8,
+  "gold_price": 4028.4,
   "composite": 1.0596,
   "calibration": {
     "a": 0.2336,
@@ -51,8 +51,7 @@
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.44) against a LONG \u2014 MTF=-1.0, RSI=32.1, structure=UNKNOWN."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,8 +164,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4022.27,
-    "vwap_zscore": 0.07,
+    "vwap": 4022.31,
+    "vwap_zscore": 1.27,
     "poc": 4022.63,
     "vah": 4030.67,
     "val": 4000.04,
@@ -174,11 +173,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4173.45,
-    "ema50": 4254.54,
-    "ema200": 4308.41,
-    "rsi14": 32.1,
-    "macd_hist": -4.866,
+    "ema20": 4173.22,
+    "ema50": 4254.45,
+    "ema200": 4308.38,
+    "rsi14": 31.9,
+    "macd_hist": -5.019,
     "macd_bullish": false,
     "adx14": 24.2,
     "atr14": 78.4,
@@ -186,11 +185,11 @@
     "resistance": 4220.4,
     "support": 4095.0,
     "mtf_trends": {
-      "M5": -1
+      "M5": 1
     },
-    "mtf_score": -1.0,
-    "mtf_aligned_bull": false,
-    "mtf_aligned_bear": true,
+    "mtf_score": 1.0,
+    "mtf_aligned_bull": true,
+    "mtf_aligned_bear": false,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -203,13 +202,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BULLISH",
+    "candle_pattern": null,
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.72
+      "utc_hour": 8.8
     },
-    "tech_score": -0.44
+    "tech_score": 0.059
   },
   "news_blackout": {
     "blocked": false,
