@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-23T23:08:52.221822+00:00",
-  "timestamp_epoch": 1792796932,
+  "timestamp": "2026-10-23T23:14:14.623471+00:00",
+  "timestamp_epoch": 1792797254,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5872,
-  "p_down": 0.4128,
+  "p_up": 0.5873,
+  "p_down": 0.4127,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.1744,
+  "confidence": 0.1746,
   "gold_price": 4010.0,
-  "composite": 1.0157,
+  "composite": 1.0167,
   "calibration": {
     "a": 0.2324,
     "b": 0.6385
@@ -25,7 +25,7 @@
     "fed_stance": 0.4957,
     "fear": 1.1968,
     "risk_app": 0.8551,
-    "btc_comp": 0.115,
+    "btc_comp": 0.1291,
     "etf_flow": -1.0454,
     "momentum": -0.4886,
     "curve": 0.8458,
@@ -38,7 +38,7 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.5872,
+    "directional_probability": 0.5873,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.523,
@@ -59,8 +59,8 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5872,
-    "p_linear_logistic": 0.712,
+    "p_ensemble_up": 0.5873,
+    "p_linear_logistic": 0.7121,
     "p_boosted_ml": 0.5727,
     "nlp_sentiment_score": -0.674
   },
@@ -144,7 +144,7 @@
     "fed_stance": 0.0717,
     "fear": 0.1042,
     "risk_app": 0.1037,
-    "btc_comp": 0.0079,
+    "btc_comp": 0.0089,
     "etf_flow": -0.0078,
     "momentum": -0.0,
     "curve": 0.0,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4010.33,
-    "vwap_zscore": -1.14,
+    "vwap": 4010.22,
+    "vwap_zscore": -1.1,
     "poc": 4004.74,
     "vah": 4036.83,
     "val": 3997.33,
@@ -209,7 +209,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.13
+      "utc_hour": 23.23
     },
     "tech_score": -0.546
   },
