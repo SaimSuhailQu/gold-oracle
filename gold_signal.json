@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-23T22:04:10.334631+00:00",
-  "timestamp_epoch": 1792793050,
+  "timestamp": "2026-10-23T22:08:47.841582+00:00",
+  "timestamp_epoch": 1792793327,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5869,
@@ -13,7 +13,7 @@
   "short_t": 0.48,
   "confidence": 0.1738,
   "gold_price": 4010.0,
-  "composite": 1.0115,
+  "composite": 1.0119,
   "calibration": {
     "a": 0.2324,
     "b": 0.6385
@@ -25,7 +25,7 @@
     "fed_stance": 0.4957,
     "fear": 1.1968,
     "risk_app": 0.8551,
-    "btc_comp": 0.0542,
+    "btc_comp": 0.0595,
     "etf_flow": -1.0454,
     "momentum": -0.4886,
     "curve": 0.8458,
@@ -60,7 +60,7 @@
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.5869,
-    "p_linear_logistic": 0.7114,
+    "p_linear_logistic": 0.7115,
     "p_boosted_ml": 0.5727,
     "nlp_sentiment_score": -0.674
   },
@@ -144,7 +144,7 @@
     "fed_stance": 0.0717,
     "fear": 0.1042,
     "risk_app": 0.1037,
-    "btc_comp": 0.0037,
+    "btc_comp": 0.0041,
     "etf_flow": -0.0078,
     "momentum": -0.0,
     "curve": 0.0,
@@ -162,13 +162,13 @@
     "etf_flow": 0.0075,
     "momentum": 0.0,
     "curve": 0.0,
-    "duration": 0.1788,
+    "duration": 0.1789,
     "cb_regime": 0.0502
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4012.91,
-    "vwap_zscore": -0.86,
+    "vwap": 4012.78,
+    "vwap_zscore": -0.8,
     "poc": 4003.64,
     "vah": 4036.9,
     "val": 3997.37,
@@ -209,7 +209,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.07
+      "utc_hour": 22.13
     },
     "tech_score": -0.546
   },
