@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-23T02:08:56.072791+00:00",
-  "timestamp_epoch": 1792721336,
+  "timestamp": "2026-10-23T02:13:56.570887+00:00",
+  "timestamp_epoch": 1792721636,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5972,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1944,
-  "gold_price": 4008.9,
+  "gold_price": 4007.1,
   "composite": 0.2106,
   "calibration": {
     "a": 0.2347,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.545) against a LONG \u2014 MTF=-1.0, RSI=31.0, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.545) against a LONG \u2014 MTF=-1.0, RSI=30.9, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -66,7 +66,7 @@
   },
   "ai_sentiment": {
     "sentiment_score": 1.0,
-    "bullish_indicators": 10,
+    "bullish_indicators": 9,
     "bearish_indicators": 0,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4031.51,
-    "vwap_zscore": -1.46,
+    "vwap": 4030.45,
+    "vwap_zscore": -0.77,
     "poc": 4029.86,
     "vah": 4045.81,
     "val": 4000.04,
@@ -176,14 +176,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4183.56,
-    "ema50": 4261.65,
-    "ema200": 4310.69,
-    "rsi14": 31.0,
-    "macd_hist": -3.636,
+    "ema20": 4183.39,
+    "ema50": 4261.58,
+    "ema200": 4310.67,
+    "rsi14": 30.9,
+    "macd_hist": -3.75,
     "macd_bullish": false,
     "adx14": 22.8,
-    "atr14": 80.96,
+    "atr14": 81.4,
     "trend_strong": false,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -209,7 +209,7 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.13
+      "utc_hour": 2.22
     },
     "tech_score": -0.545
   },
