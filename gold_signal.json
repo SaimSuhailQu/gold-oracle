@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-24T02:19:05.151301+00:00",
-  "timestamp_epoch": 1792808345,
+  "timestamp": "2026-10-24T02:23:36.530426+00:00",
+  "timestamp_epoch": 1792808616,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5893,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4002.83,
-    "vwap_zscore": -0.93,
+    "vwap": 4002.8,
+    "vwap_zscore": -0.96,
     "poc": 4005.38,
     "vah": 4010.71,
     "val": 3994.98,
@@ -209,7 +209,7 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.32
+      "utc_hour": 2.38
     },
     "tech_score": -0.546
   },
