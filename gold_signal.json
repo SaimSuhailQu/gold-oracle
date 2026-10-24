@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-10-24T06:59:03.647647+00:00",
-  "timestamp_epoch": 1792825143,
+  "timestamp": "2026-10-24T07:03:52.826259+00:00",
+  "timestamp_epoch": 1792825432,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.607,
   "p_down": 0.393,
-  "signal": "FLAT",
+  "signal": "LONG",
   "raw_signal": "LONG",
-  "size_tier": "FLAT",
-  "size_mult": 0.0,
+  "size_tier": "FULL",
+  "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.214,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": false,
-    "size_tier": "FLAT",
-    "size_mult": 0.0,
-    "final_audited_signal": "FLAT",
+    "is_cleared_to_trade": true,
+    "size_tier": "FULL",
+    "size_mult": 1.0,
+    "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
     "directional_probability": 0.607,
     "min_required_probability": 0.53,
@@ -49,13 +49,11 @@
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
-    "fatal_flaws": [
-      "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
-    ],
+    "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
-    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
+    "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.607,
@@ -166,8 +164,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3999.99,
-    "vwap_zscore": 0.64,
+    "vwap": 3999.97,
+    "vwap_zscore": 0.76,
     "poc": 4002.47,
     "vah": 4003.57,
     "val": 3995.12,
@@ -206,9 +204,9 @@
     },
     "candle_pattern": null,
     "session": {
-      "session": "ASIAN",
-      "trade_ok": false,
-      "utc_hour": 6.98
+      "session": "LONDON",
+      "trade_ok": true,
+      "utc_hour": 7.05
     },
     "tech_score": 0.054
   },
