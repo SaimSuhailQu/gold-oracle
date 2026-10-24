@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-10-24T16:58:41.782749+00:00",
-  "timestamp_epoch": 1792861121,
+  "timestamp": "2026-10-24T17:03:54.666991+00:00",
+  "timestamp_epoch": 1792861434,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6342,
   "p_down": 0.3658,
-  "signal": "LONG",
+  "signal": "FLAT",
   "raw_signal": "LONG",
-  "size_tier": "FULL",
-  "size_mult": 1.0,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2684,
@@ -29,14 +29,14 @@
     "etf_flow": -1.0463,
     "momentum": -0.4928,
     "curve": 0.8458,
-    "duration": 1.733,
+    "duration": 1.7329,
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "FULL",
-    "size_mult": 1.0,
-    "final_audited_signal": "LONG",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
     "directional_probability": 0.6342,
     "min_required_probability": 0.53,
@@ -49,12 +49,14 @@
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
       "CRITIC WARNING: technical stack is bearish (tech_score=-0.546) against a LONG \u2014 MTF=-1.0, RSI=30.7, structure=UNKNOWN."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.6342,
@@ -150,7 +152,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.0559,
+    "real_rates": 0.056,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -165,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3997.01,
-    "vwap_zscore": -1.18,
+    "vwap": 3996.92,
+    "vwap_zscore": -1.07,
     "poc": 4000.58,
     "vah": 4002.95,
     "val": 3987.41,
@@ -205,9 +207,9 @@
     },
     "candle_pattern": null,
     "session": {
-      "session": "NEW_YORK",
-      "trade_ok": true,
-      "utc_hour": 16.97
+      "session": "OFF_HOURS",
+      "trade_ok": false,
+      "utc_hour": 17.05
     },
     "tech_score": -0.546
   },
