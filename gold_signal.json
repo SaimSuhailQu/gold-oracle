@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-24T08:34:09.192420+00:00",
-  "timestamp_epoch": 1792830849,
+  "timestamp": "2026-10-24T08:39:04.657944+00:00",
+  "timestamp_epoch": 1792831144,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6112,
@@ -150,7 +150,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.056,
+    "real_rates": 0.0559,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -165,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3999.45,
-    "vwap_zscore": -0.03,
+    "vwap": 3999.43,
+    "vwap_zscore": -0.07,
     "poc": 4000.16,
     "vah": 4002.96,
     "val": 3995.76,
@@ -207,7 +207,7 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.57
+      "utc_hour": 8.65
     },
     "tech_score": -0.447
   },
