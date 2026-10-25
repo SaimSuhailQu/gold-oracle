@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-10-25T15:09:01.358318+00:00",
-  "timestamp_epoch": 1792940941,
+  "timestamp": "2026-10-25T15:13:49.832963+00:00",
+  "timestamp_epoch": 1792941229,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6232,
   "p_down": 0.3768,
-  "signal": "FLAT",
+  "signal": "LONG",
   "raw_signal": "LONG",
-  "size_tier": "FLAT",
-  "size_mult": 0.0,
+  "size_tier": "FULL",
+  "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2464,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": false,
-    "size_tier": "FLAT",
-    "size_mult": 0.0,
-    "final_audited_signal": "FLAT",
+    "is_cleared_to_trade": true,
+    "size_tier": "FULL",
+    "size_mult": 1.0,
+    "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
     "directional_probability": 0.6232,
     "min_required_probability": 0.53,
@@ -49,13 +49,11 @@
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
-    "fatal_flaws": [
-      "FATAL MICROSTRUCTURE FLAW: Price is overextended at +2.0 standard deviations above VWAP; high risk of mean reversion."
-    ],
+    "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
-    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
+    "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.6232,
@@ -151,7 +149,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.0559,
+    "real_rates": 0.056,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -167,7 +165,7 @@
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
     "vwap": 3995.86,
-    "vwap_zscore": 2.22,
+    "vwap_zscore": 1.96,
     "poc": 3994.44,
     "vah": 4001.59,
     "val": 3994.34,
@@ -204,13 +202,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 15.15
+      "utc_hour": 15.22
     },
-    "tech_score": 0.054
+    "tech_score": -0.046
   },
   "news_blackout": {
     "blocked": false,
