@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-25T16:23:59.018910+00:00",
-  "timestamp_epoch": 1792945439,
+  "timestamp": "2026-10-25T16:28:46.463699+00:00",
+  "timestamp_epoch": 1792945726,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6232,
@@ -29,7 +29,7 @@
     "etf_flow": -1.0463,
     "momentum": -0.4928,
     "curve": 0.8458,
-    "duration": 1.7329,
+    "duration": 1.733,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -206,7 +206,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 16.38
+      "utc_hour": 16.47
     },
     "tech_score": -0.046
   },
