@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-25T16:18:33.178673+00:00",
-  "timestamp_epoch": 1792945113,
+  "timestamp": "2026-10-25T16:23:59.018910+00:00",
+  "timestamp_epoch": 1792945439,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6232,
@@ -149,7 +149,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.056,
+    "real_rates": 0.0559,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -206,7 +206,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 16.3
+      "utc_hour": 16.38
     },
     "tech_score": -0.046
   },
