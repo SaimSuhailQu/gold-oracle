@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-26T21:19:06.022465+00:00",
-  "timestamp_epoch": 1793049546,
+  "timestamp": "2026-10-26T21:23:51.804738+00:00",
+  "timestamp_epoch": 1793049831,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5899,
-  "p_down": 0.4101,
+  "p_up": 0.5898,
+  "p_down": 0.4102,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.1798,
+  "confidence": 0.1796,
   "gold_price": 4031.0,
-  "composite": 1.1111,
+  "composite": 1.1108,
   "calibration": {
     "a": 0.2313,
     "b": 0.6359
@@ -25,7 +25,7 @@
     "fed_stance": 0.4438,
     "fear": 0.6202,
     "risk_app": 0.3892,
-    "btc_comp": 0.1411,
+    "btc_comp": 0.1364,
     "etf_flow": -0.9886,
     "momentum": -0.4541,
     "curve": 0.8615,
@@ -38,7 +38,7 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.5899,
+    "directional_probability": 0.5898,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.536,
@@ -59,7 +59,7 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5899,
+    "p_ensemble_up": 0.5898,
     "p_linear_logistic": 0.7215,
     "p_boosted_ml": 0.5443,
     "nlp_sentiment_score": -0.587
@@ -144,7 +144,7 @@
     "fed_stance": 0.0644,
     "fear": 0.0541,
     "risk_app": 0.0474,
-    "btc_comp": 0.0097,
+    "btc_comp": 0.0094,
     "etf_flow": -0.0079,
     "momentum": -0.0,
     "curve": 0.0,
@@ -167,7 +167,7 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4021.33,
+    "vwap": 4021.32,
     "vwap_zscore": -0.04,
     "poc": 4020.56,
     "vah": 4028.72,
@@ -183,7 +183,7 @@
     "macd_hist": -7.746,
     "macd_bullish": false,
     "adx14": 26.0,
-    "atr14": 77.37,
+    "atr14": 77.38,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -209,7 +209,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.32
+      "utc_hour": 21.38
     },
     "tech_score": -0.631
   },
