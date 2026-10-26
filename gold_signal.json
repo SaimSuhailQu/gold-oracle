@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-26T00:13:41.109122+00:00",
-  "timestamp_epoch": 1792973621,
+  "timestamp": "2026-10-26T00:19:08.594299+00:00",
+  "timestamp_epoch": 1792973948,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6137,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2274,
-  "gold_price": 4004.1,
+  "gold_price": 3999.8,
   "composite": 1.013,
   "calibration": {
     "a": 0.2324,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.647) against a LONG \u2014 MTF=-1.0, RSI=30.5, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.749) against a LONG \u2014 MTF=-1.0, RSI=30.2, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -152,7 +152,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.056,
+    "real_rates": 0.0559,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4003.36,
-    "vwap_zscore": -1.29,
+    "vwap": 4003.35,
+    "vwap_zscore": -0.21,
     "poc": 4008.54,
     "vah": 4009.4,
     "val": 3993.55,
@@ -176,14 +176,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4155.34,
-    "ema50": 4243.86,
-    "ema200": 4305.15,
-    "rsi14": 30.5,
-    "macd_hist": -9.462,
+    "ema20": 4154.93,
+    "ema50": 4243.69,
+    "ema200": 4305.11,
+    "rsi14": 30.2,
+    "macd_hist": -9.737,
     "macd_bullish": false,
     "adx14": 26.0,
-    "atr14": 74.65,
+    "atr14": 74.93,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 0.22
+      "utc_hour": 0.32
     },
-    "tech_score": -0.647
+    "tech_score": -0.749
   },
   "news_blackout": {
     "blocked": false,
