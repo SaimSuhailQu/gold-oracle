@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-26T03:53:47.097924+00:00",
-  "timestamp_epoch": 1792986827,
+  "timestamp": "2026-10-26T03:59:13.324419+00:00",
+  "timestamp_epoch": 1792987153,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5839,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1678,
-  "gold_price": 4024.0,
+  "gold_price": 4024.9,
   "composite": 1.013,
   "calibration": {
     "a": 0.2324,
@@ -50,7 +50,6 @@
       "auction_location": 0.4
     },
     "fatal_flaws": [
-      "FATAL MICROSTRUCTURE FLAW: Price is overextended at +2.0 standard deviations above VWAP; high risk of mean reversion.",
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
@@ -152,7 +151,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.056,
+    "real_rates": 0.0559,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -168,7 +167,7 @@
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
     "vwap": 4003.71,
-    "vwap_zscore": 2.11,
+    "vwap_zscore": 1.76,
     "poc": 4008.62,
     "vah": 4019.16,
     "val": 3992.97,
@@ -176,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4157.24,
-    "ema50": 4244.64,
-    "ema200": 4305.35,
-    "rsi14": 32.9,
-    "macd_hist": -8.192,
+    "ema20": 4157.33,
+    "ema50": 4244.67,
+    "ema200": 4305.36,
+    "rsi14": 33.0,
+    "macd_hist": -8.135,
     "macd_bullish": false,
     "adx14": 26.0,
     "atr14": 76.35,
@@ -209,9 +208,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 3.88
+      "utc_hour": 3.98
     },
-    "tech_score": 0.164
+    "tech_score": 0.165
   },
   "news_blackout": {
     "blocked": false,
