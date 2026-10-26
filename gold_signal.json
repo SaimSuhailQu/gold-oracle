@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-26T01:48:47.335444+00:00",
-  "timestamp_epoch": 1792979327,
+  "timestamp": "2026-10-26T01:53:32.414305+00:00",
+  "timestamp_epoch": 1792979612,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6099,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2198,
-  "gold_price": 4002.6,
+  "gold_price": 4001.4,
   "composite": 1.013,
   "calibration": {
     "a": 0.2324,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.748) against a LONG \u2014 MTF=-1.0, RSI=30.4, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.548) against a LONG \u2014 MTF=-1.0, RSI=30.3, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -152,7 +152,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.056,
+    "real_rates": 0.0559,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4001.97,
-    "vwap_zscore": -2.51,
+    "vwap": 4001.91,
+    "vwap_zscore": -1.96,
     "poc": 4008.47,
     "vah": 4009.52,
     "val": 3992.3,
@@ -176,14 +176,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4155.2,
-    "ema50": 4243.8,
-    "ema200": 4305.14,
-    "rsi14": 30.4,
-    "macd_hist": -9.558,
+    "ema20": 4155.09,
+    "ema50": 4243.75,
+    "ema200": 4305.13,
+    "rsi14": 30.3,
+    "macd_hist": -9.635,
     "macd_bullish": false,
     "adx14": 26.0,
-    "atr14": 75.5,
+    "atr14": 75.51,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 4095.0,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 1.8
+      "utc_hour": 1.88
     },
-    "tech_score": -0.748
+    "tech_score": -0.548
   },
   "news_blackout": {
     "blocked": false,
