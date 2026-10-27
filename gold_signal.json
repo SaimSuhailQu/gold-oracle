@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-27T08:54:05.937556+00:00",
-  "timestamp_epoch": 1793091245,
+  "timestamp": "2026-10-27T08:58:43.014527+00:00",
+  "timestamp_epoch": 1793091523,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6681,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.3362,
-  "gold_price": 4004.9,
+  "gold_price": 4007.3,
   "composite": 1.11,
   "calibration": {
     "a": 0.2313,
@@ -52,7 +52,7 @@
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.637) against a LONG \u2014 MTF=-1.0, RSI=32.5, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.636) against a LONG \u2014 MTF=-1.0, RSI=32.7, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -64,7 +64,7 @@
   },
   "ai_sentiment": {
     "sentiment_score": 1.0,
-    "bullish_indicators": 3,
+    "bullish_indicators": 6,
     "bearish_indicators": 0,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
@@ -165,20 +165,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4015.74,
-    "vwap_zscore": -2.9,
-    "poc": 4020.27,
+    "vwap": 4015.45,
+    "vwap_zscore": -2.54,
+    "poc": 4022.13,
     "vah": 4025.53,
     "val": 4005.08,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4143.97,
-    "ema50": 4235.78,
-    "ema200": 4302.5,
-    "rsi14": 32.5,
-    "macd_hist": -9.084,
+    "ema20": 4144.2,
+    "ema50": 4235.87,
+    "ema200": 4302.53,
+    "rsi14": 32.7,
+    "macd_hist": -8.931,
     "macd_bullish": false,
     "adx14": 27.6,
     "atr14": 74.33,
@@ -207,9 +207,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.9
+      "utc_hour": 8.97
     },
-    "tech_score": -0.637
+    "tech_score": -0.636
   },
   "news_blackout": {
     "blocked": false,
