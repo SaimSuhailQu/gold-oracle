@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-27T06:53:57.655848+00:00",
-  "timestamp_epoch": 1793084037,
+  "timestamp": "2026-10-27T06:58:58.155438+00:00",
+  "timestamp_epoch": 1793084338,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6741,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.3482,
-  "gold_price": 4013.7,
+  "gold_price": 4009.9,
   "composite": 1.013,
   "calibration": {
     "a": 0.2324,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.634) against a LONG \u2014 MTF=-1.0, RSI=33.1, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.636) against a LONG \u2014 MTF=-1.0, RSI=32.8, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -66,7 +66,7 @@
   },
   "ai_sentiment": {
     "sentiment_score": 1.0,
-    "bullish_indicators": 6,
+    "bullish_indicators": 5,
     "bearish_indicators": 0,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
@@ -152,7 +152,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.0559,
+    "real_rates": 0.056,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -167,23 +167,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4017.78,
-    "vwap_zscore": -3.0,
+    "vwap": 4017.69,
+    "vwap_zscore": -2.68,
     "poc": 4020.39,
     "vah": 4022.61,
-    "val": 4014.74,
+    "val": 4010.8,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4144.81,
-    "ema50": 4236.12,
-    "ema200": 4302.59,
-    "rsi14": 33.1,
-    "macd_hist": -8.522,
+    "ema20": 4144.45,
+    "ema50": 4235.97,
+    "ema200": 4302.55,
+    "rsi14": 32.8,
+    "macd_hist": -8.765,
     "macd_bullish": false,
     "adx14": 27.6,
-    "atr14": 73.83,
+    "atr14": 73.93,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 3989.1,
@@ -209,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 6.88
+      "utc_hour": 6.97
     },
-    "tech_score": -0.634
+    "tech_score": -0.636
   },
   "news_blackout": {
     "blocked": false,
