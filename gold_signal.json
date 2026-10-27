@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-27T00:39:09.146469+00:00",
-  "timestamp_epoch": 1793061549,
+  "timestamp": "2026-10-27T00:43:44.919165+00:00",
+  "timestamp_epoch": 1793061824,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5957,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1914,
-  "gold_price": 4026.5,
+  "gold_price": 4021.7,
   "composite": 1.013,
   "calibration": {
     "a": 0.2324,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.634) against a LONG \u2014 MTF=-1.0, RSI=33.2, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.637) against a LONG \u2014 MTF=-1.0, RSI=32.6, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -152,7 +152,7 @@
     "cb_regime": 0.0251
   },
   "model_weights": {
-    "real_rates": 0.056,
+    "real_rates": 0.0559,
     "nom_yield": 0.1834,
     "dollar": 0.1022,
     "fed_stance": 0.1447,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4020.55,
-    "vwap_zscore": -0.57,
+    "vwap": 4020.52,
+    "vwap_zscore": -0.81,
     "poc": 4020.56,
     "vah": 4028.72,
     "val": 4015.95,
@@ -176,11 +176,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4157.48,
-    "ema50": 4244.73,
-    "ema200": 4305.38,
-    "rsi14": 33.2,
-    "macd_hist": -8.033,
+    "ema20": 4157.02,
+    "ema50": 4244.55,
+    "ema200": 4305.33,
+    "rsi14": 32.6,
+    "macd_hist": -8.339,
     "macd_bullish": false,
     "adx14": 26.0,
     "atr14": 75.41,
@@ -209,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 0.65
+      "utc_hour": 0.72
     },
-    "tech_score": -0.634
+    "tech_score": -0.637
   },
   "news_blackout": {
     "blocked": false,
