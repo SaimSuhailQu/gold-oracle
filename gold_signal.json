@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-27T08:19:01.714470+00:00",
-  "timestamp_epoch": 1793089141,
+  "timestamp": "2026-10-27T08:23:54.752334+00:00",
+  "timestamp_epoch": 1793089434,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6681,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.3362,
-  "gold_price": 4010.2,
+  "gold_price": 4011.3,
   "composite": 1.11,
   "calibration": {
     "a": 0.2313,
@@ -52,7 +52,7 @@
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.636) against a LONG \u2014 MTF=-1.0, RSI=32.8, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.635) against a LONG \u2014 MTF=-1.0, RSI=32.9, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -64,7 +64,7 @@
   },
   "ai_sentiment": {
     "sentiment_score": 1.0,
-    "bullish_indicators": 6,
+    "bullish_indicators": 3,
     "bearish_indicators": 0,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
@@ -165,23 +165,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4016.67,
-    "vwap_zscore": -2.16,
-    "poc": 4020.21,
-    "vah": 4025.5,
-    "val": 4005.36,
+    "vwap": 4016.63,
+    "vwap_zscore": -2.67,
+    "poc": 4020.39,
+    "vah": 4022.76,
+    "val": 4005.42,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4144.48,
-    "ema50": 4235.99,
-    "ema200": 4302.56,
-    "rsi14": 32.8,
-    "macd_hist": -8.746,
+    "ema20": 4144.58,
+    "ema50": 4236.03,
+    "ema200": 4302.57,
+    "rsi14": 32.9,
+    "macd_hist": -8.676,
     "macd_bullish": false,
     "adx14": 27.6,
-    "atr14": 73.94,
+    "atr14": 73.98,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 3989.1,
@@ -207,9 +207,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.32
+      "utc_hour": 8.38
     },
-    "tech_score": -0.636
+    "tech_score": -0.635
   },
   "news_blackout": {
     "blocked": false,
