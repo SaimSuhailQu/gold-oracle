@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-27T08:29:09.982540+00:00",
-  "timestamp_epoch": 1793089749,
+  "timestamp": "2026-10-27T08:33:42.516701+00:00",
+  "timestamp_epoch": 1793090022,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6681,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.3362,
-  "gold_price": 4011.6,
+  "gold_price": 4009.8,
   "composite": 1.11,
   "calibration": {
     "a": 0.2313,
@@ -52,7 +52,7 @@
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.635) against a LONG \u2014 MTF=-1.0, RSI=32.9, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.736) against a LONG \u2014 MTF=-1.0, RSI=32.8, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4016.29,
-    "vwap_zscore": -2.87,
+    "vwap": 4016.22,
+    "vwap_zscore": -2.34,
     "poc": 4020.24,
     "vah": 4022.83,
     "val": 4009.0,
@@ -174,14 +174,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4144.61,
-    "ema50": 4236.04,
-    "ema200": 4302.57,
-    "rsi14": 32.9,
-    "macd_hist": -8.656,
+    "ema20": 4144.44,
+    "ema50": 4235.97,
+    "ema200": 4302.55,
+    "rsi14": 32.8,
+    "macd_hist": -8.771,
     "macd_bullish": false,
     "adx14": 27.6,
-    "atr14": 73.98,
+    "atr14": 74.03,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 3989.1,
@@ -203,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 8.48
+      "utc_hour": 8.55
     },
-    "tech_score": -0.635
+    "tech_score": -0.736
   },
   "news_blackout": {
     "blocked": false,
