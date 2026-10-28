@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-28T14:43:44.530136+00:00",
-  "timestamp_epoch": 1793198624,
+  "timestamp": "2026-10-28T14:49:03.034375+00:00",
+  "timestamp_epoch": 1793198943,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6256,
-  "p_down": 0.3744,
+  "p_up": 0.6254,
+  "p_down": 0.3746,
   "signal": "LONG",
   "raw_signal": "LONG",
   "size_tier": "FULL",
   "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.2512,
-  "gold_price": 4055.2,
-  "composite": 1.0311,
+  "confidence": 0.2508,
+  "gold_price": 4050.6,
+  "composite": 1.0284,
   "calibration": {
     "a": 0.2289,
     "b": 0.6314
   },
   "factor_zscores": {
-    "real_rates": 2.3742,
+    "real_rates": 2.364,
     "nom_yield": 2.2434,
-    "dollar": -0.4594,
+    "dollar": -0.4648,
     "fed_stance": 0.1592,
-    "fear": 0.2832,
-    "risk_app": 0.0269,
-    "btc_comp": 0.0862,
-    "etf_flow": -0.9311,
-    "momentum": -0.4845,
+    "fear": 0.2857,
+    "risk_app": 0.0333,
+    "btc_comp": 0.0839,
+    "etf_flow": -0.9312,
+    "momentum": -0.4937,
     "curve": 0.9721,
-    "duration": 2.6612,
+    "duration": 2.6473,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,7 +38,7 @@
     "size_mult": 1.0,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6256,
+    "directional_probability": 0.6254,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.607,
@@ -52,13 +52,13 @@
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.611) against a LONG \u2014 MTF=-1.0, RSI=37.7, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.613) against a LONG \u2014 MTF=-1.0, RSI=37.4, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6256,
-    "p_linear_logistic": 0.713,
+    "p_ensemble_up": 0.6254,
+    "p_linear_logistic": 0.7127,
     "p_boosted_ml": 0.542,
     "nlp_sentiment_score": -0.1703
   },
@@ -129,24 +129,24 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4318.6,
-  "ma200": 4525.86,
-  "atr14": 36.79,
-  "sl_dollars": 73.57,
-  "tp_dollars": 128.75,
+  "ma50": 4318.51,
+  "ma200": 4525.83,
+  "atr14": 37.11,
+  "sl_dollars": 74.23,
+  "tp_dollars": 129.9,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": 0.1258,
+    "real_rates": 0.1253,
     "nom_yield": 0.4087,
-    "dollar": -0.0478,
+    "dollar": -0.0484,
     "fed_stance": 0.0233,
-    "fear": 0.0248,
-    "risk_app": 0.0033,
-    "btc_comp": 0.006,
+    "fear": 0.0251,
+    "risk_app": 0.0041,
+    "btc_comp": 0.0058,
     "etf_flow": -0.0084,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": 0.4708,
+    "duration": 0.4684,
     "cb_regime": 0.0245
   },
   "model_weights": {
@@ -165,23 +165,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4043.72,
-    "vwap_zscore": -0.61,
-    "poc": 4045.3,
+    "vwap": 4043.7,
+    "vwap_zscore": -0.34,
+    "poc": 4040.73,
     "vah": 4055.87,
     "val": 4029.02,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4141.52,
-    "ema50": 4231.32,
-    "ema200": 4300.73,
-    "rsi14": 37.7,
-    "macd_hist": -3.428,
+    "ema20": 4141.09,
+    "ema50": 4231.14,
+    "ema200": 4300.68,
+    "rsi14": 37.4,
+    "macd_hist": -3.722,
     "macd_bullish": false,
     "adx14": 27.2,
-    "atr14": 74.99,
+    "atr14": 74.98,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 3989.1,
@@ -207,9 +207,9 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 14.72
+      "utc_hour": 14.82
     },
-    "tech_score": -0.611
+    "tech_score": -0.613
   },
   "news_blackout": {
     "blocked": false,
