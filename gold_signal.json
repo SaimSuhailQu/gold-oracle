@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-29T02:04:03.387693+00:00",
-  "timestamp_epoch": 1793239443,
+  "timestamp": "2026-10-29T02:08:55.023662+00:00",
+  "timestamp_epoch": 1793239735,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.626,
-  "p_down": 0.374,
+  "p_up": 0.5998,
+  "p_down": 0.4002,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.252,
-  "gold_price": 4072.9,
+  "confidence": 0.1996,
+  "gold_price": 4074.9,
   "composite": 1.0727,
   "calibration": {
     "a": 0.2301,
@@ -38,16 +38,16 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.626,
+    "directional_probability": 0.5998,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.688,
+    "mcda_score": 0.568,
     "mcda_criteria_scores": {
       "macro_alignment": 0.6666666666666666,
       "ml_consensus": 0.83,
-      "news_sentiment_alignment": 1.1667,
+      "news_sentiment_alignment": 0.9,
       "technical_trend": 0.1,
-      "auction_location": 0.8
+      "auction_location": 0.4
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
@@ -58,26 +58,26 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.626,
+    "p_ensemble_up": 0.5998,
     "p_linear_logistic": 0.7131,
     "p_boosted_ml": 0.5429,
-    "nlp_sentiment_score": -0.1703
+    "nlp_sentiment_score": -0.4323
   },
   "ai_sentiment": {
-    "sentiment_score": 0.6667,
-    "bullish_indicators": 5,
-    "bearish_indicators": 1,
+    "sentiment_score": 0.4,
+    "bullish_indicators": 7,
+    "bearish_indicators": 3,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.667,
+      "news": 0.4,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.333
+      "blended": 0.2
     },
     "narrative_zscore": {
-      "z": -0.511,
-      "mean": 0.4042,
-      "std": 0.1386,
+      "z": -1.297,
+      "mean": 0.393,
+      "std": 0.1488,
       "n": 12
     }
   },
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4053.22,
-    "vwap_zscore": 0.47,
+    "vwap": 4053.27,
+    "vwap_zscore": 0.42,
     "poc": 4073.17,
     "vah": 4073.62,
     "val": 4034.4,
@@ -175,14 +175,14 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4143.21,
-    "ema50": 4232.02,
-    "ema200": 4300.91,
-    "rsi14": 39.1,
-    "macd_hist": -2.299,
+    "ema20": 4143.4,
+    "ema50": 4232.1,
+    "ema200": 4300.93,
+    "rsi14": 39.3,
+    "macd_hist": -2.171,
     "macd_bullish": false,
     "adx14": 27.3,
-    "atr14": 74.28,
+    "atr14": 74.3,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 3989.1,
@@ -208,9 +208,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.07
+      "utc_hour": 2.13
     },
-    "tech_score": 0.295
+    "tech_score": 0.296
   },
   "news_blackout": {
     "blocked": false,
