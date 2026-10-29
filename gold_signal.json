@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-10-29T21:29:12.652028+00:00",
-  "timestamp_epoch": 1793309352,
+  "timestamp": "2026-10-29T21:33:54.485515+00:00",
+  "timestamp_epoch": 1793309634,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5991,
-  "p_down": 0.4009,
+  "p_up": 0.6132,
+  "p_down": 0.3868,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.1982,
+  "confidence": 0.2264,
   "gold_price": 4033.3,
-  "composite": 1.0491,
+  "composite": 1.0477,
   "calibration": {
     "a": 0.2278,
     "b": 0.6289
@@ -25,7 +25,7 @@
     "fed_stance": 0.0155,
     "fear": 0.2347,
     "risk_app": 0.1326,
-    "btc_comp": 0.3177,
+    "btc_comp": 0.298,
     "etf_flow": -0.9786,
     "momentum": -0.8152,
     "curve": 0.9688,
@@ -38,47 +38,47 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.5991,
+    "directional_probability": 0.6132,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.612,
+    "mcda_score": 0.597,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.831,
-      "news_sentiment_alignment": 0.7857000000000001,
+      "news_sentiment_alignment": 0.9545,
       "technical_trend": 0.1,
-      "auction_location": 0.6
+      "auction_location": 0.4
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.619) against a LONG \u2014 MTF=-1.0, RSI=36.1, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.719) against a LONG \u2014 MTF=-1.0, RSI=36.1, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5991,
-    "p_linear_logistic": 0.7214,
+    "p_ensemble_up": 0.6132,
+    "p_linear_logistic": 0.7212,
     "p_boosted_ml": 0.5521,
-    "nlp_sentiment_score": -0.5257
+    "nlp_sentiment_score": -0.3837
   },
   "ai_sentiment": {
-    "sentiment_score": 0.2857,
-    "bullish_indicators": 9,
-    "bearish_indicators": 5,
+    "sentiment_score": 0.4545,
+    "bullish_indicators": 8,
+    "bearish_indicators": 3,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.286,
+      "news": 0.455,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.143
+      "blended": 0.227
     },
     "narrative_zscore": {
-      "z": -1.577,
-      "mean": 0.3883,
-      "std": 0.1557,
+      "z": -1.151,
+      "mean": 0.3953,
+      "std": 0.146,
       "n": 12
     }
   },
@@ -144,7 +144,7 @@
     "fed_stance": 0.0023,
     "fear": 0.0207,
     "risk_app": 0.0163,
-    "btc_comp": 0.0221,
+    "btc_comp": 0.0207,
     "etf_flow": -0.0093,
     "momentum": -0.0,
     "curve": 0.0,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4022.58,
-    "vwap_zscore": -1.54,
+    "vwap": 4022.56,
+    "vwap_zscore": -1.24,
     "poc": 4024.82,
     "vah": 4032.6,
     "val": 4008.97,
@@ -183,7 +183,7 @@
     "macd_hist": -3.463,
     "macd_bullish": false,
     "adx14": 27.4,
-    "atr14": 75.39,
+    "atr14": 75.36,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 3989.1,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.48
+      "utc_hour": 21.55
     },
-    "tech_score": -0.619
+    "tech_score": -0.719
   },
   "news_blackout": {
     "blocked": false,
