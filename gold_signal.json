@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-30T17:19:14.677286+00:00",
-  "timestamp_epoch": 1793380754,
+  "timestamp": "2026-10-30T17:23:52.341801+00:00",
+  "timestamp_epoch": 1793381032,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6116,
-  "p_down": 0.3884,
+  "p_up": 0.6113,
+  "p_down": 0.3887,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.2232,
-  "gold_price": 3905.1,
-  "composite": 1.4146,
+  "confidence": 0.2226,
+  "gold_price": 3903.8,
+  "composite": 1.4138,
   "calibration": {
     "a": 0.2265,
     "b": 0.6249
   },
   "factor_zscores": {
-    "real_rates": 2.7923,
+    "real_rates": 2.7874,
     "nom_yield": 2.512,
-    "dollar": 0.1121,
+    "dollar": 0.1002,
     "fed_stance": 0.307,
-    "fear": 1.39,
-    "risk_app": 0.9464,
-    "btc_comp": 0.4758,
-    "etf_flow": -0.9703,
-    "momentum": -1.0588,
+    "fear": 1.4224,
+    "risk_app": 0.9431,
+    "btc_comp": 0.4847,
+    "etf_flow": -0.9709,
+    "momentum": -1.0615,
     "curve": 0.8989,
-    "duration": 2.6864,
+    "duration": 2.6727,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,13 +38,13 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6116,
+    "directional_probability": 0.6113,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.612,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
-      "ml_consensus": 0.813,
+      "ml_consensus": 0.814,
       "news_sentiment_alignment": 0.5476,
       "technical_trend": 0.1,
       "auction_location": 0.8
@@ -54,13 +54,13 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.659) against a LONG \u2014 MTF=-1.0, RSI=28.2, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.659) against a LONG \u2014 MTF=-1.0, RSI=28.1, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6116,
-    "p_linear_logistic": 0.7565,
+    "p_ensemble_up": 0.6113,
+    "p_linear_logistic": 0.756,
     "p_boosted_ml": 0.5698,
     "nlp_sentiment_score": -0.6803
   },
@@ -131,24 +131,24 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4294.92,
-  "ma200": 4519.35,
-  "atr14": 41.44,
-  "sl_dollars": 82.87,
-  "tp_dollars": 145.03,
+  "ma50": 4294.9,
+  "ma200": 4519.34,
+  "atr14": 41.53,
+  "sl_dollars": 83.06,
+  "tp_dollars": 145.35,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": 0.1422,
+    "real_rates": 0.142,
     "nom_yield": 0.4562,
-    "dollar": 0.0118,
+    "dollar": 0.0105,
     "fed_stance": 0.0452,
-    "fear": 0.1222,
-    "risk_app": 0.1168,
-    "btc_comp": 0.0331,
+    "fear": 0.125,
+    "risk_app": 0.1164,
+    "btc_comp": 0.0337,
     "etf_flow": -0.0097,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": 0.4727,
+    "duration": 0.4703,
     "cb_regime": 0.0242
   },
   "model_weights": {
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3952.78,
-    "vwap_zscore": -1.5,
+    "vwap": 3952.44,
+    "vwap_zscore": -1.44,
     "poc": 3908.43,
     "vah": 3996.36,
     "val": 3900.64,
@@ -176,11 +176,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4109.24,
-    "ema50": 4210.87,
-    "ema200": 4294.11,
-    "rsi14": 28.2,
-    "macd_hist": -10.845,
+    "ema20": 4109.11,
+    "ema50": 4210.82,
+    "ema200": 4294.09,
+    "rsi14": 28.1,
+    "macd_hist": -10.928,
     "macd_bullish": false,
     "adx14": 28.9,
     "atr14": 79.81,
@@ -209,7 +209,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 17.32
+      "utc_hour": 17.38
     },
     "tech_score": -0.659
   },
