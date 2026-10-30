@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-30T02:19:00.565735+00:00",
-  "timestamp_epoch": 1793326740,
+  "timestamp": "2026-10-30T02:23:54.477581+00:00",
+  "timestamp_epoch": 1793327034,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5827,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1654,
-  "gold_price": 4017.6,
+  "gold_price": 4022.7,
   "composite": 1.0111,
   "calibration": {
     "a": 0.2289,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.625) against a LONG \u2014 MTF=-1.0, RSI=35.0, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.623) against a LONG \u2014 MTF=-1.0, RSI=35.3, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4015.41,
-    "vwap_zscore": -1.04,
+    "vwap": 4015.3,
+    "vwap_zscore": -1.3,
     "poc": 4023.03,
     "vah": 4028.48,
     "val": 3995.74,
@@ -176,11 +176,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4129.41,
-    "ema50": 4222.81,
-    "ema200": 4297.88,
-    "rsi14": 35.0,
-    "macd_hist": -4.465,
+    "ema20": 4129.9,
+    "ema50": 4223.01,
+    "ema200": 4297.93,
+    "rsi14": 35.3,
+    "macd_hist": -4.14,
     "macd_bullish": false,
     "adx14": 27.5,
     "atr14": 73.97,
@@ -209,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.32
+      "utc_hour": 2.38
     },
-    "tech_score": -0.625
+    "tech_score": -0.623
   },
   "news_blackout": {
     "blocked": false,
