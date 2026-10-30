@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-10-29T23:59:05.108104+00:00",
-  "timestamp_epoch": 1793318345,
+  "timestamp": "2026-10-30T00:04:03.152803+00:00",
+  "timestamp_epoch": 1793318643,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6079,
-  "p_down": 0.3921,
+  "p_up": 0.603,
+  "p_down": 0.397,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.2158,
-  "gold_price": 4019.8,
-  "composite": 1.058,
+  "confidence": 0.206,
+  "gold_price": 4020.2,
+  "composite": 1.0111,
   "calibration": {
-    "a": 0.2278,
-    "b": 0.6289
+    "a": 0.2289,
+    "b": 0.6314
   },
   "factor_zscores": {
-    "real_rates": 2.3659,
-    "nom_yield": 2.0812,
-    "dollar": 0.2235,
-    "fed_stance": 0.0155,
-    "fear": 0.2347,
-    "risk_app": 0.1326,
-    "btc_comp": 0.4447,
-    "etf_flow": -0.9786,
-    "momentum": -0.8423,
-    "curve": 0.9688,
-    "duration": 2.5389,
+    "real_rates": 2.4913,
+    "nom_yield": 2.0911,
+    "dollar": -0.2758,
+    "fed_stance": 0.4807,
+    "fear": 0.1744,
+    "risk_app": -0.0225,
+    "btc_comp": 0.0124,
+    "etf_flow": -0.9713,
+    "momentum": -0.4917,
+    "curve": 1.2227,
+    "duration": 2.4144,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,47 +38,47 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6079,
+    "directional_probability": 0.603,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.706,
+    "mcda_score": 0.675,
     "mcda_criteria_scores": {
-      "macro_alignment": 0.75,
-      "ml_consensus": 0.829,
-      "news_sentiment_alignment": 0.8846,
+      "macro_alignment": 0.5833333333333334,
+      "ml_consensus": 0.831,
+      "news_sentiment_alignment": 0.9545,
       "technical_trend": 0.1,
       "auction_location": 1.0
     },
     "fatal_flaws": [
-      "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
+      "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.624) against a LONG \u2014 MTF=-1.0, RSI=35.1, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.524) against a LONG \u2014 MTF=-1.0, RSI=35.1, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6079,
-    "p_linear_logistic": 0.7227,
-    "p_boosted_ml": 0.5521,
-    "nlp_sentiment_score": -0.4457
+    "p_ensemble_up": 0.603,
+    "p_linear_logistic": 0.7109,
+    "p_boosted_ml": 0.542,
+    "nlp_sentiment_score": -0.3837
   },
   "ai_sentiment": {
-    "sentiment_score": 0.3846,
-    "bullish_indicators": 9,
-    "bearish_indicators": 4,
+    "sentiment_score": 0.4545,
+    "bullish_indicators": 8,
+    "bearish_indicators": 3,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.385,
+      "news": 0.455,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.192
+      "blended": 0.227
     },
     "narrative_zscore": {
-      "z": -1.337,
-      "mean": 0.3924,
-      "std": 0.1497,
+      "z": -1.151,
+      "mean": 0.3953,
+      "std": 0.146,
       "n": 12
     }
   },
@@ -131,59 +131,59 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4308.02,
-  "ma200": 4522.94,
-  "atr14": 35.08,
-  "sl_dollars": 70.16,
-  "tp_dollars": 122.78,
+  "ma50": 4318.53,
+  "ma200": 4525.84,
+  "atr14": 37.04,
+  "sl_dollars": 74.09,
+  "tp_dollars": 129.65,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": 0.123,
-    "nom_yield": 0.3786,
-    "dollar": 0.0233,
-    "fed_stance": 0.0023,
-    "fear": 0.0207,
-    "risk_app": 0.0163,
-    "btc_comp": 0.0309,
-    "etf_flow": -0.0093,
+    "real_rates": 0.1318,
+    "nom_yield": 0.3811,
+    "dollar": -0.0287,
+    "fed_stance": 0.0702,
+    "fear": 0.0153,
+    "risk_app": -0.0028,
+    "btc_comp": 0.0009,
+    "etf_flow": -0.0087,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": 0.4479,
-    "cb_regime": 0.0243
+    "duration": 0.4275,
+    "cb_regime": 0.0245
   },
   "model_weights": {
-    "real_rates": 0.052,
-    "nom_yield": 0.1819,
-    "dollar": 0.1043,
-    "fed_stance": 0.1466,
-    "fear": 0.088,
-    "risk_app": 0.1232,
+    "real_rates": 0.0529,
+    "nom_yield": 0.1822,
+    "dollar": 0.104,
+    "fed_stance": 0.146,
+    "fear": 0.0877,
+    "risk_app": 0.1227,
     "btc_comp": 0.0694,
-    "etf_flow": 0.0095,
+    "etf_flow": 0.009,
     "momentum": 0.0,
     "curve": 0.0,
-    "duration": 0.1764,
-    "cb_regime": 0.0486
+    "duration": 0.1771,
+    "cb_regime": 0.049
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4020.38,
-    "vwap_zscore": -2.56,
-    "poc": 4022.98,
-    "vah": 4028.05,
-    "val": 4011.96,
+    "vwap": 4020.35,
+    "vwap_zscore": -2.51,
+    "poc": 4022.88,
+    "vah": 4027.99,
+    "val": 4008.77,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4129.62,
-    "ema50": 4222.89,
+    "ema20": 4129.66,
+    "ema50": 4222.91,
     "ema200": 4297.9,
     "rsi14": 35.1,
-    "macd_hist": -4.325,
+    "macd_hist": -4.299,
     "macd_bullish": false,
     "adx14": 27.3,
-    "atr14": 73.03,
+    "atr14": 73.12,
     "trend_strong": true,
     "resistance": 4220.4,
     "support": 3989.1,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
-      "session": "OFF_HOURS",
+      "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 23.98
+      "utc_hour": 0.07
     },
-    "tech_score": -0.624
+    "tech_score": -0.524
   },
   "news_blackout": {
     "blocked": false,
