@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-30T10:34:00.423897+00:00",
-  "timestamp_epoch": 1793356440,
+  "timestamp": "2026-10-30T10:38:44.425060+00:00",
+  "timestamp_epoch": 1793356724,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.5937,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.1874,
-  "gold_price": 3993.3,
+  "gold_price": 3992.5,
   "composite": 1.0582,
   "calibration": {
     "a": 0.2278,
@@ -41,18 +41,18 @@
     "directional_probability": 0.5937,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.639,
+    "mcda_score": 0.678,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.83,
       "news_sentiment_alignment": 0.7,
       "technical_trend": 0.1,
-      "auction_location": 0.8
+      "auction_location": 1.0
     },
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.634) against a LONG \u2014 MTF=-1.0, RSI=33.2, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.634) against a LONG \u2014 MTF=-1.0, RSI=33.1, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3999.41,
-    "vwap_zscore": -1.49,
+    "vwap": 3999.23,
+    "vwap_zscore": -1.54,
     "poc": 4008.21,
     "vah": 4008.73,
     "val": 3986.56,
@@ -174,11 +174,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4117.64,
-    "ema50": 4214.33,
+    "ema20": 4117.56,
+    "ema50": 4214.29,
     "ema200": 4294.98,
-    "rsi14": 33.2,
-    "macd_hist": -5.216,
+    "rsi14": 33.1,
+    "macd_hist": -5.267,
     "macd_bullish": false,
     "adx14": 28.3,
     "atr14": 74.56,
@@ -207,7 +207,7 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 10.57
+      "utc_hour": 10.63
     },
     "tech_score": -0.634
   },
