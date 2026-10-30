@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-10-30T13:08:56.913359+00:00",
-  "timestamp_epoch": 1793365736,
+  "timestamp": "2026-10-30T13:13:49.468717+00:00",
+  "timestamp_epoch": 1793366029,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.585,
-  "p_down": 0.415,
+  "p_up": 0.5819,
+  "p_down": 0.4181,
   "signal": "LONG",
   "raw_signal": "LONG",
   "size_tier": "FULL",
   "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.17,
-  "gold_price": 3964.1,
+  "confidence": 0.1638,
+  "gold_price": 3960.7,
   "composite": 1.0582,
   "calibration": {
     "a": 0.2278,
@@ -38,45 +38,45 @@
     "size_mult": 1.0,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.585,
+    "directional_probability": 0.5819,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.657,
+    "mcda_score": 0.649,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.83,
-      "news_sentiment_alignment": 0.5588,
+      "news_sentiment_alignment": 0.5,
       "technical_trend": 0.1,
       "auction_location": 1.0
     },
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.643) against a LONG \u2014 MTF=-1.0, RSI=31.3, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.644) against a LONG \u2014 MTF=-1.0, RSI=31.1, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.585,
+    "p_ensemble_up": 0.5819,
     "p_linear_logistic": 0.7226,
     "p_boosted_ml": 0.5521,
-    "nlp_sentiment_score": -0.674
+    "nlp_sentiment_score": -0.7053
   },
   "ai_sentiment": {
-    "sentiment_score": 0.0588,
+    "sentiment_score": 0.0,
     "bullish_indicators": 9,
-    "bearish_indicators": 8,
+    "bearish_indicators": 9,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.059,
+      "news": 0.0,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.029
+      "blended": 0.0
     },
     "narrative_zscore": {
-      "z": -2.022,
-      "mean": 0.3788,
-      "std": 0.1728,
+      "z": -2.116,
+      "mean": 0.3764,
+      "std": 0.1779,
       "n": 12
     }
   },
@@ -165,23 +165,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3992.83,
-    "vwap_zscore": -3.85,
-    "poc": 4007.77,
-    "vah": 4008.42,
-    "val": 3974.77,
+    "vwap": 3992.31,
+    "vwap_zscore": -3.4,
+    "poc": 4007.73,
+    "vah": 4008.39,
+    "val": 3975.4,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4114.86,
-    "ema50": 4213.18,
-    "ema200": 4294.69,
-    "rsi14": 31.3,
-    "macd_hist": -7.079,
+    "ema20": 4114.53,
+    "ema50": 4213.05,
+    "ema200": 4294.66,
+    "rsi14": 31.1,
+    "macd_hist": -7.296,
     "macd_bullish": false,
     "adx14": 28.4,
-    "atr14": 75.4,
+    "atr14": 75.73,
     "trend_strong": true,
     "resistance": 4097.2,
     "support": 3989.1,
@@ -207,9 +207,9 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 13.13
+      "utc_hour": 13.22
     },
-    "tech_score": -0.643
+    "tech_score": -0.644
   },
   "news_blackout": {
     "blocked": false,
