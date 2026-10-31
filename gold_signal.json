@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-10-31T16:38:37.167282+00:00",
-  "timestamp_epoch": 1793464717,
+  "timestamp": "2026-10-31T16:43:58.990649+00:00",
+  "timestamp_epoch": 1793465038,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.632,
   "p_down": 0.368,
-  "signal": "LONG",
+  "signal": "FLAT",
   "raw_signal": "LONG",
-  "size_tier": "FULL",
-  "size_mult": 1.0,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.264,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "FULL",
-    "size_mult": 1.0,
-    "final_audited_signal": "LONG",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
     "directional_probability": 0.632,
     "min_required_probability": 0.53,
@@ -49,11 +49,13 @@
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "FATAL MICROSTRUCTURE FLAW: Price is overextended at +2.0 standard deviations above VWAP; high risk of mean reversion."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.632,
@@ -164,10 +166,10 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3892.71,
-    "vwap_zscore": 1.87,
-    "poc": 3892.85,
-    "vah": 3894.85,
+    "vwap": 3892.75,
+    "vwap_zscore": 2.69,
+    "poc": 3892.91,
+    "vah": 3894.46,
     "val": 3891.24,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
@@ -206,7 +208,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 16.63
+      "utc_hour": 16.72
     },
     "tech_score": 0.14
   },
