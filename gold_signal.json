@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-01T15:08:49.736410+00:00",
-  "timestamp_epoch": 1793545729,
+  "timestamp": "2026-11-01T15:13:43.279554+00:00",
+  "timestamp_epoch": 1793546023,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6294,
@@ -202,13 +202,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 15.13
+      "utc_hour": 15.22
     },
-    "tech_score": 0.14
+    "tech_score": 0.04
   },
   "news_blackout": {
     "blocked": false,
