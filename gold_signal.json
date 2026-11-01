@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-01T16:58:44.058397+00:00",
-  "timestamp_epoch": 1793552324,
+  "timestamp": "2026-11-01T17:03:45.779737+00:00",
+  "timestamp_epoch": 1793552625,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.632,
   "p_down": 0.368,
-  "signal": "LONG",
+  "signal": "FLAT",
   "raw_signal": "LONG",
-  "size_tier": "FULL",
-  "size_mult": 1.0,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.264,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "FULL",
-    "size_mult": 1.0,
-    "final_audited_signal": "LONG",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
     "directional_probability": 0.632,
     "min_required_probability": 0.53,
@@ -49,12 +49,14 @@
       "technical_trend": 0.1,
       "auction_location": 0.6
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
       "CRITIC WARNING: technical stack is bearish (tech_score=-0.66) against a LONG \u2014 MTF=-1.0, RSI=27.9, structure=UNKNOWN."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.632,
@@ -165,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3894.64,
-    "vwap_zscore": -2.51,
+    "vwap": 3894.65,
+    "vwap_zscore": -2.73,
     "poc": 3895.05,
     "vah": 3895.64,
     "val": 3893.31,
@@ -205,9 +207,9 @@
     },
     "candle_pattern": null,
     "session": {
-      "session": "NEW_YORK",
-      "trade_ok": true,
-      "utc_hour": 16.97
+      "session": "OFF_HOURS",
+      "trade_ok": false,
+      "utc_hour": 17.05
     },
     "tech_score": -0.66
   },
