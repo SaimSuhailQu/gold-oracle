@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-02T09:44:10.075892+00:00",
-  "timestamp_epoch": 1793612650,
+  "timestamp": "2026-11-02T09:48:34.213374+00:00",
+  "timestamp_epoch": 1793612914,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.632,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.264,
-  "gold_price": 3907.5,
+  "gold_price": 3907.3,
   "composite": 1.447,
   "calibration": {
     "a": 0.2265,
@@ -52,7 +52,7 @@
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.655) against a LONG \u2014 MTF=-1.0, RSI=29.0, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.555) against a LONG \u2014 MTF=-1.0, RSI=29.0, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -165,20 +165,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3911.35,
-    "vwap_zscore": -0.44,
-    "poc": 3921.25,
-    "vah": 3921.56,
-    "val": 3892.97,
+    "vwap": 3911.39,
+    "vwap_zscore": -0.61,
+    "poc": 3921.26,
+    "vah": 3921.58,
+    "val": 3893.22,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4089.49,
-    "ema50": 4198.74,
+    "ema20": 4089.47,
+    "ema50": 4198.73,
     "ema200": 4290.2,
     "rsi14": 29.0,
-    "macd_hist": -14.309,
+    "macd_hist": -14.322,
     "macd_bullish": false,
     "adx14": 30.7,
     "atr14": 78.36,
@@ -203,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 9.73
+      "utc_hour": 9.8
     },
-    "tech_score": -0.655
+    "tech_score": -0.555
   },
   "news_blackout": {
     "blocked": false,
