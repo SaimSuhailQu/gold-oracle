@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-03T04:18:59.908081+00:00",
-  "timestamp_epoch": 1793679539,
+  "timestamp": "2026-11-03T04:23:54.599220+00:00",
+  "timestamp_epoch": 1793679834,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6243,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2486,
-  "gold_price": 3937.5,
+  "gold_price": 3938.5,
   "composite": 1.447,
   "calibration": {
     "a": 0.2265,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.637) against a LONG \u2014 MTF=-1.0, RSI=32.6, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.736) against a LONG \u2014 MTF=-1.0, RSI=32.7, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,20 +167,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3948.86,
-    "vwap_zscore": -2.27,
-    "poc": 3944.72,
+    "vwap": 3948.62,
+    "vwap_zscore": -2.44,
+    "poc": 3942.67,
     "vah": 3970.31,
-    "val": 3940.53,
+    "val": 3940.33,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4092.35,
-    "ema50": 4199.91,
-    "ema200": 4290.5,
-    "rsi14": 32.6,
-    "macd_hist": -12.394,
+    "ema20": 4092.44,
+    "ema50": 4199.95,
+    "ema200": 4290.51,
+    "rsi14": 32.7,
+    "macd_hist": -12.331,
     "macd_bullish": false,
     "adx14": 30.7,
     "atr14": 80.96,
@@ -205,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 4.3
+      "utc_hour": 4.38
     },
-    "tech_score": -0.637
+    "tech_score": -0.736
   },
   "news_blackout": {
     "blocked": false,
