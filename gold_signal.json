@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-03T12:19:08.251148+00:00",
-  "timestamp_epoch": 1793708348,
+  "timestamp": "2026-11-03T12:23:52.409994+00:00",
+  "timestamp_epoch": 1793708632,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6412,
   "p_down": 0.3588,
   "signal": "LONG",
   "raw_signal": "LONG",
-  "size_tier": "FULL",
-  "size_mult": 1.0,
+  "size_tier": "QUARTER",
+  "size_mult": 0.25,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2824,
-  "gold_price": 3911.2,
+  "gold_price": 3912.4,
   "composite": 1.6599,
   "calibration": {
     "a": 0.2252,
@@ -34,27 +34,27 @@
   },
   "decision_critic": {
     "is_cleared_to_trade": true,
-    "size_tier": "FULL",
-    "size_mult": 1.0,
+    "size_tier": "QUARTER",
+    "size_mult": 0.25,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
     "directional_probability": 0.6412,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.621,
+    "mcda_score": 0.541,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.783,
       "news_sentiment_alignment": 0.6429,
       "technical_trend": 0.1,
-      "auction_location": 0.8
+      "auction_location": 0.4
     },
     "fatal_flaws": [],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
       "CRITIC WARNING: technical stack is bearish (tech_score=-0.636) against a LONG \u2014 MTF=-1.0, RSI=32.8, structure=UNKNOWN."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
+    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.6412,
@@ -165,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3923.35,
-    "vwap_zscore": -0.64,
+    "vwap": 3923.32,
+    "vwap_zscore": -0.53,
     "poc": 3911.99,
     "vah": 3955.59,
     "val": 3905.04,
@@ -174,11 +174,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4077.86,
-    "ema50": 4189.8,
-    "ema200": 4287.04,
+    "ema20": 4077.98,
+    "ema50": 4189.85,
+    "ema200": 4287.05,
     "rsi14": 32.8,
-    "macd_hist": -12.355,
+    "macd_hist": -12.278,
     "macd_bullish": false,
     "adx14": 32.1,
     "atr14": 81.28,
@@ -207,7 +207,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 12.32
+      "utc_hour": 12.38
     },
     "tech_score": -0.636
   },
