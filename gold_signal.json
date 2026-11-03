@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-11-03T14:39:02.606231+00:00",
-  "timestamp_epoch": 1793716742,
+  "timestamp": "2026-11-03T14:44:12.525065+00:00",
+  "timestamp_epoch": 1793717052,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6543,
-  "p_down": 0.3457,
+  "p_up": 0.6527,
+  "p_down": 0.3473,
   "signal": "LONG",
   "raw_signal": "LONG",
   "size_tier": "FULL",
   "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.3086,
-  "gold_price": 3953.5,
-  "composite": 1.4581,
+  "confidence": 0.3054,
+  "gold_price": 3954.8,
+  "composite": 1.4383,
   "calibration": {
     "a": 0.2239,
-    "b": 0.6156
+    "b": 0.6157
   },
   "factor_zscores": {
-    "real_rates": 2.2235,
-    "nom_yield": 2.5861,
-    "dollar": 0.1842,
-    "fed_stance": 0.3152,
-    "fear": 1.5315,
-    "risk_app": 1.3808,
-    "btc_comp": 0.5643,
-    "etf_flow": -0.9787,
-    "momentum": -1.1641,
-    "curve": 0.5416,
-    "duration": 2.6119,
+    "real_rates": 2.2137,
+    "nom_yield": 2.54,
+    "dollar": 0.1603,
+    "fed_stance": 0.2873,
+    "fear": 1.5464,
+    "risk_app": 1.3709,
+    "btc_comp": 0.5562,
+    "etf_flow": -0.9792,
+    "momentum": -1.1615,
+    "curve": 0.5631,
+    "duration": 2.5906,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,13 +38,13 @@
     "size_mult": 1.0,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6543,
+    "directional_probability": 0.6527,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.603,
+    "mcda_score": 0.604,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
-      "ml_consensus": 0.8,
+      "ml_consensus": 0.803,
       "news_sentiment_alignment": 1.0385,
       "technical_trend": 0.1,
       "auction_location": 0.4
@@ -56,8 +56,8 @@
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6543,
-    "p_linear_logistic": 0.767,
+    "p_ensemble_up": 0.6527,
+    "p_linear_logistic": 0.7643,
     "p_boosted_ml": 0.5669,
     "nlp_sentiment_score": -0.3033
   },
@@ -128,24 +128,24 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4265.69,
+  "ma50": 4265.72,
   "ma200": 4512.84,
-  "atr14": 42.17,
-  "sl_dollars": 84.34,
-  "tp_dollars": 147.6,
+  "atr14": 42.08,
+  "sl_dollars": 84.16,
+  "tp_dollars": 147.28,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": 0.1095,
-    "nom_yield": 0.4674,
-    "dollar": 0.0195,
-    "fed_stance": 0.0469,
-    "fear": 0.1346,
-    "risk_app": 0.171,
-    "btc_comp": 0.0394,
+    "real_rates": 0.109,
+    "nom_yield": 0.4591,
+    "dollar": 0.017,
+    "fed_stance": 0.0428,
+    "fear": 0.1358,
+    "risk_app": 0.1698,
+    "btc_comp": 0.0388,
     "etf_flow": -0.0109,
     "momentum": -0.0,
     "curve": 0.0,
-    "duration": 0.457,
+    "duration": 0.4532,
     "cb_regime": 0.0238
   },
   "model_weights": {
@@ -153,7 +153,7 @@
     "nom_yield": 0.1807,
     "dollar": 0.1059,
     "fed_stance": 0.1488,
-    "fear": 0.0879,
+    "fear": 0.0878,
     "risk_app": 0.1238,
     "btc_comp": 0.0698,
     "etf_flow": 0.0112,
@@ -164,8 +164,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3920.44,
-    "vwap_zscore": 1.85,
+    "vwap": 3920.38,
+    "vwap_zscore": 1.68,
     "poc": 3911.96,
     "vah": 3948.55,
     "val": 3905.75,
@@ -173,11 +173,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4081.89,
-    "ema50": 4191.46,
-    "ema200": 4287.46,
-    "rsi14": 35.1,
-    "macd_hist": -9.655,
+    "ema20": 4082.01,
+    "ema50": 4191.51,
+    "ema200": 4287.47,
+    "rsi14": 35.2,
+    "macd_hist": -9.572,
     "macd_bullish": false,
     "adx14": 32.1,
     "atr14": 81.73,
@@ -206,9 +206,9 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 14.65
+      "utc_hour": 14.73
     },
-    "tech_score": 0.175
+    "tech_score": 0.176
   },
   "news_blackout": {
     "blocked": false,
