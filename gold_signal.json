@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-04T21:33:59.824123+00:00",
-  "timestamp_epoch": 1793828039,
+  "timestamp": "2026-11-04T21:39:14.332659+00:00",
+  "timestamp_epoch": 1793828354,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6008,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2016,
-  "gold_price": 4076.1,
-  "composite": 1.3571,
+  "gold_price": 4071.6,
+  "composite": 1.3563,
   "calibration": {
     "a": 0.2229,
     "b": 0.613
@@ -25,9 +25,9 @@
     "fed_stance": 0.2901,
     "fear": 0.3985,
     "risk_app": 0.7866,
-    "btc_comp": 0.1022,
+    "btc_comp": 0.0918,
     "etf_flow": -1.0139,
-    "momentum": -0.9477,
+    "momentum": -0.9566,
     "curve": 0.4225,
     "duration": 2.8376,
     "cb_regime": 0.5
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4253.06,
-  "ma200": 4509.32,
-  "atr14": 48.36,
-  "sl_dollars": 96.71,
-  "tp_dollars": 169.25,
+  "ma50": 4252.97,
+  "ma200": 4509.3,
+  "atr14": 48.04,
+  "sl_dollars": 96.07,
+  "tp_dollars": 168.13,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": 0.0954,
@@ -143,7 +143,7 @@
     "fed_stance": 0.0433,
     "fear": 0.0351,
     "risk_app": 0.0975,
-    "btc_comp": 0.0072,
+    "btc_comp": 0.0064,
     "etf_flow": -0.0119,
     "momentum": -0.0001,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4041.85,
-    "vwap_zscore": 1.17,
+    "vwap": 4041.96,
+    "vwap_zscore": 1.19,
     "poc": 4037.99,
     "vah": 4060.58,
     "val": 4028.73,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4080.21,
-    "ema50": 4186.44,
-    "ema200": 4285.23,
-    "rsi14": 47.1,
-    "macd_hist": -0.733,
+    "ema20": 4079.78,
+    "ema50": 4186.26,
+    "ema200": 4285.18,
+    "rsi14": 46.8,
+    "macd_hist": -1.02,
     "macd_bullish": false,
     "adx14": 31.3,
     "atr14": 86.86,
@@ -208,9 +208,9 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.55
+      "utc_hour": 21.65
     },
-    "tech_score": 0.235
+    "tech_score": 0.234
   },
   "news_blackout": {
     "blocked": false,
