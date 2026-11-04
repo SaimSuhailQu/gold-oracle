@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-04T10:13:55.840944+00:00",
-  "timestamp_epoch": 1793787235,
+  "timestamp": "2026-11-04T10:19:24.425431+00:00",
+  "timestamp_epoch": 1793787564,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6064,
-  "p_down": 0.3936,
+  "p_up": 0.6097,
+  "p_down": 0.3903,
   "signal": "LONG",
   "raw_signal": "LONG",
   "size_tier": "QUARTER",
   "size_mult": 0.25,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.2128,
-  "gold_price": 4052.5,
+  "confidence": 0.2194,
+  "gold_price": 4054.3,
   "composite": 1.3684,
   "calibration": {
     "a": 0.2242,
@@ -38,14 +38,14 @@
     "size_mult": 0.25,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6064,
+    "directional_probability": 0.6097,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.514,
+    "mcda_score": 0.524,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.808,
-      "news_sentiment_alignment": 0.4333,
+      "news_sentiment_alignment": 0.5,
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
@@ -56,26 +56,26 @@
     "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6064,
+    "p_ensemble_up": 0.6097,
     "p_linear_logistic": 0.7592,
     "p_boosted_ml": 0.5674,
-    "nlp_sentiment_score": -0.7377
+    "nlp_sentiment_score": -0.7053
   },
   "ai_sentiment": {
-    "sentiment_score": -0.0667,
-    "bullish_indicators": 7,
-    "bearish_indicators": 8,
+    "sentiment_score": 0.0,
+    "bullish_indicators": 6,
+    "bearish_indicators": 6,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": -0.067,
+      "news": 0.0,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": -0.033
+      "blended": 0.0
     },
     "narrative_zscore": {
-      "z": -2.213,
-      "mean": 0.3736,
-      "std": 0.1839,
+      "z": -2.116,
+      "mean": 0.3764,
+      "std": 0.1779,
       "n": 12
     }
   },
@@ -164,20 +164,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3975.37,
-    "vwap_zscore": 1.56,
-    "poc": 3952.81,
-    "vah": 4039.35,
-    "val": 3930.28,
+    "vwap": 3975.92,
+    "vwap_zscore": 1.57,
+    "poc": 3953.05,
+    "vah": 4040.28,
+    "val": 3930.34,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4077.96,
-    "ema50": 4185.52,
-    "ema200": 4284.99,
-    "rsi14": 45.3,
-    "macd_hist": -2.239,
+    "ema20": 4078.13,
+    "ema50": 4185.59,
+    "ema200": 4285.01,
+    "rsi14": 45.4,
+    "macd_hist": -2.124,
     "macd_bullish": false,
     "adx14": 31.7,
     "atr14": 85.28,
@@ -206,9 +206,9 @@
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 10.22
+      "utc_hour": 10.32
     },
-    "tech_score": 0.226
+    "tech_score": 0.227
   },
   "news_blackout": {
     "blocked": false,
