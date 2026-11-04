@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-11-04T22:58:45.197346+00:00",
-  "timestamp_epoch": 1793833125,
+  "timestamp": "2026-11-04T23:04:00.979789+00:00",
+  "timestamp_epoch": 1793833440,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6009,
-  "p_down": 0.3991,
+  "p_up": 0.601,
+  "p_down": 0.399,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.2018,
+  "confidence": 0.202,
   "gold_price": 4072.2,
-  "composite": 1.3529,
+  "composite": 1.3545,
   "calibration": {
     "a": 0.2229,
     "b": 0.613
@@ -25,7 +25,7 @@
     "fed_stance": 0.2901,
     "fear": 0.3985,
     "risk_app": 0.7866,
-    "btc_comp": 0.044,
+    "btc_comp": 0.0657,
     "etf_flow": -1.0141,
     "momentum": -0.9554,
     "curve": 0.4225,
@@ -38,7 +38,7 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6009,
+    "directional_probability": 0.601,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
     "mcda_score": 0.509,
@@ -58,8 +58,8 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6009,
-    "p_linear_logistic": 0.7682,
+    "p_ensemble_up": 0.601,
+    "p_linear_logistic": 0.7684,
     "p_boosted_ml": 0.5394,
     "nlp_sentiment_score": -0.731
   },
@@ -143,7 +143,7 @@
     "fed_stance": 0.0433,
     "fear": 0.0351,
     "risk_app": 0.0975,
-    "btc_comp": 0.0031,
+    "btc_comp": 0.0046,
     "etf_flow": -0.0119,
     "momentum": -0.0001,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4043.76,
-    "vwap_zscore": 1.28,
+    "vwap": 4043.83,
+    "vwap_zscore": 1.21,
     "poc": 4030.58,
     "vah": 4059.84,
     "val": 4028.73,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "BULLISH_ENGULFING",
+    "candle_pattern": null,
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.97
+      "utc_hour": 23.07
     },
-    "tech_score": 0.334
+    "tech_score": 0.234
   },
   "news_blackout": {
     "blocked": false,
