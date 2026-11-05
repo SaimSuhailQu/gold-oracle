@@ -1,35 +1,35 @@
 {
-  "timestamp": "2026-11-05T20:59:02.218712+00:00",
-  "timestamp_epoch": 1793912342,
+  "timestamp": "2026-11-05T21:03:46.272355+00:00",
+  "timestamp_epoch": 1793912626,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6623,
-  "p_down": 0.3377,
+  "p_up": 0.6621,
+  "p_down": 0.3379,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.3246,
-  "gold_price": 4110.1,
-  "composite": 1.7098,
+  "confidence": 0.3242,
+  "gold_price": 4114.0,
+  "composite": 1.7039,
   "calibration": {
     "a": 0.2216,
     "b": 0.6073
   },
   "factor_zscores": {
-    "real_rates": 1.8197,
+    "real_rates": 1.8124,
     "nom_yield": 2.7484,
-    "dollar": 0.509,
+    "dollar": 0.521,
     "fed_stance": 0.7011,
-    "fear": 2.8302,
-    "risk_app": 2.0012,
-    "btc_comp": 0.346,
-    "etf_flow": -1.034,
-    "momentum": -0.921,
+    "fear": 2.7944,
+    "risk_app": 2.0096,
+    "btc_comp": 0.3488,
+    "etf_flow": -1.0367,
+    "momentum": -0.9134,
     "curve": 0.3333,
-    "duration": 2.5143,
+    "duration": 2.486,
     "cb_regime": 0.5
   },
   "decision_critic": {
@@ -38,16 +38,16 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6623,
+    "directional_probability": 0.6621,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.663,
+    "mcda_score": 0.703,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.782,
       "news_sentiment_alignment": 0.9286,
       "technical_trend": 0.1,
-      "auction_location": 0.8
+      "auction_location": 1.0
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
@@ -58,8 +58,8 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6623,
-    "p_linear_logistic": 0.7928,
+    "p_ensemble_up": 0.6621,
+    "p_linear_logistic": 0.7925,
     "p_boosted_ml": 0.5746,
     "nlp_sentiment_score": -0.407
   },
@@ -130,24 +130,24 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4242.14,
-  "ma200": 4505.67,
-  "atr14": 50.0,
-  "sl_dollars": 100.0,
-  "tp_dollars": 175.0,
+  "ma50": 4242.21,
+  "ma200": 4505.69,
+  "atr14": 50.28,
+  "sl_dollars": 100.56,
+  "tp_dollars": 175.98,
   "exposure_mult": 1.0,
   "factors": {
-    "real_rates": 0.0872,
+    "real_rates": 0.0869,
     "nom_yield": 0.4934,
-    "dollar": 0.0541,
+    "dollar": 0.0554,
     "fed_stance": 0.1051,
-    "fear": 0.2468,
-    "risk_app": 0.2477,
-    "btc_comp": 0.0243,
-    "etf_flow": -0.0127,
+    "fear": 0.2438,
+    "risk_app": 0.2487,
+    "btc_comp": 0.0245,
+    "etf_flow": -0.0128,
     "momentum": -0.0005,
     "curve": 0.0,
-    "duration": 0.4409,
+    "duration": 0.436,
     "cb_regime": 0.0234
   },
   "model_weights": {
@@ -156,7 +156,7 @@
     "dollar": 0.1063,
     "fed_stance": 0.1499,
     "fear": 0.0872,
-    "risk_app": 0.1238,
+    "risk_app": 0.1237,
     "btc_comp": 0.0703,
     "etf_flow": 0.0123,
     "momentum": 0.0005,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4103.16,
-    "vwap_zscore": -1.33,
+    "vwap": 4103.07,
+    "vwap_zscore": -1.8,
     "poc": 4117.41,
     "vah": 4118.02,
     "val": 4087.63,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4082.79,
-    "ema50": 4183.33,
-    "ema200": 4283.45,
-    "rsi14": 49.8,
-    "macd_hist": 8.119,
+    "ema20": 4083.16,
+    "ema50": 4183.48,
+    "ema200": 4283.49,
+    "rsi14": 50.1,
+    "macd_hist": 8.368,
     "macd_bullish": true,
     "adx14": 29.4,
     "atr14": 87.02,
@@ -208,9 +208,9 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 20.98
+      "utc_hour": 21.05
     },
-    "tech_score": -0.251
+    "tech_score": -0.249
   },
   "news_blackout": {
     "blocked": false,
