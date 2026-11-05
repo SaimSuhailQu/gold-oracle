@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-05T04:34:03.712010+00:00",
-  "timestamp_epoch": 1793853243,
+  "timestamp": "2026-11-05T04:38:49.881007+00:00",
+  "timestamp_epoch": 1793853529,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6036,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2072,
-  "gold_price": 4143.9,
+  "gold_price": 4144.0,
   "composite": 1.3684,
   "calibration": {
     "a": 0.2252,
@@ -166,20 +166,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4077.02,
-    "vwap_zscore": 1.61,
-    "poc": 4056.27,
-    "vah": 4126.63,
-    "val": 4051.7,
+    "vwap": 4077.47,
+    "vwap_zscore": 1.83,
+    "poc": 4055.97,
+    "vah": 4125.38,
+    "val": 4051.69,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4086.67,
+    "ema20": 4086.68,
     "ema50": 4189.1,
     "ema200": 4285.9,
     "rsi14": 51.8,
-    "macd_hist": 3.594,
+    "macd_hist": 3.6,
     "macd_bullish": true,
     "adx14": 30.2,
     "atr14": 91.34,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 4.57
+      "utc_hour": 4.63
     },
-    "tech_score": 0.559
+    "tech_score": 0.659
   },
   "news_blackout": {
     "blocked": false,
