@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-05T07:48:46.318086+00:00",
-  "timestamp_epoch": 1793864926,
+  "timestamp": "2026-11-05T07:53:55.629105+00:00",
+  "timestamp_epoch": 1793865235,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6036,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2072,
-  "gold_price": 4127.0,
+  "gold_price": 4130.2,
   "composite": 1.3546,
   "calibration": {
     "a": 0.2229,
@@ -51,7 +51,8 @@
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.344) against a LONG \u2014 MTF=-1.0, RSI=51.2, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
@@ -164,20 +165,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4093.24,
-    "vwap_zscore": 0.64,
-    "poc": 4057.48,
-    "vah": 4128.9,
-    "val": 4053.28,
+    "vwap": 4093.64,
+    "vwap_zscore": 0.77,
+    "poc": 4123.08,
+    "vah": 4128.93,
+    "val": 4052.05,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4084.4,
-    "ema50": 4183.99,
-    "ema200": 4283.62,
-    "rsi14": 51.0,
-    "macd_hist": 9.198,
+    "ema20": 4084.7,
+    "ema50": 4184.12,
+    "ema200": 4283.65,
+    "rsi14": 51.2,
+    "macd_hist": 9.402,
     "macd_bullish": true,
     "adx14": 29.4,
     "atr14": 87.02,
@@ -202,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 7.8
+      "utc_hour": 7.88
     },
-    "tech_score": -0.245
+    "tech_score": -0.344
   },
   "news_blackout": {
     "blocked": false,
