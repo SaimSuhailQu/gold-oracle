@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-05T23:44:55.923819+00:00",
-  "timestamp_epoch": 1793922295,
+  "timestamp": "2026-11-05T23:48:37.366630+00:00",
+  "timestamp_epoch": 1793922517,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6625,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.325,
-  "gold_price": 4103.1,
+  "gold_price": 4100.2,
   "composite": 1.7365,
   "calibration": {
     "a": 0.2216,
@@ -27,7 +27,7 @@
     "risk_app": 2.0101,
     "btc_comp": 0.3519,
     "etf_flow": -1.0373,
-    "momentum": -0.9347,
+    "momentum": -0.9404,
     "curve": 0.3333,
     "duration": 2.486,
     "cb_regime": 0.5
@@ -130,11 +130,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4242.0,
-  "ma200": 4505.64,
-  "atr14": 49.5,
-  "sl_dollars": 99.0,
-  "tp_dollars": 173.25,
+  "ma50": 4241.94,
+  "ma200": 4505.62,
+  "atr14": 49.29,
+  "sl_dollars": 98.59,
+  "tp_dollars": 172.53,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": 0.0875,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4096.42,
-    "vwap_zscore": -0.69,
+    "vwap": 4096.32,
+    "vwap_zscore": -1.18,
     "poc": 4097.93,
     "vah": 4116.99,
     "val": 4066.56,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4082.12,
-    "ema50": 4183.06,
-    "ema200": 4283.38,
-    "rsi14": 49.3,
-    "macd_hist": 7.673,
+    "ema20": 4081.85,
+    "ema50": 4182.94,
+    "ema200": 4283.36,
+    "rsi14": 49.0,
+    "macd_hist": 7.488,
     "macd_bullish": true,
     "adx14": 30.2,
     "atr14": 83.09,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.73
+      "utc_hour": 23.8
     },
-    "tech_score": -0.254
+    "tech_score": -0.155
   },
   "news_blackout": {
     "blocked": false,
