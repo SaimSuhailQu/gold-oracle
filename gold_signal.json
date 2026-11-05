@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-05T22:29:03.334349+00:00",
-  "timestamp_epoch": 1793917743,
+  "timestamp": "2026-11-05T22:34:01.891995+00:00",
+  "timestamp_epoch": 1793918041,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6626,
@@ -25,7 +25,7 @@
     "fed_stance": 0.7011,
     "fear": 3.1478,
     "risk_app": 2.0101,
-    "btc_comp": 0.3618,
+    "btc_comp": 0.3607,
     "etf_flow": -1.0373,
     "momentum": -0.9449,
     "curve": 0.3333,
@@ -41,13 +41,13 @@
     "directional_probability": 0.6626,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.663,
+    "mcda_score": 0.703,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.781,
       "news_sentiment_alignment": 0.9286,
       "technical_trend": 0.1,
-      "auction_location": 0.8
+      "auction_location": 1.0
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
@@ -143,7 +143,7 @@
     "fed_stance": 0.1051,
     "fear": 0.274,
     "risk_app": 0.2488,
-    "btc_comp": 0.0254,
+    "btc_comp": 0.0253,
     "etf_flow": -0.0128,
     "momentum": -0.0005,
     "curve": 0.0,
@@ -166,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4100.38,
-    "vwap_zscore": -1.48,
+    "vwap": 4100.24,
+    "vwap_zscore": -1.52,
     "poc": 4097.96,
     "vah": 4118.02,
     "val": 4066.96,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 22.48
+      "utc_hour": 22.57
     },
-    "tech_score": -0.256
+    "tech_score": -0.155
   },
   "news_blackout": {
     "blocked": false,
