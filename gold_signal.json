@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-06T04:58:59.359056+00:00",
-  "timestamp_epoch": 1793941139,
+  "timestamp": "2026-11-06T05:03:53.950304+00:00",
+  "timestamp_epoch": 1793941433,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6334,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2668,
-  "gold_price": 4051.6,
+  "gold_price": 4113.5,
   "composite": 1.3546,
   "calibration": {
     "a": 0.2229,
@@ -41,13 +41,13 @@
     "directional_probability": 0.6334,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.701,
+    "mcda_score": 0.621,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.771,
       "news_sentiment_alignment": 0.9286,
       "technical_trend": 0.1,
-      "auction_location": 1.0
+      "auction_location": 0.6
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
@@ -166,23 +166,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4080.48,
-    "vwap_zscore": -1.99,
-    "poc": 4100.28,
-    "vah": 4101.12,
-    "val": 4038.94,
+    "vwap": 4077.0,
+    "vwap_zscore": -1.74,
+    "poc": 4099.39,
+    "vah": 4101.82,
+    "val": 4038.59,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4077.22,
-    "ema50": 4181.04,
-    "ema200": 4282.87,
-    "rsi14": 45.4,
-    "macd_hist": 4.386,
+    "ema20": 4083.11,
+    "ema50": 4183.46,
+    "ema200": 4283.49,
+    "rsi14": 50.0,
+    "macd_hist": 8.336,
     "macd_bullish": true,
-    "adx14": 30.0,
-    "atr14": 85.62,
+    "adx14": 29.4,
+    "atr14": 87.02,
     "trend_strong": true,
     "resistance": 4097.2,
     "support": 3879.3,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BULLISH",
+    "candle_pattern": null,
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 4.97
+      "utc_hour": 5.05
     },
-    "tech_score": -0.173
+    "tech_score": -0.25
   },
   "news_blackout": {
     "blocked": false,
