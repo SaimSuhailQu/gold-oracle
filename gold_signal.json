@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-06T11:59:01.255145+00:00",
-  "timestamp_epoch": 1793966341,
+  "timestamp": "2026-11-06T12:04:01.886502+00:00",
+  "timestamp_epoch": 1793966641,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6625,
   "p_down": 0.3375,
-  "signal": "LONG",
+  "signal": "FLAT",
   "raw_signal": "LONG",
-  "size_tier": "FULL",
-  "size_mult": 1.0,
+  "size_tier": "FLAT",
+  "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.325,
-  "gold_price": 4078.5,
+  "gold_price": 4076.3,
   "composite": 1.7364,
   "calibration": {
     "a": 0.2216,
@@ -33,10 +33,10 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": true,
-    "size_tier": "FULL",
-    "size_mult": 1.0,
-    "final_audited_signal": "LONG",
+    "is_cleared_to_trade": false,
+    "size_tier": "FLAT",
+    "size_mult": 0.0,
+    "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
     "directional_probability": 0.6625,
     "min_required_probability": 0.53,
@@ -49,11 +49,13 @@
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
-    "fatal_flaws": [],
+    "fatal_flaws": [
+      "NEWS BLACKOUT: NFP Non-Farm Payrolls within \u00b130 min \u2014 no new entries into event volatility."
+    ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
     ],
-    "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
+    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.6625,
@@ -164,8 +166,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4055.71,
-    "vwap_zscore": -0.23,
+    "vwap": 4055.66,
+    "vwap_zscore": -0.26,
     "poc": 4039.48,
     "vah": 4099.65,
     "val": 4030.28,
@@ -173,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4082.67,
-    "ema50": 4179.35,
-    "ema200": 4281.45,
-    "rsi14": 47.4,
-    "macd_hist": 12.096,
+    "ema20": 4082.46,
+    "ema50": 4179.26,
+    "ema200": 4281.43,
+    "rsi14": 47.3,
+    "macd_hist": 11.956,
     "macd_bullish": true,
     "adx14": 28.0,
     "atr14": 85.93,
@@ -202,16 +204,16 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
-      "session": "LONDON",
+      "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 11.98
+      "utc_hour": 12.07
     },
-    "tech_score": 0.437
+    "tech_score": 0.636
   },
   "news_blackout": {
-    "blocked": false,
-    "event": null
+    "blocked": true,
+    "event": "NFP Non-Farm Payrolls"
   }
 }
