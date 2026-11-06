@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-06T07:48:52.705120+00:00",
-  "timestamp_epoch": 1793951332,
+  "timestamp": "2026-11-06T07:53:35.519031+00:00",
+  "timestamp_epoch": 1793951615,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6691,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.3382,
-  "gold_price": 4051.8,
+  "gold_price": 4055.2,
   "composite": 1.7364,
   "calibration": {
     "a": 0.2216,
@@ -51,7 +51,8 @@
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.371) against a LONG \u2014 MTF=-1.0, RSI=45.8, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -164,20 +165,20 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4060.87,
-    "vwap_zscore": -1.05,
-    "poc": 4039.15,
-    "vah": 4100.13,
-    "val": 4030.44,
+    "vwap": 4060.77,
+    "vwap_zscore": -0.86,
+    "poc": 4039.05,
+    "vah": 4100.97,
+    "val": 4030.43,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4080.13,
-    "ema50": 4178.3,
-    "ema200": 4281.18,
-    "rsi14": 45.6,
-    "macd_hist": 10.392,
+    "ema20": 4080.45,
+    "ema50": 4178.43,
+    "ema200": 4281.22,
+    "rsi14": 45.8,
+    "macd_hist": 10.609,
     "macd_bullish": true,
     "adx14": 28.0,
     "atr14": 85.93,
@@ -202,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 7.8
+      "utc_hour": 7.88
     },
-    "tech_score": -0.272
+    "tech_score": -0.371
   },
   "news_blackout": {
     "blocked": false,
