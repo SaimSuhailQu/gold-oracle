@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-11-06T21:18:33.672980+00:00",
-  "timestamp_epoch": 1793999913,
+  "timestamp": "2026-11-06T21:23:49.740885+00:00",
+  "timestamp_epoch": 1794000229,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6293,
-  "p_down": 0.3707,
+  "p_up": 0.644,
+  "p_down": 0.356,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.2586,
-  "gold_price": 4074.7,
-  "composite": 1.623,
+  "confidence": 0.288,
+  "gold_price": 4075.3,
+  "composite": 1.6223,
   "calibration": {
     "a": 0.2203,
     "b": 0.6019
@@ -23,11 +23,11 @@
     "nom_yield": 2.6494,
     "dollar": 0.121,
     "fed_stance": 0.7103,
-    "fear": 2.5923,
+    "fear": 2.5853,
     "risk_app": 2.071,
-    "btc_comp": 0.4473,
+    "btc_comp": 0.4467,
     "etf_flow": -1.0435,
-    "momentum": -0.898,
+    "momentum": -0.8968,
     "curve": 0.3664,
     "duration": 2.3839,
     "cb_regime": 0.5
@@ -38,14 +38,14 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6293,
+    "directional_probability": 0.644,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.54,
+    "mcda_score": 0.571,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.794,
-      "news_sentiment_alignment": 0.625,
+      "news_sentiment_alignment": 0.8332999999999999,
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
@@ -58,26 +58,26 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6293,
-    "p_linear_logistic": 0.7777,
+    "p_ensemble_up": 0.644,
+    "p_linear_logistic": 0.7776,
     "p_boosted_ml": 0.5717,
-    "nlp_sentiment_score": -0.6353
+    "nlp_sentiment_score": -0.4883
   },
   "ai_sentiment": {
-    "sentiment_score": 0.125,
-    "bullish_indicators": 9,
-    "bearish_indicators": 7,
+    "sentiment_score": 0.3333,
+    "bullish_indicators": 10,
+    "bearish_indicators": 5,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.125,
+      "news": 0.333,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.062
+      "blended": 0.167
     },
     "narrative_zscore": {
-      "z": -1.906,
-      "mean": 0.3816,
-      "std": 0.1674,
+      "z": -1.465,
+      "mean": 0.3903,
+      "std": 0.1527,
       "n": 12
     }
   },
@@ -130,18 +130,18 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4230.42,
-  "ma200": 4501.49,
-  "atr14": 51.51,
-  "sl_dollars": 103.03,
-  "tp_dollars": 180.3,
+  "ma50": 4230.43,
+  "ma200": 4501.5,
+  "atr14": 51.47,
+  "sl_dollars": 102.94,
+  "tp_dollars": 180.15,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": 0.0904,
     "nom_yield": 0.4748,
     "dollar": 0.0129,
     "fed_stance": 0.1069,
-    "fear": 0.2239,
+    "fear": 0.2233,
     "risk_app": 0.2559,
     "btc_comp": 0.0315,
     "etf_flow": -0.0135,
@@ -166,23 +166,23 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4040.55,
-    "vwap_zscore": 0.89,
-    "poc": 4043.11,
-    "vah": 4062.26,
-    "val": 4019.8,
+    "vwap": 4040.53,
+    "vwap_zscore": 0.93,
+    "poc": 4043.03,
+    "vah": 4062.38,
+    "val": 4019.72,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4082.31,
-    "ema50": 4179.2,
-    "ema200": 4281.41,
+    "ema20": 4082.37,
+    "ema50": 4179.22,
+    "ema200": 4281.42,
     "rsi14": 47.2,
-    "macd_hist": 11.854,
+    "macd_hist": 11.892,
     "macd_bullish": true,
     "adx14": 28.1,
-    "atr14": 86.46,
+    "atr14": 86.56,
     "trend_strong": true,
     "resistance": 4097.2,
     "support": 3879.3,
@@ -208,7 +208,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.3
+      "utc_hour": 21.38
     },
     "tech_score": 0.436
   },
