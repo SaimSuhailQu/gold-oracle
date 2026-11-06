@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-06T05:18:54.141858+00:00",
-  "timestamp_epoch": 1793942334,
+  "timestamp": "2026-11-06T05:23:39.845997+00:00",
+  "timestamp_epoch": 1793942619,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6334,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2668,
-  "gold_price": 4058.6,
+  "gold_price": 4056.0,
   "composite": 1.3546,
   "calibration": {
     "a": 0.2229,
@@ -53,7 +53,8 @@
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
     ],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.371) against a LONG \u2014 MTF=-1.0, RSI=45.9, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -166,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4073.87,
-    "vwap_zscore": -1.64,
+    "vwap": 4073.25,
+    "vwap_zscore": -1.88,
     "poc": 4039.15,
     "vah": 4101.71,
     "val": 4038.36,
@@ -175,11 +176,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4080.78,
-    "ema50": 4178.57,
-    "ema200": 4281.25,
-    "rsi14": 46.1,
-    "macd_hist": 10.826,
+    "ema20": 4080.53,
+    "ema50": 4178.47,
+    "ema200": 4281.22,
+    "rsi14": 45.9,
+    "macd_hist": 10.66,
     "macd_bullish": true,
     "adx14": 27.9,
     "atr14": 85.75,
@@ -204,13 +205,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BULLISH",
+    "candle_pattern": "BEARISH_ENGULFING",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 5.3
+      "utc_hour": 5.38
     },
-    "tech_score": -0.17
+    "tech_score": -0.371
   },
   "news_blackout": {
     "blocked": false,
