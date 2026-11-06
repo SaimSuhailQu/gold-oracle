@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-06T21:08:47.046461+00:00",
-  "timestamp_epoch": 1793999327,
+  "timestamp": "2026-11-06T21:14:00.723820+00:00",
+  "timestamp_epoch": 1793999640,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6287,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.2574,
-  "gold_price": 4076.2,
-  "composite": 1.6186,
+  "gold_price": 4075.1,
+  "composite": 1.6188,
   "calibration": {
     "a": 0.2203,
     "b": 0.6019
@@ -23,11 +23,11 @@
     "nom_yield": 2.6494,
     "dollar": 0.0851,
     "fed_stance": 0.7103,
-    "fear": 2.5758,
+    "fear": 2.5782,
     "risk_app": 2.071,
-    "btc_comp": 0.4476,
+    "btc_comp": 0.4478,
     "etf_flow": -1.0432,
-    "momentum": -0.895,
+    "momentum": -0.8972,
     "curve": 0.3664,
     "duration": 2.3839,
     "cb_regime": 0.5
@@ -130,20 +130,20 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4230.45,
+  "ma50": 4230.43,
   "ma200": 4501.5,
-  "atr14": 51.41,
-  "sl_dollars": 102.81,
-  "tp_dollars": 179.93,
+  "atr14": 51.49,
+  "sl_dollars": 102.97,
+  "tp_dollars": 180.2,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": 0.0913,
     "nom_yield": 0.4748,
     "dollar": 0.0091,
     "fed_stance": 0.1069,
-    "fear": 0.2225,
+    "fear": 0.2227,
     "risk_app": 0.2559,
-    "btc_comp": 0.0315,
+    "btc_comp": 0.0316,
     "etf_flow": -0.0135,
     "momentum": -0.0009,
     "curve": 0.0,
@@ -167,7 +167,7 @@
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
     "vwap": 4040.48,
-    "vwap_zscore": 0.98,
+    "vwap_zscore": 1.01,
     "poc": 4043.11,
     "vah": 4056.05,
     "val": 4019.8,
@@ -175,11 +175,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4082.45,
-    "ema50": 4179.26,
-    "ema200": 4281.43,
-    "rsi14": 47.3,
-    "macd_hist": 11.95,
+    "ema20": 4082.35,
+    "ema50": 4179.21,
+    "ema200": 4281.41,
+    "rsi14": 47.2,
+    "macd_hist": 11.879,
     "macd_bullish": true,
     "adx14": 28.1,
     "atr14": 86.56,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 21.13
+      "utc_hour": 21.23
     },
-    "tech_score": 0.436
+    "tech_score": 0.636
   },
   "news_blackout": {
     "blocked": false,
