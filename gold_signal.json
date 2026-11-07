@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-07T23:23:54.491305+00:00",
-  "timestamp_epoch": 1794093834,
+  "timestamp": "2026-11-07T23:28:39.705600+00:00",
+  "timestamp_epoch": 1794094119,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.664,
@@ -41,13 +41,13 @@
     "directional_probability": 0.664,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.645,
+    "mcda_score": 0.605,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.794,
       "news_sentiment_alignment": 1.0556,
       "technical_trend": 0.1,
-      "auction_location": 0.6
+      "auction_location": 0.4
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is OFF_HOURS \u2014 entries only during London/New York."
@@ -168,7 +168,7 @@
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
     "vwap": 4059.65,
-    "vwap_zscore": -1.53,
+    "vwap_zscore": -1.24,
     "poc": 4058.96,
     "vah": 4060.39,
     "val": 4058.87,
@@ -209,7 +209,7 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.38
+      "utc_hour": 23.47
     },
     "tech_score": -0.364
   },
