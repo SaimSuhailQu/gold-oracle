@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-07T02:48:52.983285+00:00",
-  "timestamp_epoch": 1794019732,
+  "timestamp": "2026-11-07T02:54:03.505587+00:00",
+  "timestamp_epoch": 1794020043,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6543,
-  "p_down": 0.3457,
+  "p_up": 0.6648,
+  "p_down": 0.3352,
   "signal": "FLAT",
   "raw_signal": "LONG",
   "size_tier": "FLAT",
   "size_mult": 0.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.3086,
+  "confidence": 0.3296,
   "gold_price": 4079.5,
   "composite": 1.7364,
   "calibration": {
@@ -38,14 +38,14 @@
     "size_mult": 0.0,
     "final_audited_signal": "FLAT",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6543,
+    "directional_probability": 0.6648,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.569,
+    "mcda_score": 0.587,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.781,
-      "news_sentiment_alignment": 0.8332999999999999,
+      "news_sentiment_alignment": 0.9545,
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
@@ -58,26 +58,26 @@
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6543,
+    "p_ensemble_up": 0.6648,
     "p_linear_logistic": 0.7932,
     "p_boosted_ml": 0.5746,
-    "nlp_sentiment_score": -0.4883
+    "nlp_sentiment_score": -0.3837
   },
   "ai_sentiment": {
-    "sentiment_score": 0.3333,
+    "sentiment_score": 0.4545,
     "bullish_indicators": 8,
-    "bearish_indicators": 4,
+    "bearish_indicators": 3,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.333,
+      "news": 0.455,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.167
+      "blended": 0.227
     },
     "narrative_zscore": {
-      "z": -1.465,
-      "mean": 0.3903,
-      "std": 0.1527,
+      "z": -1.151,
+      "mean": 0.3953,
+      "std": 0.146,
       "n": 12
     }
   },
@@ -166,7 +166,7 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4065.68,
+    "vwap": 4065.73,
     "vwap_zscore": 0.47,
     "poc": 4069.98,
     "vah": 4070.39,
@@ -182,7 +182,7 @@
     "macd_hist": 12.16,
     "macd_bullish": true,
     "adx14": 28.1,
-    "atr14": 86.46,
+    "atr14": 86.56,
     "trend_strong": true,
     "resistance": 4097.2,
     "support": 3879.3,
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": "PIN_BAR_BEARISH",
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.8
+      "utc_hour": 2.9
     },
-    "tech_score": 0.438
+    "tech_score": 0.637
   },
   "news_blackout": {
     "blocked": false,
