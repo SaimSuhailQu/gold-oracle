@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-08T09:28:50.386675+00:00",
-  "timestamp_epoch": 1794130130,
+  "timestamp": "2026-11-08T09:33:51.736478+00:00",
+  "timestamp_epoch": 1794130431,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6808,
@@ -41,17 +41,18 @@
     "directional_probability": 0.6808,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.668,
+    "mcda_score": 0.628,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.794,
       "news_sentiment_alignment": 1.2143000000000002,
       "technical_trend": 0.1,
-      "auction_location": 0.6
+      "auction_location": 0.4
     },
     "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.364) against a LONG \u2014 MTF=-1.0, RSI=47.2, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
@@ -164,8 +165,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4056.75,
-    "vwap_zscore": -1.65,
+    "vwap": 4056.73,
+    "vwap_zscore": -1.34,
     "poc": 4054.88,
     "vah": 4059.63,
     "val": 4054.4,
@@ -202,13 +203,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BEARISH",
     "session": {
       "session": "LONDON",
       "trade_ok": true,
-      "utc_hour": 9.47
+      "utc_hour": 9.55
     },
-    "tech_score": -0.264
+    "tech_score": -0.364
   },
   "news_blackout": {
     "blocked": false,
