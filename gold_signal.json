@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-08T13:38:59.930772+00:00",
-  "timestamp_epoch": 1794145139,
+  "timestamp": "2026-11-08T13:43:43.086624+00:00",
+  "timestamp_epoch": 1794145423,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6808,
@@ -41,13 +41,13 @@
     "directional_probability": 0.6808,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.628,
+    "mcda_score": 0.668,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.794,
       "news_sentiment_alignment": 1.2143000000000002,
       "technical_trend": 0.1,
-      "auction_location": 0.4
+      "auction_location": 0.6
     },
     "fatal_flaws": [],
     "self_criticisms": [
@@ -164,11 +164,11 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4055.36,
-    "vwap_zscore": -1.24,
-    "poc": 4054.87,
-    "vah": 4058.19,
-    "val": 4052.58,
+    "vwap": 4055.35,
+    "vwap_zscore": -2.06,
+    "poc": 4054.75,
+    "vah": 4058.12,
+    "val": 4052.7,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
@@ -180,7 +180,7 @@
     "macd_hist": 11.867,
     "macd_bullish": true,
     "adx14": 28.1,
-    "atr14": 86.56,
+    "atr14": 86.6,
     "trend_strong": true,
     "resistance": 4097.2,
     "support": 3879.3,
@@ -206,7 +206,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 13.63
+      "utc_hour": 13.72
     },
     "tech_score": -0.264
   },
