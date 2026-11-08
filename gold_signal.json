@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-08T01:03:54.437518+00:00",
-  "timestamp_epoch": 1794099834,
+  "timestamp": "2026-11-08T01:09:07.918134+00:00",
+  "timestamp_epoch": 1794100147,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6317,
@@ -41,13 +41,13 @@
     "directional_probability": 0.6317,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.586,
+    "mcda_score": 0.546,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.794,
       "news_sentiment_alignment": 0.6667,
       "technical_trend": 0.1,
-      "auction_location": 0.6
+      "auction_location": 0.4
     },
     "fatal_flaws": [
       "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
@@ -166,11 +166,11 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4059.74,
-    "vwap_zscore": -1.76,
+    "vwap": 4059.66,
+    "vwap_zscore": -1.36,
     "poc": 4060.14,
     "vah": 4060.56,
-    "val": 4058.87,
+    "val": 4058.65,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
@@ -204,13 +204,13 @@
       "bullish": false,
       "bearish": false
     },
-    "candle_pattern": null,
+    "candle_pattern": "PIN_BAR_BULLISH",
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 1.05
+      "utc_hour": 1.15
     },
-    "tech_score": -0.264
+    "tech_score": -0.164
   },
   "news_blackout": {
     "blocked": false,
