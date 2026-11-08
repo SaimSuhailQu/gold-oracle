@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-08T12:48:52.446234+00:00",
-  "timestamp_epoch": 1794142132,
+  "timestamp": "2026-11-08T12:53:56.463177+00:00",
+  "timestamp_epoch": 1794142436,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.6712,
-  "p_down": 0.3288,
+  "p_up": 0.6829,
+  "p_down": 0.3171,
   "signal": "LONG",
   "raw_signal": "LONG",
   "size_tier": "FULL",
   "size_mult": 1.0,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.3424,
+  "confidence": 0.3658,
   "gold_price": 4074.9,
   "composite": 1.6244,
   "calibration": {
@@ -38,14 +38,14 @@
     "size_mult": 1.0,
     "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.6712,
+    "directional_probability": 0.6829,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.655,
+    "mcda_score": 0.671,
     "mcda_criteria_scores": {
       "macro_alignment": 0.75,
       "ml_consensus": 0.794,
-      "news_sentiment_alignment": 1.125,
+      "news_sentiment_alignment": 1.2332999999999998,
       "technical_trend": 0.1,
       "auction_location": 0.6
     },
@@ -56,26 +56,26 @@
     "audit_verdict_summary": "TRADE APPROVED \u2014 FULL SIZE (all criteria & adversarial checks passed)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.6712,
+    "p_ensemble_up": 0.6829,
     "p_linear_logistic": 0.7773,
     "p_boosted_ml": 0.5717,
-    "nlp_sentiment_score": -0.2147
+    "nlp_sentiment_score": -0.0977
   },
   "ai_sentiment": {
-    "sentiment_score": 0.625,
+    "sentiment_score": 0.7333,
     "bullish_indicators": 13,
-    "bearish_indicators": 3,
+    "bearish_indicators": 2,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.625,
+      "news": 0.733,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.312
+      "blended": 0.367
     },
     "narrative_zscore": {
-      "z": -0.644,
-      "mean": 0.4024,
-      "std": 0.1396,
+      "z": -0.293,
+      "mean": 0.4069,
+      "std": 0.1375,
       "n": 12
     }
   },
@@ -206,7 +206,7 @@
     "session": {
       "session": "NEW_YORK",
       "trade_ok": true,
-      "utc_hour": 12.8
+      "utc_hour": 12.88
     },
     "tech_score": -0.264
   },
