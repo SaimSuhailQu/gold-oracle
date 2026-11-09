@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-09T23:18:56.513313+00:00",
-  "timestamp_epoch": 1794266336,
+  "timestamp": "2026-11-09T23:23:57.853550+00:00",
+  "timestamp_epoch": 1794266637,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.6521,
@@ -12,7 +12,7 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.3042,
-  "gold_price": 4145.5,
+  "gold_price": 4154.0,
   "composite": 1.3707,
   "calibration": {
     "a": 0.2189,
@@ -25,9 +25,9 @@
     "fed_stance": 0.3212,
     "fear": 1.1354,
     "risk_app": 1.3319,
-    "btc_comp": 0.4429,
+    "btc_comp": 0.4427,
     "etf_flow": -1.0495,
-    "momentum": -0.7826,
+    "momentum": -0.7661,
     "curve": 0.2274,
     "duration": 2.3371,
     "cb_regime": 0.5
@@ -60,7 +60,7 @@
   },
   "ensemble_ml": {
     "p_ensemble_up": 0.6521,
-    "p_linear_logistic": 0.7622,
+    "p_linear_logistic": 0.7621,
     "p_boosted_ml": 0.5686,
     "nlp_sentiment_score": -0.3033
   },
@@ -131,11 +131,11 @@
     ],
     "last_updated": "2026-10-10T06:02:36.414008+00:00"
   },
-  "ma50": 4222.73,
-  "ma200": 4497.32,
-  "atr14": 55.29,
-  "sl_dollars": 110.59,
-  "tp_dollars": 193.53,
+  "ma50": 4222.9,
+  "ma200": 4497.37,
+  "atr14": 55.9,
+  "sl_dollars": 111.8,
+  "tp_dollars": 195.65,
   "exposure_mult": 1.0,
   "factors": {
     "real_rates": 0.0742,
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4091.74,
-    "vwap_zscore": 2.73,
+    "vwap": 4091.84,
+    "vwap_zscore": 2.72,
     "poc": 4087.53,
     "vah": 4087.97,
     "val": 4087.09,
@@ -176,16 +176,16 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4088.35,
-    "ema50": 4177.88,
-    "ema200": 4280.06,
-    "rsi14": 52.5,
-    "macd_hist": 18.558,
+    "ema20": 4089.16,
+    "ema50": 4178.22,
+    "ema200": 4280.14,
+    "rsi14": 53.1,
+    "macd_hist": 19.101,
     "macd_bullish": true,
-    "adx14": 26.3,
-    "atr14": 85.71,
+    "adx14": 26.2,
+    "atr14": 86.22,
     "trend_strong": true,
-    "resistance": 4155.8,
+    "resistance": 4097.2,
     "support": 3879.3,
     "mtf_trends": {
       "M5": 1
@@ -209,9 +209,9 @@
     "session": {
       "session": "OFF_HOURS",
       "trade_ok": false,
-      "utc_hour": 23.3
+      "utc_hour": 23.38
     },
-    "tech_score": 0.562
+    "tech_score": 0.566
   },
   "news_blackout": {
     "blocked": false,
