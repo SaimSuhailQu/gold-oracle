@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-10T02:34:11.403998+00:00",
-  "timestamp_epoch": 1794278051,
+  "timestamp": "2026-11-10T02:38:51.722019+00:00",
+  "timestamp_epoch": 1794278331,
   "symbol": "XAUUSD",
   "horizon_days": 20,
   "p_up": 0.7123,
@@ -12,8 +12,8 @@
   "long_t": 0.52,
   "short_t": 0.48,
   "confidence": 0.4246,
-  "gold_price": 4134.0,
-  "composite": 1.6244,
+  "gold_price": 4135.6,
+  "composite": 1.6243,
   "calibration": {
     "a": 0.2201,
     "b": 0.6012
@@ -26,7 +26,7 @@
     "fear": 2.6182,
     "risk_app": 2.071,
     "btc_comp": 0.4508,
-    "etf_flow": -1.0439,
+    "etf_flow": -1.0457,
     "momentum": -0.8976,
     "curve": 0.3664,
     "duration": 2.385,
@@ -54,7 +54,7 @@
     ],
     "self_criticisms": [
       "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
-      "CRITIC WARNING: technical stack is bearish (tech_score=-0.342) against a LONG \u2014 MTF=-1.0, RSI=51.7, structure=UNKNOWN."
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.341) against a LONG \u2014 MTF=-1.0, RSI=51.8, structure=UNKNOWN."
     ],
     "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
   },
@@ -167,8 +167,8 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 4093.52,
-    "vwap_zscore": 0.51,
+    "vwap": 4093.53,
+    "vwap_zscore": 0.28,
     "poc": 4087.53,
     "vah": 4087.97,
     "val": 4087.09,
@@ -176,11 +176,11 @@
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4087.25,
-    "ema50": 4177.43,
-    "ema200": 4279.95,
-    "rsi14": 51.7,
-    "macd_hist": 17.824,
+    "ema20": 4087.4,
+    "ema50": 4177.5,
+    "ema200": 4279.96,
+    "rsi14": 51.8,
+    "macd_hist": 17.926,
     "macd_bullish": true,
     "adx14": 26.2,
     "atr14": 86.22,
@@ -209,9 +209,9 @@
     "session": {
       "session": "ASIAN",
       "trade_ok": false,
-      "utc_hour": 2.57
+      "utc_hour": 2.63
     },
-    "tech_score": -0.342
+    "tech_score": -0.341
   },
   "news_blackout": {
     "blocked": false,
