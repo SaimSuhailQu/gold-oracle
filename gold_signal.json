@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-16T02:04:56.380348+00:00",
-  "timestamp_epoch": 1794794696,
+  "timestamp": "2026-11-16T09:33:27.327401+00:00",
+  "timestamp_epoch": 1794821607,
   "symbol": "XAUUSD",
   "horizon_days": 20,
-  "p_up": 0.5714,
-  "p_down": 0.4286,
-  "signal": "FLAT",
+  "p_up": 0.5249,
+  "p_down": 0.4751,
+  "signal": "LONG",
   "raw_signal": "LONG",
-  "size_tier": "FLAT",
-  "size_mult": 0.0,
+  "size_tier": "QUARTER",
+  "size_mult": 0.25,
   "long_t": 0.52,
   "short_t": 0.48,
-  "confidence": 0.1428,
-  "gold_price": 3877.5,
+  "confidence": 0.0498,
+  "gold_price": 3864.9,
   "composite": -0.0144,
   "calibration": {
     "a": 0.2152,
@@ -33,51 +33,50 @@
     "cb_regime": 0.5
   },
   "decision_critic": {
-    "is_cleared_to_trade": false,
-    "size_tier": "FLAT",
-    "size_mult": 0.0,
-    "final_audited_signal": "FLAT",
+    "is_cleared_to_trade": true,
+    "size_tier": "QUARTER",
+    "size_mult": 0.25,
+    "final_audited_signal": "LONG",
     "evaluated_direction": "LONG",
-    "directional_probability": 0.5714,
+    "directional_probability": 0.5249,
     "min_required_probability": 0.53,
     "quarter_probability": 0.5,
-    "mcda_score": 0.591,
+    "mcda_score": 0.521,
     "mcda_criteria_scores": {
       "macro_alignment": 0.4166666666666667,
       "ml_consensus": 0.957,
-      "news_sentiment_alignment": 1.3,
+      "news_sentiment_alignment": 0.8332999999999999,
       "technical_trend": 0.1,
       "auction_location": 0.4
     },
-    "fatal_flaws": [
-      "SESSION FILTER: current session is ASIAN \u2014 entries only during London/New York."
-    ],
+    "fatal_flaws": [],
     "self_criticisms": [
-      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average."
+      "CRITIC WARNING: Counter-trend trade: Gold is trading beneath its 50-day moving average.",
+      "CRITIC WARNING: technical stack is bearish (tech_score=-0.626) against a LONG \u2014 MTF=-1.0, RSI=34.8, structure=UNKNOWN."
     ],
-    "audit_verdict_summary": "TRADE REJECTED / STAND ASIDE (adversarial critic found fatal flaw)"
+    "audit_verdict_summary": "TRADE APPROVED \u2014 QUARTER SIZE (exploratory: gathers out-of-sample data at 0.25x risk)"
   },
   "ensemble_ml": {
-    "p_ensemble_up": 0.5714,
+    "p_ensemble_up": 0.5249,
     "p_linear_logistic": 0.5914,
     "p_boosted_ml": 0.5485,
-    "nlp_sentiment_score": -0.0237
+    "nlp_sentiment_score": -0.4883
   },
   "ai_sentiment": {
-    "sentiment_score": 0.8,
-    "bullish_indicators": 9,
-    "bearish_indicators": 1,
+    "sentiment_score": 0.3333,
+    "bullish_indicators": 10,
+    "bearish_indicators": 5,
     "sample_headlines_analyzed": 14,
     "narrative_blend": {
-      "news": 0.8,
+      "news": 0.333,
       "youtube": 0.0,
       "papers": 0.0,
-      "blended": 0.4
+      "blended": 0.167
     },
     "narrative_zscore": {
-      "z": -0.071,
-      "mean": 0.4097,
-      "std": 0.137,
+      "z": -1.465,
+      "mean": 0.3903,
+      "std": 0.1527,
       "n": 12
     }
   },
@@ -166,32 +165,32 @@
   },
   "microstructure": {
     "data_source": "real_1m:kraken_paxg_1m",
-    "vwap": 3847.2,
-    "vwap_zscore": 0.81,
-    "poc": 3859.84,
-    "vah": 3873.0,
-    "val": 3817.58,
+    "vwap": 3855.02,
+    "vwap_zscore": -0.85,
+    "poc": 3860.34,
+    "vah": 3872.58,
+    "val": 3835.21,
     "audit_verdict": "STAND_ASIDE",
     "audit_confidence": 0.0
   },
   "technicals": {
-    "ema20": 4023.33,
-    "ema50": 4132.43,
-    "ema200": 4262.94,
-    "rsi14": 35.4,
-    "macd_hist": -8.557,
+    "ema20": 4022.13,
+    "ema50": 4131.93,
+    "ema200": 4262.82,
+    "rsi14": 34.8,
+    "macd_hist": -9.361,
     "macd_bullish": false,
-    "adx14": 26.0,
-    "atr14": 88.16,
+    "adx14": 26.3,
+    "atr14": 90.11,
     "trend_strong": true,
     "resistance": 4157.7,
-    "support": 3856.7,
+    "support": 3879.3,
     "mtf_trends": {
-      "M5": 1
+      "M5": -1
     },
-    "mtf_score": 1.0,
-    "mtf_aligned_bull": true,
-    "mtf_aligned_bear": false,
+    "mtf_score": -1.0,
+    "mtf_aligned_bull": false,
+    "mtf_aligned_bear": true,
     "market_structure": {
       "state": "UNKNOWN",
       "last_event": null
@@ -206,11 +205,11 @@
     },
     "candle_pattern": null,
     "session": {
-      "session": "ASIAN",
-      "trade_ok": false,
-      "utc_hour": 2.07
+      "session": "LONDON",
+      "trade_ok": true,
+      "utc_hour": 9.55
     },
-    "tech_score": 0.177
+    "tech_score": -0.626
   },
   "news_blackout": {
     "blocked": false,
